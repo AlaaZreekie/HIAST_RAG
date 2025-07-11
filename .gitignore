@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!app.py
+!build_vector_db.py
+!embedder.py
+!data_distinct.txt
+
+# Also do not ignore .gitignore itself
+!.gitignore 
