@@ -7,7 +7,7 @@ def main():
     embedder_instance = embedder.Embedder()
     
     # Rebuild the database
-    vectorstore = embedder_instance.rebuild_database()
+    vectorstore = embedder_instance.retrain()
     
     # Get database info
     info = embedder_instance.get_database_info()

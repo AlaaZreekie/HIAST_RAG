@@ -23,8 +23,8 @@ import os
 import tempfile
 
 app = FastAPI(
-    title="Conversational RAG API",
-    description="A RESTful API for asking questions to a document-aware AI.",
+    title="Conversational RAG API (DeepSeek)",
+    description="A RESTful API for asking questions to a document-aware AI powered by DeepSeek.",
     version="1.0.0"
 )
 
@@ -34,6 +34,12 @@ token_manager = TokenManager()
 # Global conversation history using hash map for O(1) lookup
 # Structure: {question_hash: {"user": question, "assistant": answer}}
 conversation_history = {}
+
+try:
+    from langchain_huggingface import HuggingFaceEmbeddings
+    print("✅ langchain_huggingface import successful!")
+except Exception as e:
+    print("❌ langchain_huggingface import failed:", e)
 
 @app.post("/conversation", response_model=AnswerResponse)
 def ask_question(request: QuestionRequest):
@@ -222,7 +228,8 @@ def get_database_info():
         return {
             "database_path": "chroma_db",
             "total_documents": 0,
-            "embedding_model": "models/embedding-001",
+            "embedding_model": "text-embedding-3-small",
+            "llm_model": "deepseek-chat",
             "status": "error",
             "error": str(e)
         }

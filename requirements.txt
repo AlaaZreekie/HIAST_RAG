@@ -1,16 +1,14 @@
 langchain
-langchain-google-genai
+langchain-openai
 python-dotenv
 streamlit
 tiktoken
 faiss-cpu
 langchain_experimental
 sentence-transformers
-langchain-google-genai
 requests
 beautifulsoup4
 langchain-community
-google-generativeai
 chromadb
 langchain-chroma
 pypdf
@@ -18,3 +16,8 @@ unstructured
 fastapi
 uvicorn
 pydantic
+openai
+deepseek-ai
+langchain-google-genai
+google-generativeai
+langchain-huggingface
