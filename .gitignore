@@ -6,6 +6,50 @@
 !build_vector_db.py
 !embedder.py
 !data_distinct.txt
+!main.py
+!pyproject.toml
+!requirements.txt
+!README.md
 
 # Also do not ignore .gitignore itself
-!.gitignore 
+!.gitignore
+
+# Exclude Visual Studio configuration
+.vs/
+
+# Python-specific exclusions
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+myenv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db 
