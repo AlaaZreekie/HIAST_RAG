@@ -53,3 +53,7 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db 
+
+src/
+src/__pycache__/
+src/*.pyc 
