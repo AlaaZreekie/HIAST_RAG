@@ -1,5 +1,5 @@
 import streamlit as st
-import embedder
+from src import embedder
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
@@ -8,7 +8,7 @@ st.title("Flexible Website Scraper, Retriever, and Chatbot")
 
 # --- RAG Chain Setup ---
 llm = embedder.llm
-retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 10})
+retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 15})
 
 system_prompt = (
     "You are an expert assistant for question-answering tasks. "
