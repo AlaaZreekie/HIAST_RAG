@@ -1,27 +1,8 @@
-# Ignore everything
-*
-
-# But not these files...
-!app.py
-!build_vector_db.py
-!embedder.py
-!data_distinct.txt
-!main.py
-!pyproject.toml
-!requirements.txt
-!README.md
-
-# Also do not ignore .gitignore itself
-!.gitignore
-
-# Exclude Visual Studio configuration
-.vs/
-
-# Python-specific exclusions
+# Python cache and environment files
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
 build/
 develop-eggs/
@@ -38,22 +19,81 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Virtual environments
 myenv/
 venv/
 env/
 ENV/
+env.bak/
+venv.bak/
 
-# IDE
+# IDE/editor files
+.vs/
 .vscode/
 .idea/
-
-# OS
+*.swp
+*.swo
+*~
 .DS_Store
-Thumbs.db 
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
 
-src/
+# Large data and generated files
+data_distinct.txt
+scraped_data.txt
+scraped_data.json
+scrapedData.txt
+*.json
+*.txt
+!requirements.txt
+!README.md
+!pyproject.toml
+
+# Database and cache files
+chroma_db/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Only allow Python source files in src/
+# Ignore everything in src/ except .py and __init__.py
 src/__pycache__/
-src/*.pyc 
+src/*.pyc
+src/*.pyo
+src/*.pyd
+!src/*.py
+!src/__init__.py
+
+# Test and utility files
+test_imports.py
+prepare_for_github.py
+start_app.py
+start_streamlit.py 
