@@ -65,11 +65,7 @@ def get_rag_chain(k=15):
     return rag_chain, token_manager
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.5, google_api_key="YOUR_API_KEY")
-memory = ConversationTokenBufferMemory(
-    llm=llm,
-    max_token_limit=30000,  # or your preferred limit
-    return_messages=True
-)
+
 
 def get_conversation_aware_response(question: str, conversation_history: Dict = None) -> str:
     """
