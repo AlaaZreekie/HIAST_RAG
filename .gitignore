@@ -1,59 +1,37 @@
-# Ignore everything
-*
-
-# But not these files...
-!app.py
-!build_vector_db.py
-!embedder.py
-!data_distinct.txt
-!main.py
-!pyproject.toml
-!requirements.txt
-!README.md
-
-# Also do not ignore .gitignore itself
-!.gitignore
-
-# Exclude Visual Studio configuration
-.vs/
-
-# Python-specific exclusions
+# Ignore Python cache and environment files
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+.env
 
-# Virtual environments
-myenv/
-venv/
-env/
-ENV/
-
-# IDE
-.vscode/
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db 
-
-src/
+# Ignore all files in src/ except __init__.py and Python source files
 src/__pycache__/
-src/*.pyc 
+src/*.pyc
+src/*.pyo
+src/*.pyd
+
+# Do NOT ignore Python source files in src/ (except for cache/compiled)
+# (No need to add src/*.py to .gitignore)
+
+# If you want to ignore everything except .py files and __init__.py, you could use:
+# (But by default, .gitignore does not ignore .py files unless specified)
+
+# Large data files
+data_distinct.txt
+scraped_data.txt
+scraped_data.json
+scrapedData.txt
+
+# Generated database
+chroma_db/
+
+# Virtual environment
+myenv/
+
+# IDE files
+.vs/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd 
