@@ -1,6 +1,5 @@
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-from src.embedder import Embedder
 
 def get_llm():
     temperature = 0.5

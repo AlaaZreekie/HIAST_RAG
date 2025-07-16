@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from src.models_configuration import get_llm
+from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
+# REMOVE: from src.models_configuration import get_llm, get_llm_embedder
 
 load_dotenv()
 
@@ -16,11 +16,21 @@ class Embedder:
             raise ValueError("GOOGLE_API_KEY not found in environment variables.")
         
         # Initialize embedding model
-        self.embeddings = get_llm_embedder()
+        self.embeddings = GoogleGenerativeAIEmbeddings(
+            model="models/embedding-001", 
+            google_api_key=self.google_api_key
+        )
         
         # Initialize LLM using the centralized configuration
-        self.llm = get_llm()
-        
+        temperature = 0.5
+        google_api_key = os.getenv("GOOGLE_API_KEY")
+        if not google_api_key:
+            raise ValueError("GOOGLE_API_KEY not found in environment variables.")
+        self.llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-pro",
+            temperature=temperature,
+            google_api_key=google_api_key
+        )
         # Default settings
         self.chunk_size = 1000
         self.chunk_overlap = 200

@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from src.rag_chain import get_conversation_aware_response
 from src.token_manager import TokenManager
-from src import embedder
+from src.rag_abstractions import DefaultRAGPipeline, QueryTransformRAGPipeline, RAGFusionPipeline
 from src.url_scraper import URLScraper
 from src.models import (
     QuestionRequest, 
@@ -19,6 +19,7 @@ from src.models import (
     ConversationResponse,
     ClearConversationResponse
 )
+from src.embedder import Embedder
 import os
 import tempfile
 
@@ -35,8 +36,31 @@ token_manager = TokenManager()
 # Structure: {question_hash: {"user": question, "assistant": answer}}
 conversation_history = {}
 
+# Strategy pattern for RAG pipeline
+class RAGStrategy:
+    DEFAULT = "default"
+    QUERY_TRANSFORM = "query_transform"
+    FUSION = "fusion"
+
+# Global variable to store current strategy
+current_strategy = {"strategy": RAGStrategy.DEFAULT}
+
+# Strategy instances
+strategy_instances = {
+    RAGStrategy.DEFAULT: DefaultRAGPipeline(),
+    RAGStrategy.QUERY_TRANSFORM: QueryTransformRAGPipeline(),
+    RAGStrategy.FUSION: RAGFusionPipeline()
+}
+
+@app.post("/set-strategy")
+def set_strategy(strategy: str):
+    if strategy not in strategy_instances:
+        raise HTTPException(status_code=400, detail=f"Invalid strategy. Choose from: {list(strategy_instances.keys())}")
+    current_strategy["strategy"] = strategy
+    return {"message": f"Strategy set to {strategy}"}
+
 @app.post("/conversation", response_model=AnswerResponse)
-def ask_question(request: QuestionRequest):
+async def ask_question(request: QuestionRequest):
     global conversation_history
     
     # Create hash key for the question (normalized)
@@ -63,8 +87,10 @@ def ask_question(request: QuestionRequest):
     input_tokens = token_manager.count_tokens(request.question)
     print(f"🔍 Input tokens: {input_tokens}")
     
-    # Get conversation-aware response
-    answer = get_conversation_aware_response(request.question, conversation_history)
+    # Use the selected RAG pipeline strategy
+    strategy = current_strategy["strategy"]
+    pipeline = strategy_instances[strategy]
+    answer = await pipeline.answer_question(request.question, conversation_history)
     
     # Count output tokens
     output_tokens = token_manager.count_tokens(answer)
@@ -162,7 +188,7 @@ def scrape_recursive_and_update_database(request: URLScrapeRequest):
         if not result["success"]:
             raise HTTPException(status_code=500, detail=f"Recursive scraping failed: {result.get('error', 'Unknown error')}")
         
-        embedder_instance = embedder.Embedder()
+        embedder_instance = Embedder()
         embedder_instance.retrain(request.output_file)
         
         return URLScrapeResponse(
@@ -187,7 +213,7 @@ def retrain(request: RetrainRequest):
         print(f"🔄 Chunk overlap: {request.chunk_overlap}")
         
         # Create embedder instance and retrain database with custom parameters
-        embedder_instance = embedder.Embedder()
+        embedder_instance = Embedder()
         embedder_instance.retrain(
             chunk_size=request.chunk_size,
             chunk_overlap=request.chunk_overlap
@@ -215,7 +241,7 @@ def retrain(request: RetrainRequest):
 def get_database_info():
     """Get information about the current vector database."""
     try:
-        embedder_instance = embedder.Embedder()
+        embedder_instance = Embedder()
         info = embedder_instance.get_database_info()
         return info
     except Exception as e:
