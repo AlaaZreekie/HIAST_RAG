@@ -1,0 +1,25 @@
+# Global ignores
+.DS_Store
+Thumbs.db
+
+# Python virtual environments (if any at root)
+venv/
+ENV/
+myenv/
+
+# Node modules (if any at root)
+node_modules/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode settings
+.vscode/
+
+# Ignore log files
+*.log
+
+# Do NOT ignore subproject folders
+!/Backend_AI/
+!/Backend_Web/
+!/Fronend_Web/ 
