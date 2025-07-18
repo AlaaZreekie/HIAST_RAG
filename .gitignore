@@ -23,3 +23,5 @@ node_modules/
 !/Backend_AI/
 !/Backend_Web/
 !/Fronend_Web/ 
+
+.vs/ 
