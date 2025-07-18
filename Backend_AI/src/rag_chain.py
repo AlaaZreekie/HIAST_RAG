@@ -77,6 +77,25 @@ def get_conversation_aware_response(question: str, conversation_history: Dict = 
     
     return response_content 
 
+async def stream_conversation_aware_response(question: str, conversation_history: Dict = None):
+    """
+    Async generator that streams the LLM's output token by token for a given question and conversation history.
+    """
+    if conversation_history is None:
+        conversation_history = {}
+    rag_chain, token_manager = get_rag_chain()
+    embedder = Embedder()
+    retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 15})
+    docs = retriever.get_relevant_documents(question)
+    context = "\n".join([doc.page_content for doc in docs])
+    formatted_prompt = token_manager.format_conversation_for_model_hash(
+        conversation_history, question, context
+    )
+    # Use the LLM's async streaming method
+    async for chunk in embedder.llm.astream(formatted_prompt):
+        # chunk.text or chunk.content depending on the LLM
+        yield getattr(chunk, 'text', str(chunk))
+
 def invoke_llm_with_context(context, question, conversation_history=None):
     """
     Generate an answer using the LLM, given a context, question, and optional conversation history.

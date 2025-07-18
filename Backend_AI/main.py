@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import StreamingResponse
 from src.rag_chain import get_conversation_aware_response
 from src.token_manager import TokenManager
 from src.rag_abstractions import DefaultRAGPipeline, QueryTransformRAGPipeline, RAGFusionPipeline
@@ -119,6 +120,16 @@ async def ask_question(request: QuestionRequest):
         "tokens_used": total_tokens,
         "conversation_length": len(conversation_history)
     }
+
+@app.post("/conversation/stream")
+async def ask_question_stream(request: QuestionRequest):
+    strategy = current_strategy["strategy"]
+    pipeline = strategy_instances[strategy]
+    # This should be an async generator yielding text chunks
+    async def answer_stream():
+        async for chunk in pipeline.answer_question_stream(request.question, conversation_history):
+            yield chunk
+    return StreamingResponse(answer_stream(), media_type="text/plain")
 
 @app.post("/data/scrape-url", response_model=URLScrapeResponse)
 def scrape_url(request: URLScrapeRequest):

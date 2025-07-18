@@ -33,6 +33,10 @@ class URLScraper:
                 # Clean URL by removing fragments
                 full_url = urlparse(full_url)._replace(fragment="").geturl()
 
+                # Ignore .zip and .pdf files
+                if full_url.lower().endswith('.zip') or full_url.lower().endswith('.pdf'):
+                    continue
+
                 # Add link if it's on the same domain and not seen before
                 if urlparse(full_url).netloc == base_domain:
                     links.add(full_url)
