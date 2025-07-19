@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CommonSettings\" />
+    <Folder Include="Ennum\" />
+    <Folder Include="Entity\Common\" />
+    <Folder Include="Entity\ApplicationEntity\" />
+    <Folder Include="Entity\IdentityEntity\" />
+  </ItemGroup>
+
 </Project>

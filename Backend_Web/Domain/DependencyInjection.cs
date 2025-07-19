@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    internal class DependencyInjection
+    public static class DependencyInjection
     {
     }
 }

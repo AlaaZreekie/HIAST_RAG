@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Application.DTO.CommonDTO
 {
-    internal class BaseDto
+    public class BaseDto<T> 
     {
+        public required T Id { get; set; }
     }
 }
