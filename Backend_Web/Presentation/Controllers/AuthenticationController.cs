@@ -28,14 +28,12 @@ namespace BlazorPresentation.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
             var result = await _authenticationService.RegisterAsync(registerDto);
-
             if (!result.Succeeded)
             {
                 // Assuming your exception middleware will handle this and return a proper 400 response.
                 // Or you can construct a specific ApiResponse for failure.
                 return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(false, "Registration failed.", StatusCodes.Status400BadRequest, result.Errors), string.Empty));
             }
-
             var apiResponse = new ApiResponse(true, "User registered successfully", StatusCodes.Status201Created, result);
             return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
         }
