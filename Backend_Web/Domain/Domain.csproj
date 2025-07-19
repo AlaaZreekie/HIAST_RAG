@@ -12,11 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommonSettings\" />
     <Folder Include="Ennum\" />
     <Folder Include="Entity\Common\" />
     <Folder Include="Entity\ApplicationEntity\" />
-    <Folder Include="Entity\IdentityEntity\" />
   </ItemGroup>
 
 </Project>

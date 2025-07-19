@@ -8,15 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helper\" />
     <Folder Include="IServices\" />
-    <Folder Include="IUnitOfWork\" />
     <Folder Include="Mapper\" />
-    <Folder Include="Serializer\" />
   </ItemGroup>
 
   <ItemGroup>
