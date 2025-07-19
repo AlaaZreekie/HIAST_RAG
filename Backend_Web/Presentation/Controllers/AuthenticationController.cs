@@ -1,7 +1,7 @@
-﻿using Application.Common;
+﻿using API.Controllers;
+using Application.Common;
+using Application.Dtos.AuthenticationDto;
 using Application.DTOs.Actions;
-using Application.DTOs.Authentication;
-using Application.DTOs.Contact;
 using Application.IApplicationServices.Authentication;
 using Application.Serializer;
 using Azure;
@@ -11,47 +11,74 @@ namespace BlazorPresentation.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseGuestController
     {
-        private readonly IAuthenticationService _authService;
-        private readonly IJsonFieldsSerializer _jsonFieldsSerializer;
-
-        public AuthController(IAuthenticationService authService, IJsonFieldsSerializer jsonFieldsSerializer)
+        public AuthController(IAuthenticationService authenticationService, IJsonFieldsSerializer jsonFieldsSerializer)
+             : base(authenticationService, jsonFieldsSerializer)
         {
-            _authService = authService;
-            _jsonFieldsSerializer = jsonFieldsSerializer;
         }
 
-        [HttpPost]
-        [ProducesResponseType(typeof(ApiResponse<UserProfileDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
-        {
-            var response = await _authService.LoginAsync(loginDto);
-            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(true, "", StatusCodes.Status200OK, response), string.Empty));
-        }
-
+        /// <summary>
+        /// Registers a new user.
+        /// Route: POST /api/auth/register
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
-            var result = await _authService.RegisterAsync(registerDto);
-            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(true, "User registered successfully", StatusCodes.Status201Created,result), string.Empty));
+            var result = await _authenticationService.RegisterAsync(registerDto);
+
+            if (!result.Succeeded)
+            {
+                // Assuming your exception middleware will handle this and return a proper 400 response.
+                // Or you can construct a specific ApiResponse for failure.
+                return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(false, "Registration failed.", StatusCodes.Status400BadRequest, result.Errors), string.Empty));
+            }
+
+            var apiResponse = new ApiResponse(true, "User registered successfully", StatusCodes.Status201Created, result);
+            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
         }
 
+        /// <summary>
+        /// Logs in a user and returns a JWT token.
+        /// Route: POST /api/auth/login
+        /// </summary>
         [HttpPost]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<AuthUserDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            var authUser = await _authenticationService.LoginAsync(loginDto);
+            var apiResponse = new ApiResponse(true, "Login successful", StatusCodes.Status200OK, authUser);
+            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
+        }
+
+        /// <summary>
+        /// Logs out the currently authenticated user.
+        /// Route: POST /api/auth/logout
+        /// </summary>
+         [HttpPost]
+        [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Logout()
         {
-            await _authService.LogoutAsync();
-            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(true, "Logout successfully", StatusCodes.Status200OK), string.Empty));
+            await _authenticationService.LogoutAsync();
+            var apiResponse = new ApiResponse(true, "Logged out successfully", StatusCodes.Status200OK);
+            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(ApiResponse<UserProfileDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAuthenticated()
+        /// <summary>
+        /// Gets the details of the currently authenticated user.
+        /// Route: GET /api/auth/GetAuthenticatedUser
+        /// </summary>
+         [HttpGet]
+        [ProducesResponseType(typeof(ApiResponse<AuthUserDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAuthenticatedUser()
         {
-            var user = await _authService.GetAuthenticatedUser();
-            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(true, "", StatusCodes.Status200OK, user), string.Empty));
+            var user = await _authenticationService.GetAuthenticatedUser();
+            var apiResponse = new ApiResponse(true, "User data retrieved successfully", StatusCodes.Status200OK, user);
+            return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
         }
     }
 }

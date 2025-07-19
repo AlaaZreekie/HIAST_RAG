@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IServices\" />
     <Folder Include="Mapper\" />
   </ItemGroup>
 

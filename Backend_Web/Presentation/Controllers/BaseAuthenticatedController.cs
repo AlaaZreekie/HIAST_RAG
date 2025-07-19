@@ -1,4 +1,5 @@
-﻿using Application.DTOs.Authentication;
+﻿using Application.Dtos.AppUserDto;
+using Application.Dtos.AuthenticationDto;
 using Application.IApplicationServices.Authentication;
 using Application.Serializer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,7 +17,7 @@ namespace API.Controllers
         protected readonly IJsonFieldsSerializer _jsonFieldsSerializer = jsonFieldsSerializer;
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public async Task<UserProfileDto> GetCurrentUserAsync()
+        public async Task<AuthUserDto> GetCurrentUserAsync()
         {
             return await _authenticationService.GetAuthenticatedUser();
         }

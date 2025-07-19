@@ -2259,6 +2259,7 @@
           "Application": "1.0.0",
           "AutoMapper": "15.0.1",
           "Domain": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.18",
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.18",
           "Microsoft.EntityFrameworkCore": "8.0.18",

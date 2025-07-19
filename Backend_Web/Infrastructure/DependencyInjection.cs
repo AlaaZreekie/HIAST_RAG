@@ -1,9 +1,11 @@
-﻿using Application.IReositosy;
+﻿using Application.IApplicationServices.Authentication;
+using Application.IReositosy;
 using Application.IUnitOfWork;
 using Application.Serializer;
 using Domain.Entity.IdentityEntity;
 using Infrastructure.Context;
 using Infrastructure.Seeds;
+using Infrastructure.Services;
 using Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +31,7 @@ namespace Infrastructure
             services.AddScoped<IJsonFieldsSerializer, JsonFieldsSerializer>();
             services.AddScoped<DataSeeder>();
             services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
             return services;
         }
         private static IServiceCollection AddIdentityOptions(this IServiceCollection services)
