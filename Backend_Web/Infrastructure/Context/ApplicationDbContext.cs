@@ -22,15 +22,17 @@ namespace Infrastructure.Context
         #endregion
         #region ApplicationTables
         #region MainTables
-        //public virtual DbSet<Admission> Admissions { get; set; }
-        //public virtual DbSet<AdmissionExam> AdmissionExams { get; set; }
-        //public virtual DbSet<AdmissionResult> AdmissionResults { get; set; }
+        public virtual DbSet<Admission> Admissions { get; set; }
+        public virtual DbSet<AdmissionExam> AdmissionExams { get; set; }
+        public virtual DbSet<AdmissionResult> AdmissionResults { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+
         public virtual DbSet<Category> Categories { get; set; }
-        //public virtual DbSet<Course> Courses { get; set; }
-        //public virtual DbSet<CourseGroup> CourseGroups { get; set; }
-        //public virtual DbSet<Curriculum> Curriculums { get; set; }
-        //public virtual DbSet<Faq> Faqs { get; set; }
-        //public virtual DbSet<FaqCategory> FaqCategories { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<CourseGroup> CourseGroups { get; set; }
+        public virtual DbSet<Curriculum> Curriculums { get; set; }
+        public virtual DbSet<Faq> Faqs { get; set; }
+        public virtual DbSet<FaqCategory> FaqCategories { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Media> Media { get; set; }
@@ -39,31 +41,33 @@ namespace Infrastructure.Context
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
-        //public virtual DbSet<Program> Programs { get; set; }
+        public virtual DbSet<Program> Programs { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
-        //public virtual DbSet<Specialization> Specializations { get; set; }
-        //public virtual DbSet<Testimonial> Testimonials { get; set; }
-        //public virtual DbSet<TrainingCourse> TrainingCourses { get; set; }
-        //public virtual DbSet<TrainingCourseCategory> TrainingCourseCategories { get; set; }
+        public virtual DbSet<Specialization> Specializations { get; set; }
+        public virtual DbSet<Testimonial> Testimonials { get; set; }
+        public virtual DbSet<TrainingCourse> TrainingCourses { get; set; }
+        public virtual DbSet<TrainingCourseCategory> TrainingCourseCategories { get; set; }
 
         #endregion
         #region Translations
-        //public virtual DbSet<AdmissionExamTranslation> AdmissionExamTranslations { get; set; }
+        public virtual DbSet<AdmissionExamTranslation> AdmissionExamTranslations { get; set; }
+        public virtual DbSet<BookTranslation> BookTranslations { get; set; }
+
         public virtual DbSet<CategoryTranslation> CategoryTranslations { get; set; }
-        //public virtual DbSet<CourseGroupTranslation> CourseGroupTranslations { get; set; }
-        //public virtual DbSet<CourseTranslation> CourseTranslations { get; set; }
-        //public virtual DbSet<FaqCategoryTranslation> FaqCategoryTranslations { get; set; }
-        //public virtual DbSet<FaqTranslation> FaqTranslations { get; set; }
+        public virtual DbSet<CourseGroupTranslation> CourseGroupTranslations { get; set; }
+        public virtual DbSet<CourseTranslation> CourseTranslations { get; set; }
+        public virtual DbSet<FaqCategoryTranslation> FaqCategoryTranslations { get; set; }
+        public virtual DbSet<FaqTranslation> FaqTranslations { get; set; }
         public virtual DbSet<MediaCategoryTranslation> MediaCategoryTranslations { get; set; }
         public virtual DbSet<MenuItemTranslation> MenuItemTranslations { get; set; }
         public virtual DbSet<PageTranslation> PageTranslations { get; set; }
         public virtual DbSet<PostTranslation> PostTranslations { get; set; }
-        //public virtual DbSet<ProgramTranslation> ProgramTranslations { get; set; }
+        public virtual DbSet<ProgramTranslation> ProgramTranslations { get; set; }
         public virtual DbSet<SliderTranslation> SliderTranslations { get; set; }
-        //public virtual DbSet<SpecializationTranslation> SpecializationTranslations { get; set; }
-        //public virtual DbSet<TestimonialTranslation> TestimonialTranslations { get; set; }
-        //public virtual DbSet<TrainingCourseCategoryTranslation> TrainingCourseCategoryTranslations { get; set; }
-        //public virtual DbSet<TrainingCourseTranslation> TrainingCourseTranslations { get; set; }
+        public virtual DbSet<SpecializationTranslation> SpecializationTranslations { get; set; }
+        public virtual DbSet<TestimonialTranslation> TestimonialTranslations { get; set; }
+        public virtual DbSet<TrainingCourseCategoryTranslation> TrainingCourseCategoryTranslations { get; set; }
+        public virtual DbSet<TrainingCourseTranslation> TrainingCourseTranslations { get; set; }
 
         #endregion
         #endregion
@@ -592,6 +596,38 @@ namespace Infrastructure.Context
                 b.Property(e => e.LanguageId).HasColumnName("language_id");
                 b.Property(e => e.Title).HasColumnName("title").HasColumnType("nvarchar(255)").IsRequired();
                 b.Property(e => e.Content).HasColumnName("content").HasColumnType("nvarchar(max)").IsRequired(false);
+            });
+            #endregion
+
+            #region Books
+            modelBuilder.Entity<Book>(b =>
+            {
+                b.ToTable("books");
+                b.HasKey(e => e.Id);
+                b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
+                b.Property(e => e.Author).HasColumnName("author").HasColumnType("nvarchar(255)").IsRequired(false);
+                b.Property(e => e.PublicationYear).HasColumnName("publication_year");
+                b.Property(e => e.ISBN).HasColumnName("isbn").HasColumnType("nvarchar(20)").IsRequired(false);
+                b.Property(e => e.CoverImageMediaId).HasColumnName("cover_image_media_id");
+                b.Property(e => e.FileMediaId).HasColumnName("file_media_id");
+
+                // Define relationships to the Media table
+                b.HasOne(e => e.CoverImage).WithMany().HasForeignKey(e => e.CoverImageMediaId).OnDelete(DeleteBehavior.Restrict);
+                b.HasOne(e => e.BookFile).WithMany().HasForeignKey(e => e.FileMediaId).OnDelete(DeleteBehavior.Restrict);
+
+                b.HasMany(e => e.Translations).WithOne(t => t.Book).HasForeignKey(t => t.BookId);
+            });
+
+            modelBuilder.Entity<BookTranslation>(b =>
+            {
+                b.ToTable("book_translations");
+                b.HasKey(e => e.Id);
+                b.HasIndex(e => new { e.BookId, e.LanguageId }).IsUnique();
+                b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
+                b.Property(e => e.BookId).HasColumnName("book_id");
+                b.Property(e => e.LanguageId).HasColumnName("language_id");
+                b.Property(e => e.Title).HasColumnName("title").HasColumnType("nvarchar(255)").IsRequired();
+                b.Property(e => e.Description).HasColumnName("description").HasColumnType("nvarchar(max)").IsRequired(false);
             });
             #endregion
         }

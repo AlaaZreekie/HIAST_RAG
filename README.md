@@ -3,7 +3,7 @@
 This repository contains three separate projects:
 
 - **Backend_AI/**: Backend for AI-powered services and APIs.
-- **Backend_Web/**: Backend for the web application (e.g., REST API, business logic).
+- **Backend_Web/**: Backend for the web application (C# .NET 8.0, Clean Architecture).
 - **Fronend_Web/**: Frontend web application (e.g., React, Vue, or other frameworks).
 
 Each project is self-contained with its own dependencies, README, and .gitignore file.
@@ -22,7 +22,7 @@ Each project is self-contained with its own dependencies, README, and .gitignore
 ## Getting Started
 
 1. Navigate to the desired project folder.
-2. Follow the setup instructions in that project's `README.md`.
+2. Follow the setup instructions in that project's `README.md` (or see below for Backend_Web).
 
 ---
 
@@ -33,9 +33,28 @@ Each project is self-contained with its own dependencies, README, and .gitignore
 - See `Backend_AI/README.md` for setup and usage.
 
 ### Backend_Web
-- Backend for the web application.
-- See `Backend_Web/README.md` for setup and usage.
+- **Backend_Web** is a C# .NET 8.0 backend following Clean Architecture principles.
+- **Structure:**
+  - `Domain/`: Core business logic and entities
+  - `Application/`: Use cases, DTOs, interfaces
+  - `Infrastructure/`: Data access, external services
+  - `Presentation/`: API controllers, startup, middleware (main entry point)
+- **Key dependencies:**
+  - ASP.NET Core
+  - Entity Framework Core (SQL Server)
+  - JWT Authentication
+  - AutoMapper
+  - Swagger (API documentation)
+- **Configuration:**
+  - Edit `Backend_Web/Presentation/appsettings.json` for database connection and JWT settings.
+- **How to run:**
+  1. Open a terminal and navigate to `Backend_Web/Presentation`
+  2. Restore dependencies: `dotnet restore`
+  3. Build the project: `dotnet build`
+  4. Run the project: `dotnet run`
+  5. Access Swagger UI at `https://localhost:<port>/swagger` for API exploration
+- **Note:** Ensure SQL Server is running and accessible as per the connection string in `appsettings.json`.
 
-### Fronend_Web
+### Frontend_Web
 - Frontend web application.
-- See `Fronend_Web/README.md` for setup and usage.
+- See `Frontend_Web/README.md` for setup and usage.
