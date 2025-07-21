@@ -1,12 +1,20 @@
 {
   "Version": 1,
-  "Hash": "M09Gm5DINg36wwyv6fDAQzUlajwQPXXoB/5jAwUXOQI=",
+  "Hash": "bJKFuprNCpJFjBU9Q6phpvWj48dSkbDpoOKRhL1h2Cw=",
   "Source": "Presentation",
   "BasePath": "_content/Presentation",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Presentation\\wwwroot",
+      "Source": "Presentation",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "Pattern": "**"
+    }
+  ],
   "Assets": [],
   "Endpoints": []
 }
