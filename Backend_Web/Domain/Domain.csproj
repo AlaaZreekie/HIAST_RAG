@@ -11,10 +11,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.18" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Ennum\" />
-    <Folder Include="Entity\Common\" />
-    <Folder Include="Entity\ApplicationEntity\" />
-  </ItemGroup>
-
 </Project>

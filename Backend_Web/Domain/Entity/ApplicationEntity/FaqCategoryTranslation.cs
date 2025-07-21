@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entity.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.ApplicationEntity
 {
-    internal class FaqCategoryTranslation
+    /// <summary>
+    /// Stores the language-specific name for a FaqCategory.
+    /// </summary>
+    public class FaqCategoryTranslation : BaseTranslationEntity
     {
+        /// <summary>
+        /// The name of the FAQ category (e.g., "Postgraduate FAQ").
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Foreign key to the FaqCategory table.
+        /// </summary>
+        public Guid FaqCategoryId { get; set; }
+        /// <summary>
+        /// Navigation property to the parent FaqCategory.
+        /// </summary>
+        public virtual FaqCategory FaqCategory { get; set; }
     }
 }
