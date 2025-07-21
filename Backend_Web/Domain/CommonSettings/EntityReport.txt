@@ -1,0 +1,88 @@
+﻿
+The Entities are 39 main entityies that define the database
+=============================================================================================================================
+
+ Module 1: Core Content & Users
+Users: Manages accounts for administrators, editors, and students who need to log in.
+
+Posts: Stores time-based content like news articles, events, and announcements.
+
+PostTranslations: Holds the translated title and content for each post.
+
+Categories: Groups Posts together (e.g., "Institute News," "Events").
+
+CategoryTranslations: Holds the translated name for each category.
+
+Pages: Stores content for static, informational pages like "About Us," "Contact Us," Departments, and Labs.
+
+PageTranslations: Holds the translated title and content for each static page.
+========================================================================================================================
+🎓 Module 2: Academic Structure
+Locations: Stores the different university campus locations (e.g., "Damascus Campus," "Aleppo Campus").
+
+Programs: Defines high-level academic offerings, like "Engineering Qualification" or "Postgraduate Studies."
+
+ProgramTranslations: Holds the translated name and description for each Program.
+
+Specializations: Stores the specific degree programs offered, such as "Software Engineering." This table specifies the DegreeType (e.g., 'Bachelor', 'Master', 'PhD').
+
+SpecializationTranslations: Holds the translated name and description for each Specialization.
+
+CourseGroups: Defines subject areas to categorize courses (e.g., "Mathematics," "Physics").
+
+CourseGroupTranslations: Holds the translated name for each CourseGroup.
+
+Courses: Stores details for every individual academic course, including its code, credits, and theoretical/practical hours.
+
+CourseTranslations: Holds the translated name and description for each academic Course.
+
+Curriculum: Links Courses to Specializations, defining the study plan for each academic year and semester.
+=============================================================================================================================
+📝 Module 3: Admissions & Student Lifecycle
+Admissions: Defines an admission cycle for a specific academic year and program.
+
+AdmissionExams: Schedules entrance exams, linking them to an Admissions cycle.
+
+AdmissionExamTranslations: Holds the translated name and notes for each exam.
+
+AdmissionResults: Links an Admissions cycle to the uploaded file containing the list of accepted students.
+
+Testimonials: Stores graduate profiles and success stories.
+
+TestimonialTranslations: Holds the translated quote for each Testimonial.
+=============================================================================================================================
+
+⚙️ Module 4: Website Utilities & Features
+Languages: Manages the languages available on the site (e.g., 'en', 'ar'), acting as the master key for all translations.
+
+Menus: Defines the different navigation areas on the site (e.g., "Main Menu," "Footer Menu").
+
+MenuItems: Stores the individual links that appear within each Menu.
+
+MenuItemTranslations: Holds the translated text (e.g., "Home") for each menu link.
+
+Sliders: Manages the rotating image banners for the homepage.
+
+SliderTranslations: Holds the translated title or caption for each Slider image.
+
+MediaCategories: Organizes uploaded files into groups like "Admission Forms" or "Logos."
+
+Media: Your central library; it stores information about every uploaded file (PDFs, images, etc.).
+=============================================================================================================================
+
+🧩 Module 5: Specialized Content
+FaqCategories: Groups frequently asked questions by topic (e.g., "General FAQ," "Postgraduate FAQ").
+
+FaqCategoryTranslations: Holds the translated name for each FaqCategory.
+
+Faqs: Stores each individual question-and-answer pair.
+
+FaqTranslations: Holds the translated text of each question and answer.
+
+TrainingCourseCategories: Groups professional, non-academic training courses by subject.
+
+TrainingCourseCategoryTranslations: Holds the translated name for each TrainingCourseCategory.
+
+TrainingCourses: Stores details for professional development courses, like duration and target audience.
+
+TrainingCourseTranslations: Holds the translated title and content for each TrainingCourse.

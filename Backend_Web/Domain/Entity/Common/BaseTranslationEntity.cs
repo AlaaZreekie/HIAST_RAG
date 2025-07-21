@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.Common
 {
-    // --- Base for Translation Tables ---
-    public abstract class BaseTranslationEntity
+    /// <summary>
+    /// A base class for all translation tables.
+    /// </summary>
+    public abstract class BaseTranslationEntity : BaseEntity<Guid>
     {
         /// <summary>
         /// Foreign key to the Language table.
@@ -17,6 +19,6 @@ namespace Domain.Entity.Common
         /// <summary>
         /// Navigation property to the related Language.
         /// </summary>
-        public virtual Language Language { get; set; }
+        public virtual Language? Language { get; set; }
     }
 }
