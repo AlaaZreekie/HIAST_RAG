@@ -322,8 +322,6 @@ namespace Infrastructure.Context
                 b.HasKey(e => e.Id);
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
                 b.Property(e => e.Duration).HasColumnName("duration").HasColumnType("nvarchar(50)").IsRequired(false);
-                b.Property(e => e.Cost).HasColumnName("cost").HasColumnType("decimal(18,2)");
-                b.Property(e => e.Currency).HasColumnName("currency").HasConversion<string>().HasColumnType("nvarchar(10)");
                 b.HasMany(e => e.Specializations).WithOne(s => s.Program).HasForeignKey(s => s.ProgramId);
                 b.HasMany(e => e.Translations).WithOne(t => t.Program).HasForeignKey(t => t.ProgramId);
             });

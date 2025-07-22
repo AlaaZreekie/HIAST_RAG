@@ -17,14 +17,6 @@ namespace Domain.Entity.ApplicationEntity
         /// </summary>
         public string Duration { get; set; }
         /// <summary>
-        /// The cost of the program.
-        /// </summary>
-        public decimal Cost { get; set; }
-        /// <summary>
-        /// The currency of the cost (e.g., "SYP", "USD").
-        /// </summary>
-        public string Currency { get; set; }
-        /// <summary>
         /// The translated names and descriptions for this program.
         /// </summary>
         public virtual ICollection<ProgramTranslation> Translations { get; set; } = new List<ProgramTranslation>();
