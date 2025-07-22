@@ -14,6 +14,6 @@ namespace Domain.Entity.Common
         /// <summary>
         /// The unique identifier for the entity.
         /// </summary>
-        public required T Id { get; set; }
+        public T Id { get; set; }
     }
 }

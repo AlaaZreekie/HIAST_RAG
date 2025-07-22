@@ -12,6 +12,8 @@ namespace Domain.Ennum
     public enum LanguageCodeEnum
     {
         AR = 1, // Arabic
-        EN = 2  // English
+        EN = 2 , // English
+        FR = 3,
+        DU = 4
     }
 }

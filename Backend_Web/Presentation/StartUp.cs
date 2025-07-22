@@ -36,13 +36,7 @@ public class Startup(IConfiguration configuration)
 
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllerRoute(
-              name: "areas",
-              pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-            );
-        });
+        
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {

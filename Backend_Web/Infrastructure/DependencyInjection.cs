@@ -1,5 +1,6 @@
 ﻿using Application.IApplicationServices.Authentication;
 using Application.IReositosy;
+using Application.IServices;
 using Application.IUnitOfWork;
 using Application.Serializer;
 using Domain.Entity.IdentityEntity;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using System.Security.Claims;
 
 namespace Infrastructure
@@ -27,11 +29,13 @@ namespace Infrastructure
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
+
             services.AddScoped(typeof(IAppRepository<>), typeof(AppRepository<>));
             services.AddScoped<IJsonFieldsSerializer, JsonFieldsSerializer>();
             services.AddScoped<DataSeeder>();
             services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ILanguageService, LanguageService>();
             return services;
         }
         private static IServiceCollection AddIdentityOptions(this IServiceCollection services)

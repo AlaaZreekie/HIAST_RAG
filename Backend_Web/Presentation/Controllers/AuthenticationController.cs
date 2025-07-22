@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlazorPresentation.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [ApiController]
     public class AuthController : BaseGuestController
     {
         public AuthController(IAuthenticationService authenticationService, IJsonFieldsSerializer jsonFieldsSerializer)
@@ -30,8 +29,6 @@ namespace BlazorPresentation.Controllers
             var result = await _authenticationService.RegisterAsync(registerDto);
             if (!result.Succeeded)
             {
-                // Assuming your exception middleware will handle this and return a proper 400 response.
-                // Or you can construct a specific ApiResponse for failure.
                 return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(new ApiResponse(false, "Registration failed.", StatusCodes.Status400BadRequest, result.Errors), string.Empty));
             }
             var apiResponse = new ApiResponse(true, "User registered successfully", StatusCodes.Status201Created, result);

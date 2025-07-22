@@ -1,5 +1,63 @@
 [
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
+    "Method": "CreateLanguage",
+    "RelativePath": "api/Admin/Languages/CreateLanguage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.LanguageDtos.CreateLanguageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
+    "Method": "DeleteLanguage",
+    "RelativePath": "api/Admin/Languages/DeleteLanguage",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
+    "Method": "GetAllLanguages",
+    "RelativePath": "api/Admin/Languages/GetAllLanguages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
+    "Method": "UpdateLanguage",
+    "RelativePath": "api/Admin/Languages/UpdateLanguage",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.LanguageDtos.UpdateLanguageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlazorPresentation.Controllers.AuthController",
     "Method": "GetAuthenticatedUser",
     "RelativePath": "api/Auth/GetAuthenticatedUser",
