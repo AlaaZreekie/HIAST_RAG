@@ -323,6 +323,37 @@
           }
         }
       }
+    },
+    "/api/Admin/Languages/GetLanguagesByFilter": {
+      "post": {
+        "tags": [
+          "Languages"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageFilterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageFilterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageFilterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -412,6 +443,24 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "LanguageFilterDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "$ref": "#/components/schemas/LanguageCodeEnum"
+          }
+        },
+        "additionalProperties": false
       },
       "LoginDto": {
         "required": [

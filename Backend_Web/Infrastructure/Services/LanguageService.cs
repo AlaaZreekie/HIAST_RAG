@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.LanguageDtos;
+using Application.Feature.Languages.Query;
 using Application.Feature.Prges.Command.Create;
 using Application.Feature.Prges.Command.Delete;
 using Application.Feature.Prges.Command.Update;
@@ -45,6 +46,13 @@ namespace Infrastructure.Services
         public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
             await _mediator.Send(new DeleteLanguageCommand(id), cancellationToken);
+        }
+
+        public async Task<IEnumerable<LanguageDto>> GetByFilterAsync(LanguageFilterDto filter, CancellationToken cancellationToken = default)
+        {
+            var query = new GetLanguageByFilterQuery(filter);
+            var languages = await _mediator.Send(query, cancellationToken);
+            return _mapper.Map<IEnumerable<LanguageDto>>(languages);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.LanguageDtos;
+using Application.Feature.Languages.Query;
 using Application.Feature.Prges.Command.Create;
 using Application.Feature.Prges.Command.Update;
 using AutoMapper;
@@ -30,5 +31,8 @@ public class LanguageProfile : Profile
             //.ForCtorParam("Id", opt => opt.MapFrom(src => src.Id))
             //.ForMember("Code", opt => opt.Condition(src => src.Code.HasValue))
             //.ForMember("Name", opt => opt.Condition(src => src.Name != null));
+
+        CreateMap<LanguageFilterDto, GetLanguageByFilterQuery>()
+            .ConstructUsing(src => new GetLanguageByFilterQuery(src));
     }
 }

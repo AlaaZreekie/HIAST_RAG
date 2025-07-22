@@ -43,6 +43,22 @@
   },
   {
     "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
+    "Method": "GetLanguagesByFilter",
+    "RelativePath": "api/Admin/Languages/GetLanguagesByFilter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "Application.Dtos.LanguageDtos.LanguageFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
     "Method": "UpdateLanguage",
     "RelativePath": "api/Admin/Languages/UpdateLanguage",
     "HttpMethod": "PUT",

@@ -13,5 +13,7 @@ namespace Application.IServices
         Task<IEnumerable<LanguageDto>> GetAllAsync(CancellationToken cancellationToken = default);
         Task UpdateAsync(UpdateLanguageDto dto, CancellationToken cancellationToken = default);
         Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<IEnumerable<LanguageDto>> GetByFilterAsync(LanguageFilterDto filter, CancellationToken cancellationToken = default);
+
     }
 }

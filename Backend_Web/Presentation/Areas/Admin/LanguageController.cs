@@ -62,4 +62,11 @@ public class LanguagesController : BaseAuthenticatedController
         return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
     }
 
+    [HttpPost]
+    public async Task<IActionResult> GetLanguagesByFilter([FromBody] LanguageFilterDto filter, CancellationToken cancellationToken)
+    {
+        var result = await _languageService.GetByFilterAsync(filter, cancellationToken);
+        var apiResponse = new ApiResponse(true, "Languages filtered successfully", StatusCodes.Status200OK, result);
+        return new RawJsonActionResult(_jsonFieldsSerializer.Serialize(apiResponse, string.Empty));
+    }
 }
