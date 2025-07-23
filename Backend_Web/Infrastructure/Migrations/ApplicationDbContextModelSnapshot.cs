@@ -539,9 +539,34 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
+                    b.Property<string>("LocationCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("location_code");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("locations", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entity.ApplicationEntity.LocationTranslation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("address");
+
+                    b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("language_id");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("location_id");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -550,7 +575,12 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("locations", (string)null);
+                    b.HasIndex("LanguageId");
+
+                    b.HasIndex("LocationId", "LanguageId")
+                        .IsUnique();
+
+                    b.ToTable("location_translations", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entity.ApplicationEntity.Media", b =>
@@ -1592,6 +1622,25 @@ namespace Infrastructure.Migrations
                     b.Navigation("Language");
                 });
 
+            modelBuilder.Entity("Domain.Entity.ApplicationEntity.LocationTranslation", b =>
+                {
+                    b.HasOne("Domain.Entity.ApplicationEntity.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entity.ApplicationEntity.Location", "Location")
+                        .WithMany("Translations")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+
+                    b.Navigation("Location");
+                });
+
             modelBuilder.Entity("Domain.Entity.ApplicationEntity.Media", b =>
                 {
                     b.HasOne("Domain.Entity.ApplicationEntity.MediaCategory", "MediaCategory")
@@ -1991,6 +2040,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entity.ApplicationEntity.Location", b =>
                 {
                     b.Navigation("Specializations");
+
+                    b.Navigation("Translations");
                 });
 
             modelBuilder.Entity("Domain.Entity.ApplicationEntity.MediaCategory", b =>

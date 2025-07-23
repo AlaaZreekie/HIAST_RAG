@@ -58,6 +58,7 @@ namespace Infrastructure.Context
         public virtual DbSet<CourseTranslation> CourseTranslations { get; set; }
         public virtual DbSet<FaqCategoryTranslation> FaqCategoryTranslations { get; set; }
         public virtual DbSet<FaqTranslation> FaqTranslations { get; set; }
+        public virtual DbSet<LocationTranslation> LocationTranslations { get; set; }
         public virtual DbSet<MediaCategoryTranslation> MediaCategoryTranslations { get; set; }
         public virtual DbSet<MenuItemTranslation> MenuItemTranslations { get; set; }
         public virtual DbSet<PageTranslation> PageTranslations { get; set; }
@@ -220,6 +221,18 @@ namespace Infrastructure.Context
                 b.ToTable("locations");
                 b.HasKey(e => e.Id);
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
+                b.Property(e => e.LocationCode).HasColumnName("location_code").HasConversion<string>().HasColumnType("nvarchar(40)").IsRequired();
+                b.HasMany(e => e.Translations).WithOne(t => t.Location).HasForeignKey(t => t.LocationId);
+            });
+
+            modelBuilder.Entity<LocationTranslation>(b =>
+            {
+                b.ToTable("location_translations");
+                b.HasKey(e => e.Id);
+                b.HasIndex(e => new { e.LocationId, e.LanguageId }).IsUnique();
+                b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
+                b.Property(e => e.LocationId).HasColumnName("location_id");
+                b.Property(e => e.LanguageId).HasColumnName("language_id");
                 b.Property(e => e.Name).HasColumnName("name").HasColumnType("nvarchar(200)").IsRequired();
                 b.Property(e => e.Address).HasColumnName("address").HasColumnType("nvarchar(max)").IsRequired(false);
             });

@@ -11,19 +11,21 @@ namespace Application.Mapper
 {
     public class SpecializationProfile : Profile
     {
+
         public SpecializationProfile()
         {
-            // For Reading Data: Entity -> DTO
+
+            AllowNullDestinationValues = true;
+
             CreateMap<Specialization, SpecializationDto>()
-                .ForMember(dest => dest.DegreeType,
-                           opt => opt.MapFrom(src => src.DegreeType.ToString()));
+                .ForMember(dest => dest.DegreeType, opt => opt.MapFrom(src => src.DegreeType.ToString()));
 
-            CreateMap<SpecializationTranslation, SpecializationTranslationDto>();
+            CreateMap<SpecializationTranslation, SpecializationTranslationDto>()
+                .ForMember(dest => dest.LanguageName, opt => opt.MapFrom(src => src.Language.Name))
+                .ForMember(dest => dest.LanguageCode, opt => opt.MapFrom(src => src.Language.Code));
 
-            // For Writing Data: DTO -> Command -> Entity
-            //CreateMap<CreateSpecializationDto, CreateSpecializationCommand>();
+            CreateMap<CreateSpecializationDto, Specialization>();
             CreateMap<CreateSpecializationTranslationDto, SpecializationTranslation>();
-            //CreateMap<CreateSpecializationCommand, Specialization>();
-        }
+         }
     }
 }

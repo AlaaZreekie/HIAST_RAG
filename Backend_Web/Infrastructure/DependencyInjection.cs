@@ -37,6 +37,7 @@ namespace Infrastructure
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<IProgramService, ProgramService>();
+            services.AddScoped<ILocationService, LocationService>();
             return services;
         }
         private static IServiceCollection AddIdentityOptions(this IServiceCollection services)

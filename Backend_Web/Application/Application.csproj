@@ -23,7 +23,6 @@
     <Folder Include="Feature\1\Command\Delete\" />
     <Folder Include="Feature\1\Command\Update\" />
     <Folder Include="Feature\1\Query\" />
-    <Folder Include="Feature\Specializations\Command\Create\" />
     <Folder Include="Feature\Specializations\Command\Delete\" />
     <Folder Include="Feature\Specializations\Command\Update\" />
     <Folder Include="Feature\Specializations\Query\" />

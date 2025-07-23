@@ -10,6 +10,7 @@ namespace Application.Dtos.SpecializationDtos
 {
     public class SpecializationTranslationDto : BaseDto<Guid>
     {
+        public string LanguageName { get; set; }
         public LanguageCodeEnum LanguageCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
