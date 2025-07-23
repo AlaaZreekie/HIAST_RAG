@@ -74,6 +74,116 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.ProgramsController",
+    "Method": "AddProgramTranslation",
+    "RelativePath": "api/Admin/Programs/AddProgramTranslation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.ProgramDtos.AddProgramTranslationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.ProgramsController",
+    "Method": "CreateProgram",
+    "RelativePath": "api/Admin/Programs/CreateProgram",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.ProgramDtos.CreateProgramDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.ProgramsController",
+    "Method": "DeleteProgram",
+    "RelativePath": "api/Admin/Programs/DeleteProgram",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.ProgramsController",
+    "Method": "GetAllPrograms",
+    "RelativePath": "api/Admin/Programs/GetAllPrograms",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.ProgramsController",
+    "Method": "GetByFilter",
+    "RelativePath": "api/Admin/Programs/GetByFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Duration",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.ProgramsController",
+    "Method": "UpdateProgram",
+    "RelativePath": "api/Admin/Programs/UpdateProgram",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.ProgramDtos.UpdateProgramDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlazorPresentation.Controllers.AuthController",
     "Method": "GetAuthenticatedUser",
     "RelativePath": "api/Auth/GetAuthenticatedUser",

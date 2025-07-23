@@ -11,6 +11,5 @@ namespace Application.Dtos.ProgramDtos
     {
         public required string Duration { get; set; }
         public IList<CreateProgramTranslationDto>? Translations { get; set; }
-        public IList<CreateSpecializationDto>? Specializations { get; set; }
     }
 }
