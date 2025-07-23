@@ -10,7 +10,9 @@ namespace Application.Dtos.SpecializationDtos
     public class CreateSpecializationDto
     {
         public DegreeTypeEnum DegreeType { get; set; }
-        public Guid LocationId { get; set; }
+        //public Guid LocationId { get; set; }
         public IList<CreateSpecializationTranslationDto>? Translations { get; set; }
+
+        //TODO: Add the Location to this
     }
 }

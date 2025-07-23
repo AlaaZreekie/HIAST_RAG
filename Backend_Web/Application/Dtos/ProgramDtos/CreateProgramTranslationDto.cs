@@ -10,7 +10,7 @@ namespace Application.Dtos.ProgramDtos
     public class CreateProgramTranslationDto
     {
         public required LanguageCodeEnum LanguageCode { get; set; }
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public string Description { get; set; }
     }
 }
