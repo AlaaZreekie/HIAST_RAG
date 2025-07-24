@@ -105,6 +105,121 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Presentation.Areas.Admin.CoursesController",
+    "Method": "AddCourseTranslation",
+    "RelativePath": "api/Admin/Courses/AddCourseTranslation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CourseDtos.AddCourseTranslationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Areas.Admin.CoursesController",
+    "Method": "CreateCourse",
+    "RelativePath": "api/Admin/Courses/CreateCourse",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CourseDtos.CreateCourseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Areas.Admin.CoursesController",
+    "Method": "DeleteCourse",
+    "RelativePath": "api/Admin/Courses/DeleteCourse",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Areas.Admin.CoursesController",
+    "Method": "GetAllCourses",
+    "RelativePath": "api/Admin/Courses/GetAllCourses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Areas.Admin.CoursesController",
+    "Method": "GetByFilter",
+    "RelativePath": "api/Admin/Courses/GetByFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseGroupId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Areas.Admin.CoursesController",
+    "Method": "UpdateCourse",
+    "RelativePath": "api/Admin/Courses/UpdateCourse",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CourseDtos.UpdateCourseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqCategoriesController",
     "Method": "CreateFaqCategory",
     "RelativePath": "api/Admin/FaqCategories/CreateFaqCategory",

@@ -398,6 +398,200 @@
         }
       }
     },
+    "/api/Admin/Courses/GetAllCourses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Courses/CreateCourse": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCourseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCourseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCourseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Courses/UpdateCourse": {
+      "put": {
+        "tags": [
+          "Courses"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCourseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCourseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCourseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Courses/DeleteCourse": {
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Courses/GetByFilter": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "CourseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CourseGroupId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Description",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LanguageCode",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/LanguageCodeEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Courses/AddCourseTranslation": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCourseTranslationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCourseTranslationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCourseTranslationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Admin/FaqCategories/GetAllFaqCategories": {
       "get": {
         "tags": [
@@ -1289,6 +1483,32 @@
         },
         "additionalProperties": false
       },
+      "AddCourseTranslationDto": {
+        "required": [
+          "id",
+          "languageCode",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "languageCode": {
+            "$ref": "#/components/schemas/LanguageCodeEnum"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AddProgramTranslationDto": {
         "required": [
           "id",
@@ -1404,6 +1624,46 @@
         "type": "integer",
         "format": "int32"
       },
+      "CreateCourseDto": {
+        "required": [
+          "courseCode",
+          "courseGroupId",
+          "credits",
+          "practicalHours",
+          "theoreticalHours"
+        ],
+        "type": "object",
+        "properties": {
+          "courseCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "credits": {
+            "type": "number",
+            "format": "double"
+          },
+          "theoreticalHours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "practicalHours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "courseGroupId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateCourseTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateCourseGroupDto": {
         "required": [
           "courseGroupCode"
@@ -1434,6 +1694,27 @@
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCourseTranslationDto": {
+        "required": [
+          "languageCode",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "languageCode": {
+            "$ref": "#/components/schemas/LanguageCodeEnum"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
             "type": "string",
             "nullable": true
           }
@@ -1895,6 +2176,50 @@
         },
         "additionalProperties": false
       },
+      "UpdateCourseDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "courseCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "credits": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "theoreticalHours": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "practicalHours": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "courseGroupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateCourseTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateCourseGroupDto": {
         "required": [
           "id"
@@ -1929,6 +2254,27 @@
             "format": "uuid"
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCourseTranslationDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
             "type": "string",
             "nullable": true
           }
