@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.FaqCategoryDtos;
+using Application.Feature.FaqCategories.Command.Delete;
 using Application.Feature.FaqCategories.Query;
 using AutoMapper;
 using Domain.Entity.ApplicationEntity;
@@ -31,7 +32,8 @@ namespace Application.Mapper
             CreateMap<FaqCategoryFilterDto, GetFaqCategoriesByFilterQuery>()
                 .ConstructUsing(src => new GetFaqCategoriesByFilterQuery(src));
 
-            // Add mappings for Update DTOs here...
+            CreateMap<UpdateFaqCategoryDto, UpdateFaqCategoryCommand>();
+            CreateMap<UpdateFaqCategoryTranslationDto, UpdateFaqCategoryTranslationDto>();
         }
-    } // Add mappings for Update DTOs here...
+    } 
 }

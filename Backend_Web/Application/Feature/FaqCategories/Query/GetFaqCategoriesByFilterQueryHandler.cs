@@ -31,12 +31,12 @@ namespace Application.Feature.FaqCategories.Query
                     includeExpression: includeExpression,
                     asNoTracking: true);
 
+            if (request.Filter.Id.HasValue)
+                query = query.Where(fc => fc.Id == request.Filter.Id);
+
             if (!string.IsNullOrWhiteSpace(request.Filter.Name))            
                 query = query.Where(fc => fc.Translations.Any(t => t.Name.Trim().ToLower().Contains(request.Filter.Name.Trim().ToLower())));
-            
-            if (request.Filter.Id.HasValue)            
-                query = query.Where(fc => fc.Translations.Any(t => t.Id == request.Filter.Id.Value));
-            
+                       
             return await query.ToListAsync(cancellationToken);
         }
     }
