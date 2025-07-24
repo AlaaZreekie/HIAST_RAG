@@ -1,5 +1,110 @@
 [
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CourseGroupsController",
+    "Method": "AddCourseGroupTranslation",
+    "RelativePath": "api/Admin/CourseGroups/AddCourseGroupTranslation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CourseGroupDtos.AddCourseGroupTranslationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CourseGroupsController",
+    "Method": "CreateCourseGroup",
+    "RelativePath": "api/Admin/CourseGroups/CreateCourseGroup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CourseGroupDtos.CreateCourseGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CourseGroupsController",
+    "Method": "DeleteCourseGroup",
+    "RelativePath": "api/Admin/CourseGroups/DeleteCourseGroup",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CourseGroupsController",
+    "Method": "GetAllCourseGroups",
+    "RelativePath": "api/Admin/CourseGroups/GetAllCourseGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CourseGroupsController",
+    "Method": "GetByFilter",
+    "RelativePath": "api/Admin/CourseGroups/GetByFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseGroupCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CourseGroupsController",
+    "Method": "UpdateCourseGroup",
+    "RelativePath": "api/Admin/CourseGroups/UpdateCourseGroup",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CourseGroupDtos.UpdateCourseGroupDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqCategoriesController",
     "Method": "CreateFaqCategory",
     "RelativePath": "api/Admin/FaqCategories/CreateFaqCategory",

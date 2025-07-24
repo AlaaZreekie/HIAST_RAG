@@ -140,7 +140,6 @@ C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Deb
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Presentation.props
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Presentation.props
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\Presenta.BC777DBE.Up2Date
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\Presentation.dll
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\refint\Presentation.dll
@@ -286,3 +285,4 @@ C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\bin\Deb
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\bin\Debug\net8.0\Presentation.staticwebassets.runtime.json
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\bin\Debug\net8.0\MediatR.dll
 C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\bin\Debug\net8.0\MediatR.Contracts.dll
+C:\Users\ASUS\Desktop\Projects\ForthYearProject\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

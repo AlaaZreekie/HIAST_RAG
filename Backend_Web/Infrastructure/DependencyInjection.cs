@@ -41,6 +41,7 @@ namespace Infrastructure
             services.AddScoped<ISpecializationService, SpecializationService>();
             services.AddScoped<IFaqCategoryService, FaqCategoryService>();
             services.AddScoped<IFaqService, FaqService>();
+            services.AddScoped<ICourseGroupService, CourseGroupService>();
 
             return services;
         }

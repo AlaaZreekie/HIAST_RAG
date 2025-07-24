@@ -19,11 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\CourseGroupDtos\" />
-    <Folder Include="Feature\CourseGroups\Command\Create\" />
-    <Folder Include="Feature\CourseGroups\Command\Delete\" />
-    <Folder Include="Feature\CourseGroups\Command\Update\" />
-    <Folder Include="Feature\CourseGroups\Query\" />
     <Folder Include="Feature\1\Command\Create\" />
     <Folder Include="Feature\1\Command\Delete\" />
     <Folder Include="Feature\1\Command\Update\" />

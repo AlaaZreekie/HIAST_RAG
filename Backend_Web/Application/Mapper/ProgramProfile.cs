@@ -29,6 +29,8 @@ namespace Application.Mapper
             //DTO -> Entity
             CreateMap<AddProgramTranslationDto, ProgramTranslation>();
             CreateMap<CreateProgramTranslationDto, ProgramTranslation>();
+            CreateMap<UpdateProgramTranslationDto, ProgramTranslation>();
+
 
             CreateMap<CreateProgramDto, Program>()
             .ForMember(dest => dest.Translations, opt => opt.Ignore())
