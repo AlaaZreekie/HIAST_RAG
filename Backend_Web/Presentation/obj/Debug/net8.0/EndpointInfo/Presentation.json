@@ -355,6 +355,142 @@
         }
       }
     },
+    "/api/Admin/Faqs/GetAllFaqs": {
+      "get": {
+        "tags": [
+          "Faqs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Faqs/CreateFaq": {
+      "post": {
+        "tags": [
+          "Faqs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFaqDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFaqDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFaqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Faqs/GetFaqsByFilter": {
+      "post": {
+        "tags": [
+          "Faqs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaqFilterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaqFilterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaqFilterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Faqs/UpdateFaq": {
+      "put": {
+        "tags": [
+          "Faqs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFaqDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFaqDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFaqDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Faqs/DeleteFaq": {
+      "delete": {
+        "tags": [
+          "Faqs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Admin/Languages/GetAllLanguages": {
       "get": {
         "tags": [
@@ -1058,6 +1194,52 @@
         },
         "additionalProperties": false
       },
+      "CreateFaqDto": {
+        "required": [
+          "faqCategoryId"
+        ],
+        "type": "object",
+        "properties": {
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "faqCategoryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateFaqTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateFaqTranslationDto": {
+        "required": [
+          "answer",
+          "languageCode",
+          "question"
+        ],
+        "type": "object",
+        "properties": {
+          "languageCode": {
+            "$ref": "#/components/schemas/LanguageCodeEnum"
+          },
+          "question": {
+            "type": "string",
+            "nullable": true
+          },
+          "answer": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateLanguageDto": {
         "type": "object",
         "properties": {
@@ -1216,6 +1398,30 @@
             "nullable": true
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FaqFilterDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "faqCategoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "question": {
+            "type": "string",
+            "nullable": true
+          },
+          "answer": {
             "type": "string",
             "nullable": true
           }
@@ -1444,6 +1650,57 @@
             "format": "uuid"
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateFaqDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "displayOrder": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "faqCategoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateFaqTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateFaqTranslationDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "question": {
+            "type": "string",
+            "nullable": true
+          },
+          "answer": {
             "type": "string",
             "nullable": true
           }

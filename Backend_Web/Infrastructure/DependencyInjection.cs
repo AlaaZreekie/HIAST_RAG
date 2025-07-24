@@ -40,6 +40,8 @@ namespace Infrastructure
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ISpecializationService, SpecializationService>();
             services.AddScoped<IFaqCategoryService, FaqCategoryService>();
+            services.AddScoped<IFaqService, FaqService>();
+
             return services;
         }
         private static IServiceCollection AddIdentityOptions(this IServiceCollection services)

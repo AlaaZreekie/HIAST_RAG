@@ -25,7 +25,7 @@ namespace Application.Feature.FaqCategories.Command.Delete
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (faqCategoryToDelete is null)            
-                throw new Exception("FaqCategory not found.");            
+                throw new KeyNotFoundException("FaqCategory not found.");            
 
             _unitOfWork.Repository<Domain.Entity.ApplicationEntity.FaqCategory>().Remove(faqCategoryToDelete);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

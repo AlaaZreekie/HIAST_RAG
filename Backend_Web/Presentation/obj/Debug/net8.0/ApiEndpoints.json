@@ -74,6 +74,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqsController",
+    "Method": "CreateFaq",
+    "RelativePath": "api/Admin/Faqs/CreateFaq",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.FaqDtos.CreateFaqDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqsController",
+    "Method": "DeleteFaq",
+    "RelativePath": "api/Admin/Faqs/DeleteFaq",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqsController",
+    "Method": "GetAllFaqs",
+    "RelativePath": "api/Admin/Faqs/GetAllFaqs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqsController",
+    "Method": "GetFaqsByFilter",
+    "RelativePath": "api/Admin/Faqs/GetFaqsByFilter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "Application.Dtos.FaqDtos.FaqFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqsController",
+    "Method": "UpdateFaq",
+    "RelativePath": "api/Admin/Faqs/UpdateFaq",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.FaqDtos.UpdateFaqDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIAST.API.Areas.Admin.Controllers.LanguagesController",
     "Method": "CreateLanguage",
     "RelativePath": "api/Admin/Languages/CreateLanguage",

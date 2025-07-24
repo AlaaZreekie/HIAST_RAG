@@ -303,6 +303,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
+                    b.Property<string>("CourseGroupCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("course_groub_code");
+
                     b.HasKey("Id");
 
                     b.ToTable("course_groups", (string)null);

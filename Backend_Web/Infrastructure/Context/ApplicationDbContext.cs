@@ -383,6 +383,7 @@ namespace Infrastructure.Context
                 b.ToTable("course_groups");
                 b.HasKey(e => e.Id);
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
+                b.Property(e => e.CourseGroupCode).HasColumnName("course_groub_code").HasConversion<string>().HasColumnType("nvarchar(20)").IsRequired();
                 b.HasMany(e => e.Translations).WithOne(t => t.CourseGroup).HasForeignKey(t => t.CourseGroupId);
                 b.HasMany(e => e.Courses).WithOne(c => c.CourseGroup).HasForeignKey(c => c.CourseGroupId);
             });

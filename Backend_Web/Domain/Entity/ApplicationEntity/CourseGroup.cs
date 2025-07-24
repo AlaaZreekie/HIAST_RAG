@@ -1,4 +1,5 @@
 ﻿using Domain.Entity.Common;
+using Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Domain.Entity.ApplicationEntity
     /// </summary>
     public class CourseGroup : BaseEntity<Guid>
     {
+        public CourseGroupCodeEnum CourseGroupCode {  get; set; } 
         /// <summary>
         /// The translated names for this course group.
         /// </summary>

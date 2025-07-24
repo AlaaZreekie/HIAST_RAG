@@ -15,16 +15,10 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class FaqCategoryService : IFaqCategoryService
+    public class FaqCategoryService(ISender mediator, IMapper mapper) : IFaqCategoryService
     {
-        private readonly ISender _mediator;
-        private readonly IMapper _mapper;
-
-        public FaqCategoryService(ISender mediator, IMapper mapper)
-        {
-            _mediator = mediator;
-            _mapper = mapper;
-        }
+        private readonly ISender _mediator = mediator;
+        private readonly IMapper _mapper = mapper;
 
         public async Task<IEnumerable<FaqCategoryDto>> GetAllAsync(CancellationToken cancellationToken = default)
         {
@@ -50,7 +44,7 @@ namespace Infrastructure.Services
                 {
                     var language = allLanguages.FirstOrDefault(l => l.Code == transDto.LanguageCode);
                     if (language == null)
-                        throw new Exception($"Language with code '{transDto.LanguageCode}' not found.");
+                        throw new KeyNotFoundException($"Language with code '{transDto.LanguageCode}' not found.");
 
                     var translationEntity = _mapper.Map<FaqCategoryTranslation>(transDto);
                     translationEntity.LanguageId = language.Id;
