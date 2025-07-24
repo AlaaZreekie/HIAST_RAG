@@ -18,7 +18,7 @@ namespace Application.Feature.Programs.Query
         {
             Func<IQueryable<Program>, IQueryable<Program>> includeExpression = query =>
             query.Include(p => p.Translations)
-                 .ThenInclude(t => t.Language);
+                 .ThenInclude(t => t.Language)                 ;
 
             var programs = await _unitOfWork.Repository<Program>()
                 .FindWithComplexIncludes(

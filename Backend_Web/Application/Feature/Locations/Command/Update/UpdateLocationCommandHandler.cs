@@ -26,12 +26,10 @@ namespace Application.Feature.Locations.Command.Update
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (location is null)            
-                throw new Exception("Location not found.");
-            
+                throw new Exception("Location not found.");            
 
             if (request.LocationCode.HasValue && location.LocationCode != request.LocationCode.Value)            
-                location.LocationCode = request.LocationCode.Value;
-            
+                location.LocationCode = request.LocationCode.Value;            
 
             if (request.Translations != null && request.Translations.Any())
             {

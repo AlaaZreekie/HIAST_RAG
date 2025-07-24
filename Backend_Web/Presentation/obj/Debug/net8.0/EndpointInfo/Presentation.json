@@ -676,6 +676,142 @@
           }
         }
       }
+    },
+    "/api/Admin/Specializations/GetAllSpecializations": {
+      "get": {
+        "tags": [
+          "Specializations"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Specializations/GetSpecializationsByFilter": {
+      "post": {
+        "tags": [
+          "Specializations"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecializationFilterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecializationFilterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecializationFilterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Specializations/CreateSpecialization": {
+      "post": {
+        "tags": [
+          "Specializations"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpecializationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpecializationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpecializationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Specializations/UpdateSpecialization": {
+      "put": {
+        "tags": [
+          "Specializations"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSpecializationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSpecializationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSpecializationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Specializations/DeleteSpecialization": {
+      "delete": {
+        "tags": [
+          "Specializations"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -850,6 +986,61 @@
         },
         "additionalProperties": false
       },
+      "CreateSpecializationDto": {
+        "required": [
+          "degreeType",
+          "locationId",
+          "programId"
+        ],
+        "type": "object",
+        "properties": {
+          "degreeType": {
+            "$ref": "#/components/schemas/DegreeTypeEnum"
+          },
+          "programId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "locationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateSpecializationTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSpecializationTranslationDto": {
+        "type": "object",
+        "properties": {
+          "languageCode": {
+            "$ref": "#/components/schemas/LanguageCodeEnum"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DegreeTypeEnum": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "GuidBaseDto": {
         "required": [
           "id"
@@ -993,6 +1184,34 @@
         },
         "additionalProperties": false
       },
+      "SpecializationFilterDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "programId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "degreeType": {
+            "$ref": "#/components/schemas/DegreeTypeEnum"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TokenDto": {
         "type": "object",
         "properties": {
@@ -1102,6 +1321,60 @@
         "additionalProperties": false
       },
       "UpdateProgramTranslationDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSpecializationDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "degreeType": {
+            "$ref": "#/components/schemas/DegreeTypeEnum"
+          },
+          "programId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateSpecializationTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSpecializationTranslationDto": {
         "required": [
           "id"
         ],

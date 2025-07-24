@@ -1,4 +1,5 @@
 ﻿using Application.IUnitOfWork;
+using Domain.Entity.ApplicationEntity;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,25 +10,20 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Programs.Command.Delete
 {
-    public class DeleteProgramCommandHandler : IRequestHandler<DeleteProgramCommand>
+    public class DeleteProgramCommandHandler(IAppUnitOfWork unitOfWork) : IRequestHandler<DeleteProgramCommand>
     {
-        private readonly IAppUnitOfWork _unitOfWork;
-
-        public DeleteProgramCommandHandler(IAppUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+        private readonly IAppUnitOfWork _unitOfWork = unitOfWork;
 
         public async Task Handle(DeleteProgramCommand request, CancellationToken cancellationToken)
         {
-            var programToDelete = await _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Program>()
+            var programToDelete = await _unitOfWork.Repository<Program>()
                 .Find(p => p.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (programToDelete is null)
-                throw new Exception("Program not found.");
+                throw new KeyNotFoundException("Program not found.");
             
-            _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Program>().Remove(programToDelete);
+            _unitOfWork.Repository<Program>().Remove(programToDelete);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }

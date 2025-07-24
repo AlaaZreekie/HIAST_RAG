@@ -258,6 +258,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SpecializationsController",
+    "Method": "CreateSpecialization",
+    "RelativePath": "api/Admin/Specializations/CreateSpecialization",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.SpecializationDtos.CreateSpecializationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SpecializationsController",
+    "Method": "DeleteSpecialization",
+    "RelativePath": "api/Admin/Specializations/DeleteSpecialization",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SpecializationsController",
+    "Method": "GetAllSpecializations",
+    "RelativePath": "api/Admin/Specializations/GetAllSpecializations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SpecializationsController",
+    "Method": "GetSpecializationsByFilter",
+    "RelativePath": "api/Admin/Specializations/GetSpecializationsByFilter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "Application.Dtos.SpecializationDtos.SpecializationFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SpecializationsController",
+    "Method": "UpdateSpecialization",
+    "RelativePath": "api/Admin/Specializations/UpdateSpecialization",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.SpecializationDtos.UpdateSpecializationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlazorPresentation.Controllers.AuthController",
     "Method": "GetAuthenticatedUser",
     "RelativePath": "api/Auth/GetAuthenticatedUser",

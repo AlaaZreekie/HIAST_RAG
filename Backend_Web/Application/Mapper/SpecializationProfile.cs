@@ -1,4 +1,7 @@
-﻿using Application.Dtos.SpecializationDtos;
+﻿using Application.Dtos.ProgramDtos;
+using Application.Dtos.SpecializationDtos;
+using Application.Feature.Specializations.Command.Update;
+using Application.Feature.Specializations.Query;
 using AutoMapper;
 using Domain.Entity.ApplicationEntity;
 using System;
@@ -19,13 +22,19 @@ namespace Application.Mapper
 
             CreateMap<Specialization, SpecializationDto>()
                 .ForMember(dest => dest.DegreeType, opt => opt.MapFrom(src => src.DegreeType.ToString()));
+;
 
             CreateMap<SpecializationTranslation, SpecializationTranslationDto>()
-                .ForMember(dest => dest.LanguageName, opt => opt.MapFrom(src => src.Language.Name))
-                .ForMember(dest => dest.LanguageCode, opt => opt.MapFrom(src => src.Language.Code));
+                .ForMember(dest => dest.LanguageName, opt => opt.MapFrom(src => src.Language!.Name))
+                .ForMember(dest => dest.LanguageCode, opt => opt.MapFrom(src => src.Language!.Code));
 
             CreateMap<CreateSpecializationDto, Specialization>();
             CreateMap<CreateSpecializationTranslationDto, SpecializationTranslation>();
-         }
+
+            CreateMap<SpecializationFilterDto, GetSpecializationsByFilterQuery>()
+                .ConstructUsing(src => new GetSpecializationsByFilterQuery(src));
+
+            CreateMap<UpdateSpecializationDto, UpdateSpecializationCommand>();
+        }
     }
 }

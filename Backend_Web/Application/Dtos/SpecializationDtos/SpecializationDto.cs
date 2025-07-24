@@ -15,7 +15,7 @@ namespace Application.Dtos.SpecializationDtos
         public string DegreeType { get; set; }
         public Guid LocationId { get; set; }
         public LocationCodeEnum LocationCode { get; set; }
-        public ProgramDto? ProgramDtos { get; set; }
+        public ProgramDto? Program { get; set; }
         public IList<SpecializationTranslationDto>? Translations { get; set; }        
     }
 }

@@ -11,7 +11,6 @@ namespace Application.Dtos.ProgramDtos
     public class ProgramDto : BaseDto<Guid>
     {
         public string Duration { get; set; }
-        public List<ProgramTranslationDto>? Translations { get; set; }
-        public List<SpecializationDto>? Specializations { get; set; }
+        public IList<ProgramTranslationDto>? Translations { get; set; }
     }
 }

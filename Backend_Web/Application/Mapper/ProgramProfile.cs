@@ -1,4 +1,5 @@
 ﻿using Application.Dtos.ProgramDtos;
+using Application.Dtos.SpecializationDtos;
 using Application.Feature.Programs.Command.Create;
 using Application.Feature.Programs.Command.Update;
 using Application.Feature.Programs.Query;
@@ -20,8 +21,11 @@ namespace Application.Mapper
 
             //Entity -> DTO
             CreateMap<Program, ProgramDto>();
-            CreateMap<ProgramTranslation, ProgramTranslationDto>();
+                //.ForMember(dest => dest.Specializations, opt => opt.MapFrom(src => src.Specializations.ToString()));
 
+
+            CreateMap<ProgramTranslation, ProgramTranslationDto>();
+ 
             //DTO -> Entity
             CreateMap<AddProgramTranslationDto, ProgramTranslation>();
             CreateMap<CreateProgramTranslationDto, ProgramTranslation>();
