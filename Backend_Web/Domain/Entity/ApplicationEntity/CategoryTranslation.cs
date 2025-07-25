@@ -17,6 +17,10 @@ namespace Domain.Entity.ApplicationEntity
         /// </summary>
         public string Name { get; set; }
         /// <summary>
+        /// A URL-friendly identifier for the category.
+        /// </summary>
+        public string Slug { get; set; }
+        /// <summary>
         /// Foreign key to the Category table.
         /// </summary>
         public Guid CategoryId { get; set; }

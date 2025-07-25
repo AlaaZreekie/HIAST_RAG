@@ -13,10 +13,6 @@ namespace Domain.Entity.ApplicationEntity
     public class Category : BaseEntity<Guid>
     {
         /// <summary>
-        /// A URL-friendly identifier for the category.
-        /// </summary>
-        public string Slug { get; set; }
-        /// <summary>
         /// The translated names for this category.
         /// </summary>
         public virtual ICollection<CategoryTranslation> Translations { get; set; } = new List<CategoryTranslation>();
