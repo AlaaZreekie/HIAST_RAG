@@ -220,6 +220,105 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CurriculumsController",
+    "Method": "CreateCurriculum",
+    "RelativePath": "api/Admin/Curriculums/CreateCurriculum",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CurriculumDtos.CreateCurriculumDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CurriculumsController",
+    "Method": "DeleteCurriculum",
+    "RelativePath": "api/Admin/Curriculums/DeleteCurriculum",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CurriculumsController",
+    "Method": "GetAllCurriculums",
+    "RelativePath": "api/Admin/Curriculums/GetAllCurriculums",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CurriculumsController",
+    "Method": "GetByFilter",
+    "RelativePath": "api/Admin/Curriculums/GetByFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "AcademicYear",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Semester",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SpecializationId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CourseId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.CurriculumsController",
+    "Method": "UpdateCurriculum",
+    "RelativePath": "api/Admin/Curriculums/UpdateCurriculum",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.CurriculumDtos.UpdateCurriculumDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIAST.API.Areas.Admin.Controllers.FaqCategoriesController",
     "Method": "CreateFaqCategory",
     "RelativePath": "api/Admin/FaqCategories/CreateFaqCategory",
@@ -510,6 +609,111 @@
       {
         "Name": "dto",
         "Type": "Application.Dtos.LocationDtos.UpdateLocationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.PagesController",
+    "Method": "AddPageTranslation",
+    "RelativePath": "api/Admin/Pages/AddPageTranslation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.PageDtos.AddPageTranslationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.PagesController",
+    "Method": "CreatePage",
+    "RelativePath": "api/Admin/Pages/CreatePage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.PageDtos.CreatePageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.PagesController",
+    "Method": "DeletePage",
+    "RelativePath": "api/Admin/Pages/DeletePage",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.PagesController",
+    "Method": "GetAllPages",
+    "RelativePath": "api/Admin/Pages/GetAllPages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.PagesController",
+    "Method": "GetByFilter",
+    "RelativePath": "api/Admin/Pages/GetByFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Slug",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.PagesController",
+    "Method": "UpdatePage",
+    "RelativePath": "api/Admin/Pages/UpdatePage",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.PageDtos.UpdatePageDto",
         "IsRequired": true
       }
     ],

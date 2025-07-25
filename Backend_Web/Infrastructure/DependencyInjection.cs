@@ -43,6 +43,7 @@ namespace Infrastructure
             services.AddScoped<ICourseGroupService, CourseGroupService>();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ICurriculumService, CurriculumService>();
+            services.AddScoped<IPageService, PageService>();
 
             return services;
         }

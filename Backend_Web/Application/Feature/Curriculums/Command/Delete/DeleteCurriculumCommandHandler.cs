@@ -18,7 +18,7 @@ namespace Application.Feature.Curriculums.Command.Delete
                 .Find(c => c.Id == request.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (curriculum is not null)
+            if (curriculum is null)
                 throw new KeyNotFoundException("Curriculum not found.");
 
             _unitOfWork.Repository<Curriculum>().Remove(curriculum);
