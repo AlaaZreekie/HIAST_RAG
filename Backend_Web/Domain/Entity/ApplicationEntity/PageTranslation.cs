@@ -13,6 +13,10 @@ namespace Domain.Entity.ApplicationEntity
     public class PageTranslation : BaseTranslationEntity
     {
         /// <summary>
+        /// A URL-friendly identifier for the page (e.g., "about-us").
+        /// </summary>
+        public string Slug { get; set; }
+        /// <summary>
         /// The title of the static page.
         /// </summary>
         public string Title { get; set; }

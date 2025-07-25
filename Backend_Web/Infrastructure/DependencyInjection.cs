@@ -29,7 +29,6 @@ namespace Infrastructure
 
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
-
             services.AddScoped(typeof(IAppRepository<>), typeof(AppRepository<>));
             services.AddScoped<IJsonFieldsSerializer, JsonFieldsSerializer>();
             services.AddScoped<DataSeeder>();
@@ -43,6 +42,7 @@ namespace Infrastructure
             services.AddScoped<IFaqService, FaqService>();
             services.AddScoped<ICourseGroupService, CourseGroupService>();
             services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ICurriculumService, CurriculumService>();
 
             return services;
         }

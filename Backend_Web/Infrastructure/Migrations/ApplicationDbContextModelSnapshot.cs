@@ -740,11 +740,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
-                    b.Property<string>("Slug")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("slug");
-
                     b.HasKey("Id");
 
                     b.ToTable("pages", (string)null);
@@ -769,6 +764,11 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PageId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("page_id");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("slug");
 
                     b.Property<string>("Title")
                         .IsRequired()

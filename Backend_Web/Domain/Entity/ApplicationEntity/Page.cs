@@ -13,10 +13,6 @@ namespace Domain.Entity.ApplicationEntity
     public class Page : BaseEntity<Guid>
     {
         /// <summary>
-        /// A URL-friendly identifier for the page (e.g., "about-us").
-        /// </summary>
-        public string Slug { get; set; }
-        /// <summary>
         /// The translated titles and content for this page.
         /// </summary>
         public virtual ICollection<PageTranslation> Translations { get; set; } = new List<PageTranslation>();
