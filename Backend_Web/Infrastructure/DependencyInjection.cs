@@ -49,6 +49,8 @@ namespace Infrastructure
             services.AddScoped<IMediaService, MediaService>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IAdmissionService, AdmissionService>();
+            services.AddScoped<IAdmissionResultService, AdmissionResultService>();
 
             return services;
         }
