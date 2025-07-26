@@ -139,8 +139,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("AdmissionId");
 
-                    b.HasIndex("MediaId")
-                        .IsUnique();
+                    b.HasIndex("MediaId");
 
                     b.ToTable("admission_results", (string)null);
                 });
@@ -594,7 +593,7 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("id");
+                        .HasColumnName("media_id");
 
                     b.Property<string>("FileName")
                         .IsRequired()
@@ -1444,9 +1443,9 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.Entity.ApplicationEntity.Media", "Media")
-                        .WithOne()
-                        .HasForeignKey("Domain.Entity.ApplicationEntity.AdmissionResult", "MediaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany()
+                        .HasForeignKey("MediaId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Admission");

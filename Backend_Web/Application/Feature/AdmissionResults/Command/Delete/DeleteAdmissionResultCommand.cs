@@ -12,5 +12,5 @@ namespace Application.Feature.AdmissionResults.Command.Delete
     /// Command to delete an AdmissionResult entity.
     /// It returns the file path of the associated media file for physical deletion.
     /// </summary>
-    public record DeleteAdmissionResultCommand(Guid Id) : IRequest<(string?, Guid?)>;
+    public record DeleteAdmissionResultCommand(Guid Id) : IRequest<Guid?>;
 }

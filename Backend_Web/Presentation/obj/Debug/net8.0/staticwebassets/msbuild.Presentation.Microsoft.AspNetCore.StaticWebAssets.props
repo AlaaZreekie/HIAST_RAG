@@ -36,6 +36,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>Presentation</SourceId>
@@ -144,6 +162,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4747b005-debe-4efb-af05-f43160106c5e_1.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4815e695-4693-4218-98b2-5d09af248172_1.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>Presentation</SourceId>
@@ -180,6 +216,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>Presentation</SourceId>
@@ -197,6 +251,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf'))">
       <SourceType>Package</SourceType>
@@ -270,6 +342,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>Presentation</SourceId>
@@ -306,6 +396,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>Presentation</SourceId>
@@ -323,6 +449,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Presentation</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Presentation</BasePath>
+      <RelativePath>PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kradx8n2jf</Fingerprint>
+      <Integrity>wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))">
       <SourceType>Package</SourceType>
@@ -377,24 +521,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf'))">
-      <SourceType>Package</SourceType>
-      <SourceId>Presentation</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Presentation</BasePath>
-      <RelativePath>PDFs/e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vxxk57b5ky</Fingerprint>
-      <Integrity>03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf'))">
       <SourceType>Package</SourceType>

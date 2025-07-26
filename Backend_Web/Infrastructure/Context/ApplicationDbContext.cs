@@ -264,7 +264,7 @@ namespace Infrastructure.Context
             {
                 b.ToTable("media");
                 b.HasKey(e => e.Id);
-                b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
+                b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("media_id");
                 b.Property(e => e.FileName).HasColumnName("file_name").HasColumnType("nvarchar(255)").IsRequired();
                 b.Property(e => e.FilePath).HasColumnName("file_path").HasColumnType("nvarchar(500)").IsRequired();
                 b.Property(e => e.FileType).HasColumnName("file_type").HasColumnType("nvarchar(100)").IsRequired();
@@ -483,16 +483,13 @@ namespace Infrastructure.Context
             #region AdmissionResults
             modelBuilder.Entity<AdmissionResult>(b =>
             {
-                b.ToTable("admission_results");
+                b.ToTable("admission_results"); 
                 b.HasKey(e => e.Id);
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
                 b.Property(e => e.ResultType).HasColumnName("result_type").HasConversion<string>().HasColumnType("nvarchar(50)").IsRequired();
                 b.Property(e => e.AdmissionId).HasColumnName("admission_id");
                 b.Property(e => e.MediaId).HasColumnName("media_id");
-                b.HasOne(e => e.Media)
-                     .WithOne()
-                     .HasForeignKey<AdmissionResult>(e => e.MediaId)
-                     .OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(e => e.Media).WithMany().HasForeignKey(e => e.MediaId).OnDelete(DeleteBehavior.Restrict);
             });
             #endregion
 

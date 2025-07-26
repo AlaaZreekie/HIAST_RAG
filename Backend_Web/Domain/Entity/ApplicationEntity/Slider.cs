@@ -27,6 +27,6 @@ namespace Domain.Entity.ApplicationEntity
         /// <summary>
         /// The translated titles for this slider.
         /// </summary>
-        public virtual ICollection<SliderTranslation> Translations { get; set; } = new List<SliderTranslation>();
+        public virtual ICollection<SliderTranslation> Translations { get; set; } = new HashSet<SliderTranslation>();
     }
 }

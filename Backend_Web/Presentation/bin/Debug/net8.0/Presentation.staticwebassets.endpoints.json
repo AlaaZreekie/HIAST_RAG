@@ -167,6 +167,88 @@
       ]
     },
     {
+      "Route": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:07 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:07 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
       "Route": "PDFs/2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf",
       "AssetFile": "PDFs/2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
       "Selectors": [],
@@ -659,6 +741,88 @@
       ]
     },
     {
+      "Route": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
       "Route": "PDFs/4815e695-4693-4218-98b2-5d09af248172_1.pdf",
       "AssetFile": "PDFs/4815e695-4693-4218-98b2-5d09af248172_1.pdf",
       "Selectors": [],
@@ -823,6 +987,88 @@
       ]
     },
     {
+      "Route": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
       "Route": "PDFs/5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf",
       "AssetFile": "PDFs/5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
       "Selectors": [],
@@ -901,6 +1147,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
         }
       ]
     },
@@ -1233,6 +1561,88 @@
       ]
     },
     {
+      "Route": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
       "Route": "PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
       "AssetFile": "PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
       "Selectors": [],
@@ -1397,6 +1807,170 @@
       ]
     },
     {
+      "Route": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
       "Route": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf",
       "AssetFile": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf",
       "Selectors": [],
@@ -1475,6 +2049,88 @@
         {
           "Name": "label",
           "Value": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:03 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:03 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
         }
       ]
     },
@@ -1721,88 +2377,6 @@
         {
           "Name": "label",
           "Value": "PDFs/dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf"
-        }
-      ]
-    },
-    {
-      "Route": "PDFs/e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf",
-      "AssetFile": "PDFs/e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1477054"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/pdf"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 26 Jul 2025 12:51:20 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
-        }
-      ]
-    },
-    {
-      "Route": "PDFs/e3094066-9206-41d0-b0b6-5d5f393fca1f_1.vxxk57b5ky.pdf",
-      "AssetFile": "PDFs/e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1477054"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/pdf"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 26 Jul 2025 12:51:20 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "vxxk57b5ky"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
-        },
-        {
-          "Name": "label",
-          "Value": "PDFs/e3094066-9206-41d0-b0b6-5d5f393fca1f_1.pdf"
         }
       ]
     },
