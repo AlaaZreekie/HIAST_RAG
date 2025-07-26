@@ -19,10 +19,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Feature\1\Command\Create\" />
-    <Folder Include="Feature\1\Command\Delete\" />
-    <Folder Include="Feature\1\Command\Update\" />
-    <Folder Include="Feature\1\Query\" />
+    <Folder Include="Dtos\PostDtos\" />
+    <Folder Include="Feature\Posts\Command\Create\" />
+    <Folder Include="Feature\Posts\Command\Delete\" />
+    <Folder Include="Feature\Posts\Command\Update\" />
+    <Folder Include="Feature\Posts\Query\" />
+    <Folder Include="Feature\1 - Copy\Command\Create\" />
+    <Folder Include="Feature\1 - Copy\Command\Delete\" />
+    <Folder Include="Feature\1 - Copy\Command\Update\" />
+    <Folder Include="Feature\1 - Copy\Query\" />
+    <Folder Include="Feature\PostCategorys\Command\Create\" />
+    <Folder Include="Feature\PostCategorys\Command\Delete\" />
+    <Folder Include="Feature\PostCategorys\Command\Update\" />
+    <Folder Include="Feature\PostCategorys\Query\" />
   </ItemGroup>
 
 </Project>

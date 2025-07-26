@@ -2,9 +2,6 @@
 using Application.Feature._1.Command.Create;
 using Application.Feature._1.Command.Delete;
 using Application.Feature._1.Query;
-using Application.Feature.Categories.Command.Create;
-using Application.Feature.Categories.Command.Update;
-using Application.Feature.Categories.Query;
 using AutoMapper;
 using Domain.Entity.ApplicationEntity;
 

@@ -19,6 +19,6 @@ namespace Domain.Entity.ApplicationEntity
         /// <summary>
         /// Collection of media files belonging to this category.
         /// </summary>
-        public virtual ICollection<Media> Media { get; set; } = new List<Media>();
+        public virtual ICollection<Media> Media { get; set; } = new HashSet<Media>();
     }
 }

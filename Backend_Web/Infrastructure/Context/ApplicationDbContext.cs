@@ -161,7 +161,6 @@ namespace Infrastructure.Context
                 b.ToTable("categories");
                 b.HasKey(e => e.Id);
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
-                b.Property(e => e.Slug).HasColumnName("slug").HasColumnType("nvarchar(100)").IsRequired();
                 b.HasMany(e => e.Translations).WithOne(t => t.Category).HasForeignKey(t => t.CategoryId);
             });
 
@@ -172,6 +171,7 @@ namespace Infrastructure.Context
                 b.HasIndex(e => new { e.CategoryId, e.LanguageId }).IsUnique();
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
                 b.Property(e => e.CategoryId).HasColumnName("category_id");
+                b.Property(e => e.Slug).HasColumnName("slug").HasColumnType("nvarchar(100)").IsRequired();
                 b.Property(e => e.LanguageId).HasColumnName("language_id");
                 b.Property(e => e.Name).HasColumnName("name").HasColumnType("nvarchar(100)").IsRequired();
             });

@@ -44,6 +44,8 @@ namespace Infrastructure
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ICurriculumService, CurriculumService>();
             services.AddScoped<IPageService, PageService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IMediaCategoryService, MediaCategoryService>();
 
             return services;
         }
