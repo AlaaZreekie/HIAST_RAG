@@ -139,7 +139,8 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("AdmissionId");
 
-                    b.HasIndex("MediaId");
+                    b.HasIndex("MediaId")
+                        .IsUnique();
 
                     b.ToTable("admission_results", (string)null);
                 });
@@ -1443,8 +1444,8 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("Domain.Entity.ApplicationEntity.Media", "Media")
-                        .WithMany()
-                        .HasForeignKey("MediaId")
+                        .WithOne()
+                        .HasForeignKey("Domain.Entity.ApplicationEntity.AdmissionResult", "MediaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

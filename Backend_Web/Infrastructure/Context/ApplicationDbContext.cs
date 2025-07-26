@@ -489,7 +489,10 @@ namespace Infrastructure.Context
                 b.Property(e => e.ResultType).HasColumnName("result_type").HasConversion<string>().HasColumnType("nvarchar(50)").IsRequired();
                 b.Property(e => e.AdmissionId).HasColumnName("admission_id");
                 b.Property(e => e.MediaId).HasColumnName("media_id");
-                b.HasOne(e => e.Media).WithMany().HasForeignKey(e => e.MediaId);
+                b.HasOne(e => e.Media)
+                     .WithOne()
+                     .HasForeignKey<AdmissionResult>(e => e.MediaId)
+                     .OnDelete(DeleteBehavior.Cascade);
             });
             #endregion
 

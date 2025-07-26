@@ -5,6 +5,359 @@
     "version": "v1"
   },
   "paths": {
+    "/api/Admin/AdmissionResults/CreateResult": {
+      "post": {
+        "tags": [
+          "AdmissionResults"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "AdmissionId",
+                  "CreateMedia.File",
+                  "CreateMedia.MediaCategoryId",
+                  "ResultType"
+                ],
+                "type": "object",
+                "properties": {
+                  "AdmissionId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ResultType": {
+                    "$ref": "#/components/schemas/AdmissionResultTypeEnum"
+                  },
+                  "CreateMedia.MediaCategoryId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "CreateMedia.File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CreateMedia.SavedFileDetails.FileName": {
+                    "type": "string"
+                  },
+                  "CreateMedia.SavedFileDetails.FilePath": {
+                    "type": "string"
+                  },
+                  "CreateMedia.SavedFileDetails.FileType": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "AdmissionId": {
+                  "style": "form"
+                },
+                "ResultType": {
+                  "style": "form"
+                },
+                "CreateMedia.MediaCategoryId": {
+                  "style": "form"
+                },
+                "CreateMedia.File": {
+                  "style": "form"
+                },
+                "CreateMedia.SavedFileDetails.FileName": {
+                  "style": "form"
+                },
+                "CreateMedia.SavedFileDetails.FilePath": {
+                  "style": "form"
+                },
+                "CreateMedia.SavedFileDetails.FileType": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/AdmissionResults/UpdateResult": {
+      "put": {
+        "tags": [
+          "AdmissionResults"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdmissionResultDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdmissionResultDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdmissionResultDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/AdmissionResults/DeleteResult": {
+      "delete": {
+        "tags": [
+          "AdmissionResults"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/AdmissionResults/GetAllResults": {
+      "get": {
+        "tags": [
+          "AdmissionResults"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/AdmissionResults/GetByFilter": {
+      "get": {
+        "tags": [
+          "AdmissionResults"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "AdmissionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "ResultType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/AdmissionResultTypeEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Admissions/CreateAdmission": {
+      "post": {
+        "tags": [
+          "Admissions"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdmissionDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdmissionDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdmissionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Admissions/UpdateAdmission": {
+      "put": {
+        "tags": [
+          "Admissions"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdmissionDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdmissionDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdmissionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Admissions/DeleteAdmission": {
+      "delete": {
+        "tags": [
+          "Admissions"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Admissions/GetAllAdmissions": {
+      "get": {
+        "tags": [
+          "Admissions"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Admissions/GetByFilter": {
+      "get": {
+        "tags": [
+          "Admissions"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "AcademicYear",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ProgramId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "LocationId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "DeadlineFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "DeadlineTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/Register": {
       "post": {
         "tags": [
@@ -3038,6 +3391,15 @@
         },
         "additionalProperties": false
       },
+      "AdmissionResultTypeEnum": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "AuthUserDto": {
         "required": [
           "id",
@@ -3135,6 +3497,39 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "CreateAdmissionDto": {
+        "required": [
+          "academicYear",
+          "announcementDate",
+          "deadline",
+          "locationId",
+          "programId"
+        ],
+        "type": "object",
+        "properties": {
+          "academicYear": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "announcementDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "programId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "locationId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
       },
       "CreateBookTranslationDto": {
         "required": [
@@ -3890,6 +4285,60 @@
               "type": "string"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAdmissionDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "academicYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "announcementDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "programId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAdmissionResultDto": {
+        "required": [
+          "id",
+          "resultType"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "resultType": {
+            "$ref": "#/components/schemas/AdmissionResultTypeEnum"
           }
         },
         "additionalProperties": false

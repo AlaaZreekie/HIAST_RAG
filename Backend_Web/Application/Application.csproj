@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Dtos\AdmissionExam\" />
     <Folder Include="Feature\1 - Copy - Copy\Command\Create\" />
     <Folder Include="Feature\1 - Copy - Copy\Command\Delete\" />
     <Folder Include="Feature\1 - Copy - Copy\Command\Update\" />
@@ -27,6 +28,10 @@
     <Folder Include="Feature\PostCategorys\Command\Delete\" />
     <Folder Include="Feature\PostCategorys\Command\Update\" />
     <Folder Include="Feature\PostCategorys\Query\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="IServices\IAdmissionResultService.cs" />
   </ItemGroup>
 
 </Project>

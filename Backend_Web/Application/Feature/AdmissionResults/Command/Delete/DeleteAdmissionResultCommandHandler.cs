@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.AdmissionResults.Command.Delete
 {
-    public class DeleteAdmissionResultCommandHandler(IAppUnitOfWork unitOfWork) : IRequestHandler<DeleteAdmissionResultCommand, Media?>
+    public class DeleteAdmissionResultCommandHandler(IAppUnitOfWork unitOfWork) : IRequestHandler<DeleteAdmissionResultCommand, (string?, Guid?)>
     {
         private readonly IAppUnitOfWork _unitOfWork = unitOfWork;
 
-        public async Task<Media?> Handle(DeleteAdmissionResultCommand request, CancellationToken cancellationToken)
+        public async Task<(string?, Guid?)> Handle(DeleteAdmissionResultCommand request, CancellationToken cancellationToken)
         {
             var resultToDelete = await _unitOfWork.Repository<AdmissionResult>()
-                .Find(ar => ar.Id == request.Id)
+                .Find(ar => ar.Id == request.Id, asNoTracking : true)
                 .Include(ar => ar.Media)
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -27,9 +27,12 @@ namespace Application.Feature.AdmissionResults.Command.Delete
             var media = resultToDelete.Media;         
 
             _unitOfWork.Repository<AdmissionResult>().Remove(resultToDelete);
-
+            if (resultToDelete.Media != null)
+            {
+                _unitOfWork.Repository<Media>().Remove(resultToDelete.Media);
+            }
             await _unitOfWork.SaveChangesAsync(cancellationToken);
-            return media;
+            return (media.FilePath, media.Id);
         }
     }
 }

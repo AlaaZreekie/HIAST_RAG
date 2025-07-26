@@ -16,11 +16,14 @@ namespace Application.Feature.AdmissionResults.Query
 
         public async Task<IEnumerable<AdmissionResult>> Handle(GetAdmissionResultsByFilterQuery request, CancellationToken cancellationToken)
         {
-            Func<IQueryable<AdmissionResult>, IQueryable<AdmissionResult>> includeExpression = q =>
-                q.Include(ar => ar.Media).ThenInclude(m => m.MediaCategory);
-
-            var query = _unitOfWork.Repository<AdmissionResult>()
-                .FindWithComplexIncludes(ar => true, includeExpression, asNoTracking: true);
+            var query = _unitOfWork.Repository<AdmissionResult>().Find(a => true, asNoTracking: true,
+                a => a.Admission,
+                a => a.Admission.Program,
+                a => a.Admission.Program.Translations,
+                a => a.Admission.Location,
+                a => a.Admission.Location.Translations,
+                a => a.Media
+                );
 
             if (request.Filter.Id.HasValue)
                 query = query.Where(ar => ar.Id == request.Filter.Id.Value);

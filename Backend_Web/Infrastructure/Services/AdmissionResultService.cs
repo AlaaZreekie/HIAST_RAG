@@ -54,14 +54,9 @@ namespace Infrastructure.Services
         public async Task<string?> DeleteAsync(BaseDto<Guid> dto, CancellationToken cancellationToken = default)
         {
             var command = new DeleteAdmissionResultCommand(dto.Id);
-            var mediaToDelete = await _mediator.Send(command, cancellationToken);
-            if (mediaToDelete != null) 
-            {
-                var mediaDeleteCommand = new DeleteMediaCommand(mediaToDelete!.Id);
-                await _mediator.Send(mediaDeleteCommand, cancellationToken);
-            }
-
-            return mediaToDelete!.FilePath;
+            var( mediaPathToDelete, mediaIdToDelete )= await _mediator.Send(command, cancellationToken);
+            
+            return mediaPathToDelete;
         }
 
         public async Task<IEnumerable<AdmissionResultDto>> GetAllAsync(CancellationToken cancellationToken = default)
