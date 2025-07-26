@@ -15,5 +15,5 @@ namespace Application.Feature.Posts.Command.Update
         public Guid? CategoryId { get; set; }
         public IList<UpdatePostTranslationDto>? Translations { get; set; }
     }
-    }
+    
 }

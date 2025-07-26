@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bJKFuprNCpJFjBU9Q6phpvWj48dSkbDpoOKRhL1h2Cw=",
+  "Hash": "okbwH/1N1zpYNY1MgCYQhXNFXZld9DrJ7tY7JvWbpD4=",
   "Source": "Presentation",
   "BasePath": "_content/Presentation",
   "Mode": "Default",
@@ -15,6 +15,111 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "91a51aorb2",
+      "Integrity": "8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.91a51aorb2.jpg",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 02:11:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "91a51aorb2"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y="
+        }
+      ]
+    },
+    {
+      "Route": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 02:11:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y="
+        }
+      ]
+    }
+  ]
 }
