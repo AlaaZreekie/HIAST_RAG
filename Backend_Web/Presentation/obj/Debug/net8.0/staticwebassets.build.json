@@ -1,0 +1,3318 @@
+{
+  "Version": 1,
+  "Hash": "eMJWKvH0FHhTEYy87Wb205OYmBSThPR6e4bXre5RC2k=",
+  "Source": "Presentation",
+  "BasePath": "_content/Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Presentation\\wwwroot",
+      "Source": "Presentation",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "91a51aorb2",
+      "Integrity": "8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jwwk01mgpu",
+      "Integrity": "bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jwwk01mgpu",
+      "Integrity": "bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\3198321c-5fe2-49de-859f-5987760aa45b_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/3198321c-5fe2-49de-859f-5987760aa45b_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\3198321c-5fe2-49de-859f-5987760aa45b_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\32671143-2453-45ac-afb0-ffbfb07122be_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/32671143-2453-45ac-afb0-ffbfb07122be_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\32671143-2453-45ac-afb0-ffbfb07122be_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cwpw50b53g",
+      "Integrity": "HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4747b005-debe-4efb-af05-f43160106c5e_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/4747b005-debe-4efb-af05-f43160106c5e_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\4747b005-debe-4efb-af05-f43160106c5e_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4815e695-4693-4218-98b2-5d09af248172_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/4815e695-4693-4218-98b2-5d09af248172_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\4815e695-4693-4218-98b2-5d09af248172_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cwpw50b53g",
+      "Integrity": "HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jwwk01mgpu",
+      "Integrity": "bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/77efe655-fadd-4f2f-bb8e-f266c111c6d7_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\836458ff-42e6-448c-800f-de6a93eb598e_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/836458ff-42e6-448c-800f-de6a93eb598e_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\836458ff-42e6-448c-800f-de6a93eb598e_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\ab05a847-9d74-4df3-805b-8e3502ff04df_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/ab05a847-9d74-4df3-805b-8e3502ff04df_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\ab05a847-9d74-4df3-805b-8e3502ff04df_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kradx8n2jf",
+      "Integrity": "wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jwwk01mgpu",
+      "Integrity": "bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\f4c01cec-de76-4da5-b3ac-3743762eeed3_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/f4c01cec-de76-4da5-b3ac-3743762eeed3_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\f4c01cec-de76-4da5-b3ac-3743762eeed3_1.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\f59094d8-9a9f-4277-8816-0fdd3a13f659_1.pdf",
+      "SourceId": "Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\",
+      "BasePath": "_content/Presentation",
+      "RelativePath": "PDFs/f59094d8-9a9f-4277-8816-0fdd3a13f659_1#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vxxk57b5ky",
+      "Integrity": "03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PDFs\\f59094d8-9a9f-4277-8816-0fdd3a13f659_1.pdf"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.91a51aorb2.jpg",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 02:11:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "91a51aorb2"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y="
+        }
+      ]
+    },
+    {
+      "Route": "Images/d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 02:11:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:08:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jwwk01mgpu"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:08:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1ef4fa3f-47da-4c1f-accb-232ce9729f93_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:09:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jwwk01mgpu"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\2fd9279a-4e28-477d-966f-027d9972cdc9_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:09:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/3198321c-5fe2-49de-859f-5987760aa45b_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\3198321c-5fe2-49de-859f-5987760aa45b_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/3198321c-5fe2-49de-859f-5987760aa45b_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\3198321c-5fe2-49de-859f-5987760aa45b_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/3198321c-5fe2-49de-859f-5987760aa45b_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/32671143-2453-45ac-afb0-ffbfb07122be_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\32671143-2453-45ac-afb0-ffbfb07122be_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/32671143-2453-45ac-afb0-ffbfb07122be_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\32671143-2453-45ac-afb0-ffbfb07122be_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/32671143-2453-45ac-afb0-ffbfb07122be_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/3eefec7a-1a82-4451-aa56-b1bc12fcc2d6_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.cwpw50b53g.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103814"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:07:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cwpw50b53g"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4081b6bb-b05a-4a97-8a19-428ca530065e_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103814"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:07:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4747b005-debe-4efb-af05-f43160106c5e_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4747b005-debe-4efb-af05-f43160106c5e_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4747b005-debe-4efb-af05-f43160106c5e_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4747b005-debe-4efb-af05-f43160106c5e_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/4747b005-debe-4efb-af05-f43160106c5e_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4773c150-f3d0-4eb8-a197-a1de26fb0a64_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4815e695-4693-4218-98b2-5d09af248172_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4815e695-4693-4218-98b2-5d09af248172_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4815e695-4693-4218-98b2-5d09af248172_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4815e695-4693-4218-98b2-5d09af248172_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/4815e695-4693-4218-98b2-5d09af248172_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.cwpw50b53g.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103814"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:06:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cwpw50b53g"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103814"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:06:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HGAH4q6wIFo+vlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:09:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jwwk01mgpu"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5ab82aa1-f6ca-4a24-ab15-628c3856703d_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:09:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\688175e3-36e1-4700-ad38-d929ce43b7a8_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/77efe655-fadd-4f2f-bb8e-f266c111c6d7_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/836458ff-42e6-448c-800f-de6a93eb598e_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\836458ff-42e6-448c-800f-de6a93eb598e_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/836458ff-42e6-448c-800f-de6a93eb598e_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\836458ff-42e6-448c-800f-de6a93eb598e_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/836458ff-42e6-448c-800f-de6a93eb598e_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/ab05a847-9d74-4df3-805b-8e3502ff04df_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\ab05a847-9d74-4df3-805b-8e3502ff04df_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/ab05a847-9d74-4df3-805b-8e3502ff04df_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\ab05a847-9d74-4df3-805b-8e3502ff04df_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/ab05a847-9d74-4df3-805b-8e3502ff04df_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/b51c1e3e-147c-4e25-a3fd-14da0b8b5895_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/bc2a0a05-e4b2-4bfd-ac12-0b8bda5d05d1_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bf7c2693-329f-4124-9744-a2f043ee7a8a_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bf7ec74f-5926-4ec2-9254-8914cb413adb_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/c1bdb9f0-d9c6-423e-bb82-401536518105_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kradx8n2jf"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c339edee-688d-4abd-a464-f5e5846a8959_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27487"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 15:09:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:09:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jwwk01mgpu"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c7eaf88e-ab6d-40d3-a08f-94c5ac25fb41_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1558795"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:09:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/c9f24824-9a3a-4b6c-804a-dc843cb6b22b_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/dbbd17d3-c6f7-40db-bf14-66feaa632a1c_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:34:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/ea4d8af2-a151-4a31-a62e-fe2d43ef828c_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/f4c01cec-de76-4da5-b3ac-3743762eeed3_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\f4c01cec-de76-4da5-b3ac-3743762eeed3_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/f4c01cec-de76-4da5-b3ac-3743762eeed3_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\f4c01cec-de76-4da5-b3ac-3743762eeed3_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/f4c01cec-de76-4da5-b3ac-3743762eeed3_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/f59094d8-9a9f-4277-8816-0fdd3a13f659_1.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\f59094d8-9a9f-4277-8816-0fdd3a13f659_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    },
+    {
+      "Route": "PDFs/f59094d8-9a9f-4277-8816-0fdd3a13f659_1.vxxk57b5ky.pdf",
+      "AssetFile": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Presentation\\wwwroot\\PDFs\\f59094d8-9a9f-4277-8816-0fdd3a13f659_1.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1477054"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 26 Jul 2025 12:51:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxxk57b5ky"
+        },
+        {
+          "Name": "label",
+          "Value": "PDFs/f59094d8-9a9f-4277-8816-0fdd3a13f659_1.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-03mSGyCQeNUrqmS3IXz8B1FJtAEb5VdJhjy7nmwsPhs="
+        }
+      ]
+    }
+  ]
+}

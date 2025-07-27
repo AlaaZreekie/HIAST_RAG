@@ -1,0 +1,37 @@
+# Ignore Python cache and environment files
+__pycache__/
+.env
+
+# Ignore all files in src/ except __init__.py and Python source files
+src/__pycache__/
+src/*.pyc
+src/*.pyo
+src/*.pyd
+
+# Do NOT ignore Python source files in src/ (except for cache/compiled)
+# (No need to add src/*.py to .gitignore)
+
+# If you want to ignore everything except .py files and __init__.py, you could use:
+# (But by default, .gitignore does not ignore .py files unless specified)
+
+# Large data files
+data_distinct.txt
+scraped_data.txt
+scraped_data.json
+scrapedData.txt
+
+# Generated database
+chroma_db/
+
+# Virtual environment
+myenv/
+
+# IDE files
+.vs/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd 
