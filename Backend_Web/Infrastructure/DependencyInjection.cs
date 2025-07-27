@@ -51,6 +51,10 @@ namespace Infrastructure
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IAdmissionService, AdmissionService>();
             services.AddScoped<IAdmissionResultService, AdmissionResultService>();
+            services.AddScoped<ISliderService, SliderService>();
+            services.AddScoped<IAdmissionExamService, AdmissionExamService>();
+            services.AddScoped<ITrainingCourseService, TrainingCourseService>();
+            services.AddScoped<ITrainingCourseCategoryService, TrainingCourseCategoryService>();
 
             return services;
         }

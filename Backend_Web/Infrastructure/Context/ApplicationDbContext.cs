@@ -44,7 +44,7 @@ namespace Infrastructure.Context
         public virtual DbSet<Program> Programs { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<Specialization> Specializations { get; set; }
-        public virtual DbSet<Testimonial> Testimonials { get; set; }
+        //public virtual DbSet<Testimonial> Testimonials { get; set; }
         public virtual DbSet<TrainingCourse> TrainingCourses { get; set; }
         public virtual DbSet<TrainingCourseCategory> TrainingCourseCategories { get; set; }
 
@@ -66,7 +66,7 @@ namespace Infrastructure.Context
         public virtual DbSet<ProgramTranslation> ProgramTranslations { get; set; }
         public virtual DbSet<SliderTranslation> SliderTranslations { get; set; }
         public virtual DbSet<SpecializationTranslation> SpecializationTranslations { get; set; }
-        public virtual DbSet<TestimonialTranslation> TestimonialTranslations { get; set; }
+        //public virtual DbSet<TestimonialTranslation> TestimonialTranslations { get; set; }
         public virtual DbSet<TrainingCourseCategoryTranslation> TrainingCourseCategoryTranslations { get; set; }
         public virtual DbSet<TrainingCourseTranslation> TrainingCourseTranslations { get; set; }
 
@@ -501,9 +501,7 @@ namespace Infrastructure.Context
                 b.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
                 b.Property(e => e.GraduateName).HasColumnName("graduate_name").HasColumnType("nvarchar(150)").IsRequired();
                 b.Property(e => e.GraduateYear).HasColumnName("graduate_year");
-                b.Property(e => e.SpecializationId).HasColumnName("specialization_id");
                 b.Property(e => e.MediaId).HasColumnName("media_id"); // Photo
-                b.HasOne(e => e.Specialization).WithMany().HasForeignKey(e => e.SpecializationId);
                 b.HasOne(e => e.Media).WithMany().HasForeignKey(e => e.MediaId);
                 b.HasMany(e => e.Translations).WithOne(t => t.Testimonial).HasForeignKey(t => t.TestimonialId);
             });

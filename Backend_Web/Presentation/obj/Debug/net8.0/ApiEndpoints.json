@@ -1662,6 +1662,125 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SlidersController",
+    "Method": "CreateSlider",
+    "RelativePath": "api/Admin/Sliders/CreateSlider",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "LinkURL",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateMedia.MediaCategoryId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateMedia.File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateMedia.SavedFileDetails.FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateMedia.SavedFileDetails.FilePath",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateMedia.SavedFileDetails.FileType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Translations",
+        "Type": "System.Collections.Generic.IList\u00601[[Application.Dtos.SlideDtos.CreateSliderTranslationDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SlidersController",
+    "Method": "DeleteSlider",
+    "RelativePath": "api/Admin/Sliders/DeleteSlider",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTO.CommonDTO.BaseDto\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SlidersController",
+    "Method": "GetAllSliders",
+    "RelativePath": "api/Admin/Sliders/GetAllSliders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SlidersController",
+    "Method": "GetByFilter",
+    "RelativePath": "api/Admin/Sliders/GetByFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "LinkURL",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LanguageCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIAST.API.Areas.Admin.Controllers.SlidersController",
+    "Method": "UpdateSlider",
+    "RelativePath": "api/Admin/Sliders/UpdateSlider",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.Dtos.SlideDtos.UpdateSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIAST.API.Areas.Admin.Controllers.SpecializationsController",
     "Method": "CreateSpecialization",
     "RelativePath": "api/Admin/Specializations/CreateSpecialization",

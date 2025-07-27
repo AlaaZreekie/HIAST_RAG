@@ -20,14 +20,14 @@ namespace Domain.Entity.ApplicationEntity
         /// The year the student graduated.
         /// </summary>
         public int GraduateYear { get; set; }
-        /// <summary>
-        /// Foreign key to the Specialization the student graduated from.
-        /// </summary>
-        public Guid SpecializationId { get; set; }
-        /// <summary>
-        /// Navigation property to the Specialization.
-        /// </summary>
-        public virtual Specialization Specialization { get; set; }
+        ///// <summary>
+        ///// Foreign key to the Specialization the student graduated from.
+        ///// </summary>
+        //public Guid SpecializationId { get; set; }
+        ///// <summary>
+        ///// Navigation property to the Specialization.
+        ///// </summary>
+        //public virtual Specialization Specialization { get; set; }
         /// <summary>
         /// Foreign key to the Media table for the graduate's photo.
         /// </summary>

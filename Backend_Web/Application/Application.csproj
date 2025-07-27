@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\AdmissionExam\" />
     <Folder Include="Feature\1 - Copy - Copy\Command\Create\" />
     <Folder Include="Feature\1 - Copy - Copy\Command\Delete\" />
     <Folder Include="Feature\1 - Copy - Copy\Command\Update\" />

@@ -3054,6 +3054,203 @@
         }
       }
     },
+    "/api/Admin/Sliders/CreateSlider": {
+      "post": {
+        "tags": [
+          "Sliders"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "CreateMedia.File",
+                  "CreateMedia.MediaCategoryId",
+                  "LinkURL",
+                  "Translations"
+                ],
+                "type": "object",
+                "properties": {
+                  "LinkURL": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "CreateMedia.MediaCategoryId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "CreateMedia.File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CreateMedia.SavedFileDetails.FileName": {
+                    "type": "string"
+                  },
+                  "CreateMedia.SavedFileDetails.FilePath": {
+                    "type": "string"
+                  },
+                  "CreateMedia.SavedFileDetails.FileType": {
+                    "type": "string"
+                  },
+                  "Translations": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CreateSliderTranslationDto"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "LinkURL": {
+                  "style": "form"
+                },
+                "CreateMedia.MediaCategoryId": {
+                  "style": "form"
+                },
+                "CreateMedia.File": {
+                  "style": "form"
+                },
+                "CreateMedia.SavedFileDetails.FileName": {
+                  "style": "form"
+                },
+                "CreateMedia.SavedFileDetails.FilePath": {
+                  "style": "form"
+                },
+                "CreateMedia.SavedFileDetails.FileType": {
+                  "style": "form"
+                },
+                "Translations": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Sliders/UpdateSlider": {
+      "put": {
+        "tags": [
+          "Sliders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSliderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSliderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSliderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Sliders/DeleteSlider": {
+      "delete": {
+        "tags": [
+          "Sliders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuidBaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Sliders/GetAllSliders": {
+      "get": {
+        "tags": [
+          "Sliders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Sliders/GetByFilter": {
+      "get": {
+        "tags": [
+          "Sliders"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "LinkURL",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Title",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LanguageCode",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/LanguageCodeEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Admin/Specializations/GetAllSpecializations": {
       "get": {
         "tags": [
@@ -4004,6 +4201,23 @@
         },
         "additionalProperties": false
       },
+      "CreateSliderTranslationDto": {
+        "required": [
+          "languageCode",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "languageCode": {
+            "$ref": "#/components/schemas/LanguageCodeEnum"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateSpecializationDto": {
         "required": [
           "degreeType",
@@ -4925,6 +5139,49 @@
           "description": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSliderDto": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "linkURL": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "translations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateSliderTranslationDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSliderTranslationDto": {
+        "required": [
+          "id",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
