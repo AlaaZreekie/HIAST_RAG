@@ -22,7 +22,8 @@ namespace Application.Feature.Admissions.Command.Delete
                 throw new KeyNotFoundException("Admission not found.");
 
             _unitOfWork.Repository<Admission>().Remove(admission);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

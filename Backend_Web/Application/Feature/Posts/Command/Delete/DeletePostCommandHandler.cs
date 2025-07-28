@@ -21,7 +21,8 @@ namespace Application.Feature.Posts.Command.Delete
             if (post is not null)
             {
                 _unitOfWork.Repository<Post>().Remove(post);
-                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                if(request.save)
+                    await _unitOfWork.SaveChangesAsync(cancellationToken);
             }
         }
     }

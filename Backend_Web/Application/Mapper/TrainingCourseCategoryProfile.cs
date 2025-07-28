@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.TrainingCourseCategoryDtos;
 using Application.Feature.TrainingCourseCategories.Command.Delete;
+using Application.Feature.TrainingCourseCategories.Command.Update;
 using Application.Feature.TrainingCourseCategories.Query;
 using AutoMapper;
 using Domain.Entity.ApplicationEntity;

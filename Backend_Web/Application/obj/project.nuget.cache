@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gIwFa0EuXlE=",
+  "dgSpecHash": "jxhzE3NxBhM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\mediatr\\13.0.0\\mediatr.13.0.0.nupkg.sha512",

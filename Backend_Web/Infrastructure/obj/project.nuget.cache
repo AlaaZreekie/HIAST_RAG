@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K2vn3U8WgVs=",
+  "dgSpecHash": "VOPzLvkKjoI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Projects\\ForthYearProject\\Backend_Web\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

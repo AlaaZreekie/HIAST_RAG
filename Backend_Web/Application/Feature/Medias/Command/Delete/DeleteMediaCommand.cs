@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Medias.Command.Delete
 {
-    public record DeleteMediaCommand(Guid Id) : IRequest<string?>;
-
+    public record DeleteMediaCommand(Guid Id, bool save = true) : IRequest<string?>;
 }

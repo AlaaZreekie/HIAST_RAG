@@ -24,7 +24,8 @@ namespace Application.Feature.AdmissionExams.Command.Delete
                 throw new KeyNotFoundException("Admission exam not found.");
 
             _unitOfWork.Repository<AdmissionExam>().Remove(examToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

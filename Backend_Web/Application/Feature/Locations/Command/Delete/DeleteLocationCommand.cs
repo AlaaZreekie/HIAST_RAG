@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Locations.Command.Delete
 {
-    public record  DeleteLocationCommand(Guid Id) : IRequest;
+    public record DeleteLocationCommand(Guid Id, bool save = true) : IRequest;
 }

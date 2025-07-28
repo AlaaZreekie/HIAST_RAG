@@ -42,7 +42,8 @@ namespace Application.Feature.Books.Command.Delete
                 : null;
 
             _unitOfWork.Repository<Book>().Remove(bookToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return (coverMedia?.FilePath, isCoverSafeToDelete, fileMedia?.FilePath, isFileSafeToDelete);
         }
     }

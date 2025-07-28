@@ -24,7 +24,8 @@ namespace Application.Feature.Sliders.Command.Delete
 
             _unitOfWork.Repository<Slider>().Remove(sliderToDelete);
 
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return fileId;
         }

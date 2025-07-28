@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Prges.Command.Delete
 {
-    public record DeleteLanguageCommand(Guid Id) : IRequest;
+    public record DeleteLanguageCommand(Guid Id, bool save = true) : IRequest;
 }

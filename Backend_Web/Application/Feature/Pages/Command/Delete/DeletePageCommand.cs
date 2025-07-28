@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Pages.Command.Delete
 {
-    public record DeletePageCommand(Guid Id) : IRequest;
+    public record DeletePageCommand(Guid Id, bool save = true) : IRequest;
 }

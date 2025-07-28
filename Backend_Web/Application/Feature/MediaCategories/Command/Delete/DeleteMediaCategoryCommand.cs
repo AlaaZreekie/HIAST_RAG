@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.MediaCategories.Command.Delete
 {
-    public record DeleteMediaCategoryCommand(Guid Id) : IRequest;
+    public record DeleteMediaCategoryCommand(Guid Id, bool save = true) : IRequest;
 }

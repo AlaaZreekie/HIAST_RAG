@@ -10,5 +10,6 @@ namespace Application.Feature.Curriculums.Command.Delete
     public class DeleteCurriculumCommand : IRequest
     {
         public Guid Id { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

@@ -23,7 +23,8 @@ namespace Application.Feature.TrainingCourseCategories.Command.Delete
                 throw new KeyNotFoundException("Training course category not found.");
 
             _unitOfWork.Repository<TrainingCourseCategory>().Remove(categoryToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

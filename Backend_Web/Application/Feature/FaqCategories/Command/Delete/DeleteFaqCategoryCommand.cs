@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.FaqCategories.Command.Delete
 {
-    public record DeleteFaqCategoryCommand(Guid Id) : IRequest;
+    public record DeleteFaqCategoryCommand(Guid Id, bool save = true) : IRequest;
 }

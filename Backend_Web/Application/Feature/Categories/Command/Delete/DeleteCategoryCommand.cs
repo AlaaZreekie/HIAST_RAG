@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature._1.Command.Update
 {
-    public record DeleteCategoryCommand(Guid Id) : IRequest;
+    public record DeleteCategoryCommand(Guid Id, bool save = true) : IRequest;
 }

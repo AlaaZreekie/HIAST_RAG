@@ -2,6 +2,6 @@
 
 namespace Application.Feature.AdmissionExams.Command.Delete
 {
-    public record DeleteAdmissionExamCommand(Guid Id) : IRequest;
+    public record DeleteAdmissionExamCommand(Guid Id, bool save = true) : IRequest;
 
 }

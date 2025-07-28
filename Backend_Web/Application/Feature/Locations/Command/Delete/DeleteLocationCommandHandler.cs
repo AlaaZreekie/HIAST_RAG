@@ -31,7 +31,8 @@ namespace Application.Feature.Locations.Command.Delete
             }
 
             _unitOfWork.Repository<Location>().Remove(locationToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

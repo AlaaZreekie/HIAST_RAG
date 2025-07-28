@@ -22,7 +22,8 @@ namespace Application.Feature.Categories.Command.Delete
             if (category is null)
                 throw new KeyNotFoundException("Category not found.");
             _unitOfWork.Repository<Category>().Remove(category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             
         }
     }

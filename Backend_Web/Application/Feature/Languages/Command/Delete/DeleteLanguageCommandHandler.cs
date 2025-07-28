@@ -25,7 +25,8 @@ namespace Application.Feature.Prges.Command.Delete
                 throw new Exception("Language not found");
             
             _unitOfWork.Repository<Language>().Remove(languageToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

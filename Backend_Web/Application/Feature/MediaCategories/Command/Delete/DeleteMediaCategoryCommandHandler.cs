@@ -26,7 +26,8 @@ namespace Application.Feature.MediaCategories.Command.Delete
                 throw new Exception("This media category cannot be deleted because it is currently in use by one or more media files.");
             
             _unitOfWork.Repository<MediaCategory>().Remove(category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);            
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);            
         }
     }
 }

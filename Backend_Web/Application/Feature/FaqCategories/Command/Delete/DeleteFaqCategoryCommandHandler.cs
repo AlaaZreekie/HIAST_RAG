@@ -28,7 +28,8 @@ namespace Application.Feature.FaqCategories.Command.Delete
                 throw new KeyNotFoundException("FaqCategory not found.");            
 
             _unitOfWork.Repository<Domain.Entity.ApplicationEntity.FaqCategory>().Remove(faqCategoryToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }
