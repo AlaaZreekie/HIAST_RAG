@@ -13,7 +13,7 @@ def get_llm():
     ) 
 
 def get_llm_embedder():
-    google_api_key = os.getenv("gemini-2.5-pro")
+    google_api_key = os.getenv("GOOGLE_API_KEY_EMMBEDDER")
 
     return GoogleGenerativeAIEmbeddings(
             model="models/embedding-001", 

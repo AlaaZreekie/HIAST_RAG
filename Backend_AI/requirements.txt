@@ -13,6 +13,7 @@ langchain-community
 google-generativeai
 chromadb
 langchain-chroma
+langchain-text-splitters
 pypdf
 unstructured
 fastapi

@@ -32,7 +32,8 @@ app = FastAPI(
 
 # Initialize token manager
 token_manager = TokenManager()
-
+embedder_instance = Embedder()
+scraper_instance = URLScraper()
 # Global conversation history using hash map for O(1) lookup
 # Structure: {question_hash: {"user": question, "assistant": answer}}
 conversation_history = {}
@@ -139,7 +140,7 @@ def scrape_url(request: URLScrapeRequest):
     try:
         print(f"🌐 Scraping URL: {request.url}")
         
-        scraper = URLScraper()
+        scraper = scraper_instance
         result = scraper.scrape_recursive_and_save(request.url, max_depth=request.max_depth, output_file=request.output_file)
         
         if not result["success"]:
@@ -164,7 +165,7 @@ def count_urls_recursive(request: RecursiveURLCountRequest):
     try:
         print(f"🕷️ Counting URLs recursively from: {request.url} (max depth: {request.max_depth})")
         
-        scraper = URLScraper()
+        scraper = scraper_instance
         urls_found = scraper.crawl_for_urls(request.url, max_depth=request.max_depth)
         url_count = len(urls_found)
         
@@ -193,7 +194,7 @@ def scrape_recursive_and_update_database(request: URLScrapeRequest):
     try:
         print(f"🕷️ Starting recursive scraping and database update: {request.url}")
         
-        scraper = URLScraper()
+        scraper = scraper_instance
         result = scraper.scrape_recursive_and_save(request.url, max_depth=request.max_depth, output_file=request.output_file)
         
         if not result["success"]:
@@ -213,22 +214,16 @@ def scrape_recursive_and_update_database(request: URLScrapeRequest):
         print(f"❌ Error in recursive scraping and update: {e}")
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
-@app.post("/data/retrain", response_model=DatabaseResponse)
-def retrain(request: RetrainRequest):
+@app.get("/data/retrain", response_model=DatabaseResponse)
+def retrain():
     """
     Rebuild the vector database using the Embedder class with custom chunk parameters
     """
     try:
         print(f"🔄 Rebuilding database using Embedder class...")
-        print(f"✂️ Chunk size: {request.chunk_size}")
-        print(f"🔄 Chunk overlap: {request.chunk_overlap}")
         
-        # Create embedder instance and retrain database with custom parameters
-        embedder_instance = Embedder()
-        embedder_instance.retrain(
-            chunk_size=request.chunk_size,
-            chunk_overlap=request.chunk_overlap
-        )
+        # Use the global embedder instance and retrain database with custom parameters
+        embedder_instance.retrain()
         
         # Get database info
         info = embedder_instance.get_database_info()
@@ -237,7 +232,7 @@ def retrain(request: RetrainRequest):
         print(f"📊 Database info: {info}")
         
         return DatabaseResponse(
-            message=f"Database rebuilt successfully with chunk_size={request.chunk_size}, chunk_overlap={request.chunk_overlap}. Total documents: {info.get('total_documents', 0)}",
+            message=f"Database rebuilt successfully. Total documents: {info.get('total_documents', 0)}",
             success=True
         )
         
@@ -252,7 +247,6 @@ def retrain(request: RetrainRequest):
 def get_database_info():
     """Get information about the current vector database."""
     try:
-        embedder_instance = Embedder()
         info = embedder_instance.get_database_info()
         return info
     except Exception as e:

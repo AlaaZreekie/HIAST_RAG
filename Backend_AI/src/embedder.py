@@ -4,6 +4,8 @@ from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
+from src.models_configuration import get_llm, get_llm_embedder # Import your functions
+
 # REMOVE: from src.models_configuration import get_llm, get_llm_embedder
 
 load_dotenv()
@@ -16,27 +18,20 @@ class Embedder:
             raise ValueError("GOOGLE_API_KEY not found in environment variables.")
         
         # Initialize embedding model
-        self.embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001", 
-            google_api_key=self.google_api_key
-        )
+        self.embeddings = get_llm_embedder()
         
         # Initialize LLM using the centralized configuration
         temperature = 0.5
         google_api_key = os.getenv("GOOGLE_API_KEY")
         if not google_api_key:
             raise ValueError("GOOGLE_API_KEY not found in environment variables.")
-        self.llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-pro",
-            temperature=temperature,
-            google_api_key=google_api_key
-        )
+        self.llm = get_llm()
         # Default settings
-        self.chunk_size = 1000
+        self.chunk_size = self.analyze_chunk_analytics()
         self.chunk_overlap = 200
         self.persist_directory = "chroma_db"
     
-    def load_data(self, filepath="data_distinct.txt"):
+    def load_data(self, filepath="scraped_data.json"):
         """Load data from a text file."""
         print(f"📄 Loading data from: {filepath}")
         loader = TextLoader(filepath, encoding="utf-8")
@@ -134,6 +129,12 @@ class Embedder:
         else:
             data = self.load_data(filepath)
         
+        if(data):
+            chunk_size = self.analyze_chunk_analytics()
+            print(f"   📏 =================Chunk size: {chunk_size} characters")
+        else:
+            print("❌ No data to retrain")
+            return None
         # Chunk data
         docs = self.chunk_data(data, chunk_size, chunk_overlap)
         print(f"✅ Created {len(docs)} chunks")
@@ -164,26 +165,113 @@ class Embedder:
                 "status": "error",
                 "error": str(e)
             }
-
-# Create a global instance for backward compatibility
-embedder = Embedder()
-
-# Expose the main components for backward compatibility
-embeddings = embedder.embeddings
-llm = embedder.llm
-
-# Expose the main functions for backward compatibility
-def load_data(filepath="data_distinct.txt"):
-    return embedder.load_data(filepath)
-
-def chunk_data(data, chunk_size=1000, chunk_overlap=200):
-    return embedder.chunk_data(data, chunk_size, chunk_overlap)
-
-def create_and_save_embeddings(docs, persist_directory="chroma_db"):
-    return embedder.create_and_save_embeddings(docs, persist_directory)
-
-def load_vectorstore(persist_directory="chroma_db"):
-    return embedder.load_vectorstore(persist_directory)
-
-def retrieve_chunks(query, k=10, persist_directory="chroma_db"):
-    return embedder.retrieve_chunks(query, k, persist_directory)
+    
+    def analyze_chunk_analytics(self, filepath="scraped_data.json"):
+        """
+        Analyze content statistics from a JSON data file.
+        
+        Args:
+            filepath: Path to the JSON file containing scraped data
+            
+        Returns:
+            Dictionary containing analytics including median content length
+        """
+        print(f"📊 Analyzing content analytics from: {filepath}")
+        
+        try:
+            import json
+            import statistics
+            from collections import defaultdict
+            
+            with open(filepath, 'r', encoding='utf-8') as f:
+                json_data = json.load(f)
+            
+            if 'scraped_content' not in json_data:
+                print("❌ No 'scraped_content' key found in JSON file")
+                return None
+            
+            content_lengths = []
+            successful_scrapes = 0
+            failed_scrapes = 0
+            total_content_length = 0
+            
+            for item in json_data['scraped_content']:
+                if 'content' in item and item['content_length']:
+                    content_length = item['content_length']
+                    content_lengths.append(content_length)
+                    total_content_length += content_length
+                    successful_scrapes += 1
+                else:
+                    failed_scrapes += 1
+            
+            if not content_lengths:
+                print("❌ No valid content found in the JSON file")
+                return None
+            
+            # Calculate statistics
+            analytics = {
+                "file_path": filepath,
+                "total_items": len(json_data['scraped_content']),
+                "successful_scrapes": successful_scrapes,
+                "failed_scrapes": failed_scrapes,
+                "success_rate": (successful_scrapes / len(json_data['scraped_content'])) * 100,
+                "content_length_stats": {
+                    "median": statistics.median(content_lengths),
+                    "mean": statistics.mean(content_lengths),
+                    "min": min(content_lengths),
+                    "max": max(content_lengths),
+                    "total_characters": total_content_length,
+                    "average_per_item": total_content_length / successful_scrapes if successful_scrapes > 0 else 0
+                },
+                "content_length_distribution": {
+                    "short_content": len([l for l in content_lengths if l < 1000]),
+                    "medium_content": len([l for l in content_lengths if 1000 <= l < 5000]),
+                    "long_content": len([l for l in content_lengths if l >= 5000])
+                }
+            }
+            
+            print(f"✅ Analytics calculated successfully!")
+            print(f"   📈 Median content length: {analytics['content_length_stats']['median']} characters")
+            print(f"   📊 Mean content length: {analytics['content_length_stats']['mean']:.2f} characters")
+            print(f"   📋 Success rate: {analytics['success_rate']:.1f}%")
+            
+            print(f"   📁 File: {analytics['file_path']}")
+            print(f"   📊 Total Items: {analytics['total_items']}")
+            print(f"   ✅ Successful Scrapes: {analytics['successful_scrapes']}")
+            print(f"   ❌ Failed Scrapes: {analytics['failed_scrapes']}")
+            print(f"   📈 Success Rate: {analytics['success_rate']:.1f}%")
+                    
+            stats = analytics['content_length_stats']
+            print(f"\n📏 Content Length Statistics:")
+            print(f"   📊 Median: {stats['median']:,} characters")
+            print(f"   📈 Mean: {stats['mean']:,.2f} characters")
+            print(f"   📉 Min: {stats['min']:,} characters")
+            print(f"   📈 Max: {stats['max']:,} characters")
+            print(f"   📊 Total Characters: {stats['total_characters']:,}")
+            print(f"   📊 Average per Item: {stats['average_per_item']:,.2f}")
+                    
+            dist = analytics['content_length_distribution']
+            print(f"\n📊 Content Distribution:")
+            print(f"   📝 Short (< 1K): {dist['short_content']} items")
+            print(f"   📄 Medium (1K-5K): {dist['medium_content']} items")
+            print(f"   📚 Long (≥ 5K): {dist['long_content']} items")
+            chunk_size = (2*analytics['content_length_stats']['median']*analytics['content_length_stats']['min'])/(analytics['content_length_stats']['median']+analytics['content_length_stats']['min'])
+            # Round chunk size to the nearest hundred
+            chunk_size = round(chunk_size / 100) * 100
+            # Validate chunk size bounds
+            if chunk_size < 1500:
+                chunk_size = 1500
+            elif chunk_size > 4000:
+                chunk_size = 4000
+            print(f"   📏 =================Chunk size: {chunk_size} characters")
+            return chunk_size
+            
+        except FileNotFoundError:
+            print(f"❌ File not found: {filepath}")
+            return None
+        except json.JSONDecodeError as e:
+            print(f"❌ Invalid JSON format: {e}")
+            return None
+        except Exception as e:
+            print(f"❌ Error analyzing content: {e}")
+            return None
