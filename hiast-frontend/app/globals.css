@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: hsl(216 69% 33%);
+  --color-background: hsl(0 0 100);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(32 95% 44%);
+  --color-accent-foreground: hsl(215 25% 27%);
+  --color-foreground: hsl(215 25% 27%);
+  --color-secondary: hsl(32 95% 66%);
+  --color-primary-glow: hsl(216 69% 45%);
+}
+
+.bg-gradient-primary {
+  background-image: linear-gradient(135deg, hsl(216 69% 33%), hsl(216 69% 45%));
+}
+
+.bg-gradient-primary-reverse {
+  background-image: linear-gradient(135deg, hsl(216 69% 45%), hsl(216 69% 33%));
+}
+
+.bg-gradient-hero {
+  background-image: linear-gradient(135deg, hsl(216 69% 33%), hsl(216 69% 28%));
+}
