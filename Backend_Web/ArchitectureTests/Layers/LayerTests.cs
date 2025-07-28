@@ -15,7 +15,7 @@ namespace ArchitectureTests.Layers
         {
             TestResult result = Types.InAssembly(DomainAssembly)
                 .Should()
-                .NotHaveDependencyOn("Application")
+                .NotHaveDependencyOn(ApplicationAssembly.GetName().Name)
                 .GetResult();
 
             result.IsSuccessful.ShouldBeTrue();
