@@ -11,5 +11,5 @@ namespace Application.Feature.Slides.Command.Delete
     /// Command to delete a Slider and its associated Media.
     /// Returns the file path for physical deletion.
     /// </summary>
-    public record DeleteSliderCommand(Guid Id) : IRequest<Guid?>;
+    public record DeleteSliderCommand(Guid Id, bool save = true) : IRequest<Guid?>;
 }

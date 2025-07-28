@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Books.Command.Delete
 {
-    public record DeleteBookCommand(Guid Id) : IRequest<(string? coverPath, bool isCoverSafeToDelete, string? filePath, bool isFileSafeToDelete)>;
-
+    public record DeleteBookCommand(Guid Id, bool save = true) : IRequest<(string? coverPath, bool isCoverSafeToDelete, string? filePath, bool isFileSafeToDelete)>;
 }

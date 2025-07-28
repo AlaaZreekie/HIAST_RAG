@@ -15,7 +15,8 @@ namespace Application.Feature.Medias.Command.Create
         public async Task<Guid> Handle(CreateMediaCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Media>().InsertAsync(request.Media);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Media.Id;
         }
     }

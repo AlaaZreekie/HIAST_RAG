@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Slides.Command.Create
 {
-    public record CreateSliderCommand(Slider Slider) : IRequest<Guid>;
+    public record CreateSliderCommand(Slider Slider, bool Save = true) : IRequest<Guid>;
 }

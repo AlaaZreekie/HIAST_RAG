@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Pages.Command.Create
 {
-    public record CreatePageCommand(Page Page) : IRequest<Guid>;
+    public record CreatePageCommand(Page Page, bool Save = true) : IRequest<Guid>;
 }

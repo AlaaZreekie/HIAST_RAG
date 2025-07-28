@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.MediaCategories.Command.Create
 {
-    public record CreateMediaCategoryCommand(MediaCategory Category) : IRequest<Guid>;
+    public record CreateMediaCategoryCommand(MediaCategory Category, bool Save = true) : IRequest<Guid>;
 
 }

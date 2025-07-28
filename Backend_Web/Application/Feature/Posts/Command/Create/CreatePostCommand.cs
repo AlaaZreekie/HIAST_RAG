@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Posts.Command.Create
 {
-    public record CreatePostCommand(Post Post) : IRequest<Guid>;
+    public record CreatePostCommand(Post Post, bool Save = true) : IRequest<Guid>;
 }

@@ -23,7 +23,8 @@ namespace Application.Feature.Medias.Command.Delete
             
             var filePathToDelete = media.FilePath;
             _unitOfWork.Repository<Media>().Remove(media);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return filePathToDelete;
         }
     }

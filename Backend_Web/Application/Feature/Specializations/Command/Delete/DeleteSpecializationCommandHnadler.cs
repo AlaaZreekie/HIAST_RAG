@@ -25,7 +25,8 @@ namespace Application.Feature.Specializations.Command.Delete
                 throw new KeyNotFoundException("Specialization not found.");
 
             _unitOfWork.Repository<Specialization>().Remove(specializationToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

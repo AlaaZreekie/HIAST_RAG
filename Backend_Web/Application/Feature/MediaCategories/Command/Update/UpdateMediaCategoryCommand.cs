@@ -13,6 +13,7 @@ namespace Application.Feature.MediaCategories.Command.Update
     {
         public Guid Id { get; set; }
         public IList<UpdateMediaCategoryTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 
 }

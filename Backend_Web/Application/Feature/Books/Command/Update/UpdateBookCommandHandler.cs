@@ -44,17 +44,18 @@ namespace Application.Feature.Books.Command.Update
                     var existingTranslation = book.Translations.FirstOrDefault(t => t.Id == transUpdate.Id);
                     if (existingTranslation != null)
                     {
-                        if (!string.IsNullOrWhiteSpace(transUpdate.Title) && existingTranslation.Title.Trim().ToLower() != transUpdate.Title.Trim().ToLower())
+                        if (!string.IsNullOrWhiteSpace(transUpdate.Title) && existingTranslation.Title != transUpdate.Title)
                             existingTranslation.Title = transUpdate.Title;
-
-                        if (transUpdate.Description != null && existingTranslation.Description.Trim().ToLower() != transUpdate.Description.Trim().ToLower())
+                            
+                        if (!string.IsNullOrWhiteSpace(transUpdate.Description) && existingTranslation.Description != transUpdate.Description)
                             existingTranslation.Description = transUpdate.Description;
                     }
                 }
             }
 
             _unitOfWork.Repository<Book>().Update(book);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

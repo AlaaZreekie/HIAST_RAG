@@ -33,8 +33,14 @@ class URLScraper:
                 # Clean URL by removing fragments
                 full_url = urlparse(full_url)._replace(fragment="").geturl()
 
-                # Ignore .zip and .pdf files
-                if full_url.lower().endswith('.zip') or full_url.lower().endswith('.pdf'):
+                # Ignore file extensions that don't contain text content
+                ignored_extensions = {
+                    '.zip', '.pdf', '.docx', '.doc', '.png', '.jpg', '.jpeg', 
+                    '.gif', '.bmp', '.tiff', '.ico', '.webp', '.svg', '.eps', 
+                    '.psd', '.ai', '.ps', '.xlsx', '.xls', '.ppt', '.pptx',
+                    '.mp3', '.mp4', '.avi', '.mov', '.wmv', '.flv', '.mkv'
+                }
+                if any(full_url.lower().endswith(ext) for ext in ignored_extensions):
                     continue
 
                 # Add link if it's on the same domain and not seen before
@@ -136,11 +142,11 @@ class URLScraper:
         for url in all_urls:
             content = self.extract_text_from_url(url)
             if content:
-                scraped_results.append({"url": url, "content": content})
+                scraped_results.append({"url": url, "content": content, "content_length": len(content)})
                 successful_scrapes += 1
             else:
                 failed_scrapes += 1
-            time.sleep(0.1) # Be respectful
+            time.sleep(0.01) # Be respectful
 
         print(f"\n✅ Scraping complete. Success: {successful_scrapes}, Failed: {failed_scrapes}")
 

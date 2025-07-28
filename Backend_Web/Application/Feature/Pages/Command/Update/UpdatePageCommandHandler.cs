@@ -54,7 +54,8 @@ namespace Application.Feature.Pages.Command.Update
             }
 
             _unitOfWork.Repository<Page>().Update(page);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

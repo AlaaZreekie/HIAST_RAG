@@ -22,7 +22,8 @@ namespace Application.Feature.Pages.Command.Delete
                 throw new KeyNotFoundException("Page not found.");
             
             _unitOfWork.Repository<Page>().Remove(page);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);            
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);            
         }
     }
 }

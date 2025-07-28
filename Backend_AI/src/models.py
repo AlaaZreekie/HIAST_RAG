@@ -13,13 +13,12 @@ class DatabaseResponse(BaseModel):
     success: bool
 
 class RetrainRequest(BaseModel):
-    chunk_size: int = Field(1200, gt=0, le=10000, description="Size of text chunks (1-10000)")
-    chunk_overlap: int = Field(200, ge=0, le=5000, description="Overlap between chunks (0-5000)")
+    pass
 
 class URLScrapeRequest(BaseModel):
     url: str
     output_file: str = "scraped_data.json"
-    max_depth: int = Field(3, lt=5, description="Maximum crawl depth (must be less than 5)")
+    max_depth: int = Field(3, lt=100000, description="Maximum crawl depth (must be less than 5)")
 
 class URLScrapeResponse(BaseModel):
     message: str

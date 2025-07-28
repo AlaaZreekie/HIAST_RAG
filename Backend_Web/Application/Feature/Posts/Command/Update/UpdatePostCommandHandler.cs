@@ -37,15 +37,15 @@ namespace Application.Feature.Posts.Command.Update
                     {
                         if (!string.IsNullOrWhiteSpace(transUpdate.Title) && existingTranslation.Title.Trim().ToLower() != transUpdate.Title.Trim().ToLower())
                             existingTranslation.Title = transUpdate.Title;
-
-                        if (transUpdate.Content != null && existingTranslation.Content.Trim().ToLower() != transUpdate.Content.Trim().ToLower())
+                        if (!string.IsNullOrWhiteSpace(transUpdate.Content) && existingTranslation.Content.Trim().ToLower() != transUpdate.Content.Trim().ToLower())
                             existingTranslation.Content = transUpdate.Content;
                     }
                 }
             }
 
             _unitOfWork.Repository<Post>().Update(post);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

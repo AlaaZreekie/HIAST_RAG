@@ -14,7 +14,8 @@ namespace Application.Feature.CourseGroups.Command.Create
         public async Task<Guid> Handle(CreateCourseGroupCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<CourseGroup>().InsertAsync(request.CourseGroup);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return request.CourseGroup.Id;
         }

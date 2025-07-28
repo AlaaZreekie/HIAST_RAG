@@ -12,5 +12,6 @@ namespace Application.Feature._1.Command.Delete
     {
         public Guid Id { get; set; }
         public IList<UpdateCategoryTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

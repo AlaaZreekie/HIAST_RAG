@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Locations.Command.Create
 {
-    public record CreateLocationCommand(Location Location) : IRequest<Guid>;
+    public record CreateLocationCommand(Location Location, bool Save = true) : IRequest<Guid>;
 }

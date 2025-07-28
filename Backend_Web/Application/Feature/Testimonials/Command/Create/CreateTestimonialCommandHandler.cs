@@ -13,7 +13,8 @@ namespace Application.Feature.Testimonials.Command.Create
         public async Task<Guid> Handle(CreateTestimonialCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Testimonial>().InsertAsync(request.Testimonial);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Testimonial.Id;
         }
     }

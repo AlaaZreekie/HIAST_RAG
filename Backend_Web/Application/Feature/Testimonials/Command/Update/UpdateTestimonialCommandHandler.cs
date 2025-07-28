@@ -45,7 +45,8 @@ namespace Application.Feature.Testimonials.Command.Update
             }
 
             _unitOfWork.Repository<Testimonial>().Update(testimonial);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

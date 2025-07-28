@@ -30,7 +30,8 @@ namespace Application.Feature.AdmissionResults.Command.Delete
             //{
             //    _unitOfWork.Repository<Media>().Remove(resultToDelete.Media);
             //}
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return  mediaId;
         }
     }

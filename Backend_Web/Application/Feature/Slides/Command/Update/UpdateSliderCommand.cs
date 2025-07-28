@@ -13,5 +13,6 @@ namespace Application.Feature.Slides.Command.Update
         public Guid Id { get; set; }
         public string? LinkURL { get; set; }
         public IList<UpdateSliderTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

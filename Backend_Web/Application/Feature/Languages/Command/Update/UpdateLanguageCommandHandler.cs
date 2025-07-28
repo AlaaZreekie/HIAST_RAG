@@ -31,7 +31,8 @@ namespace Application.Feature.Prges.Command.Update
                languageToUpdate.Name = request.Name.Trim();
             
             _unitOfWork.Repository<Language>().Update(languageToUpdate);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

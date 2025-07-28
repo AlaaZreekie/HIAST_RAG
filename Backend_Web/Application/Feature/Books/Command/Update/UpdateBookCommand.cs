@@ -17,5 +17,6 @@ namespace Application.Feature.Books.Command.Update
         public Guid? CoverImageMediaId { get; set; }
         public Guid? FileMediaId { get; set; }
         public IList<UpdateBookTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

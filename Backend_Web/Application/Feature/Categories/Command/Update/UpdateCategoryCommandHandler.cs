@@ -41,7 +41,8 @@ namespace Application.Feature.Categories.Command.Update
             }
 
             _unitOfWork.Repository<Category>().Update(category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

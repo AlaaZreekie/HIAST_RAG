@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Feature\1 - Copy - Copy\**" />
+    <Compile Remove="Feature\PostCategorys\**" />
+    <EmbeddedResource Remove="Feature\1 - Copy - Copy\**" />
+    <EmbeddedResource Remove="Feature\PostCategorys\**" />
+    <None Remove="Feature\1 - Copy - Copy\**" />
+    <None Remove="Feature\PostCategorys\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
@@ -16,17 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Feature\1 - Copy - Copy\Command\Create\" />
-    <Folder Include="Feature\1 - Copy - Copy\Command\Delete\" />
-    <Folder Include="Feature\1 - Copy - Copy\Command\Update\" />
-    <Folder Include="Feature\1 - Copy - Copy\Query\" />
-    <Folder Include="Feature\PostCategorys\Command\Create\" />
-    <Folder Include="Feature\PostCategorys\Command\Delete\" />
-    <Folder Include="Feature\PostCategorys\Command\Update\" />
-    <Folder Include="Feature\PostCategorys\Query\" />
   </ItemGroup>
 
   <ItemGroup>

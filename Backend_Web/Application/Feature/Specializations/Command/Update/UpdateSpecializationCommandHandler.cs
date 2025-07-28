@@ -53,8 +53,9 @@ namespace Application.Feature.Specializations.Command.Update
                 }
             }
 
-            _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Specialization>().Update(specialization);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            _unitOfWork.Repository<Specialization>().Update(specialization);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

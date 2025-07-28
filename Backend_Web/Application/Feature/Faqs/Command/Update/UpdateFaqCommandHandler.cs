@@ -51,7 +51,8 @@ namespace Application.Feature.Faqs.Command.Update
             }
 
             _unitOfWork.Repository<Faq>().Update(faq);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

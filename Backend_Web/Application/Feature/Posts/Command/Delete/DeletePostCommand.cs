@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Posts.Command.Delete
 {
-    public record DeletePostCommand(Guid Id) : IRequest;
+    public record DeletePostCommand(Guid Id, bool save = true) : IRequest;
 }

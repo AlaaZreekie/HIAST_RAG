@@ -27,7 +27,8 @@ namespace Application.Feature.Medias.Command.Update
                 media.MediaCategoryId = request.MediaCategoryId;
 
             _unitOfWork.Repository<Media>().Update(media);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

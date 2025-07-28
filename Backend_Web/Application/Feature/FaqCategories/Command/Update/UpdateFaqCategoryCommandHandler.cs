@@ -43,7 +43,8 @@ namespace Application.Feature.FaqCategories.Command.Update
             }
 
             _unitOfWork.Repository<FaqCategory>().Update(faqCategory);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

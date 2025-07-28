@@ -14,6 +14,7 @@ namespace Application.Feature.Posts.Command.Update
         public DateTime? PublicationDate { get; set; }
         public Guid? CategoryId { get; set; }
         public IList<UpdatePostTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
     
 }

@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.TrainingCourses.Command.Delete
 {
-    public record DeleteTrainingCourseCommand(Guid Id) : IRequest;
+    public record DeleteTrainingCourseCommand(Guid Id, bool save = true) : IRequest;
 }

@@ -22,7 +22,8 @@ namespace Application.Feature.Curriculums.Command.Delete
                 throw new KeyNotFoundException("Curriculum not found.");
 
             _unitOfWork.Repository<Curriculum>().Remove(curriculum);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);            
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);            
         }
     }
 }

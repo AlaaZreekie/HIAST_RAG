@@ -10,5 +10,6 @@ namespace Application.Feature.Programs.Command.Delete
     public class DeleteProgramCommand : IRequest
     {
         public Guid Id { get; set; }
+        public bool save { get; set; } = true;
     }
 }

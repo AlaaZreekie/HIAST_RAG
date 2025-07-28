@@ -12,5 +12,6 @@ namespace Application.Feature.Pages.Command.Update
     {
         public Guid Id { get; set; }
         public IList<UpdatePageTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

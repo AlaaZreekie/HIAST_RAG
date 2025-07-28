@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Specializations.Command.Delete
 {
-    public record DeleteSpecializationCommand(Guid Id) : IRequest;
+    public record DeleteSpecializationCommand(Guid Id, bool save = true) : IRequest;
 }

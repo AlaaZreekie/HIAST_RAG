@@ -14,7 +14,8 @@ namespace Application.Feature.TrainingCourses.Command.Create
         public async Task<Guid> Handle(CreateTrainingCourseCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<TrainingCourse>().InsertAsync(request.Course);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Course.Id;
         }
     }

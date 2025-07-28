@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Testimonials.Command.Delete
 {
-    public record DeleteTestimonialCommand(Guid Id) : IRequest<MediaToDeleteDto>;
+    public record DeleteTestimonialCommand(Guid Id, bool save = true) : IRequest<MediaToDeleteDto>;
 }

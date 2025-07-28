@@ -11,5 +11,6 @@ namespace Application.Feature.Medias.Command.Update
     {
         public Guid Id { get; set; }
         public Guid MediaCategoryId { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

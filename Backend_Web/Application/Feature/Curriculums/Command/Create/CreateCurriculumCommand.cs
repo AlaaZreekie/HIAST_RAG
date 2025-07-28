@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Curriculums.Command.Create
 {
-    public record CreateCurriculumCommand(Curriculum Curriculum) : IRequest<Guid>;
+    public record CreateCurriculumCommand(Curriculum Curriculum, bool Save = true) : IRequest<Guid>;
 }

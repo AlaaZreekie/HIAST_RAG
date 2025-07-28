@@ -22,7 +22,8 @@ namespace Application.Feature.TrainingCourses.Command.Delete
                 throw new KeyNotFoundException("Training course not found.");
 
             _unitOfWork.Repository<TrainingCourse>().Remove(courseToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

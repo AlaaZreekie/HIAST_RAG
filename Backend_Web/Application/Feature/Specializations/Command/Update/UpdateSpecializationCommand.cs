@@ -16,5 +16,6 @@ namespace Application.Feature.Specializations.Command.Update
         public Guid? ProgramId { get; set; }
         public Guid? LocationId { get; set; }
         public IList<UpdateSpecializationTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

@@ -35,7 +35,8 @@ namespace Application.Feature.TrainingCourseCategories.Command.Update
             }
 
             _unitOfWork.Repository<TrainingCourseCategory>().Update(category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

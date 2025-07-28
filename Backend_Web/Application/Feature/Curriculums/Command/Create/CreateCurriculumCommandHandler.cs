@@ -14,7 +14,8 @@ namespace Application.Feature.Curriculums.Command.Create
         public async Task<Guid> Handle(CreateCurriculumCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Curriculum>().InsertAsync(request.Curriculum);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Curriculum.Id;
         }
     }

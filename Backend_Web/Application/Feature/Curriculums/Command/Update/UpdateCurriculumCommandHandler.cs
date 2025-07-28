@@ -37,7 +37,8 @@ namespace Application.Feature.Curriculums.Command.Update
                 curriculum.CourseId = request.CourseId.Value;
 
             _unitOfWork.Repository<Curriculum>().Update(curriculum);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

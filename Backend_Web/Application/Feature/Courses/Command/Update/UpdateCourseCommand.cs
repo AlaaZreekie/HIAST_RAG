@@ -17,5 +17,6 @@ namespace Application.Feature.Courses.Command.Update
         public int? PracticalHours { get; set; }
         public Guid? CourseGroupId { get; set; }
         public IList<UpdateCourseTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

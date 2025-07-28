@@ -37,7 +37,8 @@ namespace Application.Feature.Admissions.Command.Update
                 admission.LocationId = request.LocationId.Value;
 
             _unitOfWork.Repository<Admission>().Update(admission);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

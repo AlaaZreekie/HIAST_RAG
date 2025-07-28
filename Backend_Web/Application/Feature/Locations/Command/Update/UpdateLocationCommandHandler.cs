@@ -48,7 +48,8 @@ namespace Application.Feature.Locations.Command.Update
             }
 
             _unitOfWork.Repository<Location>().Update(location);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

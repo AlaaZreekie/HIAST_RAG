@@ -30,7 +30,8 @@ namespace Application.Feature.Testimonials.Command.Delete
 
             var photoMediaId = testimonialToDelete.MediaId;
             _unitOfWork.Repository<Testimonial>().Remove(testimonialToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return new MediaToDeleteDto() { MediaId = photoMediaId, FilePath = "" , IsSafeToDelete = isPhotoSafeToDelete};
         }

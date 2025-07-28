@@ -24,7 +24,8 @@ namespace Application.Feature.Programs.Command.Delete
                 throw new KeyNotFoundException("Program not found.");
             
             _unitOfWork.Repository<Program>().Remove(programToDelete);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

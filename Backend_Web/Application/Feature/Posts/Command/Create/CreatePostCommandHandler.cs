@@ -14,7 +14,8 @@ namespace Application.Feature.Posts.Command.Create
         public async Task<Guid> Handle(CreatePostCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Post>().InsertAsync(request.Post);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Post.Id;
         }
     }
