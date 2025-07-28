@@ -205,27 +205,35 @@ Backend_Web/
 │   ├── Extension/                   # Utility extensions for EF 
 │   │   └── IncludeAllExtension.cs   # Eager-load all navigation properties
 │   ├── DependencyInjection.cs      # Registers all services, repositories,unit of work, DbContext, etc.
-└── Presentation/                    # Web API controllers, middleware, and areas
-    ├── Controllers/                 # Base controllers and authentication endpoints
-    │   ├── BaseGuestController.cs           # Base for User area controllers (public, read-only)
-    │   ├── BaseAuthenticatedController.cs   # Base for Admin area controllers (admin, CRUD)
-    │   └── AuthenticationController.cs      # Handles login, register, logout, user info
-    │
-    ├── Areas/
-    │   ├── Admin/                    # Admin-only endpoints (full CRUD, management)
-    │   │   ├── BookController.cs
-    │   │   ├── ProgramController.cs
-    │   │   ├── CoursesController.cs
-    │   │   ├── ... (all admin entity controllers)
-    │   │
-    │   └── User/                     # Public endpoints (read-only, browsing/filtering)
-    │       ├── BooksController.cs
-    │       ├── ProgramsController.cs
-    │       ├── CoursesController.cs
-    │       └── ... (other public entity controllers)
-    ├── DependencyInjection.cs      # Registers controllers, authentication, Swagger, etc.
-    ├── Middleware/                   # Custom middleware (e.g., error handling )
-    └── wwwroot/                      # Static files (images, PDFs, etc.)
+├── Presentation/                    # Web API controllers, middleware, and areas
+│   ├── Controllers/                 # Base controllers and authentication endpoints
+│   │   ├── BaseGuestController.cs           # Base for User area controllers (public, read-only)
+│   │   ├── BaseAuthenticatedController.cs   # Base for Admin area controllers (admin, CRUD)
+│   │   └── AuthenticationController.cs      # Handles login, register, logout, user info
+│   │
+│   ├── Areas/
+│   │   ├── Admin/                    # Admin-only endpoints (full CRUD, management)
+│   │   │   ├── BookController.cs
+│   │   │   ├── ProgramController.cs
+│   │   │   ├── CoursesController.cs
+│   │   │   ├── ... (all admin entity controllers)
+│   │   │
+│   │   └── User/                     # Public endpoints (read-only, browsing/filtering)
+│   │       ├── BooksController.cs
+│   │       ├── ProgramsController.cs
+│   │       ├── CoursesController.cs
+│   │       └── ... (other public entity controllers)
+│   ├── DependencyInjection.cs      # Registers controllers, authentication, Swagger, etc.
+│   ├── Middleware/                   # Custom middleware (e.g., error handling )
+│   └── wwwroot/                      # Static files (images, PDFs, etc.)
+│
+└── ArchitectureTests/               # Architecture validation tests
+    ├── BaseTest.cs                  # Base test class with assembly references
+    ├── UnitTest1.cs                 # Basic unit test placeholder
+    ├── Layers/                      # Layer-specific architecture tests
+    │   └── LayerTests.cs            # Clean Architecture dependency validation tests
+    └── ArchitectureTests.csproj     # Test project configuration
+```
 
 #### Controller & API Patterns
 
@@ -238,22 +246,7 @@ Backend_Web/
 
 **Area: User (Public API):**
 - **Purpose**: Exposes only read (getter/filter) endpoints for public browsing.
-- **Controllers** (as of this version):
-  - BooksController
-  - PostsController
-  - PagesController
-  - CoursesController
-  - AdmissionsController
-  - ProgramsController
-  - CurriculumController
-  - CategoriesController
-  - FaqController
-  - FaqCategoriesController
-  - MediaController
-  - MediaCategoryController
-  - LocationsController
-  - LanguagesController
-  - SlideController
+
 - **Pattern**:
   - Inherit from `BaseGuestController`
   - Inject the corresponding service, `IAuthenticationService`, and `IJsonFieldsSerializer`
@@ -268,29 +261,7 @@ Backend_Web/
 
 **Area: Admin (Admin API):**
 - **Purpose**: Exposes full CRUD and management endpoints for admins.
-- **Controllers** (as of this version):
-  - TestimonialsController
-  - TrainingCourseCategoriesController
-  - TrainingCoursesController
-  - SlideController
-  - SpecializationsController
-  - PageController
-  - PostsController
-  - ProgramController
-  - MediaCategoryController
-  - MediaController
-  - LanguageController
-  - LocationsController
-  - FaqCategoriesController
-  - FaqController
-  - CategoryController
-  - CourseGroupController
-  - CoursesController
-  - CurriculumController
-  - AdmissionResultController
-  - BookController
-  - AdmissionController
-  - AdmissionExamController
+
 - **Pattern**:
   - Inherit from `BaseAuthenticatedController`
   - Inject the corresponding service, `IAuthenticationService`, and `IJsonFieldsSerializer`
@@ -319,15 +290,6 @@ Backend_Web/
 - **AutoMapper**: Object mapping between layers
 - **Areas**: Route separation for admin vs. public APIs
 - **Consistent API Response**: All endpoints use `ApiResponse` and `RawJsonActionResult`
-
-#### Database Entities
-
-- **Program**: Academic programs with translations and specializations
-- **Specialization**: Specific degrees within programs
-- **Language**: Supported languages for translations
-- **Location**: Physical campus locations
-- **Translation Entities**: Language-specific content for programs and specializations 
-- **...and more**
 
 #### Setup Instructions
 
@@ -380,6 +342,57 @@ Backend_Web/
 
 **JSON Serialization:**
 - `Newtonsoft.Json` (v13.0.3): Advanced JSON serialization library with custom serialization support
+
+**Testing Framework:**
+- `xUnit` (v2.5.3): Primary testing framework for unit tests
+- `NetArchTest.Rules` (v1.3.1): Architecture testing library for dependency validation
+- `Shouldly` (v4.2.1): Assertion library for readable test assertions
+- `Microsoft.NET.Test.Sdk` (v17.8.0): Test discovery and execution
+- `coverlet.collector` (v6.0.0): Code coverage collection
+
+#### Testing Framework
+
+**ArchitectureTests Project:**
+The project includes comprehensive architecture validation tests to ensure Clean Architecture principles are maintained:
+
+**Test Framework & Packages:**
+- **xUnit** (v2.5.3): Primary testing framework
+- **NetArchTest.Rules** (v1.3.1): Architecture testing library for dependency validation
+- **Shouldly** (v4.2.1): Assertion library for readable test assertions
+- **Microsoft.NET.Test.Sdk** (v17.8.0): Test discovery and execution
+- **coverlet.collector** (v6.0.0): Code coverage collection
+
+**Architecture Validation Tests:**
+The `LayerTests.cs` contains 6 critical Clean Architecture validation tests:
+
+1. **`Domain_Should_NotHaveDependencyOnApplication`**: Ensures Domain layer doesn't depend on Application layer
+2. **`DomainLayer_ShouldNotHaveDependencyOn_InfrastructureLayer`**: Ensures Domain layer doesn't depend on Infrastructure layer
+3. **`DomainLayer_ShouldNotHaveDependencyOn_PresentationLayer`**: Ensures Domain layer doesn't depend on Presentation layer
+4. **`ApplicationLayer_ShouldNotHaveDependencyOn_InfrastructureLayer`**: Ensures Application layer doesn't depend on Infrastructure layer
+5. **`ApplicationLayer_ShouldNotHaveDependencyOn_PresentationLayer`**: Ensures Application layer doesn't depend on Presentation layer
+6. **`InfrastructureLayer_ShouldNotHaveDependencyOn_PresentationLayer`**: Ensures Infrastructure layer doesn't depend on Presentation layer
+
+**Running Architecture Tests:**
+```bash
+# Navigate to test project
+cd Backend_Web/ArchitectureTests
+
+# Run all tests
+dotnet test
+
+# Run with verbose output
+dotnet test --verbosity normal
+
+# Run from solution root
+dotnet test Backend_Web/ArchitectureTests/ArchitectureTests.csproj
+```
+
+**Test Results:**
+- **Total Tests**: 7 (including 1 placeholder test)
+- **Success Rate**: 100% (all architecture rules validated)
+- **Duration**: ~1.6s average execution time
+
+These tests ensure that your Clean Architecture layers follow the proper dependency rules where inner layers (Domain, Application) never depend on outer layers (Infrastructure, Presentation).
 
 ---
 

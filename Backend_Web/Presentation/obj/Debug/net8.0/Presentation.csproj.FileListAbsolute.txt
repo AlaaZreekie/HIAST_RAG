@@ -570,7 +570,6 @@ C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debu
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Presentation.props
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Presentation.props
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\Presenta.BC777DBE.Up2Date
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\ref\Presentation.dll
