@@ -12,6 +12,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\Application\Application.csproj", "{9F100906-64CF-4355-BB49-0A84AFD313C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureTests", "..\ArchitectureTests\ArchitectureTests.csproj", "{2BAC6146-05F2-4A0D-B8DF-895DC1D2E4AB}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +40,7 @@ Global
 		{2BAC6146-05F2-4A0D-B8DF-895DC1D2E4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BAC6146-05F2-4A0D-B8DF-895DC1D2E4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BAC6146-05F2-4A0D-B8DF-895DC1D2E4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
