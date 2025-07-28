@@ -21,7 +21,7 @@ namespace Application.Feature.CourseGroups.Command.Delete
                 throw new KeyNotFoundException("CourseGroup not found");
             
             _unitOfWork.Repository<CourseGroup>().Remove(courseGroup);
-            if(request.save)
+            if(request.Save)
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
             
         }

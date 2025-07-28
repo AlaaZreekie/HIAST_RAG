@@ -7,6 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Guest\**" />
+    <Compile Remove="Areas\User\Data\**" />
+    <Compile Remove="Areas\User\Models\**" />
+    <Compile Remove="Areas\User\Views\**" />
+    <Content Remove="Areas\Guest\**" />
+    <Content Remove="Areas\User\Data\**" />
+    <Content Remove="Areas\User\Models\**" />
+    <Content Remove="Areas\User\Views\**" />
+    <EmbeddedResource Remove="Areas\Guest\**" />
+    <EmbeddedResource Remove="Areas\User\Data\**" />
+    <EmbeddedResource Remove="Areas\User\Models\**" />
+    <EmbeddedResource Remove="Areas\User\Views\**" />
+    <None Remove="Areas\Guest\**" />
+    <None Remove="Areas\User\Data\**" />
+    <None Remove="Areas\User\Models\**" />
+    <None Remove="Areas\User\Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.18" />
@@ -32,14 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Guest\Controllers\" />
-    <Folder Include="Areas\Guest\Data\" />
-    <Folder Include="Areas\Guest\Models\" />
-    <Folder Include="Areas\Guest\Views\" />
     <Folder Include="Areas\User\Controllers\" />
-    <Folder Include="Areas\User\Data\" />
-    <Folder Include="Areas\User\Models\" />
-    <Folder Include="Areas\User\Views\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
