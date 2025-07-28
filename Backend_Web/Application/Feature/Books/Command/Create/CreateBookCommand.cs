@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Books.Command.Create
 {
-    public record CreateBookCommand(Book Book) : IRequest<Guid>;
+    public record CreateBookCommand(Book Book, bool Save = true) : IRequest<Guid>;
 }

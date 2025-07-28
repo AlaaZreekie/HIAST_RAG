@@ -21,7 +21,8 @@ namespace Application.Feature.Locations.Command.Create
         public async Task<Guid> Handle(CreateLocationCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Location>().InsertAsync(request.Location);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Location.Id;
         }
     }

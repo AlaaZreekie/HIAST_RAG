@@ -30,15 +30,15 @@ namespace Application.Feature.MediaCategories.Command.Update
                     if (existingTranslation != null)
                     {
                         if (!string.IsNullOrWhiteSpace(transUpdate.Name) && existingTranslation.Name != transUpdate.Name)
-                        {
                             existingTranslation.Name = transUpdate.Name;
-                        }
+                        
                     }
                 }
             }
 
             _unitOfWork.Repository<MediaCategory>().Update(category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

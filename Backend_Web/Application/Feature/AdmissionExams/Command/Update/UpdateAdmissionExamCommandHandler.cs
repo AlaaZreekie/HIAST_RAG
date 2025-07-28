@@ -42,7 +42,8 @@ namespace Application.Feature.AdmissionExams.Command.Update
             }
 
             _unitOfWork.Repository<AdmissionExam>().Update(exam);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

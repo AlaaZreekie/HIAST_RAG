@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature._1.Command.Create
 {
-    public record CreateCategoryCommand(Category Category) : IRequest<Guid>;
+    public record CreateCategoryCommand(Category Category, bool Save = true) : IRequest<Guid>;
 }

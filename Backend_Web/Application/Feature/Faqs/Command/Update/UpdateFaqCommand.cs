@@ -9,5 +9,6 @@ namespace Application.Feature.Faqs.Command.Update
         public int? DisplayOrder { get; set; }
         public Guid? FaqCategoryId { get; set; }
         public IList<UpdateFaqTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

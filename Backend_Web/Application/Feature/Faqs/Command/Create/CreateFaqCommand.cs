@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Faqs.Command.Create
 {
-    public record CreateFaqCommand(Faq Faq) : IRequest<Guid>;
+    public record CreateFaqCommand(Faq Faq, bool Save = true) : IRequest<Guid>;
 }

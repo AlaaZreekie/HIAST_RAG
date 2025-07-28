@@ -14,7 +14,8 @@ namespace Application.Feature.Categories.Command.Create
         public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Category>().InsertAsync(request.Category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Category.Id;
         }
     }

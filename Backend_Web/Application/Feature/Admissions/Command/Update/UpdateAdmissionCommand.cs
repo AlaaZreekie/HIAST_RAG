@@ -18,5 +18,6 @@ namespace Application.Feature.Admissions.Command.Update
         public DateTime? Deadline { get; set; }
         public Guid? ProgramId { get; set; }
         public Guid? LocationId { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

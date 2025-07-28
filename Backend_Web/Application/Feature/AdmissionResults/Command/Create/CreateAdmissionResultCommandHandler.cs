@@ -16,7 +16,8 @@ namespace Application.Feature.AdmissionResults.Command.Create
         public async Task<Guid> Handle(CreateAdmissionResultCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<AdmissionResult>().InsertAsync(request.AdmissionResult);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.AdmissionResult.Id;
         }
     }

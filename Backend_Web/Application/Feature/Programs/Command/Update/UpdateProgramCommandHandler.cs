@@ -49,7 +49,8 @@ namespace Application.Feature.Programs.Command.Update
             }
 
             _unitOfWork.Repository<Program>().Update(program);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

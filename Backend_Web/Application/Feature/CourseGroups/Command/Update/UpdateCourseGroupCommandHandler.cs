@@ -39,7 +39,8 @@ namespace Application.Feature.CourseGroups.Command.Update
             }
 
             _unitOfWork.Repository<CourseGroup>().Update(courseGroup);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

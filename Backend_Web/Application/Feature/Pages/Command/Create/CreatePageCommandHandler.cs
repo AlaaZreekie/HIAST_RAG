@@ -13,7 +13,8 @@ namespace Application.Feature.Pages.Command.Create
         public async Task<Guid> Handle(CreatePageCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Page>().InsertAsync(request.Page);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Page.Id;
         }
     }

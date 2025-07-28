@@ -11,5 +11,5 @@ namespace Application.Feature.AdmissionResults.Command.Create
     /// <summary>
     /// Command to create a new AdmissionResult entity.
     /// </summary>
-    public record CreateAdmissionResultCommand(AdmissionResult AdmissionResult) : IRequest<Guid>;
+    public record CreateAdmissionResultCommand(AdmissionResult AdmissionResult, bool Save = true) : IRequest<Guid>;
 }

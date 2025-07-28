@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Medias.Command.Create
 {
-    public record CreateMediaCommand(Media Media) : IRequest<Guid>;
+    public record CreateMediaCommand(Media Media, bool Save = true) : IRequest<Guid>;
 }

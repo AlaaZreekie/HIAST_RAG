@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Specializations.Command.Create
 {
-    public record CreateSpecializationCommand(Specialization Specialization) : IRequest<Guid>;
+    public record CreateSpecializationCommand(Specialization Specialization, bool Save = true) : IRequest<Guid>;
 }

@@ -34,7 +34,8 @@ namespace Application.Feature.Prges.Command.Create
             };
 
             await _unitOfWork.Repository<Language>().InsertAsync(newLanguage);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return newLanguage.Id;
         }

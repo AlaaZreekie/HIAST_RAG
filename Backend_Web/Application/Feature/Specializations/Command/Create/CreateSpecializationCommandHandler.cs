@@ -21,7 +21,8 @@ namespace Application.Feature.Specializations.Command.Create
         public async Task<Guid> Handle(CreateSpecializationCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Specialization>().InsertAsync(request.Specialization);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Specialization.Id;
         }
     }

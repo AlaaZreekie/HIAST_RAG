@@ -13,7 +13,8 @@ namespace Application.Feature.MediaCategories.Command.Create
         public async Task<Guid> Handle(CreateMediaCategoryCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Domain.Entity.ApplicationEntity.MediaCategory>().InsertAsync(request.Category);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Category.Id;
         }
     }

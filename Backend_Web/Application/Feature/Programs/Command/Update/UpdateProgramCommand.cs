@@ -13,5 +13,6 @@ namespace Application.Feature.Programs.Command.Update
         public Guid Id { get; set; }
         public string? Duration { get; set; }
         public IList<UpdateProgramTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

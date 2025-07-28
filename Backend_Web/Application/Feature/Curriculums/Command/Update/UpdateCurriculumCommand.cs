@@ -16,5 +16,6 @@ namespace Application.Feature.Curriculums.Command.Update
         public CourseTypeEnum? CourseType { get; set; }
         public Guid? SpecializationId { get; set; }
         public Guid? CourseId { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

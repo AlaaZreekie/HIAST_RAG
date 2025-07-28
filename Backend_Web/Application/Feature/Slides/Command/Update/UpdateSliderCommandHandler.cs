@@ -31,15 +31,14 @@ namespace Application.Feature.Sliders.Command.Update
                 foreach (var transUpdate in request.Translations)
                 {
                     var existingTranslation = slider.Translations.FirstOrDefault(t => t.Id == transUpdate.Id);
-                    if (existingTranslation != null)
-                    {
-                        existingTranslation.Title = transUpdate.Title;
-                    }
+                    if (existingTranslation != null)                    
+                        existingTranslation.Title = transUpdate.Title;                    
                 }
             }
 
             _unitOfWork.Repository<Slider>().Update(slider);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -13,7 +13,8 @@ namespace Application.Feature.Books.Command.Create
         public async Task<Guid> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<Domain.Entity.ApplicationEntity.Book>().InsertAsync(request.Book);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.Book.Id;
         }
     }

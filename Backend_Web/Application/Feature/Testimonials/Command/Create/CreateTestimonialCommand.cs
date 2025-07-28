@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Testimonials.Command.Create
 {
-    public record CreateTestimonialCommand(Testimonial Testimonial) : IRequest<Guid>;
+    public record CreateTestimonialCommand(Testimonial Testimonial, bool Save = true) : IRequest<Guid>;
 
 }

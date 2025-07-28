@@ -15,5 +15,6 @@ namespace Application.Feature.CourseGroups.Command.Update
         public Guid Id { get; set; }
         public CourseGroupCodeEnum? CourseGroupCode { get; set; }
         public IList<UpdateCourseGroupTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

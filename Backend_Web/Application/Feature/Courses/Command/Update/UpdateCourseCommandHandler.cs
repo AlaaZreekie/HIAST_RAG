@@ -46,15 +46,16 @@ namespace Application.Feature.Courses.Command.Update
                     {
                         if (!string.IsNullOrWhiteSpace(transUpdate.Name) && existingTranslation.Name != transUpdate.Name)
                             existingTranslation.Name = transUpdate.Name;
-
-                        if (transUpdate.Description != null && existingTranslation.Description != transUpdate.Description)
+                            
+                        if (!string.IsNullOrWhiteSpace(transUpdate.Description) && existingTranslation.Description != transUpdate.Description)
                             existingTranslation.Description = transUpdate.Description;
                     }
                 }
             }
 
             _unitOfWork.Repository<Course>().Update(course);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

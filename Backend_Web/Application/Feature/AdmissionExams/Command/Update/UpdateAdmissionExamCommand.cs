@@ -10,5 +10,6 @@ namespace Application.Feature.AdmissionExams.Command.Update
         public Guid Id { get; set; }
         public DateTime? ExamDateTime { get; set; }
         public IList<UpdateAdmissionExamTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

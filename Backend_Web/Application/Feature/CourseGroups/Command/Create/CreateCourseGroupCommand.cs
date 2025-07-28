@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.CourseGroups.Command.Create
 {
-    public record CreateCourseGroupCommand(CourseGroup CourseGroup) : IRequest<Guid>;
+    public record CreateCourseGroupCommand(CourseGroup CourseGroup, bool Save = true) : IRequest<Guid>;
 }

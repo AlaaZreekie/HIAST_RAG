@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Prges.Command.Create
 {
-    public record CreateLanguageCommand(LanguageCodeEnum Code, string Name) : IRequest<Guid>;
+    public record CreateLanguageCommand(LanguageCodeEnum Code, string Name, bool Save = true) : IRequest<Guid>;
 }

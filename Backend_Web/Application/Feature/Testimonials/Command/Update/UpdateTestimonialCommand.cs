@@ -15,5 +15,6 @@ namespace Application.Feature.Testimonials.Command.Update
         public int? GraduateYear { get; set; }
         public Guid? MediaId { get; set; }
         public IList<UpdateTestimonialTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

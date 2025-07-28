@@ -12,5 +12,6 @@ namespace Application.Feature.TrainingCourseCategories.Command.Update
     {
         public Guid Id { get; set; }
         public IList<UpdateTrainingCourseCategoryTranslationDto>? Translations { get; set; }
+        public bool Save { get; set; } = true;
     }
 }

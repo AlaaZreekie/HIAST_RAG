@@ -16,7 +16,8 @@ namespace Application.Feature.FaqCategories.Command.Create
         public async Task<Guid> Handle(CreateFaqCategoryCommand request, CancellationToken cancellationToken)
         {
             await _unitOfWork.Repository<FaqCategory>().InsertAsync(request.FaqCategory);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if(request.Save)
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             return request.FaqCategory.Id;
         }
     }

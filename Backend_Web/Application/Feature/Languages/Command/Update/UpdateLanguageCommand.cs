@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.Prges.Command.Update
 {
-    public record UpdateLanguageCommand(Guid Id, LanguageCodeEnum? Code, string? Name) : IRequest;
+    public record UpdateLanguageCommand(Guid Id, LanguageCodeEnum? Code, string? Name, bool Save = true) : IRequest;
 }
