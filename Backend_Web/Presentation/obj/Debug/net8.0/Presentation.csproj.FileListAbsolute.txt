@@ -573,3 +573,4 @@ C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debu
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\Presenta.BC777DBE.Up2Date
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\ref\Presentation.dll
+C:\Users\ASUS\source\repos\HIAST_RAG\ForthYear\Backend_Web\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

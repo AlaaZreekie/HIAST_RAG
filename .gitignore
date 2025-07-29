@@ -19,6 +19,21 @@ node_modules/
 # Ignore log files
 *.log
 
+# .NET build output and intermediate folders
+**/bin/
+**/obj/
+**/net8.0/
+**/bin/Debug/
+**/bin/Release/
+**/bin/Debug/net8.0/
+**/bin/Release/net8.0/
+**/obj/Debug/
+**/obj/Release/
+**/obj/Debug/net8.0/
+**/obj/Release/net8.0/
+**/bin/Debug/
+**/bin/Release/
+
 # Do NOT ignore subproject folders
 !/Backend_AI/
 !/Backend_Web/
