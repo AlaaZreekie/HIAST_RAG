@@ -55,6 +55,8 @@ namespace Infrastructure
             services.AddScoped<IAdmissionExamService, AdmissionExamService>();
             services.AddScoped<ITrainingCourseService, TrainingCourseService>();
             services.AddScoped<ITrainingCourseCategoryService, TrainingCourseCategoryService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
 
             return services;
         }

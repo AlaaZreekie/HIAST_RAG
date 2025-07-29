@@ -164,7 +164,7 @@ namespace Infrastructure.Migrations
                         .HasColumnName("file_media_id");
 
                     b.Property<string>("ISBN")
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("nvarchar(209)")
                         .HasColumnName("isbn");
 
                     b.Property<int>("PublicationYear")
@@ -1033,15 +1033,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("media_id");
 
-                    b.Property<Guid>("SpecializationId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("specialization_id");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MediaId");
-
-                    b.HasIndex("SpecializationId");
 
                     b.ToTable("testimonials", (string)null);
                 });
@@ -1858,15 +1852,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entity.ApplicationEntity.Specialization", "Specialization")
-                        .WithMany()
-                        .HasForeignKey("SpecializationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Media");
-
-                    b.Navigation("Specialization");
                 });
 
             modelBuilder.Entity("Domain.Entity.ApplicationEntity.TestimonialTranslation", b =>

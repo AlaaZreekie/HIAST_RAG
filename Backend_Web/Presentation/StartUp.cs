@@ -33,6 +33,9 @@ public class Startup(IConfiguration configuration)
         app.UseStaticFiles();
         app.UseRouting();
         
+        // Enable CORS
+        app.UseCors("AllowAll");
+        
 
         app.UseAuthentication();
         app.UseAuthorization();

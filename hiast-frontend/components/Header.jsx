@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 import { ChevronDown, Search, Globe, Menu } from "lucide-react";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { lang, setLang } = useLanguage();
 
   const navItems = [
     {
@@ -78,6 +80,15 @@ const Header = () => {
             <span>🇸🇾 المعهد العالي للعلوم التطبيقية والتكنولوجيا</span>
           </div>
           <div className="flex items-center gap-4">
+            {/* Language Switcher */}
+            <select
+              value={lang}
+              onChange={e => setLang(e.target.value)}
+              className="px-2 py-1 rounded border border-gray-300 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="ar">العربية</option>
+              <option value="en">English</option>
+            </select>
             <Button className="flex items-center justify-between">
               AR
               <Globe className="h-4 w-4 mr-1" />
