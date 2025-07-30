@@ -11,6 +11,6 @@ namespace Application.Dtos.LocationDtos
     public class UpdateLocationDto : BaseDto<Guid>
     {
         public LocationCodeEnum? LocationCode { get; set; }
-        public IList<UpdateLocationTranslationDto>? Translations { get; set; }
+        public IList<UpdateLocationTranslationDto>? Translations { get; set; } = [];
     }
 }

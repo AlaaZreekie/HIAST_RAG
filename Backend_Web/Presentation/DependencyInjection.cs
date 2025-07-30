@@ -12,7 +12,12 @@ namespace Presentation
         {
             services.AddEndpointsApiExplorer();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+                });
 
             // Add CORS
             services.AddCors(options =>
@@ -22,7 +27,8 @@ namespace Presentation
                     builder
                         .AllowAnyOrigin()
                         .AllowAnyMethod()
-                        .AllowAnyHeader();
+                        .AllowAnyHeader()
+                        .WithExposedHeaders("Content-Disposition");
                 });
             });
 

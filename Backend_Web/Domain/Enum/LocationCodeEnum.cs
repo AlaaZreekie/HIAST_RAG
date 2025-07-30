@@ -10,5 +10,6 @@ namespace Domain.Enum
     {
         DAMAS,
         ALEPPO,
+        LATAKIA
     }
 }

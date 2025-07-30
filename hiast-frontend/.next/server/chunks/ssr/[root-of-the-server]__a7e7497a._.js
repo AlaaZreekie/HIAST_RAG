@@ -1199,12 +1199,40 @@ __turbopack_context__.s({
     "default": ()=>__TURBOPACK__default__export__
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$LanguageProvider$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/LanguageProvider.jsx [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
+;
 const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
     const { t, lang } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$LanguageProvider$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLanguage"])();
+    const [expandedPosts, setExpandedPosts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(new Set());
+    // Helper function to get content in current language
+    const getContentInLanguage = (post, languageCode)=>{
+        const translation = post.Translations?.find((t)=>t.LanguageCode === languageCode);
+        return translation || null;
+    };
+    // Helper function to get category name in current language
+    const getCategoryNameInLanguage = (category, languageCode)=>{
+        if (!category?.Translations) return t("posts.noCategory");
+        const translation = category.Translations.find((t)=>t.LanguageCode === languageCode);
+        return translation?.Name || t("posts.noCategory");
+    };
+    // Get current language code (1 for Arabic, 2 for English)
+    const currentLanguageCode = lang === "ar" ? 1 : 2;
+    // Toggle post expansion
+    const togglePostExpansion = (postId)=>{
+        setExpandedPosts((prev)=>{
+            const newSet = new Set(prev);
+            if (newSet.has(postId)) {
+                newSet.delete(postId);
+            } else {
+                newSet.add(postId);
+            }
+            return newSet;
+        });
+    };
     if (posts.length === 0) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "bg-white shadow overflow-hidden sm:rounded-md",
@@ -1215,17 +1243,17 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                     children: t("posts.noPosts")
                 }, void 0, false, {
                     fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                    lineNumber: 11,
+                    lineNumber: 42,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                lineNumber: 10,
+                lineNumber: 41,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/components/admin/posts/PostsTable.jsx",
-            lineNumber: 9,
+            lineNumber: 40,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0));
     }
@@ -1244,19 +1272,28 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                    lineNumber: 21,
+                    lineNumber: 52,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                lineNumber: 20,
+                lineNumber: 51,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "max-h-96 overflow-y-auto",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "divide-y divide-gray-200",
-                    children: posts.map((post)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    children: posts.map((post)=>{
+                        // Get content in current language
+                        const currentTranslation = getContentInLanguage(post, currentLanguageCode);
+                        // Get category name in current language
+                        const categoryName = getCategoryNameInLanguage(post.Category, currentLanguageCode);
+                        // Check if post is expanded
+                        const isExpanded = expandedPosts.has(post.Id);
+                        // Check if content is long enough to need truncation
+                        const hasLongContent = currentTranslation?.Content && currentTranslation.Content.length > 100;
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-6 hover:bg-gray-50 transition-colors",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: `flex justify-between items-start ${lang === "ar" ? "flex-row-reverse" : ""}`,
@@ -1266,19 +1303,50 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                                 className: "text-lg font-medium text-gray-900 mb-2",
-                                                children: post.Title || t("posts.noTitle")
+                                                children: currentTranslation?.Title || t("posts.noTitle")
                                             }, void 0, false, {
                                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                lineNumber: 38,
-                                                columnNumber: 19
+                                                lineNumber: 79,
+                                                columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm text-gray-600 mb-3",
-                                                children: post.Content ? post.Content.length > 100 ? post.Content.substring(0, 100) + "..." : post.Content : t("posts.noContent")
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "mb-3",
+                                                children: currentTranslation?.Content ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600",
+                                                            children: isExpanded ? currentTranslation.Content : currentTranslation.Content.length > 100 ? currentTranslation.Content.substring(0, 100) + "..." : currentTranslation.Content
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/admin/posts/PostsTable.jsx",
+                                                            lineNumber: 87,
+                                                            columnNumber: 27
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        hasLongContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: ()=>togglePostExpansion(post.Id),
+                                                            className: `mt-2 text-sm font-medium text-indigo-600 hover:text-indigo-900 transition-colors ${lang === "ar" ? "text-right" : "text-left"}`,
+                                                            children: isExpanded ? t("posts.showLess") : t("posts.showMore")
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/admin/posts/PostsTable.jsx",
+                                                            lineNumber: 98,
+                                                            columnNumber: 29
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/admin/posts/PostsTable.jsx",
+                                                    lineNumber: 86,
+                                                    columnNumber: 25
+                                                }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm text-gray-600",
+                                                    children: t("posts.noContent")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/admin/posts/PostsTable.jsx",
+                                                    lineNumber: 109,
+                                                    columnNumber: 25
+                                                }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                lineNumber: 42,
-                                                columnNumber: 19
+                                                lineNumber: 84,
+                                                columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex flex-wrap gap-4 text-xs text-gray-500 mb-3",
@@ -1291,19 +1359,19 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                        lineNumber: 48,
-                                                        columnNumber: 21
+                                                        lineNumber: 115,
+                                                        columnNumber: 23
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: [
                                                             t("posts.category"),
                                                             ": ",
-                                                            post.CategoryName || t("posts.noCategory")
+                                                            categoryName
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                        lineNumber: 49,
-                                                        columnNumber: 21
+                                                        lineNumber: 116,
+                                                        columnNumber: 23
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: [
@@ -1313,39 +1381,35 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                        lineNumber: 50,
-                                                        columnNumber: 21
+                                                        lineNumber: 117,
+                                                        columnNumber: 23
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                lineNumber: 47,
-                                                columnNumber: 19
+                                                lineNumber: 114,
+                                                columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: `flex flex-wrap gap-2 mb-3 ${lang === "ar" ? "flex-row-reverse" : ""}`,
-                                                children: post.Translations?.map((translation)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800",
-                                                        children: [
-                                                            translation.LanguageName,
-                                                            ": ",
-                                                            translation.Title
-                                                        ]
-                                                    }, translation.Id, true, {
-                                                        fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                        lineNumber: 58,
-                                                        columnNumber: 23
-                                                    }, ("TURBOPACK compile-time value", void 0)))
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800",
+                                                    children: lang === "ar" ? "العربية" : "English"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/admin/posts/PostsTable.jsx",
+                                                    lineNumber: 124,
+                                                    columnNumber: 23
+                                                }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                lineNumber: 54,
-                                                columnNumber: 19
+                                                lineNumber: 121,
+                                                columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                        lineNumber: 37,
-                                        columnNumber: 17
+                                        lineNumber: 78,
+                                        columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: `flex space-x-2 ${lang === "ar" ? "flex-row-reverse" : ""}`,
@@ -1356,8 +1420,8 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                                                 children: t("posts.edit")
                                             }, void 0, false, {
                                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                lineNumber: 70,
-                                                columnNumber: 19
+                                                lineNumber: 132,
+                                                columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 onClick: ()=>onDeletePost(post.Id),
@@ -1365,40 +1429,41 @@ const PostsTable = ({ posts, onEditPost, onDeletePost })=>{
                                                 children: t("posts.delete")
                                             }, void 0, false, {
                                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                                lineNumber: 78,
-                                                columnNumber: 19
+                                                lineNumber: 140,
+                                                columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                        lineNumber: 69,
-                                        columnNumber: 17
+                                        lineNumber: 131,
+                                        columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                                lineNumber: 33,
-                                columnNumber: 15
+                                lineNumber: 74,
+                                columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0))
                         }, post.Id, false, {
                             fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                            lineNumber: 32,
-                            columnNumber: 13
-                        }, ("TURBOPACK compile-time value", void 0)))
+                            lineNumber: 73,
+                            columnNumber: 15
+                        }, ("TURBOPACK compile-time value", void 0));
+                    })
                 }, void 0, false, {
                     fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                    lineNumber: 30,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/admin/posts/PostsTable.jsx",
-                lineNumber: 29,
+                lineNumber: 60,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/components/admin/posts/PostsTable.jsx",
-        lineNumber: 18,
+        lineNumber: 49,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

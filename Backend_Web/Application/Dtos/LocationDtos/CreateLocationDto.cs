@@ -10,6 +10,6 @@ namespace Application.Dtos.LocationDtos
     public class CreateLocationDto
     {
         public required LocationCodeEnum LocationCode { get; set; }
-        public IList<CreateLocationTranslationDto> Translations { get; set; }
+        public IList<CreateLocationTranslationDto> Translations { get; set; } = [];
     }
 }

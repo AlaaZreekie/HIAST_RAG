@@ -48,7 +48,7 @@ namespace Infrastructure.Services
             ApplicationUser? customer = null;
             var identifierClaim = authenticateResult.Principal.FindFirst(claim => claim.Type == ClaimTypes.NameIdentifier);
 
-            if (identifierClaim != null && int.TryParse(identifierClaim.Value, out int customerId))
+            if (identifierClaim != null && Guid.TryParse(identifierClaim.Value, out Guid customerId))
             {
                 customer = await _userManager.FindByIdAsync(customerId.ToString());
             }

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Images\\d403e004-aeb2-4909-81a3-54cbec9e6aa3_Monkey.jpg"
     },
     {
+      "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\Images\\d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.jpg",
+      "PackagePath": "staticwebassets\\Images\\d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.jpg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
       "PackagePath": "staticwebassets\\PDFs\\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
     },
@@ -49,6 +53,10 @@
       "PackagePath": "staticwebassets\\PDFs\\4aeb0dcf-9550-4d05-88e8-f074801d5937_س4 نتائج مقرر نمذجة النظم ومطابقتها.pdf"
     },
     {
+      "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\4d8468b7-304e-453e-a2ef-0252bc9ca2b6_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "PackagePath": "staticwebassets\\PDFs\\4d8468b7-304e-453e-a2ef-0252bc9ca2b6_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
       "PackagePath": "staticwebassets\\PDFs\\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
     },
@@ -79,6 +87,14 @@
     {
       "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf",
       "PackagePath": "staticwebassets\\PDFs\\b90f9242-3f99-442f-98a2-9dd0b363e087_س4 نتائج مقرر الالكتروتكنيك 2.pdf"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.pdf",
+      "PackagePath": "staticwebassets\\PDFs\\b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.pdf"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bac4f9d4-003e-4020-9beb-9efd9e3800af_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf",
+      "PackagePath": "staticwebassets\\PDFs\\bac4f9d4-003e-4020-9beb-9efd9e3800af_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf"
     },
     {
       "Id": "C:\\Users\\ASUS\\source\\repos\\HIAST_RAG\\ForthYear\\Backend_Web\\Presentation\\wwwroot\\PDFs\\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf",
