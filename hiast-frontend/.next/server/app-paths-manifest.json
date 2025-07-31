@@ -1,11 +1,15 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/admin/admissionExams/page": "app/admin/admissionExams/page.js",
+  "/admin/admissionResults/page": "app/admin/admissionResults/page.js",
+  "/admin/categories/page": "app/admin/categories/page.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/admin/locations/create/page": "app/admin/locations/create/page.js",
-  "/admin/locations/edit/[id]/page": "app/admin/locations/edit/[id]/page.js",
   "/admin/locations/page": "app/admin/locations/page.js",
   "/admin/login/page": "app/admin/login/page.js",
-  "/admin/specializations/page": "app/admin/specializations/page.js",
+  "/admin/media/page": "app/admin/media/page.js",
+  "/admin/mediaCategories/page": "app/admin/mediaCategories/page.js",
+  "/admin/testimonials/page": "app/admin/testimonials/page.js",
+  "/admin/trainingCourseCategories/page": "app/admin/trainingCourseCategories/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js"
 }
