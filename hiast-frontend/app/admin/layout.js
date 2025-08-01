@@ -1,5 +1,4 @@
 import "./admin.css";
-import { LanguageProvider } from "@/components/LanguageProvider";
 
 export const metadata = {
   title: "HIAST Admin Dashboard",
@@ -7,9 +6,5 @@ export const metadata = {
 };
 
 export default function AdminLayout({ children }) {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <LanguageProvider>{children}</LanguageProvider>
-    </div>
-  );
+  return <div className="min-h-screen bg-gray-50">{children}</div>;
 }

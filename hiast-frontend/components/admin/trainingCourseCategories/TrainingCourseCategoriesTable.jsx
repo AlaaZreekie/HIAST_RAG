@@ -1,5 +1,5 @@
 "use client";
-import { useLanguage } from "@/components/LanguageProvider";
+import { useLanguage, LANGUAGE_CODES } from "@/components/LanguageProvider";
 import { getTrainingCourseCategoryNameInLanguage } from "@/lib/trainingCourseCategoriesApi";
 
 const TrainingCourseCategoriesTable = ({ categories, onEditCategory, onDeleteCategory }) => {

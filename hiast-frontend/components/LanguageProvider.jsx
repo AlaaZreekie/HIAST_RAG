@@ -1,6 +1,12 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
+// Language code constants to match backend LanguageCodeEnum
+export const LANGUAGE_CODES = {
+  AR: 1, // Arabic
+  EN: 2, // English
+};
+
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
@@ -42,6 +48,11 @@ export const LanguageProvider = ({ children }) => {
     return text;
   };
 
+  // Helper function to get language code for API calls
+  const getLanguageCode = () => {
+    return lang === "ar" ? LANGUAGE_CODES.AR : LANGUAGE_CODES.EN;
+  };
+
   // Show loading state during SSR and initial client render
   if (!isClient || Object.keys(messages).length === 0) {
     return (
@@ -55,7 +66,7 @@ export const LanguageProvider = ({ children }) => {
   }
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, t, getLanguageCode }}>
       {children}
     </LanguageContext.Provider>
   );
