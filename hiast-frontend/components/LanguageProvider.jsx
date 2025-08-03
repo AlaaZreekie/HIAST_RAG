@@ -14,12 +14,16 @@ export const LanguageProvider = ({ children }) => {
   const [messages, setMessages] = useState({});
   const [isClient, setIsClient] = useState(false);
 
+  // Initialize with default messages to prevent hydration mismatch
+  const [initialized, setInitialized] = useState(false);
+
   useEffect(() => {
     setIsClient(true);
     // Load language from localStorage only on client side
     const savedLang = localStorage.getItem("lang") || "ar";
     setLang(savedLang);
     loadMessages(savedLang);
+    setInitialized(true);
   }, []);
 
   const loadMessages = (language) => {
@@ -53,8 +57,8 @@ export const LanguageProvider = ({ children }) => {
     return lang === "ar" ? LANGUAGE_CODES.AR : LANGUAGE_CODES.EN;
   };
 
-  // Show loading state during SSR and initial client render
-  if (!isClient || Object.keys(messages).length === 0) {
+  // Show loading state only during initial client render, not during SSR
+  if (isClient && Object.keys(messages).length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -62,6 +66,15 @@ export const LanguageProvider = ({ children }) => {
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       </div>
+    );
+  }
+
+  // During SSR, render children with default state to prevent hydration mismatch
+  if (!isClient) {
+    return (
+      <LanguageContext.Provider value={{ lang: "ar", setLang: () => {}, t: (key) => key, getLanguageCode: () => 1 }}>
+        {children}
+      </LanguageContext.Provider>
     );
   }
 

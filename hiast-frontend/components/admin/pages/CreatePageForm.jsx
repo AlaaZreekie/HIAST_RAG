@@ -7,44 +7,73 @@ const CreatePageForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    Title: "",
-    Content: "",
-    Slug: "",
-    ArabicTitle: "",
-    EnglishTitle: "",
-    ArabicContent: "",
-    EnglishContent: "",
-    ArabicSlug: "",
-    EnglishSlug: ""
+    arabicTitle: "",
+    englishTitle: "",
+    arabicContent: "",
+    englishContent: ""
   });
 
+  // Pre-fill form data when in edit mode
   useEffect(() => {
-    if (initialData) {
+    if (isEditMode && initialData) {
+      const arabicTranslation = initialData.Translations?.find(t => t.LanguageCode === 1);
+      const englishTranslation = initialData.Translations?.find(t => t.LanguageCode === 2);
+      
       setFormData({
-        Title: initialData.Title || "",
-        Content: initialData.Content || "",
-        Slug: initialData.Slug || "",
-        ArabicTitle: initialData.ArabicTitle || "",
-        EnglishTitle: initialData.EnglishTitle || "",
-        ArabicContent: initialData.ArabicContent || "",
-        EnglishContent: initialData.EnglishContent || "",
-        ArabicSlug: initialData.ArabicSlug || "",
-        EnglishSlug: initialData.EnglishSlug || ""
+        arabicTitle: arabicTranslation?.Title || "",
+        englishTitle: englishTranslation?.Title || "",
+        arabicContent: arabicTranslation?.Content || "",
+        englishContent: englishTranslation?.Content || ""
       });
     }
-  }, [initialData]);
+  }, [initialData, isEditMode]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [field]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    
+    if (!formData.arabicTitle.trim() && !formData.englishTitle.trim()) {
+      return;
+    }
+
+    const translations = [];
+    
+    if (formData.arabicTitle.trim()) {
+      const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
+      translations.push({
+        Id: arabicTranslation?.Id || null,
+        LanguageCode: 1,
+        Title: formData.arabicTitle.trim(),
+        Content: formData.arabicContent.trim()
+      });
+    }
+    
+    if (formData.englishTitle.trim()) {
+      const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
+      translations.push({
+        Id: englishTranslation?.Id || null,
+        LanguageCode: 2,
+        Title: formData.englishTitle.trim(),
+        Content: formData.englishContent.trim()
+      });
+    }
+
+    const pageData = {
+      Translations: translations
+    };
+
+    // Add page ID for updates
+    if (isEditMode && initialData?.Id) {
+      pageData.Id = initialData.Id;
+    }
+
+    onSubmit(pageData);
   };
 
   return (
@@ -52,156 +81,83 @@ const CreatePageForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
       <div className="px-4 py-5 sm:p-6">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6">
-            {/* Title */}
-            <div>
-              <label htmlFor="Title" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.title")}
-              </label>
-              <input
-                type="text"
-                id="Title"
-                name="Title"
-                value={formData.Title}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir={lang === "ar" ? "rtl" : "ltr"}
-              />
-            </div>
-
-            {/* Content */}
-            <div>
-              <label htmlFor="Content" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.content")}
-              </label>
-              <textarea
-                id="Content"
-                name="Content"
-                value={formData.Content}
-                onChange={handleChange}
-                required
-                rows={8}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir={lang === "ar" ? "rtl" : "ltr"}
-              />
-            </div>
-
-            {/* Slug */}
-            <div>
-              <label htmlFor="Slug" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.slug")}
-              </label>
-              <input
-                type="text"
-                id="Slug"
-                name="Slug"
-                value={formData.Slug}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir="ltr"
-              />
-            </div>
-
             {/* Arabic Title */}
             <div>
-              <label htmlFor="ArabicTitle" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.arabicTitle")}
+              <label htmlFor="arabicTitle" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("pages.form.title")} ({t("pages.arabic")})
               </label>
               <input
                 type="text"
-                id="ArabicTitle"
-                name="ArabicTitle"
-                value={formData.ArabicTitle}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                id="arabicTitle"
+                value={formData.arabicTitle}
+                onChange={(e) => handleInputChange("arabicTitle", e.target.value)}
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="rtl"
+                placeholder={t("pages.form.titlePlaceholder")}
               />
             </div>
 
             {/* English Title */}
             <div>
-              <label htmlFor="EnglishTitle" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.englishTitle")}
+              <label htmlFor="englishTitle" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("pages.form.title")} ({t("pages.english")})
               </label>
               <input
                 type="text"
-                id="EnglishTitle"
-                name="EnglishTitle"
-                value={formData.EnglishTitle}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                id="englishTitle"
+                value={formData.englishTitle}
+                onChange={(e) => handleInputChange("englishTitle", e.target.value)}
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="ltr"
+                placeholder={t("pages.form.titlePlaceholder")}
               />
             </div>
 
             {/* Arabic Content */}
             <div>
-              <label htmlFor="ArabicContent" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.arabicContent")}
+              <label htmlFor="arabicContent" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("pages.form.content")} ({t("pages.arabic")})
               </label>
               <textarea
-                id="ArabicContent"
-                name="ArabicContent"
-                value={formData.ArabicContent}
-                onChange={handleChange}
-                required
+                id="arabicContent"
+                value={formData.arabicContent}
+                onChange={(e) => handleInputChange("arabicContent", e.target.value)}
                 rows={8}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="rtl"
+                placeholder={t("pages.form.contentPlaceholder")}
               />
             </div>
 
             {/* English Content */}
             <div>
-              <label htmlFor="EnglishContent" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.englishContent")}
+              <label htmlFor="englishContent" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("pages.form.content")} ({t("pages.english")})
               </label>
               <textarea
-                id="EnglishContent"
-                name="EnglishContent"
-                value={formData.EnglishContent}
-                onChange={handleChange}
-                required
+                id="englishContent"
+                value={formData.englishContent}
+                onChange={(e) => handleInputChange("englishContent", e.target.value)}
                 rows={8}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="ltr"
-              />
-            </div>
-
-            {/* Arabic Slug */}
-            <div>
-              <label htmlFor="ArabicSlug" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.arabicSlug")}
-              </label>
-              <input
-                type="text"
-                id="ArabicSlug"
-                name="ArabicSlug"
-                value={formData.ArabicSlug}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir="rtl"
-              />
-            </div>
-
-            {/* English Slug */}
-            <div>
-              <label htmlFor="EnglishSlug" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("pages.form.englishSlug")}
-              </label>
-              <input
-                type="text"
-                id="EnglishSlug"
-                name="EnglishSlug"
-                value={formData.EnglishSlug}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir="ltr"
+                placeholder={t("pages.form.contentPlaceholder")}
               />
             </div>
           </div>

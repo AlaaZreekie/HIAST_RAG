@@ -37,8 +37,8 @@ export default function PostsPage() {
       }
     };
 
-    window.addEventListener('focus', handleFocus);
-    return () => window.removeEventListener('focus', handleFocus);
+    window.addEventListener("focus", handleFocus);
+    return () => window.removeEventListener("focus", handleFocus);
   }, [isLoading]);
 
   const loadPosts = async () => {
@@ -49,10 +49,10 @@ export default function PostsPage() {
 
       const response = await postsAPI.getAllPosts();
       console.log("Posts loaded successfully:", response);
-      
+
       const postsData = response.Data || [];
       console.log("Extracted posts:", postsData);
-      
+
       setPosts(postsData);
     } catch (error) {
       console.error("Error loading posts:", error);
@@ -97,13 +97,19 @@ export default function PostsPage() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}
+      >
         <DashboardHeader user={null} onLogout={handleLogout} />
         <div className="flex main-layout">
           <div className={lang === "ar" ? "order-2" : "order-1"}>
             <DashboardSidebar />
           </div>
-          <main className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${lang === "ar" ? "order-1" : "order-2"}`}>
+          <main
+            className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${
+              lang === "ar" ? "order-1" : "order-2"
+            }`}
+          >
             <div className="flex items-center justify-center h-64">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
@@ -124,7 +130,11 @@ export default function PostsPage() {
         <div className={lang === "ar" ? "order-2" : "order-1"}>
           <DashboardSidebar />
         </div>
-        <main className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${lang === "ar" ? "order-1" : "order-2"}`}>
+        <main
+          className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${
+            lang === "ar" ? "order-1" : "order-2"
+          }`}
+        >
           <div className="px-4 py-6 sm:px-0">
             {/* Debug info */}
             <div className="mb-4 p-2 bg-yellow-100 text-xs">
@@ -142,7 +152,7 @@ export default function PostsPage() {
             )}
 
             {/* Posts Table */}
-            <PostsTable 
+            <PostsTable
               posts={posts}
               onEditPost={handleEditPost}
               onDeletePost={handleDeletePost}

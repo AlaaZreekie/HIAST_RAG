@@ -1,72 +1,64 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function testimonialsApiRequest(endpoint, options = {}) {
+const testimonialsApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/Admin/Testimonials/${endpoint}`;
-
-  const defaultOptions = {
+  return apiRequest(`/admin/testimonials/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-  };
-
-  const response = await fetch(url, { ...defaultOptions, ...options });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`HTTP ${response.status}: ${errorText}`);
-  }
-
-  const responseText = await response.text();
-  let data;
-
-  try {
-    data = JSON.parse(responseText);
-  } catch (error) {
-    console.error("Failed to parse JSON response:", responseText);
-    throw new Error("Invalid JSON response from server");
-  }
-
-  if (!data.Result) {
-    throw new Error(data.Message || "API request failed");
-  }
-
-  return data.Data;
-}
-
-export const testimonialsAPI = {
-  getAllTestimonials: () => testimonialsApiRequest("GetAllTestimonials"),
-  getTestimonialsByFilter: (filter) =>
-    testimonialsApiRequest("GetByFilter", {
-      method: "POST",
-      body: JSON.stringify(filter),
-    }),
-  createTestimonial: (testimonialData) =>
-    testimonialsApiRequest("CreateTestimonial", {
-      method: "POST",
-      body: testimonialData, // FormData
-    }),
-  updateTestimonial: (testimonialData) =>
-    testimonialsApiRequest("UpdateTestimonial", {
-      method: "PUT",
-      body: JSON.stringify(testimonialData),
-    }),
-  deleteTestimonial: (testimonialId) =>
-    testimonialsApiRequest("DeleteTestimonial", {
-      method: "DELETE",
-      body: JSON.stringify({ Id: testimonialId }),
-    }),
+  });
 };
 
+export const testimonialsAPI = {
+  getAllTestimonials: async () => {
+    return testimonialsApiRequest("GetAllTestimonials");
+  },
+
+  createTestimonial: async (testimonialData) => {
+    return testimonialsApiRequest("CreateTestimonial", {
+      method: "POST",
+      body: testimonialData, // FormData for file upload
+    });
+  },
+
+  updateTestimonial: async (testimonialData) => {
+    return testimonialsApiRequest("UpdateTestimonial", {
+      method: "PUT",
+      body: JSON.stringify(testimonialData),
+    });
+  },
+
+  deleteTestimonial: async (testimonialId) => {
+    return testimonialsApiRequest("DeleteTestimonial", {
+      method: "DELETE",
+      body: JSON.stringify({ Id: testimonialId }),
+    });
+  },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Name) queryParams.append("Name", filter.Name);
+    if (filter.Position) queryParams.append("Position", filter.Position);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return testimonialsApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
+};
+
+// Helper functions
 export const getAllTestimonials = async () => {
   try {
-    return await testimonialsAPI.getAllTestimonials();
+    const response = await testimonialsAPI.getAllTestimonials();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching testimonials:", error);
     throw error;
@@ -83,20 +75,28 @@ export const getTestimonialById = async (id) => {
   }
 };
 
-export const getTestimonialNameInLanguage = (testimonial, languageCode) => {
-  if (!testimonial?.Translations) return testimonial?.Name || "Unknown";
+export const getTestimonialNameInLanguage = (testimonial, languageId) => {
+  if (!testimonial?.Translations) return "No Name";
   const translation = testimonial.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation?.Name || testimonial?.Name || "Unknown";
+  return translation?.Name || "No Name";
 };
 
-export const getTestimonialContentInLanguage = (testimonial, languageCode) => {
-  if (!testimonial?.Translations) return testimonial?.Content || "Unknown";
+export const getTestimonialContentInLanguage = (testimonial, languageId) => {
+  if (!testimonial?.Translations) return "";
   const translation = testimonial.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation?.Content || testimonial?.Content || "Unknown";
+  return translation?.Content || "";
+};
+
+export const getTestimonialPositionInLanguage = (testimonial, languageId) => {
+  if (!testimonial?.Translations) return "";
+  const translation = testimonial.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Position || "";
 };
 
 export const getTestimonialTranslations = (testimonial) => {

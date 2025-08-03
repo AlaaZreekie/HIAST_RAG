@@ -1,72 +1,66 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function admissionsApiRequest(endpoint, options = {}) {
+const admissionsApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/Admin/Admissions/${endpoint}`;
-
-  const defaultOptions = {
+  return apiRequest(`/admin/admissions/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-  };
-
-  const response = await fetch(url, { ...defaultOptions, ...options });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`HTTP ${response.status}: ${errorText}`);
-  }
-
-  const responseText = await response.text();
-  let data;
-
-  try {
-    data = JSON.parse(responseText);
-  } catch (error) {
-    console.error("Failed to parse JSON response:", responseText);
-    throw new Error("Invalid JSON response from server");
-  }
-
-  if (!data.Result) {
-    throw new Error(data.Message || "API request failed");
-  }
-
-  return data.Data;
-}
-
-export const admissionsAPI = {
-  getAllAdmissions: () => admissionsApiRequest("GetAllAdmissions"),
-  getAdmissionsByFilter: (filter) =>
-    admissionsApiRequest("GetByFilter", {
-      method: "POST",
-      body: JSON.stringify(filter),
-    }),
-  createAdmission: (admissionData) =>
-    admissionsApiRequest("CreateAdmission", {
-      method: "POST",
-      body: JSON.stringify(admissionData),
-    }),
-  updateAdmission: (admissionData) =>
-    admissionsApiRequest("UpdateAdmission", {
-      method: "PUT",
-      body: JSON.stringify(admissionData),
-    }),
-  deleteAdmission: (admissionId) =>
-    admissionsApiRequest("DeleteAdmission", {
-      method: "DELETE",
-      body: JSON.stringify({ Id: admissionId }),
-    }),
+  });
 };
 
+export const admissionsAPI = {
+  getAllAdmissions: async () => {
+    return admissionsApiRequest("GetAllAdmissions");
+  },
+
+  createAdmission: async (admissionData) => {
+    return admissionsApiRequest("CreateAdmission", {
+      method: "POST",
+      body: JSON.stringify(admissionData),
+    });
+  },
+
+  updateAdmission: async (admissionData) => {
+    return admissionsApiRequest("UpdateAdmission", {
+      method: "PUT",
+      body: JSON.stringify(admissionData),
+    });
+  },
+
+  deleteAdmission: async (admissionId) => {
+    return admissionsApiRequest("DeleteAdmission", {
+      method: "DELETE",
+      body: JSON.stringify({ Id: admissionId }),
+    });
+  },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.AcademicYear)
+      queryParams.append("AcademicYear", filter.AcademicYear);
+    if (filter.ProgramId) queryParams.append("ProgramId", filter.ProgramId);
+    if (filter.LocationId) queryParams.append("LocationId", filter.LocationId);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return admissionsApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
+};
+
+// Helper functions
 export const getAllAdmissions = async () => {
   try {
-    return await admissionsAPI.getAllAdmissions();
+    const response = await admissionsAPI.getAllAdmissions();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching admissions:", error);
     throw error;
@@ -83,14 +77,22 @@ export const getAdmissionById = async (id) => {
   }
 };
 
-export const getAdmissionAcademicYear = (admission) => {
-  return admission?.AcademicYear || "Unknown";
+export const getAdmissionNameInLanguage = (admission, languageId) => {
+  if (!admission?.Translations) return "No Name";
+  const translation = admission.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Name || "No Name";
 };
 
-export const getAdmissionProgramName = (admission) => {
-  return admission?.Program?.Name || "Unknown Program";
+export const getAdmissionDescriptionInLanguage = (admission, languageId) => {
+  if (!admission?.Translations) return "";
+  const translation = admission.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
 };
 
-export const getAdmissionLocationName = (admission) => {
-  return admission?.Location?.Name || "Unknown Location";
-}; 
+export const getAdmissionTranslations = (admission) => {
+  return admission?.Translations || [];
+};

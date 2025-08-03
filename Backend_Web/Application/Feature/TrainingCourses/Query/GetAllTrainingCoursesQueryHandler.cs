@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Application.Feature.TrainingCourses.Query
 {
-    public record GetAllTrainingCoursesQueryHandler(IAppUnitOfWork unitOfWork) : IRequestHandler<GetTrainingCoursesByFilterQuery, IEnumerable<TrainingCourse>>
+    public record GetAllTrainingCoursesQueryHandler(IAppUnitOfWork unitOfWork) : IRequestHandler<GetAllTrainingCoursesQuery, IEnumerable<TrainingCourse>>
     {
         private readonly IAppUnitOfWork _unitOfWork = unitOfWork;
 
-        public async Task<IEnumerable<TrainingCourse>> Handle(GetTrainingCoursesByFilterQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TrainingCourse>> Handle(GetAllTrainingCoursesQuery request, CancellationToken cancellationToken)
         {
             Func<IQueryable<TrainingCourse>, IQueryable<TrainingCourse>> includeExpression = query =>
                 query.Include(tc => tc.Translations).ThenInclude(t => t.Language)

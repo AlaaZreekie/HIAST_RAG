@@ -3,25 +3,30 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode = false }) => {
+const CreateAdmissionForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false, programs = [], locations = [] }) => {
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    duration: "",
+    academicYear: new Date().getFullYear(),
+    programId: "",
+    locationId: "",
+    isActive: true,
     arabicName: "",
     englishName: "",
     arabicDescription: "",
     englishDescription: ""
   });
 
-  // Pre-fill form data when in edit mode
   useEffect(() => {
     if (isEditMode && initialData) {
       const arabicTranslation = initialData.Translations?.find(t => t.LanguageCode === 1);
       const englishTranslation = initialData.Translations?.find(t => t.LanguageCode === 2);
       
       setFormData({
-        duration: initialData.Duration || "",
+        academicYear: initialData.AcademicYear || new Date().getFullYear(),
+        programId: initialData.ProgramId || "",
+        locationId: initialData.LocationId || "",
+        isActive: initialData.IsActive ?? true,
         arabicName: arabicTranslation?.Name || "",
         englishName: englishTranslation?.Name || "",
         arabicDescription: arabicTranslation?.Description || "",
@@ -41,7 +46,10 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
     e.preventDefault();
     
     if (!formData.arabicName.trim() && !formData.englishName.trim()) {
-      alert(t("programs.form.nameRequired"));
+      return;
+    }
+
+    if (!formData.programId) {
       return;
     }
 
@@ -50,8 +58,8 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
     if (formData.arabicName.trim()) {
       const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
       translations.push({
-        Id: arabicTranslation?.Id || null, // Include ID for updates
-        LanguageCode: 1, // Arabic
+        Id: arabicTranslation?.Id || null,
+        LanguageCode: 1,
         Name: formData.arabicName.trim(),
         Description: formData.arabicDescription.trim()
       });
@@ -60,24 +68,26 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
     if (formData.englishName.trim()) {
       const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
       translations.push({
-        Id: englishTranslation?.Id || null, // Include ID for updates
-        LanguageCode: 2, // English
+        Id: englishTranslation?.Id || null,
+        LanguageCode: 2,
         Name: formData.englishName.trim(),
         Description: formData.englishDescription.trim()
       });
     }
 
-    const programData = {
-      Duration: formData.duration.trim(),
+    const admissionData = {
+      AcademicYear: parseInt(formData.academicYear),
+      ProgramId: formData.programId,
+      LocationId: formData.locationId,
+      IsActive: formData.isActive,
       Translations: translations
     };
 
-    // Add program ID for updates
     if (isEditMode && initialData?.Id) {
-      programData.Id = initialData.Id;
+      admissionData.Id = initialData.Id;
     }
 
-    onSubmit(programData);
+    onSubmit(admissionData);
   };
 
   return (
@@ -85,34 +95,74 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
       <div className="px-4 py-5 sm:p-6">
         <form onSubmit={handleSubmit}>
           <div className="space-y-6">
-            {/* Duration */}
             <div>
-              <label htmlFor="duration" className={`block text-sm font-medium text-gray-700 ${
+              <label htmlFor="programId" className={`block text-sm font-medium text-gray-700 ${
                 lang === "ar" ? "text-right" : "text-left"
               }`}>
-                {t("programs.form.duration")}
+                {t("admissions.form.program")}
               </label>
               <div className="mt-1">
-                <input
-                  type="text"
-                  id="duration"
-                  value={formData.duration}
-                  onChange={(e) => handleInputChange("duration", e.target.value)}
+                <select
+                  id="programId"
+                  value={formData.programId}
+                  onChange={(e) => handleInputChange("programId", e.target.value)}
                   className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
                     lang === "ar" ? "text-right" : "text-left"
                   }`}
-                  placeholder={t("programs.form.durationPlaceholder")}
+                  required
+                >
+                  <option value="">{t("admissions.form.selectProgram")}</option>
+                  {programs.map((program) => (
+                    <option key={program.Id} value={program.Id}>
+                      {program.Translations?.find(t => t.LanguageCode === (lang === "ar" ? 1 : 2))?.Name || program.Name || "Unknown"}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="academicYear" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("admissions.form.academicYear")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  id="academicYear"
+                  value={formData.academicYear}
+                  onChange={(e) => handleInputChange("academicYear", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  min="2020"
+                  max="2030"
                   required
                 />
               </div>
             </div>
 
-            {/* Arabic Name */}
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="isActive"
+                checked={formData.isActive}
+                onChange={(e) => handleInputChange("isActive", e.target.checked)}
+                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+              <label htmlFor="isActive" className={`ml-2 block text-sm text-gray-900 ${
+                lang === "ar" ? "mr-2 ml-0" : "ml-2"
+              }`}>
+                {t("admissions.form.isActive")}
+              </label>
+            </div>
+
             <div>
               <label htmlFor="arabicName" className={`block text-sm font-medium text-gray-700 ${
                 lang === "ar" ? "text-right" : "text-left"
               }`}>
-                {t("programs.form.name")} ({t("programs.arabic")})
+                {t("admissions.form.name")} ({t("admissions.arabic")})
               </label>
               <div className="mt-1">
                 <input
@@ -123,40 +173,16 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
                   className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
                     lang === "ar" ? "text-right" : "text-left"
                   }`}
-                  placeholder={t("programs.form.namePlaceholder")}
-                  dir={lang === "ar" ? "rtl" : "ltr"}
+                  placeholder={t("admissions.form.namePlaceholder")}
                 />
               </div>
             </div>
 
-            {/* Arabic Description */}
-            <div>
-              <label htmlFor="arabicDescription" className={`block text-sm font-medium text-gray-700 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
-                {t("programs.form.description")} ({t("programs.arabic")})
-              </label>
-              <div className="mt-1">
-                <textarea
-                  id="arabicDescription"
-                  rows={4}
-                  value={formData.arabicDescription}
-                  onChange={(e) => handleInputChange("arabicDescription", e.target.value)}
-                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
-                    lang === "ar" ? "text-right" : "text-left"
-                  }`}
-                  placeholder={t("programs.form.descriptionPlaceholder")}
-                  dir={lang === "ar" ? "rtl" : "ltr"}
-                />
-              </div>
-            </div>
-
-            {/* English Name */}
             <div>
               <label htmlFor="englishName" className={`block text-sm font-medium text-gray-700 ${
                 lang === "ar" ? "text-right" : "text-left"
               }`}>
-                {t("programs.form.name")} ({t("programs.english")})
+                {t("admissions.form.name")} ({t("admissions.english")})
               </label>
               <div className="mt-1">
                 <input
@@ -167,43 +193,19 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
                   className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
                     lang === "ar" ? "text-right" : "text-left"
                   }`}
-                  placeholder={t("programs.form.namePlaceholder")}
-                  dir={lang === "ar" ? "rtl" : "ltr"}
+                  placeholder={t("admissions.form.namePlaceholder")}
                 />
               </div>
             </div>
 
-            {/* English Description */}
-            <div>
-              <label htmlFor="englishDescription" className={`block text-sm font-medium text-gray-700 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
-                {t("programs.form.description")} ({t("programs.english")})
-              </label>
-              <div className="mt-1">
-                <textarea
-                  id="englishDescription"
-                  rows={4}
-                  value={formData.englishDescription}
-                  onChange={(e) => handleInputChange("englishDescription", e.target.value)}
-                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
-                    lang === "ar" ? "text-right" : "text-left"
-                  }`}
-                  placeholder={t("programs.form.descriptionPlaceholder")}
-                  dir={lang === "ar" ? "rtl" : "ltr"}
-                />
-              </div>
-            </div>
-
-            {/* Form Actions */}
             <div className="flex justify-end space-x-3">
               <button
                 type="button"
-                onClick={() => router.push("/admin/programs")}
+                onClick={() => router.push("/admin/admissions")}
                 className="admin-button admin-button-secondary"
                 disabled={isLoading}
               >
-                {t("programs.form.cancel")}
+                {t("admissions.form.cancel")}
               </button>
               <button
                 type="submit"
@@ -213,10 +215,10 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
                 {isLoading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    {isEditMode ? t("programs.form.update") : t("programs.form.submit")}
+                    {isEditMode ? t("admissions.form.update") : t("admissions.form.submit")}
                   </div>
                 ) : (
-                  isEditMode ? t("programs.form.update") : t("programs.form.submit")
+                  isEditMode ? t("admissions.form.update") : t("admissions.form.submit")
                 )}
               </button>
             </div>
@@ -227,4 +229,4 @@ const CreateProgramForm = ({ onSubmit, isLoading, error, initialData, isEditMode
   );
 };
 
-export default CreateProgramForm; 
+export default CreateAdmissionForm; 

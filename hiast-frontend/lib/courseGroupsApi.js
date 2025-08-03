@@ -6,59 +6,69 @@ const courseGroupsApiRequest = async (endpoint, options = {}) => {
     throw new Error("No authentication token found");
   }
 
-  const defaultOptions = {
+  return apiRequest(`/admin/courseGroups/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-  };
-
-  return apiRequest(`/admin/courseGroups/${endpoint}`, {
-    ...defaultOptions,
-    ...options,
   });
 };
 
 export const courseGroupsAPI = {
   getAllCourseGroups: async () => {
-    return await courseGroupsApiRequest("GetAllCourseGroups", {
-      method: "GET",
-    });
+    return courseGroupsApiRequest("GetAllCourseGroups");
   },
 
   createCourseGroup: async (courseGroupData) => {
-    return await courseGroupsApiRequest("CreateCourseGroup", {
+    return courseGroupsApiRequest("CreateCourseGroup", {
       method: "POST",
       body: JSON.stringify(courseGroupData),
     });
   },
 
-  updateCourseGroup: async (courseGroupId, courseGroupData) => {
-    return await courseGroupsApiRequest("UpdateCourseGroup", {
+  updateCourseGroup: async (courseGroupData) => {
+    return courseGroupsApiRequest("UpdateCourseGroup", {
       method: "PUT",
-      body: JSON.stringify({
-        Id: courseGroupId,
-        ...courseGroupData,
-      }),
+      body: JSON.stringify(courseGroupData),
     });
   },
 
   deleteCourseGroup: async (courseGroupId) => {
-    return await courseGroupsApiRequest("DeleteCourseGroup", {
+    return courseGroupsApiRequest("DeleteCourseGroup", {
       method: "DELETE",
       body: JSON.stringify({ Id: courseGroupId }),
     });
+  },
+
+  addCourseGroupTranslation: async (translationData) => {
+    return courseGroupsApiRequest("AddCourseGroupTranslation", {
+      method: "POST",
+      body: JSON.stringify(translationData),
+    });
+  },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Name) queryParams.append("Name", filter.Name);
+    if (filter.Code) queryParams.append("Code", filter.Code);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return courseGroupsApiRequest(`GetByFilter?${queryParams.toString()}`);
   },
 };
 
 // Helper functions
 export const getAllCourseGroups = async () => {
   try {
-    const data = await courseGroupsAPI.getAllCourseGroups();
+    const response = await courseGroupsAPI.getAllCourseGroups();
+    const data = response.Data || [];
     return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching course groups:", error);
-    return [];
+    throw error;
   }
 };
 
@@ -68,53 +78,29 @@ export const getCourseGroupById = async (id) => {
     return courseGroups.find((courseGroup) => courseGroup.Id === id);
   } catch (error) {
     console.error("Error fetching course group by ID:", error);
-    return null;
+    throw error;
   }
 };
 
-export const getCourseGroupCodeDisplay = (courseGroupCode) => {
-  const courseGroupCodeMap = {
-    0: "LNG",
-    1: "BIF",
-    2: "GK",
-    3: "CHM",
-    4: "PHY",
-    5: "MTH",
-    6: "ELC",
-    7: "TCH",
-    8: "PRT",
-    9: "ODS",
-    10: "CAR",
-    11: "SWE",
-    12: "CMP",
-    13: "AIN",
-    14: "DBS",
-    15: "NET",
-    16: "TEL",
-    17: "MGT",
-    18: "GKT",
-    19: "CGS",
-    20: "NWT",
-    21: "IMG",
-    22: "SEC",
-    23: "PRJ",
-    24: "SIG",
-    25: "TRD",
-    26: "CRL",
-    27: "ELT",
-    28: "MEC",
-    29: "MES",
-    30: "ROB",
-    31: "DES",
-    32: "MAN",
-  };
-  return courseGroupCodeMap[courseGroupCode] || courseGroupCode;
+export const getCourseGroupNameInLanguage = (courseGroup, languageId) => {
+  if (!courseGroup?.Translations) return "No Name";
+  const translation = courseGroup.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Name || "No Name";
 };
 
-export const getCourseGroupNameInLanguage = (courseGroup, languageCode) => {
-  if (languageCode === "ar") {
-    return courseGroup.ArabicName || "N/A";
-  } else {
-    return courseGroup.EnglishName || "N/A";
-  }
+export const getCourseGroupDescriptionInLanguage = (
+  courseGroup,
+  languageId
+) => {
+  if (!courseGroup?.Translations) return "";
+  const translation = courseGroup.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
+};
+
+export const getCourseGroupTranslations = (courseGroup) => {
+  return courseGroup?.Translations || [];
 };

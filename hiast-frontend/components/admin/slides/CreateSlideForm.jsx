@@ -7,41 +7,35 @@ const CreateSlideForm = ({ onSubmit, isLoading, error, initialData = null, isEdi
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    id: initialData?.Id || "",
-    displayOrder: initialData?.DisplayOrder || 0,
-    title: initialData?.Title || "",
-    description: initialData?.Description || "",
-    imageUrl: initialData?.ImageUrl || "",
-    arabicTitle: initialData?.ArabicTitle || "",
-    englishTitle: initialData?.EnglishTitle || "",
-    arabicDescription: initialData?.ArabicDescription || "",
-    englishDescription: initialData?.EnglishDescription || "",
+    linkURL: "",
+    arabicTitle: "",
+    englishTitle: ""
   });
   const [imageFile, setImageFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(initialData?.ImageUrl || "");
+  const [previewUrl, setPreviewUrl] = useState(null);
 
+  // Pre-fill form data when in edit mode
   useEffect(() => {
-    if (initialData) {
+    if (isEditMode && initialData) {
+      const arabicTranslation = initialData.Translations?.find(t => t.LanguageCode === 1);
+      const englishTranslation = initialData.Translations?.find(t => t.LanguageCode === 2);
+      
       setFormData({
-        id: initialData.Id || "",
-        displayOrder: initialData.DisplayOrder || 0,
-        title: initialData.Title || "",
-        description: initialData.Description || "",
-        imageUrl: initialData.ImageUrl || "",
-        arabicTitle: initialData.ArabicTitle || "",
-        englishTitle: initialData.EnglishTitle || "",
-        arabicDescription: initialData.ArabicDescription || "",
-        englishDescription: initialData.EnglishDescription || "",
+        linkURL: initialData.LinkURL || "",
+        arabicTitle: arabicTranslation?.Title || "",
+        englishTitle: englishTranslation?.Title || ""
       });
-      setPreviewUrl(initialData.ImageUrl || "");
+      
+      if (initialData.ImageUrl) {
+        setPreviewUrl(initialData.ImageUrl);
+      }
     }
-  }, [initialData]);
+  }, [initialData, isEditMode]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [field]: value
     }));
   };
 
@@ -57,205 +51,185 @@ const CreateSlideForm = ({ onSubmit, isLoading, error, initialData = null, isEdi
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
-    try {
-      const submitData = new FormData();
-      
-      // Add form fields
-      submitData.append("DisplayOrder", formData.displayOrder);
-      submitData.append("Title", formData.title);
-      submitData.append("Description", formData.description);
-      submitData.append("ArabicTitle", formData.arabicTitle);
-      submitData.append("EnglishTitle", formData.englishTitle);
-      submitData.append("ArabicDescription", formData.arabicDescription);
-      submitData.append("EnglishDescription", formData.englishDescription);
-      
-      // Add image file if selected
-      if (imageFile) {
-        submitData.append("ImageFile", imageFile);
-      }
-      
-      // Add ID for edit mode
-      if (isEditMode && formData.id) {
-        submitData.append("Id", formData.id);
-      }
-      
-      await onSubmit(submitData);
-    } catch (err) {
-      console.error("Error submitting form:", err);
+    if (!formData.arabicTitle.trim() && !formData.englishTitle.trim()) {
+      return;
     }
-  };
 
-  const handleCancel = () => {
-    router.push("/admin/slides");
+    if (!formData.linkURL.trim()) {
+      return;
+    }
+
+    if (!imageFile && !isEditMode) {
+      return;
+    }
+
+    const translations = [];
+    
+    if (formData.arabicTitle.trim()) {
+      const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
+      translations.push({
+        Id: arabicTranslation?.Id || null,
+        LanguageCode: 1,
+        Title: formData.arabicTitle.trim()
+      });
+    }
+    
+    if (formData.englishTitle.trim()) {
+      const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
+      translations.push({
+        Id: englishTranslation?.Id || null,
+        LanguageCode: 2,
+        Title: formData.englishTitle.trim()
+      });
+    }
+
+    const slideData = new FormData();
+    
+    // Add form fields
+    slideData.append("LinkURL", formData.linkURL.trim());
+    slideData.append("Translations", JSON.stringify(translations));
+    
+    // Add image file
+    if (imageFile) {
+      slideData.append("CreateMedia.File", imageFile);
+      slideData.append("CreateMedia.MediaCategoryId", "1"); // Default media category
+    }
+
+    // Add slide ID for updates
+    if (isEditMode && initialData?.Id) {
+      slideData.append("Id", initialData.Id);
+    }
+
+    onSubmit(slideData);
   };
 
   return (
-    <div className="bg-white shadow rounded-lg">
+    <div className="bg-white shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:p-6">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Display Order */}
-          <div>
-            <label htmlFor="displayOrder" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.order")}
-            </label>
-            <input
-              type="number"
-              id="displayOrder"
-              name="displayOrder"
-              value={formData.displayOrder}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* Title */}
-          <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.title")}
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* Description */}
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.description")}
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* Image Upload */}
-          <div>
-            <label htmlFor="imageFile" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.image")}
-            </label>
-            <input
-              type="file"
-              id="imageFile"
-              name="imageFile"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-            {previewUrl && (
-              <div className="mt-2">
-                <img
-                  src={previewUrl}
-                  alt="Preview"
-                  className="w-32 h-20 object-cover rounded border"
+        <form onSubmit={handleSubmit}>
+          <div className="space-y-6">
+            {/* Link URL */}
+            <div>
+              <label htmlFor="linkURL" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("slides.form.linkURL")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="url"
+                  id="linkURL"
+                  value={formData.linkURL}
+                  onChange={(e) => handleInputChange("linkURL", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("slides.form.linkURLPlaceholder")}
+                  required
                 />
               </div>
-            )}
-          </div>
+            </div>
 
-          {/* Arabic Title */}
-          <div>
-            <label htmlFor="arabicTitle" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.arabicTitle")}
-            </label>
-            <input
-              type="text"
-              id="arabicTitle"
-              name="arabicTitle"
-              value={formData.arabicTitle}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              dir="rtl"
-            />
-          </div>
+            {/* Image Upload */}
+            <div>
+              <label htmlFor="imageFile" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("slides.form.image")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="file"
+                  id="imageFile"
+                  onChange={handleImageChange}
+                  accept="image/*"
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  required={!isEditMode}
+                />
+                {previewUrl && (
+                  <div className="mt-2">
+                    <img
+                      src={previewUrl}
+                      alt="Preview"
+                      className="w-32 h-20 object-cover rounded border"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
 
-          {/* English Title */}
-          <div>
-            <label htmlFor="englishTitle" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.englishTitle")}
-            </label>
-            <input
-              type="text"
-              id="englishTitle"
-              name="englishTitle"
-              value={formData.englishTitle}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
+            {/* Arabic Title */}
+            <div>
+              <label htmlFor="arabicTitle" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("slides.form.title")} ({t("slides.arabic")})
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="arabicTitle"
+                  value={formData.arabicTitle}
+                  onChange={(e) => handleInputChange("arabicTitle", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("slides.form.titlePlaceholder")}
+                />
+              </div>
+            </div>
 
-          {/* Arabic Description */}
-          <div>
-            <label htmlFor="arabicDescription" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.arabicDescription")}
-            </label>
-            <textarea
-              id="arabicDescription"
-              name="arabicDescription"
-              value={formData.arabicDescription}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              dir="rtl"
-            />
-          </div>
+            {/* English Title */}
+            <div>
+              <label htmlFor="englishTitle" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("slides.form.title")} ({t("slides.english")})
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="englishTitle"
+                  value={formData.englishTitle}
+                  onChange={(e) => handleInputChange("englishTitle", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("slides.form.titlePlaceholder")}
+                />
+              </div>
+            </div>
 
-          {/* English Description */}
-          <div>
-            <label htmlFor="englishDescription" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("slides.form.englishDescription")}
-            </label>
-            <textarea
-              id="englishDescription"
-              name="englishDescription"
-              value={formData.englishDescription}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
-
-          {/* Form Actions */}
-          <div className={`flex space-x-3 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-            >
-              {isLoading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  {t("common.saving")}
-                </>
-              ) : (
-                isEditMode ? t("slides.form.update") : t("slides.form.submit")
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={handleCancel}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              {t("slides.form.cancel")}
-            </button>
+            {/* Form Actions */}
+            <div className="flex justify-end space-x-3">
+              <button
+                type="button"
+                onClick={() => router.push("/admin/slides")}
+                className="admin-button admin-button-secondary"
+                disabled={isLoading}
+              >
+                {t("slides.form.cancel")}
+              </button>
+              <button
+                type="submit"
+                className="admin-button admin-button-primary"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    {isEditMode ? t("slides.form.update") : t("slides.form.submit")}
+                  </div>
+                ) : (
+                  isEditMode ? t("slides.form.update") : t("slides.form.submit")
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </div>

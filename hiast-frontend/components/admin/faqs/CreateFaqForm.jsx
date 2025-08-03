@@ -8,12 +8,12 @@ const CreateFaqForm = ({ onSubmit, isLoading, error, initialData = null, isEditM
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    DisplayOrder: "",
-    FaqCategoryId: "",
-    ArabicQuestion: "",
-    EnglishQuestion: "",
-    ArabicAnswer: "",
-    EnglishAnswer: ""
+    displayOrder: "",
+    faqCategoryId: "",
+    arabicQuestion: "",
+    englishQuestion: "",
+    arabicAnswer: "",
+    englishAnswer: ""
   });
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
@@ -34,35 +34,75 @@ const CreateFaqForm = ({ onSubmit, isLoading, error, initialData = null, isEditM
     loadCategories();
   }, []);
 
+  // Pre-fill form data when in edit mode
   useEffect(() => {
-    if (initialData) {
+    if (isEditMode && initialData) {
+      const arabicTranslation = initialData.Translations?.find(t => t.LanguageCode === 1);
+      const englishTranslation = initialData.Translations?.find(t => t.LanguageCode === 2);
+      
       setFormData({
-        DisplayOrder: initialData.DisplayOrder?.toString() || "",
-        FaqCategoryId: initialData.FaqCategoryId?.toString() || "",
-        ArabicQuestion: initialData.ArabicQuestion || "",
-        EnglishQuestion: initialData.EnglishQuestion || "",
-        ArabicAnswer: initialData.ArabicAnswer || "",
-        EnglishAnswer: initialData.EnglishAnswer || ""
+        displayOrder: initialData.DisplayOrder?.toString() || "",
+        faqCategoryId: initialData.FaqCategoryId?.toString() || "",
+        arabicQuestion: arabicTranslation?.Question || "",
+        englishQuestion: englishTranslation?.Question || "",
+        arabicAnswer: arabicTranslation?.Answer || "",
+        englishAnswer: englishTranslation?.Answer || ""
       });
     }
-  }, [initialData]);
+  }, [initialData, isEditMode]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [field]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const submitData = {
-      ...formData,
-      DisplayOrder: parseInt(formData.DisplayOrder) || 0,
-      FaqCategoryId: parseInt(formData.FaqCategoryId) || 0
+    
+    if (!formData.arabicQuestion.trim() && !formData.englishQuestion.trim()) {
+      return;
+    }
+
+    if (!formData.faqCategoryId) {
+      return;
+    }
+
+    const translations = [];
+    
+    if (formData.arabicQuestion.trim()) {
+      const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
+      translations.push({
+        Id: arabicTranslation?.Id || null,
+        LanguageCode: 1,
+        Question: formData.arabicQuestion.trim(),
+        Answer: formData.arabicAnswer.trim()
+      });
+    }
+    
+    if (formData.englishQuestion.trim()) {
+      const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
+      translations.push({
+        Id: englishTranslation?.Id || null,
+        LanguageCode: 2,
+        Question: formData.englishQuestion.trim(),
+        Answer: formData.englishAnswer.trim()
+      });
+    }
+
+    const faqData = {
+      DisplayOrder: parseInt(formData.displayOrder) || 0,
+      FaqCategoryId: formData.faqCategoryId,
+      Translations: translations
     };
-    onSubmit(submitData);
+
+    // Add FAQ ID for updates
+    if (isEditMode && initialData?.Id) {
+      faqData.Id = initialData.Id;
+    }
+
+    onSubmit(faqData);
   };
 
   return (
@@ -72,34 +112,37 @@ const CreateFaqForm = ({ onSubmit, isLoading, error, initialData = null, isEditM
           <div className="grid grid-cols-1 gap-6">
             {/* Display Order */}
             <div>
-              <label htmlFor="DisplayOrder" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="displayOrder" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
                 {t("faqs.form.displayOrder")}
               </label>
               <input
                 type="number"
-                id="DisplayOrder"
-                name="DisplayOrder"
-                value={formData.DisplayOrder}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir={lang === "ar" ? "rtl" : "ltr"}
+                id="displayOrder"
+                value={formData.displayOrder}
+                onChange={(e) => handleInputChange("displayOrder", e.target.value)}
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+                placeholder={t("faqs.form.displayOrderPlaceholder")}
               />
             </div>
 
             {/* FAQ Category */}
             <div>
-              <label htmlFor="FaqCategoryId" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="faqCategoryId" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
                 {t("faqs.form.category")}
               </label>
               <select
-                id="FaqCategoryId"
-                name="FaqCategoryId"
-                value={formData.FaqCategoryId}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir={lang === "ar" ? "rtl" : "ltr"}
+                id="faqCategoryId"
+                value={formData.faqCategoryId}
+                onChange={(e) => handleInputChange("faqCategoryId", e.target.value)}
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
               >
                 <option value="">{t("faqs.form.selectCategory")}</option>
                 {categories.map((category) => (
@@ -112,69 +155,81 @@ const CreateFaqForm = ({ onSubmit, isLoading, error, initialData = null, isEditM
 
             {/* Arabic Question */}
             <div>
-              <label htmlFor="ArabicQuestion" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("faqs.form.arabicQuestion")}
+              <label htmlFor="arabicQuestion" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("faqs.form.question")} ({t("faqs.arabic")})
               </label>
               <textarea
-                id="ArabicQuestion"
-                name="ArabicQuestion"
-                value={formData.ArabicQuestion}
-                onChange={handleChange}
-                required
+                id="arabicQuestion"
+                value={formData.arabicQuestion}
+                onChange={(e) => handleInputChange("arabicQuestion", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="rtl"
+                placeholder={t("faqs.form.questionPlaceholder")}
               />
             </div>
 
             {/* English Question */}
             <div>
-              <label htmlFor="EnglishQuestion" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("faqs.form.englishQuestion")}
+              <label htmlFor="englishQuestion" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("faqs.form.question")} ({t("faqs.english")})
               </label>
               <textarea
-                id="EnglishQuestion"
-                name="EnglishQuestion"
-                value={formData.EnglishQuestion}
-                onChange={handleChange}
-                required
+                id="englishQuestion"
+                value={formData.englishQuestion}
+                onChange={(e) => handleInputChange("englishQuestion", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="ltr"
+                placeholder={t("faqs.form.questionPlaceholder")}
               />
             </div>
 
             {/* Arabic Answer */}
             <div>
-              <label htmlFor="ArabicAnswer" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("faqs.form.arabicAnswer")}
+              <label htmlFor="arabicAnswer" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("faqs.form.answer")} ({t("faqs.arabic")})
               </label>
               <textarea
-                id="ArabicAnswer"
-                name="ArabicAnswer"
-                value={formData.ArabicAnswer}
-                onChange={handleChange}
-                required
+                id="arabicAnswer"
+                value={formData.arabicAnswer}
+                onChange={(e) => handleInputChange("arabicAnswer", e.target.value)}
                 rows={5}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="rtl"
+                placeholder={t("faqs.form.answerPlaceholder")}
               />
             </div>
 
             {/* English Answer */}
             <div>
-              <label htmlFor="EnglishAnswer" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("faqs.form.englishAnswer")}
+              <label htmlFor="englishAnswer" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("faqs.form.answer")} ({t("faqs.english")})
               </label>
               <textarea
-                id="EnglishAnswer"
-                name="EnglishAnswer"
-                value={formData.EnglishAnswer}
-                onChange={handleChange}
-                required
+                id="englishAnswer"
+                value={formData.englishAnswer}
+                onChange={(e) => handleInputChange("englishAnswer", e.target.value)}
                 rows={5}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
                 dir="ltr"
+                placeholder={t("faqs.form.answerPlaceholder")}
               />
             </div>
           </div>

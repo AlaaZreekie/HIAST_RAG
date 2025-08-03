@@ -16,26 +16,49 @@ const coursesApiRequest = (endpoint, options = {}) => {
 };
 
 export const coursesAPI = {
-  getAllCourses: () => coursesApiRequest("GetAllCourses"),
-  getCoursesByFilter: (filter) =>
-    coursesApiRequest("GetByFilter", {
+  getAllCourses: async () => {
+    return coursesApiRequest("GetAllCourses");
+  },
+
+  getCoursesByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Name) queryParams.append("Name", filter.Name);
+    if (filter.CourseGroupId)
+      queryParams.append("CourseGroupId", filter.CourseGroupId);
+    if (filter.CurriculumId)
+      queryParams.append("CurriculumId", filter.CurriculumId);
+
+    return coursesApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
+
+  createCourse: async (courseData) => {
+    return coursesApiRequest("CreateCourse", {
       method: "POST",
-      body: filter,
-    }),
-  createCourse: (courseData) =>
-    coursesApiRequest("CreateCourse", {
-      method: "POST",
-      body: courseData,
-    }),
-  updateCourse: (courseId, courseData) =>
-    coursesApiRequest(`UpdateCourse/${courseId}`, {
+      body: JSON.stringify(courseData),
+    });
+  },
+
+  updateCourse: async (courseData) => {
+    return coursesApiRequest("UpdateCourse", {
       method: "PUT",
-      body: courseData,
-    }),
-  deleteCourse: (courseId) =>
-    coursesApiRequest(`DeleteCourse/${courseId}`, {
+      body: JSON.stringify(courseData),
+    });
+  },
+
+  deleteCourse: async (courseId) => {
+    return coursesApiRequest("DeleteCourse", {
       method: "DELETE",
-    }),
+      body: JSON.stringify({ Id: courseId }),
+    });
+  },
+
+  addCourseTranslation: async (translationData) => {
+    return coursesApiRequest("AddCourseTranslation", {
+      method: "POST",
+      body: JSON.stringify(translationData),
+    });
+  },
 };
 
 // Helper functions
@@ -51,7 +74,7 @@ export const getAllCourses = async () => {
 export const getCourseById = async (courseId) => {
   try {
     const courses = await getAllCourses();
-    return courses.find(course => course.Id === courseId);
+    return courses.find((course) => course.Id === courseId);
   } catch (error) {
     console.error("Error fetching course by ID:", error);
     throw error;
@@ -60,16 +83,20 @@ export const getCourseById = async (courseId) => {
 
 export const getCourseNameInLanguage = (course, languageCode) => {
   if (!course.Translations || !Array.isArray(course.Translations)) return "N/A";
-  const translation = course.Translations.find(t => t.LanguageCode === languageCode);
+  const translation = course.Translations.find(
+    (t) => t.LanguageCode === languageCode
+  );
   return translation?.Name || "N/A";
 };
 
 export const getCourseDescriptionInLanguage = (course, languageCode) => {
   if (!course.Translations || !Array.isArray(course.Translations)) return "N/A";
-  const translation = course.Translations.find(t => t.LanguageCode === languageCode);
+  const translation = course.Translations.find(
+    (t) => t.LanguageCode === languageCode
+  );
   return translation?.Description || "N/A";
 };
 
 export const getCourseTranslations = (course) => {
   return course.Translations || [];
-}; 
+};

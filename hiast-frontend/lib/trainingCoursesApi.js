@@ -30,20 +30,21 @@ export const trainingCoursesAPI = {
   createTrainingCourse: async (trainingCourseData) => {
     return trainingCoursesApiRequest("Create", {
       method: "POST",
-      body: trainingCourseData, // FormData for file upload
+      body: JSON.stringify(trainingCourseData),
     });
   },
 
   updateTrainingCourse: async (trainingCourseData) => {
     return trainingCoursesApiRequest("Update", {
       method: "PUT",
-      body: trainingCourseData, // FormData for file upload
+      body: JSON.stringify(trainingCourseData),
     });
   },
 
   deleteTrainingCourse: async (id) => {
-    return trainingCoursesApiRequest(`Delete/${id}`, {
+    return trainingCoursesApiRequest("Delete", {
       method: "DELETE",
+      body: JSON.stringify({ Id: id }),
     });
   },
 };
@@ -51,7 +52,8 @@ export const trainingCoursesAPI = {
 // Helper functions for language-specific data
 export const getAllTrainingCourses = async () => {
   try {
-    const data = await trainingCoursesAPI.getAllTrainingCourses();
+    const response = await trainingCoursesAPI.getAllTrainingCourses();
+    const data = response.Data || [];
     return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching training courses:", error);

@@ -17,33 +17,34 @@ const languagesApiRequest = async (endpoint, options = {}) => {
 
 export const languagesAPI = {
   getAllLanguages: async () => {
-    return languagesApiRequest("GetAll");
+    return languagesApiRequest("GetAllLanguages");
   },
 
   getLanguagesByFilter: async (filter) => {
-    return languagesApiRequest("GetByFilter", {
+    return languagesApiRequest("GetLanguagesByFilter", {
       method: "POST",
       body: JSON.stringify(filter),
     });
   },
 
   createLanguage: async (languageData) => {
-    return languagesApiRequest("Create", {
+    return languagesApiRequest("CreateLanguage", {
       method: "POST",
       body: JSON.stringify(languageData),
     });
   },
 
   updateLanguage: async (languageData) => {
-    return languagesApiRequest("Update", {
+    return languagesApiRequest("UpdateLanguage", {
       method: "PUT",
       body: JSON.stringify(languageData),
     });
   },
 
   deleteLanguage: async (id) => {
-    return languagesApiRequest(`Delete/${id}`, {
+    return languagesApiRequest("DeleteLanguage", {
       method: "DELETE",
+      body: JSON.stringify({ Id: id }),
     });
   },
 };

@@ -1,72 +1,60 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function trainingCourseCategoriesApiRequest(endpoint, options = {}) {
+const trainingCourseCategoriesApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/Admin/TrainingCourseCategories/${endpoint}`;
-
-  const defaultOptions = {
+  return apiRequest(`/admin/trainingCourseCategories/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-  };
-
-  const response = await fetch(url, { ...defaultOptions, ...options });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`HTTP ${response.status}: ${errorText}`);
-  }
-
-  const responseText = await response.text();
-  let data;
-
-  try {
-    data = JSON.parse(responseText);
-  } catch (error) {
-    console.error("Failed to parse JSON response:", responseText);
-    throw new Error("Invalid JSON response from server");
-  }
-
-  if (!data.Result) {
-    throw new Error(data.Message || "API request failed");
-  }
-
-  return data.Data;
-}
-
-export const trainingCourseCategoriesAPI = {
-  getAll: () => trainingCourseCategoriesApiRequest("GetAll"),
-  getByFilter: (filter) =>
-    trainingCourseCategoriesApiRequest("GetByFilter", {
-      method: "POST",
-      body: JSON.stringify(filter),
-    }),
-  create: (categoryData) =>
-    trainingCourseCategoriesApiRequest("Create", {
-      method: "POST",
-      body: JSON.stringify(categoryData),
-    }),
-  update: (categoryData) =>
-    trainingCourseCategoriesApiRequest("Update", {
-      method: "PUT",
-      body: JSON.stringify(categoryData),
-    }),
-  delete: (categoryId) =>
-    trainingCourseCategoriesApiRequest("Delete", {
-      method: "DELETE",
-      body: JSON.stringify({ Id: categoryId }),
-    }),
+  });
 };
 
+export const trainingCourseCategoriesAPI = {
+  getAllCategories: async () => {
+    return trainingCourseCategoriesApiRequest("GetAll");
+  },
+
+  getCategoriesByFilter: async (filter) => {
+    return trainingCourseCategoriesApiRequest("GetByFilter", {
+      method: "POST",
+      body: JSON.stringify(filter),
+    });
+  },
+
+  createCategory: async (categoryData) => {
+    return trainingCourseCategoriesApiRequest("Create", {
+      method: "POST",
+      body: JSON.stringify(categoryData),
+    });
+  },
+
+  updateCategory: async (categoryData) => {
+    return trainingCourseCategoriesApiRequest("Update", {
+      method: "PUT",
+      body: JSON.stringify(categoryData),
+    });
+  },
+
+  deleteCategory: async (categoryId) => {
+    return trainingCourseCategoriesApiRequest("Delete", {
+      method: "DELETE",
+      body: JSON.stringify({ Id: categoryId }),
+    });
+  },
+};
+
+// Helper functions
 export const getAllTrainingCourseCategories = async () => {
   try {
-    return await trainingCourseCategoriesAPI.getAll();
+    const response = await trainingCourseCategoriesAPI.getAllCategories();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching training course categories:", error);
     throw error;
@@ -85,13 +73,24 @@ export const getTrainingCourseCategoryById = async (id) => {
 
 export const getTrainingCourseCategoryNameInLanguage = (
   category,
-  languageCode
+  languageId
 ) => {
-  if (!category?.Translations) return category?.Name || "Unknown";
+  if (!category?.Translations) return "No Name";
   const translation = category.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation?.Name || category?.Name || "Unknown";
+  return translation?.Name || "No Name";
+};
+
+export const getTrainingCourseCategoryDescriptionInLanguage = (
+  category,
+  languageId
+) => {
+  if (!category?.Translations) return "";
+  const translation = category.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
 };
 
 export const getTrainingCourseCategoryTranslations = (category) => {

@@ -1,74 +1,63 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function admissionExamsApiRequest(endpoint, options = {}) {
+const admissionExamsApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/admin/admissionExams/${endpoint}`;
-  const config = {
-    method: options.method || "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers,
-    },
+  return apiRequest(`/admin/admissionExams/${endpoint}`, {
     ...options,
-  };
-
-  if (options.body) {
-    config.body = JSON.stringify(options.body);
-  }
-
-  try {
-    const response = await fetch(url, config);
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${responseText}`);
-    }
-
-    if (!responseText) {
-      return null;
-    }
-
-    const data = JSON.parse(responseText);
-    return data.Data;
-  } catch (error) {
-    console.error("API request failed:", error);
-    throw error;
-  }
-}
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 export const admissionExamsAPI = {
-  getAllExams: () => admissionExamsApiRequest("GetAllAdmissionExams"),
-  getExamsByFilter: (filter) =>
-    admissionExamsApiRequest("GetByFilter", {
-      method: "GET",
-      body: filter,
-    }),
-  createExam: (examData) =>
-    admissionExamsApiRequest("CreateAdmissionExam", {
+  getAllExams: async () => {
+    return admissionExamsApiRequest("GetAllAdmissionExams");
+  },
+
+  getExamsByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.AdmissionId)
+      queryParams.append("AdmissionId", filter.AdmissionId);
+    if (filter.ExamName) queryParams.append("ExamName", filter.ExamName);
+    if (filter.ExamDate) queryParams.append("ExamDate", filter.ExamDate);
+
+    return admissionExamsApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
+
+  createExam: async (examData) => {
+    return admissionExamsApiRequest("CreateAdmissionExam", {
       method: "POST",
-      body: examData,
-    }),
-  updateExam: (examData) =>
-    admissionExamsApiRequest("UpdateAdmissionExam", {
+      body: JSON.stringify(examData),
+    });
+  },
+
+  updateExam: async (examData) => {
+    return admissionExamsApiRequest("UpdateAdmissionExam", {
       method: "PUT",
-      body: examData,
-    }),
-  deleteExam: (examId) =>
-    admissionExamsApiRequest("DeleteAdmissionExam", {
+      body: JSON.stringify(examData),
+    });
+  },
+
+  deleteExam: async (examId) => {
+    return admissionExamsApiRequest("DeleteAdmissionExam", {
       method: "DELETE",
-      body: { Id: examId },
-    }),
+      body: JSON.stringify({ Id: examId }),
+    });
+  },
 };
 
 export const getAllAdmissionExams = async () => {
   try {
-    return await admissionExamsAPI.getAllExams();
+    const response = await admissionExamsAPI.getAllExams();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching admission exams:", error);
     throw error;

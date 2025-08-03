@@ -1,97 +1,62 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function locationsApiRequest(endpoint, options = {}) {
+const locationsApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/Admin/Locations/${endpoint}`;
-  const config = {
-    method: "GET",
+  return apiRequest(`/admin/locations/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-    ...options,
-  };
-
-  try {
-    const response = await fetch(url, config);
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${responseText}`);
-    }
-
-    if (!responseText) {
-      return { success: true, data: null };
-    }
-
-    let data;
-    try {
-      data = JSON.parse(responseText);
-    } catch (parseError) {
-      // Try parsing as double-encoded JSON
-      try {
-        const decoded = decodeURIComponent(responseText);
-        data = JSON.parse(decoded);
-      } catch (doubleParseError) {
-        console.error("Failed to parse response:", responseText);
-        throw new Error("Invalid JSON response");
-      }
-    }
-
-    if (data.Result === false) {
-      throw new Error(data.Message || "API request failed");
-    }
-
-    return {
-      success: true,
-      data: data.Data,
-      message: data.Message,
-    };
-  } catch (error) {
-    console.error("API request failed:", error);
-    throw error;
-  }
-}
-
-export const locationsAPI = {
-  getAllLocations: () => locationsApiRequest("GetAllLocations"),
-  createLocation: (data) => {
-    return locationsApiRequest("CreateLocation", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-  },
-  updateLocation: (data) => {
-    console.log("API updateLocation called with data:", data);
-    console.log("API updateLocation JSON:", JSON.stringify(data, null, 2));
-    return locationsApiRequest("UpdateLocation", {
-      method: "PUT",
-      body: JSON.stringify(data),
-    });
-  },
-  deleteLocation: (id) =>
-    locationsApiRequest("DeleteLocation", {
-      method: "DELETE",
-      body: JSON.stringify({ Id: id }),
-    }),
-  getLocationsByFilter: (filter) =>
-    locationsApiRequest("GetLocationsByFilter", {
-      method: "POST",
-      body: JSON.stringify(filter),
-    }),
+  });
 };
 
+export const locationsAPI = {
+  getAllLocations: async () => {
+    return locationsApiRequest("GetAllLocations");
+  },
+
+  createLocation: async (locationData) => {
+    return locationsApiRequest("CreateLocation", {
+      method: "POST",
+      body: JSON.stringify(locationData),
+    });
+  },
+
+  updateLocation: async (locationData) => {
+    return locationsApiRequest("UpdateLocation", {
+      method: "PUT",
+      body: JSON.stringify(locationData),
+    });
+  },
+
+  deleteLocation: async (locationId) => {
+    return locationsApiRequest("DeleteLocation", {
+      method: "DELETE",
+      body: JSON.stringify({ Id: locationId }),
+    });
+  },
+
+  getLocationsByFilter: async (filter) => {
+    return locationsApiRequest("GetLocationsByFilter", {
+      method: "POST",
+      body: JSON.stringify(filter),
+    });
+  },
+};
+
+// Helper functions
 export const getAllLocations = async () => {
   try {
     const response = await locationsAPI.getAllLocations();
-    return response.data;
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.error("Failed to fetch locations:", error);
+    console.error("Error fetching locations:", error);
     throw error;
   }
 };
@@ -101,27 +66,33 @@ export const getLocationById = async (id) => {
     const locations = await getAllLocations();
     return locations.find((location) => location.Id === id);
   } catch (error) {
-    console.error("Failed to fetch location:", error);
+    console.error("Error fetching location by ID:", error);
     throw error;
   }
 };
 
-export const getLocationNameInLanguage = (location, languageCode) => {
-  if (!location || !location.Translations) return "";
-
+export const getLocationNameInLanguage = (location, languageId) => {
+  if (!location?.Translations) return "No Name";
   const translation = location.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation ? translation.Name : "";
+  return translation?.Name || "No Name";
 };
 
-export const getLocationAddressInLanguage = (location, languageCode) => {
-  if (!location || !location.Translations) return "";
-
+export const getLocationAddressInLanguage = (location, languageId) => {
+  if (!location?.Translations) return "";
   const translation = location.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation ? translation.Address : "";
+  return translation?.Address || "";
+};
+
+export const getLocationDescriptionInLanguage = (location, languageId) => {
+  if (!location?.Translations) return "";
+  const translation = location.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
 };
 
 export const getLocationTranslations = (location) => {
