@@ -29,14 +29,13 @@ public class Startup(IConfiguration configuration)
 
         dataSeeder.SeedData();
 
+        // Enable CORS first, before other middleware
+        app.UseCors("AllowAll");
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
         
-        // Enable CORS
-        app.UseCors("AllowAll");
-        
-
         app.UseAuthentication();
         app.UseAuthorization();
         

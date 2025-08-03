@@ -215,7 +215,7 @@ const CreatePostForm = ({ onSubmit, isLoading, error, initialData, isEditMode = 
             <div className="flex justify-end space-x-3">
               <button
                 type="button"
-                onClick={() => router.push("/admin/dashboard")}
+                onClick={() => router.push("/admin/posts")}
                 className="admin-button admin-button-secondary"
                 disabled={isLoading}
               >

@@ -12,6 +12,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"41487"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228/RKgKcaNM2/tBAPOg/VckIXSCajSIUuigNql5wYK9Y=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 09:20:48 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/Images/d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-C8FcsKfQu0l3AtiVJSTt33Jn43kmb1tkknNwBqrOfuM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"71630"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022C8FcsKfQu0l3AtiVJSTt33Jn43kmb1tkknNwBqrOfuM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 09:56:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/Images/d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.ziythvqh0k.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ziythvqh0k"},{"Name":"integrity","Value":"sha256-C8FcsKfQu0l3AtiVJSTt33Jn43kmb1tkknNwBqrOfuM="},{"Name":"label","Value":"_content/Presentation/Images/d5d36dd1-be08-4ebc-84d7-5cf3a9bd074f_photo_5_2025-03-29_12-26-14.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"71630"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022C8FcsKfQu0l3AtiVJSTt33Jn43kmb1tkknNwBqrOfuM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 09:56:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\1009fd99-2d34-4f83-8f0f-85c1a48696dc_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -144,6 +156,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-HGAH4q6wIFo\u002BvlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"103814"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022HGAH4q6wIFo\u002BvlIXYn2Gqs2mxoBFqnA/v3hsmMKyT9U=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 09:20:48 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/4d8468b7-304e-453e-a2ef-0252bc9ca2b6_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4d8468b7-304e-453e-a2ef-0252bc9ca2b6_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"jwwk01mgpu"},{"Name":"integrity","Value":"sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="},{"Name":"label","Value":"_content/Presentation/PDFs/4d8468b7-304e-453e-a2ef-0252bc9ca2b6_\u062A\u0642\u0631\u064A\u0631_\u0645\u0634\u0631\u0648\u0639_\u0627\u0644\u0633\u0646\u0629\u0627\u0644\u0631\u0627\u0628\u0639\u0629_\u0627\u0644\u0637\u0627\u0644\u0628\u0629_\u062C\u0644\u0646\u0627\u0631_\u0639\u0644\u064A.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1558795"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 07:55:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/4d8468b7-304e-453e-a2ef-0252bc9ca2b6_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\4d8468b7-304e-453e-a2ef-0252bc9ca2b6_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1558795"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 07:55:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.kradx8n2jf.pdf">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\5121fcfb-fffb-434d-b45a-a18d2a13b9d6_س4 نتائج مقرر الالكتروتكنيك 2.pdf'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -239,6 +263,30 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"27487"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022wEjC0yujZsQ1KXMJe7y13AuvL2iWwStyMVBqZFb/qRs=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Jul 2025 09:20:48 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.hd6e5028hh.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"hd6e5028hh"},{"Name":"integrity","Value":"sha256-xVxPT5fuQK9/BFMIgTjY754GjOT6f1mW6iGmbdw64Ys="},{"Name":"label","Value":"_content/Presentation/PDFs/b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2970546"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022xVxPT5fuQK9/BFMIgTjY754GjOT6f1mW6iGmbdw64Ys=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 09:56:03 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\b9a1e0b7-e358-4209-938a-07e729c5aecd_project_report.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-xVxPT5fuQK9/BFMIgTjY754GjOT6f1mW6iGmbdw64Ys="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2970546"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022xVxPT5fuQK9/BFMIgTjY754GjOT6f1mW6iGmbdw64Ys=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 09:56:03 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/bac4f9d4-003e-4020-9beb-9efd9e3800af_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.jwwk01mgpu.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bac4f9d4-003e-4020-9beb-9efd9e3800af_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"jwwk01mgpu"},{"Name":"integrity","Value":"sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="},{"Name":"label","Value":"_content/Presentation/PDFs/bac4f9d4-003e-4020-9beb-9efd9e3800af_\u062A\u0642\u0631\u064A\u0631_\u0645\u0634\u0631\u0648\u0639_\u0627\u0644\u0633\u0646\u0629\u0627\u0644\u0631\u0627\u0628\u0639\u0629_\u0627\u0644\u0637\u0627\u0644\u0628\u0629_\u062C\u0644\u0646\u0627\u0631_\u0639\u0644\u064A.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1558795"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 08:16:00 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/bac4f9d4-003e-4020-9beb-9efd9e3800af_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bac4f9d4-003e-4020-9beb-9efd9e3800af_تقرير_مشروع_السنةالرابعة_الطالبة_جلنار_علي.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1558795"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022bRjWkOldqT7It8flBi7T5vrrQKKRELcFun/tMZt3abY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 30 Jul 2025 08:16:00 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Presentation/PDFs/bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\PDFs\bbab6913-cdb1-4a29-b561-91ce504da2e1_1.pdf'))</AssetFile>

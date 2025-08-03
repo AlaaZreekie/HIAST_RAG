@@ -1,12 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/admin/categories/create/page": "app/admin/categories/create/page.js",
-  "/admin/categories/edit/[id]/page": "app/admin/categories/edit/[id]/page.js",
-  "/admin/categories/page": "app/admin/categories/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/admin/posts/create/page": "app/admin/posts/create/page.js",
-  "/admin/posts/page": "app/admin/posts/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js"
 }

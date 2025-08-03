@@ -4939,24 +4939,24 @@
     "schemas": {
       "AddBookTranslationDto": {
         "required": [
-          "id",
-          "languageCode",
-          "title"
+          "Id",
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -4965,20 +4965,20 @@
       },
       "AddCategoryTranslationDto": {
         "required": [
-          "id",
-          "languageCode",
-          "name"
+          "Id",
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -4987,20 +4987,20 @@
       },
       "AddCourseGroupTranslationDto": {
         "required": [
-          "id",
-          "languageCode",
-          "name"
+          "Id",
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5009,24 +5009,24 @@
       },
       "AddCourseTranslationDto": {
         "required": [
-          "id",
-          "languageCode",
-          "name"
+          "Id",
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -5035,20 +5035,20 @@
       },
       "AddMediaCategoryTranslationDto": {
         "required": [
-          "id",
-          "languageCode",
-          "name"
+          "Id",
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5057,25 +5057,25 @@
       },
       "AddPageTranslationDto": {
         "required": [
-          "content",
-          "id",
-          "languageCode",
-          "title"
+          "Content",
+          "Id",
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }
@@ -5084,25 +5084,25 @@
       },
       "AddPostTranslationDto": {
         "required": [
-          "content",
-          "id",
-          "languageCode",
-          "title"
+          "Content",
+          "Id",
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }
@@ -5111,24 +5111,24 @@
       },
       "AddProgramTranslationDto": {
         "required": [
-          "id",
-          "languageCode",
-          "name"
+          "Id",
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -5137,32 +5137,31 @@
       },
       "AdmissionResultTypeEnum": {
         "enum": [
-          0,
-          1,
-          2
+          "InitialList",
+          "FinalAdmitted",
+          "WaitingList"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "AuthUserDto": {
         "required": [
-          "id",
-          "name"
+          "Id",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "token": {
+          "Token": {
             "$ref": "#/components/schemas/TokenDto"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "email": {
+          "Email": {
             "type": "string",
             "format": "email",
             "nullable": true
@@ -5172,23 +5171,23 @@
       },
       "AuthUserDtoApiResponse": {
         "required": [
-          "data",
-          "message"
+          "Data",
+          "Message"
         ],
         "type": "object",
         "properties": {
-          "code": {
+          "Code": {
             "type": "integer",
             "format": "int32"
           },
-          "message": {
+          "Message": {
             "type": "string",
             "nullable": true
           },
-          "result": {
+          "Result": {
             "type": "boolean"
           },
-          "data": {
+          "Data": {
             "$ref": "#/components/schemas/AuthUserDto"
           }
         },
@@ -5196,79 +5195,77 @@
       },
       "CourseGroupCodeEnum": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
-          18,
-          19,
-          20,
-          21,
-          22,
-          23,
-          24,
-          25,
-          26,
-          27,
-          28,
-          29,
-          30,
-          31,
-          32
+          "LNG",
+          "BIF",
+          "GK",
+          "CHM",
+          "PHY",
+          "MTH",
+          "ELC",
+          "TCH",
+          "PRT",
+          "ODS",
+          "CAR",
+          "SWE",
+          "CMP",
+          "AIN",
+          "DBS",
+          "NET",
+          "TEL",
+          "MGT",
+          "GKT",
+          "CGS",
+          "NWT",
+          "IMG",
+          "SEC",
+          "PRJ",
+          "SIG",
+          "TRD",
+          "CRL",
+          "ELT",
+          "MEC",
+          "MES",
+          "ROB",
+          "DES",
+          "MAN"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "CourseTypeEnum": {
         "enum": [
-          0,
-          1,
-          2
+          "Core",
+          "Specialized",
+          "Elective"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "CreateAdmissionDto": {
         "required": [
-          "academicYear",
-          "announcementDate",
-          "deadline",
-          "locationId",
-          "programId"
+          "AcademicYear",
+          "AnnouncementDate",
+          "Deadline",
+          "LocationId",
+          "ProgramId"
         ],
         "type": "object",
         "properties": {
-          "academicYear": {
+          "AcademicYear": {
             "minLength": 1,
             "type": "string"
           },
-          "announcementDate": {
+          "AnnouncementDate": {
             "type": "string",
             "format": "date-time"
           },
-          "deadline": {
+          "Deadline": {
             "type": "string",
             "format": "date-time"
           },
-          "programId": {
+          "ProgramId": {
             "type": "string",
             "format": "uuid"
           },
-          "locationId": {
+          "LocationId": {
             "type": "string",
             "format": "uuid"
           }
@@ -5277,21 +5274,21 @@
       },
       "CreateAdmissionExamDto": {
         "required": [
-          "admissionId",
-          "examDateTime",
-          "translations"
+          "AdmissionId",
+          "ExamDateTime",
+          "Translations"
         ],
         "type": "object",
         "properties": {
-          "examDateTime": {
+          "ExamDateTime": {
             "type": "string",
             "format": "date-time"
           },
-          "admissionId": {
+          "AdmissionId": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5303,19 +5300,19 @@
       },
       "CreateAdmissionExamTranslationDto": {
         "required": [
-          "examName",
-          "languageCode"
+          "ExamName",
+          "LanguageCode"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "examName": {
+          "ExamName": {
             "minLength": 1,
             "type": "string"
           },
-          "notes": {
+          "Notes": {
             "type": "string",
             "nullable": true
           }
@@ -5324,19 +5321,19 @@
       },
       "CreateBookTranslationDto": {
         "required": [
-          "languageCode",
-          "title"
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -5345,11 +5342,11 @@
       },
       "CreateCategoryDto": {
         "required": [
-          "translations"
+          "Translations"
         ],
         "type": "object",
         "properties": {
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5362,15 +5359,15 @@
       },
       "CreateCategoryTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5379,35 +5376,35 @@
       },
       "CreateCourseDto": {
         "required": [
-          "courseCode",
-          "courseGroupId",
-          "credits",
-          "practicalHours",
-          "theoreticalHours"
+          "CourseCode",
+          "CourseGroupId",
+          "Credits",
+          "PracticalHours",
+          "TheoreticalHours"
         ],
         "type": "object",
         "properties": {
-          "courseCode": {
+          "CourseCode": {
             "type": "string",
             "nullable": true
           },
-          "credits": {
+          "Credits": {
             "type": "number",
             "format": "double"
           },
-          "theoreticalHours": {
+          "TheoreticalHours": {
             "type": "integer",
             "format": "int32"
           },
-          "practicalHours": {
+          "PracticalHours": {
             "type": "integer",
             "format": "int32"
           },
-          "courseGroupId": {
+          "CourseGroupId": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateCourseTranslationDto"
@@ -5419,14 +5416,14 @@
       },
       "CreateCourseGroupDto": {
         "required": [
-          "courseGroupCode"
+          "CourseGroupCode"
         ],
         "type": "object",
         "properties": {
-          "courseGroupCode": {
+          "CourseGroupCode": {
             "$ref": "#/components/schemas/CourseGroupCodeEnum"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateCourseGroupTranslationDto"
@@ -5438,15 +5435,15 @@
       },
       "CreateCourseGroupTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5455,19 +5452,19 @@
       },
       "CreateCourseTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -5476,34 +5473,34 @@
       },
       "CreateCurriculumDto": {
         "required": [
-          "academicYear",
-          "courseId",
-          "courseType",
-          "semester",
-          "specializationId"
+          "AcademicYear",
+          "CourseId",
+          "CourseType",
+          "Semester",
+          "SpecializationId"
         ],
         "type": "object",
         "properties": {
-          "academicYear": {
+          "AcademicYear": {
             "maximum": 5,
             "minimum": 1,
             "type": "integer",
             "format": "int32"
           },
-          "semester": {
+          "Semester": {
             "maximum": 2,
             "minimum": 1,
             "type": "integer",
             "format": "int32"
           },
-          "courseType": {
+          "CourseType": {
             "$ref": "#/components/schemas/CourseTypeEnum"
           },
-          "specializationId": {
+          "SpecializationId": {
             "type": "string",
             "format": "uuid"
           },
-          "courseId": {
+          "CourseId": {
             "type": "string",
             "format": "uuid"
           }
@@ -5513,7 +5510,7 @@
       "CreateFaqCategoryDto": {
         "type": "object",
         "properties": {
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateFaqCategoryTranslationDto"
@@ -5525,15 +5522,15 @@
       },
       "CreateFaqCategoryTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5542,19 +5539,19 @@
       },
       "CreateFaqDto": {
         "required": [
-          "faqCategoryId"
+          "FaqCategoryId"
         ],
         "type": "object",
         "properties": {
-          "displayOrder": {
+          "DisplayOrder": {
             "type": "integer",
             "format": "int32"
           },
-          "faqCategoryId": {
+          "FaqCategoryId": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateFaqTranslationDto"
@@ -5566,20 +5563,20 @@
       },
       "CreateFaqTranslationDto": {
         "required": [
-          "answer",
-          "languageCode",
-          "question"
+          "Answer",
+          "LanguageCode",
+          "Question"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "question": {
+          "Question": {
             "type": "string",
             "nullable": true
           },
-          "answer": {
+          "Answer": {
             "type": "string",
             "nullable": true
           }
@@ -5589,10 +5586,10 @@
       "CreateLanguageDto": {
         "type": "object",
         "properties": {
-          "code": {
+          "Code": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5601,14 +5598,14 @@
       },
       "CreateLocationDto": {
         "required": [
-          "locationCode"
+          "LocationCode"
         ],
         "type": "object",
         "properties": {
-          "locationCode": {
+          "LocationCode": {
             "$ref": "#/components/schemas/LocationCodeEnum"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateLocationTranslationDto"
@@ -5620,19 +5617,19 @@
       },
       "CreateLocationTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "address": {
+          "Address": {
             "type": "string",
             "nullable": true
           }
@@ -5641,11 +5638,11 @@
       },
       "CreateMediaCategoryDto": {
         "required": [
-          "translations"
+          "Translations"
         ],
         "type": "object",
         "properties": {
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5657,15 +5654,15 @@
       },
       "CreateMediaCategoryTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -5674,11 +5671,11 @@
       },
       "CreatePageDto": {
         "required": [
-          "translations"
+          "Translations"
         ],
         "type": "object",
         "properties": {
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5691,20 +5688,20 @@
       },
       "CreatePageTranslationDto": {
         "required": [
-          "content",
-          "languageCode",
-          "title"
+          "Content",
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }
@@ -5713,16 +5710,16 @@
       },
       "CreatePostDto": {
         "required": [
-          "categoryId",
-          "translations"
+          "CategoryId",
+          "Translations"
         ],
         "type": "object",
         "properties": {
-          "categoryId": {
+          "CategoryId": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5734,20 +5731,20 @@
       },
       "CreatePostTranslationDto": {
         "required": [
-          "content",
-          "languageCode",
-          "title"
+          "Content",
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }
@@ -5756,15 +5753,15 @@
       },
       "CreateProgramDto": {
         "required": [
-          "duration"
+          "Duration"
         ],
         "type": "object",
         "properties": {
-          "duration": {
+          "Duration": {
             "type": "string",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateProgramTranslationDto"
@@ -5776,19 +5773,19 @@
       },
       "CreateProgramTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -5797,15 +5794,15 @@
       },
       "CreateSliderTranslationDto": {
         "required": [
-          "languageCode",
-          "title"
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "minLength": 1,
             "type": "string"
           }
@@ -5814,24 +5811,24 @@
       },
       "CreateSpecializationDto": {
         "required": [
-          "degreeType",
-          "locationId",
-          "programId"
+          "DegreeType",
+          "LocationId",
+          "ProgramId"
         ],
         "type": "object",
         "properties": {
-          "degreeType": {
+          "DegreeType": {
             "$ref": "#/components/schemas/DegreeTypeEnum"
           },
-          "programId": {
+          "ProgramId": {
             "type": "string",
             "format": "uuid"
           },
-          "locationId": {
+          "LocationId": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateSpecializationTranslationDto"
@@ -5844,14 +5841,14 @@
       "CreateSpecializationTranslationDto": {
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -5860,15 +5857,15 @@
       },
       "CreateTestimonialTranslationDto": {
         "required": [
-          "languageCode",
-          "quote"
+          "LanguageCode",
+          "Quote"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "quote": {
+          "Quote": {
             "minLength": 1,
             "type": "string"
           }
@@ -5877,11 +5874,11 @@
       },
       "CreateTrainingCourseCategoryDto": {
         "required": [
-          "translations"
+          "Translations"
         ],
         "type": "object",
         "properties": {
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5893,15 +5890,15 @@
       },
       "CreateTrainingCourseCategoryTranslationDto": {
         "required": [
-          "languageCode",
-          "name"
+          "LanguageCode",
+          "Name"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "minLength": 1,
             "type": "string"
           }
@@ -5910,41 +5907,41 @@
       },
       "CreateTrainingCourseDto": {
         "required": [
-          "courseCode",
-          "durationHours",
-          "numberOfSessions",
-          "targetAudience",
-          "trainingCourseCategoryId",
-          "translations",
-          "year"
+          "CourseCode",
+          "DurationHours",
+          "NumberOfSessions",
+          "TargetAudience",
+          "TrainingCourseCategoryId",
+          "Translations",
+          "Year"
         ],
         "type": "object",
         "properties": {
-          "courseCode": {
+          "CourseCode": {
             "minLength": 1,
             "type": "string"
           },
-          "durationHours": {
+          "DurationHours": {
             "type": "integer",
             "format": "int32"
           },
-          "numberOfSessions": {
+          "NumberOfSessions": {
             "type": "integer",
             "format": "int32"
           },
-          "targetAudience": {
+          "TargetAudience": {
             "minLength": 1,
             "type": "string"
           },
-          "year": {
+          "Year": {
             "type": "integer",
             "format": "int32"
           },
-          "trainingCourseCategoryId": {
+          "TrainingCourseCategoryId": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -5956,20 +5953,20 @@
       },
       "CreateTrainingCourseTranslationDto": {
         "required": [
-          "content",
-          "languageCode",
-          "title"
+          "Content",
+          "LanguageCode",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "languageCode": {
+          "LanguageCode": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "title": {
+          "Title": {
             "minLength": 1,
             "type": "string"
           },
-          "content": {
+          "Content": {
             "minLength": 1,
             "type": "string"
           }
@@ -5978,22 +5975,21 @@
       },
       "DegreeTypeEnum": {
         "enum": [
-          0,
-          1,
-          2
+          "Engineer",
+          "Master",
+          "PhD"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "FaqCategoryFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6003,21 +5999,21 @@
       "FaqFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "faqCategoryId": {
+          "FaqCategoryId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "question": {
+          "Question": {
             "type": "string",
             "nullable": true
           },
-          "answer": {
+          "Answer": {
             "type": "string",
             "nullable": true
           }
@@ -6026,11 +6022,11 @@
       },
       "GuidBaseDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           }
@@ -6039,27 +6035,26 @@
       },
       "LanguageCodeEnum": {
         "enum": [
-          1,
-          2,
-          3,
-          4
+          "AR",
+          "EN",
+          "FR",
+          "DU"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "LanguageFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "code": {
+          "Code": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           }
         },
@@ -6067,28 +6062,28 @@
       },
       "LocationCodeEnum": {
         "enum": [
-          0,
-          1
+          "DAMAS",
+          "ALEPPO",
+          "LATAKIA"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "LocationFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "locationCode": {
+          "LocationCode": {
             "$ref": "#/components/schemas/LocationCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "address": {
+          "Address": {
             "type": "string",
             "nullable": true
           }
@@ -6097,22 +6092,22 @@
       },
       "LoginDto": {
         "required": [
-          "email",
-          "password"
+          "Email",
+          "Password"
         ],
         "type": "object",
         "properties": {
-          "email": {
+          "Email": {
             "type": "string",
             "format": "email",
             "nullable": true
           },
-          "password": {
+          "Password": {
             "type": "string",
             "format": "password",
             "nullable": true
           },
-          "rememberMe": {
+          "RememberMe": {
             "type": "boolean"
           }
         },
@@ -6120,23 +6115,23 @@
       },
       "ObjectApiResponse": {
         "required": [
-          "data",
-          "message"
+          "Data",
+          "Message"
         ],
         "type": "object",
         "properties": {
-          "code": {
+          "Code": {
             "type": "integer",
             "format": "int32"
           },
-          "message": {
+          "Message": {
             "type": "string",
             "nullable": true
           },
-          "result": {
+          "Result": {
             "type": "boolean"
           },
-          "data": {
+          "Data": {
             "nullable": true
           }
         },
@@ -6144,22 +6139,22 @@
       },
       "RegisterDto": {
         "required": [
-          "email",
-          "password",
-          "username"
+          "Email",
+          "Password",
+          "Username"
         ],
         "type": "object",
         "properties": {
-          "username": {
+          "Username": {
             "type": "string",
             "nullable": true
           },
-          "email": {
+          "Email": {
             "type": "string",
             "format": "email",
             "nullable": true
           },
-          "password": {
+          "Password": {
             "minLength": 6,
             "type": "string",
             "nullable": true
@@ -6170,25 +6165,25 @@
       "SpecializationFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "programId": {
+          "ProgramId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "locationId": {
+          "LocationId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "degreeType": {
+          "DegreeType": {
             "$ref": "#/components/schemas/DegreeTypeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6198,14 +6193,14 @@
       "TokenDto": {
         "type": "object",
         "properties": {
-          "token": {
+          "Token": {
             "type": "string",
             "nullable": true
           },
-          "success": {
+          "Success": {
             "type": "boolean"
           },
-          "userRoles": {
+          "UserRoles": {
             "type": "array",
             "items": {
               "type": "string"
@@ -6218,12 +6213,12 @@
       "TrainingCourseCategoryFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6233,30 +6228,30 @@
       "TrainingCourseFilterDto": {
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "trainingCourseCategoryId": {
+          "TrainingCourseCategoryId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "courseCode": {
+          "CourseCode": {
             "type": "string",
             "nullable": true
           },
-          "year": {
+          "Year": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "targetAudience": {
+          "TargetAudience": {
             "type": "string",
             "nullable": true
           }
@@ -6265,34 +6260,34 @@
       },
       "UpdateAdmissionDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "academicYear": {
+          "AcademicYear": {
             "type": "string",
             "nullable": true
           },
-          "announcementDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "deadline": {
+          "AnnouncementDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "programId": {
+          "Deadline": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ProgramId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "locationId": {
+          "LocationId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
@@ -6302,20 +6297,20 @@
       },
       "UpdateAdmissionExamDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "examDateTime": {
+          "ExamDateTime": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateAdmissionExamTranslationDto"
@@ -6327,19 +6322,19 @@
       },
       "UpdateAdmissionExamTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "examName": {
+          "ExamName": {
             "type": "string",
             "nullable": true
           },
-          "notes": {
+          "Notes": {
             "type": "string",
             "nullable": true
           }
@@ -6348,16 +6343,16 @@
       },
       "UpdateAdmissionResultDto": {
         "required": [
-          "id",
-          "resultType"
+          "Id",
+          "ResultType"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "resultType": {
+          "ResultType": {
             "$ref": "#/components/schemas/AdmissionResultTypeEnum"
           }
         },
@@ -6365,38 +6360,38 @@
       },
       "UpdateBookDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "author": {
+          "Author": {
             "type": "string",
             "nullable": true
           },
-          "publicationYear": {
+          "PublicationYear": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "isbn": {
+          "ISBN": {
             "type": "string",
             "nullable": true
           },
-          "coverImageMediaId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          },
-          "fileMediaId": {
+          "CoverImageMediaId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "FileMediaId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateBookTranslationDto"
@@ -6408,19 +6403,19 @@
       },
       "UpdateBookTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -6429,15 +6424,15 @@
       },
       "UpdateCategoryDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateCategoryTranslationDto"
@@ -6449,15 +6444,15 @@
       },
       "UpdateCategoryTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6466,39 +6461,39 @@
       },
       "UpdateCourseDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "courseCode": {
+          "CourseCode": {
             "type": "string",
             "nullable": true
           },
-          "credits": {
+          "Credits": {
             "type": "number",
             "format": "double",
             "nullable": true
           },
-          "theoreticalHours": {
+          "TheoreticalHours": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "practicalHours": {
+          "PracticalHours": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "courseGroupId": {
+          "CourseGroupId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateCourseTranslationDto"
@@ -6510,18 +6505,18 @@
       },
       "UpdateCourseGroupDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "courseGroupCode": {
+          "CourseGroupCode": {
             "$ref": "#/components/schemas/CourseGroupCodeEnum"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateCourseGroupTranslationDto"
@@ -6533,15 +6528,15 @@
       },
       "UpdateCourseGroupTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6550,19 +6545,19 @@
       },
       "UpdateCourseTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -6571,33 +6566,33 @@
       },
       "UpdateCurriculumDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "academicYear": {
+          "AcademicYear": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "semester": {
+          "Semester": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "courseType": {
+          "CourseType": {
             "$ref": "#/components/schemas/CourseTypeEnum"
           },
-          "specializationId": {
+          "SpecializationId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "courseId": {
+          "CourseId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
@@ -6607,15 +6602,15 @@
       },
       "UpdateFaqCategoryDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateFaqCategoryTranslationDto"
@@ -6627,15 +6622,15 @@
       },
       "UpdateFaqCategoryTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6644,25 +6639,25 @@
       },
       "UpdateFaqDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "displayOrder": {
+          "DisplayOrder": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "faqCategoryId": {
+          "FaqCategoryId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateFaqTranslationDto"
@@ -6674,19 +6669,19 @@
       },
       "UpdateFaqTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "question": {
+          "Question": {
             "type": "string",
             "nullable": true
           },
-          "answer": {
+          "Answer": {
             "type": "string",
             "nullable": true
           }
@@ -6695,18 +6690,18 @@
       },
       "UpdateLanguageDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "code": {
+          "Code": {
             "$ref": "#/components/schemas/LanguageCodeEnum"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6715,18 +6710,18 @@
       },
       "UpdateLocationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "locationCode": {
+          "LocationCode": {
             "$ref": "#/components/schemas/LocationCodeEnum"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateLocationTranslationDto"
@@ -6738,19 +6733,19 @@
       },
       "UpdateLocationTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "address": {
+          "Address": {
             "type": "string",
             "nullable": true
           }
@@ -6759,15 +6754,15 @@
       },
       "UpdateMediaCategoryDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateMediaCategoryTranslationDto"
@@ -6779,15 +6774,15 @@
       },
       "UpdateMediaCategoryTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -6796,15 +6791,15 @@
       },
       "UpdateMediaDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "mediaCategoryId": {
+          "MediaCategoryId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
@@ -6814,15 +6809,15 @@
       },
       "UpdatePageDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdatePageTranslationDto"
@@ -6834,19 +6829,19 @@
       },
       "UpdatePageTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }
@@ -6855,25 +6850,25 @@
       },
       "UpdatePostDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "publicationDate": {
+          "PublicationDate": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "categoryId": {
+          "CategoryId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdatePostTranslationDto"
@@ -6885,19 +6880,19 @@
       },
       "UpdatePostTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }
@@ -6906,19 +6901,19 @@
       },
       "UpdateProgramDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "duration": {
+          "Duration": {
             "type": "string",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateProgramTranslationDto"
@@ -6930,19 +6925,19 @@
       },
       "UpdateProgramTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -6951,20 +6946,20 @@
       },
       "UpdateSliderDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "linkURL": {
+          "LinkURL": {
             "type": "string",
             "format": "uri",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateSliderTranslationDto"
@@ -6976,16 +6971,16 @@
       },
       "UpdateSliderTranslationDto": {
         "required": [
-          "id",
-          "title"
+          "Id",
+          "Title"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "title": {
+          "Title": {
             "minLength": 1,
             "type": "string"
           }
@@ -6994,28 +6989,28 @@
       },
       "UpdateSpecializationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "degreeType": {
+          "DegreeType": {
             "$ref": "#/components/schemas/DegreeTypeEnum"
           },
-          "programId": {
+          "ProgramId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "locationId": {
+          "LocationId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateSpecializationTranslationDto"
@@ -7027,19 +7022,19 @@
       },
       "UpdateSpecializationTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           },
-          "description": {
+          "Description": {
             "type": "string",
             "nullable": true
           }
@@ -7048,29 +7043,29 @@
       },
       "UpdateTestimonialDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "graduateName": {
+          "GraduateName": {
             "type": "string",
             "nullable": true
           },
-          "graduateYear": {
+          "GraduateYear": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "mediaId": {
+          "MediaId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateTestimonialTranslationDto"
@@ -7082,15 +7077,15 @@
       },
       "UpdateTestimonialTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "quote": {
+          "Quote": {
             "type": "string",
             "nullable": true
           }
@@ -7099,15 +7094,15 @@
       },
       "UpdateTrainingCourseCategoryDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateTrainingCourseCategoryTranslationDto"
@@ -7119,15 +7114,15 @@
       },
       "UpdateTrainingCourseCategoryTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
+          "Name": {
             "type": "string",
             "nullable": true
           }
@@ -7136,43 +7131,43 @@
       },
       "UpdateTrainingCourseDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "courseCode": {
+          "CourseCode": {
             "type": "string",
             "nullable": true
           },
-          "durationHours": {
+          "DurationHours": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "numberOfSessions": {
+          "NumberOfSessions": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "targetAudience": {
+          "TargetAudience": {
             "type": "string",
             "nullable": true
           },
-          "year": {
+          "Year": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "trainingCourseCategoryId": {
+          "TrainingCourseCategoryId": {
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
-          "translations": {
+          "Translations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdateTrainingCourseTranslationDto"
@@ -7184,19 +7179,19 @@
       },
       "UpdateTrainingCourseTranslationDto": {
         "required": [
-          "id"
+          "Id"
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "content": {
+          "Content": {
             "type": "string",
             "nullable": true
           }

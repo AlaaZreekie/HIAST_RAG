@@ -127,7 +127,7 @@ const CreateCategoryForm = ({ onSubmit, isLoading, error, initialData, isEditMod
             <div className="flex justify-end space-x-3">
               <button
                 type="button"
-                onClick={() => router.push("/admin/dashboard")}
+                onClick={() => router.push("/admin/categories")}
                 className="admin-button admin-button-secondary"
                 disabled={isLoading}
               >
