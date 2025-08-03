@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ASUS/source/repos/HIAST_RAG/ForthYear/hiast-frontend/app/admin/layout.js"],"sourcesContent":["import \"./admin.css\";\nimport { LanguageProvider } from \"@/components/LanguageProvider\";\n\nexport const metadata = {\n  title: \"HIAST Admin Dashboard\",\n  description: \"Admin dashboard for HIAST Institute\",\n};\n\nexport default function AdminLayout({ children }) {\n  return (\n    <div className=\"min-h-screen bg-gray-50\">\n      <LanguageProvider>{children}</LanguageProvider>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AACA;;;;AAEO,MAAM,WAAW;IACtB,OAAO;IACP,aAAa;AACf;AAEe,SAAS,YAAY,EAAE,QAAQ,EAAE;IAC9C,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC,+HAAA,CAAA,mBAAgB;sBAAE;;;;;;;;;;;AAGzB","debugId":null}}]
-}
