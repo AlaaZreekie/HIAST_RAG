@@ -397,5 +397,17 @@ These tests ensure that your Clean Architecture layers follow the proper depende
 ---
 
 ### Frontend_Web
-- Frontend web application.
-- See `Frontend_Web/README.md` for setup and usage.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+### 3. Running the Application
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
