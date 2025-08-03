@@ -1,74 +1,59 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function faqsApiRequest(endpoint, options = {}) {
+const faqsApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/admin/faq/${endpoint}`;
-  const config = {
-    method: options.method || "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers,
-    },
+  return apiRequest(`/admin/faqs/${endpoint}`, {
     ...options,
-  };
-
-  if (options.body) {
-    config.body = JSON.stringify(options.body);
-  }
-
-  try {
-    const response = await fetch(url, config);
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${responseText}`);
-    }
-
-    if (!responseText) {
-      return null;
-    }
-
-    const data = JSON.parse(responseText);
-    return data.Data;
-  } catch (error) {
-    console.error("API request failed:", error);
-    throw error;
-  }
-}
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 export const faqsAPI = {
-  getAllFaqs: () => faqsApiRequest("GetAllFaqs"),
-  getFaqsByFilter: (filter) =>
-    faqsApiRequest("GetByFilter", {
-      method: "GET",
-      body: filter,
-    }),
-  createFaq: (faqData) =>
-    faqsApiRequest("CreateFaq", {
+  getAllFaqs: async () => {
+    return faqsApiRequest("GetAllFaqs");
+  },
+
+  getFaqsByFilter: async (filter) => {
+    return faqsApiRequest("GetFaqsByFilter", {
       method: "POST",
-      body: faqData,
-    }),
-  updateFaq: (faqData) =>
-    faqsApiRequest("UpdateFaq", {
+      body: JSON.stringify(filter),
+    });
+  },
+
+  createFaq: async (faqData) => {
+    return faqsApiRequest("CreateFaq", {
+      method: "POST",
+      body: JSON.stringify(faqData),
+    });
+  },
+
+  updateFaq: async (faqData) => {
+    return faqsApiRequest("UpdateFaq", {
       method: "PUT",
-      body: faqData,
-    }),
-  deleteFaq: (faqId) =>
-    faqsApiRequest("DeleteFaq", {
+      body: JSON.stringify(faqData),
+    });
+  },
+
+  deleteFaq: async (faqId) => {
+    return faqsApiRequest("DeleteFaq", {
       method: "DELETE",
-      body: { Id: faqId },
-    }),
+      body: JSON.stringify({ Id: faqId }),
+    });
+  },
 };
 
 export const getAllFaqs = async () => {
   try {
-    return await faqsAPI.getAllFaqs();
+    const response = await faqsAPI.getAllFaqs();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching FAQs:", error);
     throw error;

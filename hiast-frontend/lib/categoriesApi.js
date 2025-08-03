@@ -1,6 +1,19 @@
-import { apiRequest, isAdmin } from "./api";
+import { apiRequest } from "./api";
 
-const API_BASE_URL = "https://localhost:7187/api";
+const categoriesApiRequest = async (endpoint, options = {}) => {
+  const token = localStorage.getItem("admin_token");
+  if (!token) {
+    throw new Error("No authentication token found");
+  }
+
+  return apiRequest(`/admin/categories/${endpoint}`, {
+    ...options,
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 // Helper function to get language code
 export const getLanguageCode = (lang) => {
@@ -19,41 +32,10 @@ export const formatCategoryDate = (dateString) => {
   return date.toLocaleDateString();
 };
 
-// Categories API request wrapper
-const categoriesApiRequest = async (endpoint, options = {}) => {
-  if (!isAdmin()) {
-    throw new Error("Unauthorized: Admin access required");
-  }
-
-  const token = localStorage.getItem("admin_token");
-  if (!token) {
-    throw new Error("No authentication token found");
-  }
-
-  const defaultOptions = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
-  const finalOptions = {
-    ...defaultOptions,
-    ...options,
-    headers: {
-      ...defaultOptions.headers,
-      ...options.headers,
-    },
-  };
-
-  return apiRequest(`/admin/categories/${endpoint}`, finalOptions);
-};
-
 // Get all categories
 export const getAllCategories = async () => {
   try {
     console.log("Calling getAllCategories...");
-    console.log("Admin check:", isAdmin());
     console.log("Token exists:", !!localStorage.getItem("admin_token"));
 
     const response = await categoriesApiRequest("GetAllCategories");

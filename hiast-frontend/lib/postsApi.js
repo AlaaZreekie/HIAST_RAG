@@ -1,60 +1,10 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
-
-// Generic API request function for posts
-async function postsApiRequest(endpoint, options = {}) {
-  const url = `${API_BASE_URL}/admin/posts${endpoint}`;
-
-  const defaultOptions = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  // Add authorization header if token exists
-  const token = localStorage.getItem("admin_token");
-  if (token) {
-    defaultOptions.headers["Authorization"] = `Bearer ${token}`;
-  }
-
-  // Check if user is admin before making request
-  const { isAdmin } = await import("./api.js");
-  if (!isAdmin()) {
-    throw new Error("Access denied. Admin role required.");
-  }
-
-  const config = {
-    ...defaultOptions,
-    ...options,
-    headers: {
-      ...defaultOptions.headers,
-      ...options.headers,
-    },
-  };
-
-  try {
-    console.log("Making Posts API request to:", url);
-    const response = await fetch(url, config);
-    console.log("Response status:", response.status);
-    const data = await response.json();
-    console.log("Response data:", data);
-
-    if (!response.ok) {
-      throw new Error(data.Message || "API request failed");
-    }
-
-    return data;
-  } catch (error) {
-    console.error("Posts API Error:", error);
-    throw error;
-  }
-}
+import { apiRequest } from "./api";
 
 // Posts API functions
 export const postsAPI = {
   // Get all posts
   async getAllPosts() {
-    const response = await postsApiRequest("/GetAllPosts", {
+    const response = await apiRequest("/admin/posts/GetAllPosts", {
       method: "GET",
     });
     return response;
@@ -62,7 +12,7 @@ export const postsAPI = {
 
   // Create new post
   async createPost(postData) {
-    const response = await postsApiRequest("/CreatePost", {
+    const response = await apiRequest("/admin/posts/CreatePost", {
       method: "POST",
       body: JSON.stringify(postData),
     });
@@ -71,7 +21,7 @@ export const postsAPI = {
 
   // Update existing post
   async updatePost(postData) {
-    const response = await postsApiRequest("/UpdatePost", {
+    const response = await apiRequest("/admin/posts/UpdatePost", {
       method: "PUT",
       body: JSON.stringify(postData),
     });
@@ -80,7 +30,7 @@ export const postsAPI = {
 
   // Delete post
   async deletePost(postId) {
-    const response = await postsApiRequest("/DeletePost", {
+    const response = await apiRequest("/admin/posts/DeletePost", {
       method: "DELETE",
       body: JSON.stringify({ Id: postId }),
     });
@@ -89,7 +39,7 @@ export const postsAPI = {
 
   // Add post translation
   async addPostTranslation(translationData) {
-    const response = await postsApiRequest("/AddPostTranslation", {
+    const response = await apiRequest("/admin/posts/AddPostTranslation", {
       method: "POST",
       body: JSON.stringify(translationData),
     });
@@ -105,8 +55,8 @@ export const postsAPI = {
       }
     });
 
-    const response = await postsApiRequest(
-      `/GetByFilter?${queryParams.toString()}`,
+    const response = await apiRequest(
+      `/admin/posts/GetByFilter?${queryParams.toString()}`,
       {
         method: "GET",
       }

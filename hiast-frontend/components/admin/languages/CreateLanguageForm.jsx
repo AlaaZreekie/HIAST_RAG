@@ -5,34 +5,45 @@ import { useLanguage } from "@/components/LanguageProvider";
 const CreateLanguageForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false }) => {
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    Name: "",
-    Code: "",
-    ArabicName: "",
-    EnglishName: ""
+    code: "",
+    name: ""
   });
 
+  // Pre-fill form data when in edit mode
   useEffect(() => {
-    if (initialData) {
+    if (isEditMode && initialData) {
       setFormData({
-        Name: initialData.Name || "",
-        Code: initialData.Code || "",
-        ArabicName: initialData.ArabicName || "",
-        EnglishName: initialData.EnglishName || ""
+        code: initialData.Code || "",
+        name: initialData.Name || ""
       });
     }
-  }, [initialData]);
+  }, [initialData, isEditMode]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [field]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    
+    if (!formData.name.trim()) {
+      return;
+    }
+
+    const languageData = {
+      Code: formData.code.trim(),
+      Name: formData.name.trim()
+    };
+
+    // Add language ID for updates
+    if (isEditMode && initialData?.Id) {
+      languageData.Id = initialData.Id;
+    }
+
+    onSubmit(languageData);
   };
 
   return (
@@ -40,71 +51,45 @@ const CreateLanguageForm = ({ onSubmit, isLoading, error, initialData = null, is
       <div className="px-4 py-5 sm:p-6">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6">
-            {/* Name */}
+            {/* Language Code */}
             <div>
-              <label htmlFor="Name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="code" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("languages.form.code")}
+              </label>
+              <select
+                id="code"
+                value={formData.code}
+                onChange={(e) => handleInputChange("code", e.target.value)}
+                required
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
+                <option value="">{t("languages.form.selectCode")}</option>
+                <option value="1">{t("languages.form.arabic")}</option>
+                <option value="2">{t("languages.form.english")}</option>
+              </select>
+            </div>
+
+            {/* Language Name */}
+            <div>
+              <label htmlFor="name" className={`block text-sm font-medium text-gray-700 mb-2 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
                 {t("languages.form.name")}
               </label>
               <input
                 type="text"
-                id="Name"
-                name="Name"
-                value={formData.Name}
-                onChange={handleChange}
+                id="name"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir={lang === "ar" ? "rtl" : "ltr"}
-              />
-            </div>
-
-            {/* Code */}
-            <div>
-              <label htmlFor="Code" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("languages.form.code")}
-              </label>
-              <input
-                type="text"
-                id="Code"
-                name="Code"
-                value={formData.Code}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir={lang === "ar" ? "rtl" : "ltr"}
-              />
-            </div>
-
-            {/* Arabic Name */}
-            <div>
-              <label htmlFor="ArabicName" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("languages.form.arabicName")}
-              </label>
-              <input
-                type="text"
-                id="ArabicName"
-                name="ArabicName"
-                value={formData.ArabicName}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir="rtl"
-              />
-            </div>
-
-            {/* English Name */}
-            <div>
-              <label htmlFor="EnglishName" className="block text-sm font-medium text-gray-700 mb-2">
-                {t("languages.form.englishName")}
-              </label>
-              <input
-                type="text"
-                id="EnglishName"
-                name="EnglishName"
-                value={formData.EnglishName}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                dir="ltr"
+                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+                placeholder={t("languages.form.namePlaceholder")}
               />
             </div>
           </div>

@@ -12,6 +12,7 @@ const CreateSpecializationForm = ({ onSubmit, isLoading, error, initialData, isE
   const [englishName, setEnglishName] = useState("");
   const [selectedProgramId, setSelectedProgramId] = useState("");
   const [selectedLocationId, setSelectedLocationId] = useState("");
+  const [degreeType, setDegreeType] = useState(0);
   const [programs, setPrograms] = useState([]);
   const [locations, setLocations] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
@@ -59,6 +60,9 @@ const CreateSpecializationForm = ({ onSubmit, isLoading, error, initialData, isE
       if (initialData.LocationId) {
         setSelectedLocationId(initialData.LocationId);
       }
+      if (initialData.DegreeType !== undefined) {
+        setDegreeType(initialData.DegreeType);
+      }
     }
   }, [initialData, isEditMode]);
 
@@ -73,7 +77,8 @@ const CreateSpecializationForm = ({ onSubmit, isLoading, error, initialData, isE
     const specializationData = {
       Translations: [],
       ProgramId: selectedProgramId,
-      LocationId: selectedLocationId
+      LocationId: selectedLocationId,
+      DegreeType: degreeType
     };
 
     if (arabicName.trim()) {
@@ -143,6 +148,30 @@ const CreateSpecializationForm = ({ onSubmit, isLoading, error, initialData, isE
                   placeholder={t("specializations.form.namePlaceholder")}
                   dir={lang === "ar" ? "rtl" : "ltr"}
                 />
+              </div>
+            </div>
+
+            {/* Degree Type */}
+            <div>
+              <label htmlFor="degreeType" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("specializations.form.degreeType")}
+              </label>
+              <div className="mt-1">
+                <select
+                  id="degreeType"
+                  value={degreeType}
+                  onChange={(e) => setDegreeType(parseInt(e.target.value))}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  required
+                >
+                  <option value={0}>{t("specializations.form.bachelor")}</option>
+                  <option value={1}>{t("specializations.form.master")}</option>
+                  <option value={2}>{t("specializations.form.phd")}</option>
+                </select>
               </div>
             </div>
 

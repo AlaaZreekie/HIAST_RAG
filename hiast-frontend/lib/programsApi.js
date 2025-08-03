@@ -1,77 +1,71 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function programsApiRequest(endpoint, options = {}) {
+const programsApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/Admin/Programs/${endpoint}`;
-
-  const defaultOptions = {
+  return apiRequest(`/admin/programs/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-  };
-
-  const response = await fetch(url, { ...defaultOptions, ...options });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`HTTP ${response.status}: ${errorText}`);
-  }
-
-  const responseText = await response.text();
-  let data;
-
-  try {
-    data = JSON.parse(responseText);
-  } catch (error) {
-    console.error("Failed to parse JSON response:", responseText);
-    throw new Error("Invalid JSON response from server");
-  }
-
-  if (!data.Result) {
-    throw new Error(data.Message || "API request failed");
-  }
-
-  return data.Data;
-}
-
-export const programsAPI = {
-  getAllPrograms: () => programsApiRequest("GetAllPrograms"),
-  getProgramsByFilter: (filter) =>
-    programsApiRequest("GetByFilter", {
-      method: "POST",
-      body: JSON.stringify(filter),
-    }),
-  createProgram: (programData) =>
-    programsApiRequest("CreateProgram", {
-      method: "POST",
-      body: JSON.stringify(programData),
-    }),
-  updateProgram: (programData) =>
-    programsApiRequest("UpdateProgram", {
-      method: "PUT",
-      body: JSON.stringify(programData),
-    }),
-  deleteProgram: (programId) =>
-    programsApiRequest("DeleteProgram", {
-      method: "DELETE",
-      body: JSON.stringify({ Id: programId }),
-    }),
-  addProgramTranslation: (translationData) =>
-    programsApiRequest("AddProgramTranslation", {
-      method: "POST",
-      body: JSON.stringify(translationData),
-    }),
+  });
 };
 
+export const programsAPI = {
+  getAllPrograms: async () => {
+    return programsApiRequest("GetAllPrograms");
+  },
+
+  createProgram: async (programData) => {
+    return programsApiRequest("CreateProgram", {
+      method: "POST",
+      body: JSON.stringify(programData),
+    });
+  },
+
+  updateProgram: async (programData) => {
+    return programsApiRequest("UpdateProgram", {
+      method: "PUT",
+      body: JSON.stringify(programData),
+    });
+  },
+
+  deleteProgram: async (programId) => {
+    return programsApiRequest("DeleteProgram", {
+      method: "DELETE",
+      body: JSON.stringify({ Id: programId }),
+    });
+  },
+
+  addProgramTranslation: async (translationData) => {
+    return programsApiRequest("AddProgramTranslation", {
+      method: "POST",
+      body: JSON.stringify(translationData),
+    });
+  },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Name) queryParams.append("Name", filter.Name);
+    if (filter.Code) queryParams.append("Code", filter.Code);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return programsApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
+};
+
+// Helper functions
 export const getAllPrograms = async () => {
   try {
-    return await programsAPI.getAllPrograms();
+    const response = await programsAPI.getAllPrograms();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching programs:", error);
     throw error;
@@ -88,12 +82,20 @@ export const getProgramById = async (id) => {
   }
 };
 
-export const getProgramNameInLanguage = (program, languageCode) => {
-  if (!program?.Translations) return program?.Name || "Unknown";
+export const getProgramNameInLanguage = (program, languageId) => {
+  if (!program?.Translations) return "No Name";
   const translation = program.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation?.Name || program?.Name || "Unknown";
+  return translation?.Name || "No Name";
+};
+
+export const getProgramDescriptionInLanguage = (program, languageId) => {
+  if (!program?.Translations) return "";
+  const translation = program.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
 };
 
 export const getProgramTranslations = (program) => {

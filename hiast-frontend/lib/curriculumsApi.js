@@ -6,59 +6,62 @@ const curriculumsApiRequest = async (endpoint, options = {}) => {
     throw new Error("No authentication token found");
   }
 
-  const defaultOptions = {
+  return apiRequest(`/admin/curriculums/${endpoint}`, {
+    ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...options.headers,
       Authorization: `Bearer ${token}`,
     },
-  };
-
-  return apiRequest(`/admin/curriculums/${endpoint}`, {
-    ...defaultOptions,
-    ...options,
   });
 };
 
 export const curriculumsAPI = {
   getAllCurriculums: async () => {
-    return await curriculumsApiRequest("GetAllCurriculums", {
-      method: "GET",
-    });
+    return curriculumsApiRequest("GetAllCurriculums");
   },
 
   createCurriculum: async (curriculumData) => {
-    return await curriculumsApiRequest("CreateCurriculum", {
+    return curriculumsApiRequest("CreateCurriculum", {
       method: "POST",
       body: JSON.stringify(curriculumData),
     });
   },
 
-  updateCurriculum: async (curriculumId, curriculumData) => {
-    return await curriculumsApiRequest("UpdateCurriculum", {
+  updateCurriculum: async (curriculumData) => {
+    return curriculumsApiRequest("UpdateCurriculum", {
       method: "PUT",
-      body: JSON.stringify({
-        Id: curriculumId,
-        ...curriculumData,
-      }),
+      body: JSON.stringify(curriculumData),
     });
   },
 
   deleteCurriculum: async (curriculumId) => {
-    return await curriculumsApiRequest("DeleteCurriculum", {
+    return curriculumsApiRequest("DeleteCurriculum", {
       method: "DELETE",
       body: JSON.stringify({ Id: curriculumId }),
     });
   },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Name) queryParams.append("Name", filter.Name);
+    if (filter.ProgramId) queryParams.append("ProgramId", filter.ProgramId);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return curriculumsApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
 };
 
-// Helper functions for curriculum-specific data
+// Helper functions
 export const getAllCurriculums = async () => {
   try {
-    const data = await curriculumsAPI.getAllCurriculums();
+    const response = await curriculumsAPI.getAllCurriculums();
+    const data = response.Data || [];
     return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching curriculums:", error);
-    return [];
+    throw error;
   }
 };
 
@@ -68,33 +71,26 @@ export const getCurriculumById = async (id) => {
     return curriculums.find((curriculum) => curriculum.Id === id);
   } catch (error) {
     console.error("Error fetching curriculum by ID:", error);
-    return null;
+    throw error;
   }
 };
 
-export const getCurriculumAcademicYearDisplay = (academicYear) => {
-  return `Year ${academicYear}`;
+export const getCurriculumNameInLanguage = (curriculum, languageId) => {
+  if (!curriculum?.Translations) return "No Name";
+  const translation = curriculum.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Name || "No Name";
 };
 
-export const getCurriculumSemesterDisplay = (semester) => {
-  return `Semester ${semester}`;
+export const getCurriculumDescriptionInLanguage = (curriculum, languageId) => {
+  if (!curriculum?.Translations) return "";
+  const translation = curriculum.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
 };
 
-export const getCurriculumCourseTypeDisplay = (courseType) => {
-  const courseTypeMap = {
-    0: "Core",
-    1: "Specialized",
-    2: "Elective",
-  };
-  return courseTypeMap[courseType] || courseType;
-};
-
-export const getCurriculumSpecializationName = (curriculum) => {
-  if (!curriculum || !curriculum.Specialization) return "N/A";
-  return curriculum.Specialization.Name || "N/A";
-};
-
-export const getCurriculumCourseName = (curriculum) => {
-  if (!curriculum || !curriculum.Course) return "N/A";
-  return curriculum.Course.Name || "N/A";
+export const getCurriculumTranslations = (curriculum) => {
+  return curriculum?.Translations || [];
 };

@@ -3,317 +3,365 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const CreateTrainingCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false }) => {
+const CreateTrainingCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false, categories = [] }) => {
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    id: initialData?.Id || "",
-    name: initialData?.Name || "",
-    description: initialData?.Description || "",
-    imageUrl: initialData?.ImageUrl || "",
-    startDate: initialData?.StartDate ? new Date(initialData.StartDate).toISOString().split('T')[0] : "",
-    endDate: initialData?.EndDate ? new Date(initialData.EndDate).toISOString().split('T')[0] : "",
-    price: initialData?.Price || 0,
-    isActive: initialData?.IsActive ?? true,
-    arabicName: initialData?.ArabicName || "",
-    englishName: initialData?.EnglishName || "",
-    arabicDescription: initialData?.ArabicDescription || "",
-    englishDescription: initialData?.EnglishDescription || "",
+    courseCode: "",
+    durationHours: "",
+    numberOfSessions: "",
+    targetAudience: "",
+    year: new Date().getFullYear(),
+    trainingCourseCategoryId: "",
+    arabicTitle: "",
+    englishTitle: "",
+    arabicContent: "",
+    englishContent: ""
   });
-  const [imageFile, setImageFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(initialData?.ImageUrl || "");
 
+  // Pre-fill form data when in edit mode
   useEffect(() => {
-    if (initialData) {
+    if (isEditMode && initialData) {
+      const arabicTranslation = initialData.Translations?.find(t => t.LanguageCode === 1);
+      const englishTranslation = initialData.Translations?.find(t => t.LanguageCode === 2);
+      
       setFormData({
-        id: initialData.Id || "",
-        name: initialData.Name || "",
-        description: initialData.Description || "",
-        imageUrl: initialData.ImageUrl || "",
-        startDate: initialData.StartDate ? new Date(initialData.StartDate).toISOString().split('T')[0] : "",
-        endDate: initialData.EndDate ? new Date(initialData.EndDate).toISOString().split('T')[0] : "",
-        price: initialData.Price || 0,
-        isActive: initialData.IsActive ?? true,
-        arabicName: initialData.ArabicName || "",
-        englishName: initialData.EnglishName || "",
-        arabicDescription: initialData.ArabicDescription || "",
-        englishDescription: initialData.EnglishDescription || "",
+        courseCode: initialData.CourseCode || "",
+        durationHours: initialData.DurationHours || "",
+        numberOfSessions: initialData.NumberOfSessions || "",
+        targetAudience: initialData.TargetAudience || "",
+        year: initialData.Year || new Date().getFullYear(),
+        trainingCourseCategoryId: initialData.TrainingCourseCategoryId || "",
+        arabicTitle: arabicTranslation?.Title || "",
+        englishTitle: englishTranslation?.Title || "",
+        arabicContent: arabicTranslation?.Content || "",
+        englishContent: englishTranslation?.Content || ""
       });
-      setPreviewUrl(initialData.ImageUrl || "");
     }
-  }, [initialData]);
+  }, [initialData, isEditMode]);
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [field]: value
     }));
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setPreviewUrl(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
-    try {
-      const submitData = new FormData();
-      
-      // Add form fields
-      submitData.append("Name", formData.name);
-      submitData.append("Description", formData.description);
-      submitData.append("StartDate", formData.startDate);
-      submitData.append("EndDate", formData.endDate);
-      submitData.append("Price", formData.price);
-      submitData.append("IsActive", formData.isActive);
-      submitData.append("ArabicName", formData.arabicName);
-      submitData.append("EnglishName", formData.englishName);
-      submitData.append("ArabicDescription", formData.arabicDescription);
-      submitData.append("EnglishDescription", formData.englishDescription);
-      
-      // Add image file if selected
-      if (imageFile) {
-        submitData.append("ImageFile", imageFile);
-      }
-      
-      // Add ID for edit mode
-      if (isEditMode && formData.id) {
-        submitData.append("Id", formData.id);
-      }
-      
-      await onSubmit(submitData);
-    } catch (err) {
-      console.error("Error submitting form:", err);
+    if (!formData.arabicTitle.trim() && !formData.englishTitle.trim()) {
+      return;
     }
-  };
 
-  const handleCancel = () => {
-    router.push("/admin/training-courses");
+    if (!formData.trainingCourseCategoryId) {
+      return;
+    }
+
+    const translations = [];
+    
+    if (formData.arabicTitle.trim()) {
+      const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
+      translations.push({
+        Id: arabicTranslation?.Id || null, // Include ID for updates
+        LanguageCode: 1, // Arabic
+        Title: formData.arabicTitle.trim(),
+        Content: formData.arabicContent.trim()
+      });
+    }
+    
+    if (formData.englishTitle.trim()) {
+      const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
+      translations.push({
+        Id: englishTranslation?.Id || null, // Include ID for updates
+        LanguageCode: 2, // English
+        Title: formData.englishTitle.trim(),
+        Content: formData.englishContent.trim()
+      });
+    }
+
+    const trainingCourseData = {
+      CourseCode: formData.courseCode.trim(),
+      DurationHours: parseInt(formData.durationHours),
+      NumberOfSessions: parseInt(formData.numberOfSessions),
+      TargetAudience: formData.targetAudience.trim(),
+      Year: parseInt(formData.year),
+      TrainingCourseCategoryId: formData.trainingCourseCategoryId,
+      Translations: translations
+    };
+
+    // Add training course ID for updates
+    if (isEditMode && initialData?.Id) {
+      trainingCourseData.Id = initialData.Id;
+    }
+
+    onSubmit(trainingCourseData);
   };
 
   return (
-    <div className="bg-white shadow rounded-lg">
+    <div className="bg-white shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:p-6">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.name")}
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
+        <form onSubmit={handleSubmit}>
+          <div className="space-y-6">
+            {/* Category Selection */}
+            <div>
+              <label htmlFor="trainingCourseCategoryId" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("trainingCourses.form.category")}
+              </label>
+              <div className="mt-1">
+                <select
+                  id="trainingCourseCategoryId"
+                  value={formData.trainingCourseCategoryId}
+                  onChange={(e) => handleInputChange("trainingCourseCategoryId", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  required
+                >
+                  <option value="">{t("trainingCourses.form.selectCategory")}</option>
+                  {categories.map((category) => (
+                    <option key={category.Id} value={category.Id}>
+                      {category.Translations?.find(t => t.LanguageCode === (lang === "ar" ? 1 : 2))?.Name || category.Name || "Unknown"}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
-          {/* Description */}
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.description")}
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* Start Date */}
-          <div>
-            <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.startDate")}
-            </label>
-            <input
-              type="date"
-              id="startDate"
-              name="startDate"
-              value={formData.startDate}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* End Date */}
-          <div>
-            <label htmlFor="endDate" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.endDate")}
-            </label>
-            <input
-              type="date"
-              id="endDate"
-              name="endDate"
-              value={formData.endDate}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* Price */}
-          <div>
-            <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.price")}
-            </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              min="0"
-              step="0.01"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-
-          {/* Is Active */}
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="isActive"
-              name="isActive"
-              checked={formData.isActive}
-              onChange={handleInputChange}
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-            />
-            <label htmlFor="isActive" className="ml-2 block text-sm text-gray-900">
-              {t("trainingCourses.form.isActive")}
-            </label>
-          </div>
-
-          {/* Image Upload */}
-          <div>
-            <label htmlFor="imageFile" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.image")}
-            </label>
-            <input
-              type="file"
-              id="imageFile"
-              name="imageFile"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-            {previewUrl && (
-              <div className="mt-2">
-                <img
-                  src={previewUrl}
-                  alt="Preview"
-                  className="w-32 h-20 object-cover rounded border"
+            {/* Course Code */}
+            <div>
+              <label htmlFor="courseCode" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("trainingCourses.form.courseCode")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="courseCode"
+                  value={formData.courseCode}
+                  onChange={(e) => handleInputChange("courseCode", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("trainingCourses.form.courseCodePlaceholder")}
+                  required
                 />
               </div>
-            )}
-          </div>
+            </div>
 
-          {/* Arabic Name */}
-          <div>
-            <label htmlFor="arabicName" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.arabicName")}
-            </label>
-            <input
-              type="text"
-              id="arabicName"
-              name="arabicName"
-              value={formData.arabicName}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              dir="rtl"
-            />
-          </div>
+            {/* Duration Hours */}
+            <div>
+              <label htmlFor="durationHours" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("trainingCourses.form.durationHours")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  id="durationHours"
+                  value={formData.durationHours}
+                  onChange={(e) => handleInputChange("durationHours", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  min="1"
+                  required
+                />
+              </div>
+            </div>
 
-          {/* English Name */}
-          <div>
-            <label htmlFor="englishName" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.englishName")}
-            </label>
-            <input
-              type="text"
-              id="englishName"
-              name="englishName"
-              value={formData.englishName}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
+            {/* Number of Sessions */}
+            <div>
+              <label htmlFor="numberOfSessions" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("trainingCourses.form.numberOfSessions")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  id="numberOfSessions"
+                  value={formData.numberOfSessions}
+                  onChange={(e) => handleInputChange("numberOfSessions", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  min="1"
+                  required
+                />
+              </div>
+            </div>
 
-          {/* Arabic Description */}
-          <div>
-            <label htmlFor="arabicDescription" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.arabicDescription")}
-            </label>
-            <textarea
-              id="arabicDescription"
-              name="arabicDescription"
-              value={formData.arabicDescription}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              dir="rtl"
-            />
-          </div>
+            {/* Target Audience */}
+            <div>
+              <label htmlFor="targetAudience" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("trainingCourses.form.targetAudience")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="targetAudience"
+                  value={formData.targetAudience}
+                  onChange={(e) => handleInputChange("targetAudience", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("trainingCourses.form.targetAudiencePlaceholder")}
+                  required
+                />
+              </div>
+            </div>
 
-          {/* English Description */}
-          <div>
-            <label htmlFor="englishDescription" className="block text-sm font-medium text-gray-700 mb-2">
-              {t("trainingCourses.form.englishDescription")}
-            </label>
-            <textarea
-              id="englishDescription"
-              name="englishDescription"
-              value={formData.englishDescription}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
+            {/* Year */}
+            <div>
+              <label htmlFor="year" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {t("trainingCourses.form.year")}
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  id="year"
+                  value={formData.year}
+                  onChange={(e) => handleInputChange("year", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  min="2020"
+                  max="2030"
+                  required
+                />
+              </div>
+            </div>
 
-          {/* Form Actions */}
-          <div className={`flex space-x-3 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-            >
-              {isLoading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  {t("common.saving")}
-                </>
-              ) : (
-                isEditMode ? t("trainingCourses.form.update") : t("trainingCourses.form.submit")
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={handleCancel}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              {t("trainingCourses.form.cancel")}
-            </button>
+            {/* Arabic Title */}
+            <div>
+              <label htmlFor="arabicTitle" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {lang === "ar" 
+                  ? `${t("trainingCourses.form.title")} (${t("trainingCourses.arabic")})`
+                  : `${t("trainingCourses.form.title")} (${t("trainingCourses.arabic")})`
+                }
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="arabicTitle"
+                  value={formData.arabicTitle}
+                  onChange={(e) => handleInputChange("arabicTitle", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("trainingCourses.form.titlePlaceholder")}
+                />
+              </div>
+            </div>
+
+            {/* Arabic Content */}
+            <div>
+              <label htmlFor="arabicContent" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {lang === "ar" 
+                  ? `${t("trainingCourses.form.content")} (${t("trainingCourses.arabic")})`
+                  : `${t("trainingCourses.form.content")} (${t("trainingCourses.arabic")})`
+                }
+              </label>
+              <div className="mt-1">
+                <textarea
+                  id="arabicContent"
+                  rows={4}
+                  value={formData.arabicContent}
+                  onChange={(e) => handleInputChange("arabicContent", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("trainingCourses.form.contentPlaceholder")}
+                />
+              </div>
+            </div>
+
+            {/* English Title */}
+            <div>
+              <label htmlFor="englishTitle" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {lang === "ar" 
+                  ? `${t("trainingCourses.form.title")} (${t("trainingCourses.english")})`
+                  : `${t("trainingCourses.form.title")} (${t("trainingCourses.english")})`
+                }
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  id="englishTitle"
+                  value={formData.englishTitle}
+                  onChange={(e) => handleInputChange("englishTitle", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("trainingCourses.form.titlePlaceholder")}
+                />
+              </div>
+            </div>
+
+            {/* English Content */}
+            <div>
+              <label htmlFor="englishContent" className={`block text-sm font-medium text-gray-700 ${
+                lang === "ar" ? "text-right" : "text-left"
+              }`}>
+                {lang === "ar" 
+                  ? `${t("trainingCourses.form.content")} (${t("trainingCourses.english")})`
+                  : `${t("trainingCourses.form.content")} (${t("trainingCourses.english")})`
+                }
+              </label>
+              <div className="mt-1">
+                <textarea
+                  id="englishContent"
+                  rows={4}
+                  value={formData.englishContent}
+                  onChange={(e) => handleInputChange("englishContent", e.target.value)}
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md ${
+                    lang === "ar" ? "text-right" : "text-left"
+                  }`}
+                  placeholder={t("trainingCourses.form.contentPlaceholder")}
+                />
+              </div>
+            </div>
+
+            {/* Form Actions */}
+            <div className="flex justify-end space-x-3">
+              <button
+                type="button"
+                onClick={() => router.push("/admin/training-courses")}
+                className="admin-button admin-button-secondary"
+                disabled={isLoading}
+              >
+                {t("trainingCourses.form.cancel")}
+              </button>
+              <button
+                type="submit"
+                className="admin-button admin-button-primary"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    {isEditMode ? t("trainingCourses.form.update") : t("trainingCourses.form.submit")}
+                  </div>
+                ) : (
+                  isEditMode ? t("trainingCourses.form.update") : t("trainingCourses.form.submit")
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </div>

@@ -1,107 +1,62 @@
 import { apiRequest } from "./api";
 
-const API_BASE_URL = "https://localhost:7187/api";
-
-// Generic API request function for media categories
-async function mediaCategoriesApiRequest(endpoint, options = {}) {
-  const url = `${API_BASE_URL}/admin/mediacategories${endpoint}`;
-
-  const defaultOptions = {
-    headers: {},
-  };
-
-  // Add authorization header if token exists
+const mediaCategoriesApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
-  if (token) {
-    defaultOptions.headers["Authorization"] = `Bearer ${token}`;
+  if (!token) {
+    throw new Error("No authentication token found");
   }
 
-  // Check if user is admin before making request
-  const { isAdmin } = await import("./api.js");
-  if (!isAdmin()) {
-    throw new Error("Access denied. Admin role required.");
-  }
-
-  const config = {
-    ...defaultOptions,
+  return apiRequest(`/admin/mediaCategories/${endpoint}`, {
     ...options,
     headers: {
-      ...defaultOptions.headers,
       ...options.headers,
+      Authorization: `Bearer ${token}`,
     },
-  };
+  });
+};
 
-  try {
-    console.log("Making Media Categories API request to:", url);
-    const response = await fetch(url, config);
-    console.log("Response status:", response.status);
-    const data = await response.json();
-    console.log("Response data:", data);
-
-    if (!response.ok) {
-      throw new Error(data.Message || "API request failed");
-    }
-
-    return data;
-  } catch (error) {
-    console.error("Media Categories API Error:", error);
-    throw error;
-  }
-}
-
-// Media Categories API functions
 export const mediaCategoriesAPI = {
-  // Get all media categories
-  async getAllMediaCategories() {
-    const response = await mediaCategoriesApiRequest("/GetAllMediaCategories", {
-      method: "GET",
-    });
-    return response;
+  getAllMediaCategories: async () => {
+    return mediaCategoriesApiRequest("GetAllMediaCategories");
   },
 
-  // Create new media category
-  async createMediaCategory(categoryData) {
-    const response = await mediaCategoriesApiRequest("/CreateMediaCategory", {
+  createMediaCategory: async (categoryData) => {
+    return mediaCategoriesApiRequest("CreateMediaCategory", {
       method: "POST",
       body: JSON.stringify(categoryData),
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
-    return response;
   },
 
-  // Update existing media category
-  async updateMediaCategory(categoryData) {
-    const response = await mediaCategoriesApiRequest("/UpdateMediaCategory", {
+  updateMediaCategory: async (categoryData) => {
+    return mediaCategoriesApiRequest("UpdateMediaCategory", {
       method: "PUT",
       body: JSON.stringify(categoryData),
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
-    return response;
   },
 
-  // Delete media category
-  async deleteMediaCategory(categoryId) {
-    const response = await mediaCategoriesApiRequest("/DeleteMediaCategory", {
+  deleteMediaCategory: async (categoryId) => {
+    return mediaCategoriesApiRequest("DeleteMediaCategory", {
       method: "DELETE",
       body: JSON.stringify({ Id: categoryId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
-    return response;
   },
 
-  // Get media categories by filter
-  async getMediaCategoriesByFilter(filterData) {
-    const response = await mediaCategoriesApiRequest("/GetByFilter", {
-      method: "GET",
-      params: filterData,
+  addMediaCategoryTranslation: async (translationData) => {
+    return mediaCategoriesApiRequest("AddMediaCategoryTranslation", {
+      method: "POST",
+      body: JSON.stringify(translationData),
     });
-    return response;
+  },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Name) queryParams.append("Name", filter.Name);
+    if (filter.Code) queryParams.append("Code", filter.Code);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return mediaCategoriesApiRequest(`GetByFilter?${queryParams.toString()}`);
   },
 };
 
@@ -109,7 +64,8 @@ export const mediaCategoriesAPI = {
 export const getAllMediaCategories = async () => {
   try {
     const response = await mediaCategoriesAPI.getAllMediaCategories();
-    return response.Data || [];
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching media categories:", error);
     throw error;
@@ -118,10 +74,7 @@ export const getAllMediaCategories = async () => {
 
 export const getMediaCategoryById = async (id) => {
   try {
-    const response = await mediaCategoriesAPI.getMediaCategoriesByFilter({
-      Id: id,
-    });
-    const categories = response.Data || [];
+    const categories = await getAllMediaCategories();
     return categories.find((category) => category.Id === id);
   } catch (error) {
     console.error("Error fetching media category by ID:", error);
@@ -129,12 +82,20 @@ export const getMediaCategoryById = async (id) => {
   }
 };
 
-export const getMediaCategoryNameInLanguage = (category, languageCode) => {
-  if (!category?.Translations) return "Unknown";
+export const getMediaCategoryNameInLanguage = (category, languageId) => {
+  if (!category?.Translations) return "No Name";
   const translation = category.Translations.find(
-    (t) => t.LanguageCode === languageCode
+    (t) => t.LanguageCode === languageId
   );
-  return translation?.Name || "Unknown";
+  return translation?.Name || "No Name";
+};
+
+export const getMediaCategoryDescriptionInLanguage = (category, languageId) => {
+  if (!category?.Translations) return "";
+  const translation = category.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Description || "";
 };
 
 export const getMediaCategoryTranslations = (category) => {

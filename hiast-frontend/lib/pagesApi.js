@@ -1,60 +1,70 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function pagesApiRequest(endpoint, options = {}) {
+const pagesApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/admin/page/${endpoint}`;
-  const config = {
-    method: options.method || "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers,
-    },
+  return apiRequest(`/admin/pages/${endpoint}`, {
     ...options,
-  };
-
-  if (options.body) {
-    config.body = JSON.stringify(options.body);
-  }
-
-  try {
-    const response = await fetch(url, config);
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${responseText}`);
-    }
-
-    if (!responseText) {
-      return null;
-    }
-
-    const data = JSON.parse(responseText);
-    return data.Data;
-  } catch (error) {
-    console.error("API request failed:", error);
-    throw error;
-  }
-}
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 export const pagesAPI = {
-  getAllPages: () => pagesApiRequest("GetAllPages"),
-  createPage: (pageData) =>
-    pagesApiRequest("CreatePage", { method: "POST", body: pageData }),
-  updatePage: (pageData) =>
-    pagesApiRequest("UpdatePage", { method: "PUT", body: pageData }),
-  deletePage: (pageId) =>
-    pagesApiRequest("DeletePage", { method: "DELETE", body: { Id: pageId } }),
+  getAllPages: async () => {
+    return pagesApiRequest("GetAllPages");
+  },
+
+  createPage: async (pageData) => {
+    return pagesApiRequest("CreatePage", {
+      method: "POST",
+      body: JSON.stringify(pageData),
+    });
+  },
+
+  updatePage: async (pageData) => {
+    return pagesApiRequest("UpdatePage", {
+      method: "PUT",
+      body: JSON.stringify(pageData),
+    });
+  },
+
+  deletePage: async (pageId) => {
+    return pagesApiRequest("DeletePage", {
+      method: "DELETE",
+      body: JSON.stringify({ Id: pageId }),
+    });
+  },
+
+  addPageTranslation: async (translationData) => {
+    return pagesApiRequest("AddPageTranslation", {
+      method: "POST",
+      body: JSON.stringify(translationData),
+    });
+  },
+
+  getByFilter: async (filter) => {
+    const queryParams = new URLSearchParams();
+    if (filter.Id) queryParams.append("Id", filter.Id);
+    if (filter.Title) queryParams.append("Title", filter.Title);
+    if (filter.Slug) queryParams.append("Slug", filter.Slug);
+    if (filter.IsActive !== undefined)
+      queryParams.append("IsActive", filter.IsActive);
+
+    return pagesApiRequest(`GetByFilter?${queryParams.toString()}`);
+  },
 };
 
 export const getAllPages = async () => {
   try {
-    return await pagesAPI.getAllPages();
+    const response = await pagesAPI.getAllPages();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching pages:", error);
     throw error;

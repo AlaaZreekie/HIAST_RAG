@@ -1,74 +1,59 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+import { apiRequest } from "./api";
 
-async function faqCategoriesApiRequest(endpoint, options = {}) {
+const faqCategoriesApiRequest = async (endpoint, options = {}) => {
   const token = localStorage.getItem("admin_token");
   if (!token) {
     throw new Error("No authentication token found");
   }
 
-  const url = `${API_BASE_URL}/admin/faqCategory/${endpoint}`;
-  const config = {
-    method: options.method || "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      ...options.headers,
-    },
+  return apiRequest(`/admin/faqCategories/${endpoint}`, {
     ...options,
-  };
-
-  if (options.body) {
-    config.body = JSON.stringify(options.body);
-  }
-
-  try {
-    const response = await fetch(url, config);
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${responseText}`);
-    }
-
-    if (!responseText) {
-      return null;
-    }
-
-    const data = JSON.parse(responseText);
-    return data.Data;
-  } catch (error) {
-    console.error("API request failed:", error);
-    throw error;
-  }
-}
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 export const faqCategoriesAPI = {
-  getAllCategories: () => faqCategoriesApiRequest("GetAllFaqCategories"),
-  getCategoriesByFilter: (filter) =>
-    faqCategoriesApiRequest("GetByFilter", {
-      method: "GET",
-      body: filter,
-    }),
-  createCategory: (categoryData) =>
-    faqCategoriesApiRequest("CreateFaqCategory", {
+  getAllCategories: async () => {
+    return faqCategoriesApiRequest("GetAllFaqCategories");
+  },
+
+  getCategoriesByFilter: async (filter) => {
+    return faqCategoriesApiRequest("GetFaqCategoriesByFilter", {
       method: "POST",
-      body: categoryData,
-    }),
-  updateCategory: (categoryData) =>
-    faqCategoriesApiRequest("UpdateFaqCategory", {
+      body: JSON.stringify(filter),
+    });
+  },
+
+  createCategory: async (categoryData) => {
+    return faqCategoriesApiRequest("CreateFaqCategory", {
+      method: "POST",
+      body: JSON.stringify(categoryData),
+    });
+  },
+
+  updateCategory: async (categoryData) => {
+    return faqCategoriesApiRequest("UpdateFaqCategory", {
       method: "PUT",
-      body: categoryData,
-    }),
-  deleteCategory: (categoryId) =>
-    faqCategoriesApiRequest("DeleteFaqCategory", {
+      body: JSON.stringify(categoryData),
+    });
+  },
+
+  deleteCategory: async (categoryId) => {
+    return faqCategoriesApiRequest("DeleteFaqCategory", {
       method: "DELETE",
-      body: { Id: categoryId },
-    }),
+      body: JSON.stringify({ Id: categoryId }),
+    });
+  },
 };
 
 export const getAllFaqCategories = async () => {
   try {
-    return await faqCategoriesAPI.getAllCategories();
+    const response = await faqCategoriesAPI.getAllCategories();
+    const data = response.Data || [];
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error fetching FAQ categories:", error);
     throw error;
