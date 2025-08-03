@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/middleware.js"],"sourcesContent":["import { NextResponse } from \"next/server\";\r\n\r\nexport function middleware(request) {\r\n  const { pathname } = request.nextUrl;\r\n\r\n  // Check if the request is for admin routes\r\n  if (pathname.startsWith(\"/admin\")) {\r\n    // Skip middleware for login page\r\n    if (pathname === \"/admin/login\") {\r\n      return NextResponse.next();\r\n    }\r\n\r\n    // For other admin routes, we'll handle authentication on the client side\r\n    // since we need to check localStorage which is only available in the browser\r\n    return NextResponse.next();\r\n  }\r\n\r\n  return NextResponse.next();\r\n}\r\n\r\nexport const config = {\r\n  matcher: [\"/admin/:path*\"],\r\n};\r\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEO,SAAS,WAAW,OAAO;IAChC,MAAM,EAAE,QAAQ,EAAE,GAAG,QAAQ,OAAO;IAEpC,2CAA2C;IAC3C,IAAI,SAAS,UAAU,CAAC,WAAW;QACjC,iCAAiC;QACjC,IAAI,aAAa,gBAAgB;YAC/B,OAAO,6LAAA,CAAA,eAAY,CAAC,IAAI;QAC1B;QAEA,yEAAyE;QACzE,6EAA6E;QAC7E,OAAO,6LAAA,CAAA,eAAY,CAAC,IAAI;IAC1B;IAEA,OAAO,6LAAA,CAAA,eAAY,CAAC,IAAI;AAC1B;AAEO,MAAM,SAAS;IACpB,SAAS;QAAC;KAAgB;AAC5B"}}]
-}
