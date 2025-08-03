@@ -37,6 +37,39 @@ node_modules/
 # Do NOT ignore subproject folders
 !/Backend_AI/
 !/Backend_Web/
-!/Fronend_Web/ 
+!/hiast-frontend/
+
+# Frontend specific ignores
+hiast-frontend/.next/
+hiast-frontend/.env*
+hiast-frontend/package-lock.json
+hiast-frontend/yarn.lock
+hiast-frontend/.cache/
+hiast-frontend/*.log
+hiast-frontend/.DS_Store
+hiast-frontend/Thumbs.db
+hiast-frontend/.idea/
+hiast-frontend/*.swp
+hiast-frontend/*.swo
+hiast-frontend/*.tmp
+hiast-frontend/*.temp
+
+# Backend specific ignores
+Backend_Web/**/bin/
+Backend_Web/**/obj/
+Backend_Web/**/.vs/
+Backend_Web/**/*.user
+Backend_Web/**/*.suo
+Backend_Web/**/*.useros
+Backend_Web/**/*.sln.docstates
+Backend_Web/**/appsettings.Production.json
+Backend_Web/**/appsettings.Staging.json
+Backend_Web/**/appsettings.Local.json
+Backend_Web/**/*.tmp
+Backend_Web/**/*.temp
+Backend_Web/**/*.Backup.*
+Backend_Web/**/*.log
+Backend_Web/**/.DS_Store
+Backend_Web/**/Thumbs.db
 
 .vs/ 
