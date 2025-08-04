@@ -29,7 +29,7 @@ class Embedder:
         # Default settings
         self.chunk_size = self.analyze_chunk_analytics()
         self.chunk_overlap = 200
-        self.persist_directory = "chroma_db"
+        self.persist_directory = "Data/chroma_db"
     
     def load_data(self, filepath="scraped_data.json"):
         """Load data from a text file."""
@@ -82,6 +82,106 @@ class Embedder:
         print(f"✅ Created {len(docs)} chunks")
         return docs
     
+    def close_vectorstore(self, vectorstore=None):
+        """Close vectorstore connections to release file locks."""
+        try:
+            if vectorstore:
+                # Close the client if it exists
+                if hasattr(vectorstore, '_client') and vectorstore._client:
+                    try:
+                        vectorstore._client.close()
+                    except:
+                        pass
+                
+                # Try to close the collection's client
+                if hasattr(vectorstore, '_collection') and hasattr(vectorstore._collection, '_client'):
+                    try:
+                        vectorstore._collection._client.close()
+                    except:
+                        pass
+                
+                # Force garbage collection to release file handles
+                import gc
+                gc.collect()
+                
+                print("✅ Vectorstore connections closed")
+        except Exception as e:
+            print(f"⚠️ Warning: Could not close vectorstore: {e}")
+
+    def create_new_database(self, persist_directory=None):
+        """Create a new vector database with a unique name."""
+        if persist_directory is None:
+            persist_directory = self.persist_directory
+            
+        import time
+        import os
+        
+        # Create a unique database name with timestamp
+        timestamp = int(time.time())
+        new_db_name = f"{persist_directory}_new_{timestamp}"
+        
+        print(f"🆕 Creating new database: {new_db_name}")
+        
+        # Store the new database path for later use
+        self.current_database_path = new_db_name
+        
+        return new_db_name
+
+    def switch_to_new_database(self):
+        """Switch to the newly created database."""
+        if hasattr(self, 'current_database_path'):
+            # Update the persist directory to use the new database
+            old_path = self.persist_directory
+            self.persist_directory = self.current_database_path
+            
+            print(f"🔄 Switched from {old_path} to {self.persist_directory}")
+            return True
+        else:
+            print("⚠️ No new database created yet")
+            return False
+
+    def cleanup_old_database(self, old_persist_directory=None):
+        """Clean up the old database directory when safe."""
+        if old_persist_directory is None:
+            old_persist_directory = "Data/chroma_db"
+            
+        import os
+        import time
+        import shutil
+        
+        print(f"🧹 Cleaning up old database: {old_persist_directory}")
+        
+        if os.path.exists(old_persist_directory):
+            try:
+                # Try to rename first (safer than delete)
+                backup_name = f"Data/old_{os.path.basename(old_persist_directory)}_{int(time.time())}"
+                os.rename(old_persist_directory, backup_name)
+                print(f"✅ Old database moved to: {backup_name}")
+                print(f"💡 You can manually delete {backup_name} when convenient")
+                return True
+            except Exception as e:
+                print(f"⚠️ Could not move old database: {e}")
+                print(f"💡 Old database {old_persist_directory} still exists - delete manually when safe")
+                return False
+        else:
+            print(f"ℹ️ Old database {old_persist_directory} doesn't exist")
+            return True
+
+    def clear_database(self, persist_directory=None):
+        """Create a new database instead of clearing the old one."""
+        print("🔄 Creating new database instead of clearing old one...")
+        
+        # Create a new database with unique name
+        new_db_path = self.create_new_database(persist_directory)
+        
+        # Switch to the new database
+        self.switch_to_new_database()
+        
+        print(f"✅ New database ready: {new_db_path}")
+        print(f"ℹ️ Old database will be cleaned up later")
+        
+        return new_db_path
+
     def create_and_save_embeddings(self, docs, persist_directory=None):
         """Create embeddings and save to vector database."""
         if persist_directory is None:
@@ -95,7 +195,7 @@ class Embedder:
         )
         print("✅ Vector database created and saved!")
         return vectorstore
-    
+
     def load_vectorstore(self, persist_directory=None):
         """Load existing vector database."""
         if persist_directory is None:
@@ -123,6 +223,9 @@ class Embedder:
         """Retrain (rebuild) the entire vector database from scratch."""
         print("🔄 Starting database retrain...")
         
+        # FIRST: Clear the existing database
+        self.clear_database()
+        
         # Check if file is JSON or text
         if filepath.endswith('.json'):
             data = self.load_data_from_json(filepath)
@@ -138,7 +241,7 @@ class Embedder:
         # Chunk data
         docs = self.chunk_data(data, chunk_size, chunk_overlap)
         print(f"✅ Created {len(docs)} chunks")
-        # Create and save embeddings
+        # Create and save embeddings (this will create a fresh database)
         vectorstore = self.create_and_save_embeddings(docs)
         
         print("✅ Database retrain completed!")
