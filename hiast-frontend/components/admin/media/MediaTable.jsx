@@ -122,21 +122,21 @@ const MediaTable = ({ mediaFiles, onEditMedia, onDeleteMedia }) => {
               return (
                 <div key={media.Id} className="p-6 hover:bg-gray-50 transition-colors">
                   <div className={`flex justify-between items-start ${
-                    lang === "ar" ? "flex-row-reverse" : ""
+                    lang === "ar" ? "flex-row-reverse" : "flex-row"
                   }`}>
                     {/* Media Info */}
                     <div className={`flex-1 ${lang === "ar" ? "text-right" : "text-left"}`}>
                       <div className={`flex items-center mb-2 ${
-                        lang === "ar" ? "flex-row-reverse" : ""
+                        lang === "ar" ? "flex-row-reverse" : "flex-row"
                       }`}>
                         <div className={lang === "ar" ? "ml-3" : "mr-3"}>
                           {getFileTypeIcon(media.FileName)}
                         </div>
                         <div>
-                          <h4 className="text-lg font-medium text-gray-900">
+                          <h4 className={`text-lg font-medium text-gray-900 ${lang === "ar" ? "text-right" : "text-left"}`}>
                             {media.FileName || t("media.noName")}
                           </h4>
-                          <p className="text-sm text-gray-500">
+                          <p className={`text-sm text-gray-500 ${lang === "ar" ? "text-right" : "text-left"}`}>
                             {media.FileType || "Unknown file type"}
                           </p>
                         </div>
@@ -174,14 +174,14 @@ const MediaTable = ({ mediaFiles, onEditMedia, onDeleteMedia }) => {
                       )}
                       
                       {/* File Details */}
-                      <div className="flex flex-wrap gap-4 text-xs text-gray-500 mb-3">
+                      <div className={`flex flex-wrap gap-4 text-xs text-gray-500 mb-3 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                         <span>{t("media.type")}: {media.FileType || "Unknown"}</span>
                         <span>{t("media.category")}: {categoryName}</span>
                       </div>
 
                       {/* File Actions */}
                       {fileUrl && (
-                        <div className={`flex gap-2 ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                        <div className={`flex gap-2 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                           <button
                             onClick={() => handleView(media)}
                             className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition-colors"
@@ -206,7 +206,7 @@ const MediaTable = ({ mediaFiles, onEditMedia, onDeleteMedia }) => {
                     </div>
 
                     {/* Admin Actions */}
-                    <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse space-x-reverse" : "flex-row"}`}>
                       <button
                         onClick={() => onEditMedia(media.Id)}
                         className={`text-indigo-600 hover:text-indigo-900 px-3 py-1 rounded-md text-sm font-medium transition-colors ${

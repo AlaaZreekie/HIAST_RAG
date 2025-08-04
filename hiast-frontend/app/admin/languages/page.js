@@ -18,10 +18,14 @@ const LanguagesPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await languagesAPI.getAllLanguages();
-      if (Array.isArray(data)) {
-        setLanguages(data);
+      const data = (await languagesAPI.getAllLanguages());
+      console.log("Languages API response:", data);
+
+      if (Array.isArray(data.Data)) {
+        setLanguages(data.Data);
+        console.log("Languages set:", data.Data);
       } else {
+        console.log("Languages data is not an array:", data.Data);
         setLanguages([]);
       }
     } catch (err) {

@@ -9,6 +9,8 @@ const ProgramsTable = ({ programs, onEdit, onDelete }) => {
   const { t, lang } = useLanguage();
   const [expandedPrograms, setExpandedPrograms] = useState(new Set());
 
+  console.log("ProgramsTable received programs:", programs);
+
   const toggleProgramExpansion = (programId) => {
     setExpandedPrograms(prev => {
       const newSet = new Set(prev);
@@ -33,7 +35,7 @@ const ProgramsTable = ({ programs, onEdit, onDelete }) => {
   };
 
   const handleDelete = async (program) => {
-    if (window.confirm(t("programs.deleteConfirm"))) {
+    if (window.confirm(t("programs.confirmDelete"))) {
       await onDelete(program.Id);
     }
   };
@@ -53,10 +55,10 @@ const ProgramsTable = ({ programs, onEdit, onDelete }) => {
               
               return (
                 <div key={program.Id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                  <div className={`flex items-start justify-between ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                  <div className={`flex items-start justify-between ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                     {/* Program Info */}
-                    <div className="flex-1">
-                      <div className={`flex items-center mb-2 ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex-1 ${lang === "ar" ? "text-right" : "text-left"}`}>
+                      <div className={`flex items-center mb-2 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                         <div className={lang === "ar" ? "ml-3" : "mr-3"}>
                           <svg
                             className="h-6 w-6 text-indigo-600"
@@ -83,24 +85,42 @@ const ProgramsTable = ({ programs, onEdit, onDelete }) => {
                         </div>
                       </div>
 
-                      {/* Program Description */}
-                      {program.Description && (
+                      {/* Program Duration */}
+                      {program.Duration && (
                         <div className="mt-2">
                           <p className={`text-sm text-gray-600 ${lang === "ar" ? "text-right" : "text-left"}`}>
-                            {isExpanded ? program.Description : `${program.Description.substring(0, 100)}...`}
+                            <span className="font-medium">{t("programs.form.duration")}:</span> {program.Duration}
                           </p>
-                          {program.Description.length > 100 && (
-                            <button
-                              onClick={() => toggleProgramExpansion(program.Id)}
-                              className={`mt-2 text-sm text-indigo-600 hover:text-indigo-800 ${
-                                lang === "ar" ? "text-right" : "text-left"
-                              }`}
-                            >
-                              {isExpanded ? t("programs.showLess") : t("programs.showMore")}
-                            </button>
-                          )}
                         </div>
                       )}
+
+                      {/* Program Description */}
+                      {(() => {
+                        const currentLanguageCode = lang === "ar" ? 1 : 2;
+                        const translation = program.Translations?.find(t => t.LanguageCode === currentLanguageCode);
+                        const description = translation?.Description;
+                        
+                        if (description) {
+                          return (
+                            <div className="mt-2">
+                              <p className={`text-sm text-gray-600 ${lang === "ar" ? "text-right" : "text-left"}`}>
+                                {isExpanded ? description : `${description.substring(0, 100)}...`}
+                              </p>
+                              {description.length > 100 && (
+                                <button
+                                  onClick={() => toggleProgramExpansion(program.Id)}
+                                  className={`mt-2 text-sm text-indigo-600 hover:text-indigo-800 ${
+                                    lang === "ar" ? "text-right" : "text-left"
+                                  }`}
+                                >
+                                  {isExpanded ? t("programs.showLess") : t("programs.showMore")}
+                                </button>
+                              )}
+                            </div>
+                          );
+                        }
+                        return null;
+                      })()}
 
                       {/* Translations */}
                       {program.Translations && program.Translations.length > 0 && (

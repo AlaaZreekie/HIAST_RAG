@@ -54,7 +54,7 @@ const SpecializationsTable = ({ specializations, onEditSpecialization, onDeleteS
             return (
               <div key={specialization.Id} className="p-6 hover:bg-gray-50 transition-colors">
                 <div className={`flex justify-between items-start ${
-                  lang === "ar" ? "flex-row-reverse" : ""
+                  lang === "ar" ? "flex-row-reverse" : "flex-row"
                 }`}>
                   {/* Specialization Info */}
                   <div className={`flex-1 ${lang === "ar" ? "text-right" : "text-left"}`}>

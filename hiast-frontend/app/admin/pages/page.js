@@ -18,9 +18,9 @@ const PagesPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await pagesAPI.getAllPages();
-      if (Array.isArray(data)) {
-        setPages(data);
+      const data = (await pagesAPI.getAllPages());
+      if (Array.isArray(data.Data)) {
+        setPages(data.Data);
       } else {
         setPages([]);
       }

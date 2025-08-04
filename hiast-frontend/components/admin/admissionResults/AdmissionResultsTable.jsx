@@ -53,11 +53,11 @@ const AdmissionResultsTable = ({ results, onEditResult, onDeleteResult }) => {
               return (
                 <div key={result.Id} className="p-6 hover:bg-gray-50 transition-colors">
                   <div className={`flex justify-between items-start ${
-                    lang === "ar" ? "flex-row-reverse" : ""
+                    lang === "ar" ? "flex-row-reverse" : "flex-row"
                   }`}>
                     {/* Result Info */}
                     <div className={`flex-1 ${lang === "ar" ? "text-right" : "text-left"}`}>
-                      <div className={`flex items-start ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                      <div className={`flex items-start ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                         {/* File Icon */}
                         <div className={`flex-shrink-0 ${lang === "ar" ? "ml-4" : "mr-4"}`}>
                           <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -75,7 +75,7 @@ const AdmissionResultsTable = ({ results, onEditResult, onDeleteResult }) => {
                         
                         {/* Result Content */}
                         <div className="flex-1 min-w-0">
-                          <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : ""} space-x-2 mb-2`}>
+                          <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse space-x-reverse" : "flex-row"} space-x-2 mb-2`}>
                             <span className={`text-sm font-medium text-gray-500 ${lang === "ar" ? "text-right" : "text-left"}`}>
                               {t("admissionResults.id")}:
                             </span>
@@ -88,21 +88,21 @@ const AdmissionResultsTable = ({ results, onEditResult, onDeleteResult }) => {
                           
                           {/* Admission Info */}
                           <div className={`space-y-1 mb-3 ${lang === "ar" ? "text-right" : "text-left"}`}>
-                            <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                            <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                               <span className={`text-sm text-gray-500 ${lang === "ar" ? "ml-2" : "mr-2"}`}>
                                 {t("admissionResults.academicYear")}:
                               </span>
                               <span className="text-sm text-gray-700">{academicYear}</span>
                             </div>
                             
-                            <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                            <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                               <span className={`text-sm text-gray-500 ${lang === "ar" ? "ml-2" : "mr-2"}`}>
                                 {t("admissionResults.program")}:
                               </span>
                               <span className="text-sm text-gray-700">{programName}</span>
                             </div>
                             
-                            <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                            <div className={`flex items-center ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
                               <span className={`text-sm text-gray-500 ${lang === "ar" ? "ml-2" : "mr-2"}`}>
                                 {t("admissionResults.location")}:
                               </span>
@@ -112,7 +112,7 @@ const AdmissionResultsTable = ({ results, onEditResult, onDeleteResult }) => {
                           
                           {/* File Actions */}
                           {result.Media && (
-                            <div className={`flex items-center space-x-2 ${lang === "ar" ? "flex-row-reverse space-x-reverse" : ""}`}>
+                            <div className={`flex items-center space-x-2 ${lang === "ar" ? "flex-row-reverse space-x-reverse" : "flex-row"}`}>
                               <button
                                 onClick={() => handleFileView(result.Media)}
                                 className="text-blue-600 hover:text-blue-800 text-sm font-medium"
@@ -133,7 +133,7 @@ const AdmissionResultsTable = ({ results, onEditResult, onDeleteResult }) => {
                     </div>
 
                     {/* Admin Actions */}
-                    <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse space-x-reverse" : "flex-row"}`}>
                       <button
                         onClick={() => onEditResult(result.Id)}
                         className={`text-indigo-600 hover:text-indigo-900 px-3 py-1 rounded-md text-sm font-medium transition-colors ${

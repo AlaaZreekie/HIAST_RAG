@@ -52,9 +52,22 @@ export const trainingCoursesAPI = {
 // Helper functions for language-specific data
 export const getAllTrainingCourses = async () => {
   try {
+    console.log("Fetching training courses...");
     const response = await trainingCoursesAPI.getAllTrainingCourses();
-    const data = response.Data || [];
-    return Array.isArray(data) ? data : [];
+    console.log("Raw API response:", response);
+
+    // Handle the API response structure
+    if (response && response.Data) {
+      const data = response.Data;
+      console.log("Extracted data:", data);
+      return Array.isArray(data) ? data : [];
+    } else if (Array.isArray(response)) {
+      console.log("Response is already an array:", response);
+      return response;
+    } else {
+      console.warn("Unexpected response structure:", response);
+      return [];
+    }
   } catch (error) {
     console.error("Error fetching training courses:", error);
     return [];
@@ -71,7 +84,41 @@ export const getTrainingCourseById = async (id) => {
   }
 };
 
-export const getTrainingCourseNameInLanguage = (
+// Updated helper functions to match backend DTO structure
+export const getTrainingCourseNameInLanguage = (trainingCourse, languageId) => {
+  if (!trainingCourse?.Translations) return "No Name";
+  const translation = trainingCourse.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Title || "No Name";
+};
+
+export const getTrainingCourseDescriptionInLanguage = (
+  trainingCourse,
+  languageId
+) => {
+  if (!trainingCourse?.Translations) return "";
+  const translation = trainingCourse.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Content || "";
+};
+
+export const getTrainingCourseCategoryName = (trainingCourse) => {
+  if (!trainingCourse?.TrainingCourseCategory?.Translations)
+    return "No Category";
+  const translation = trainingCourse.TrainingCourseCategory.Translations.find(
+    (t) => t.LanguageCode === 1 || t.LanguageCode === 2
+  );
+  return translation?.Name || "No Category";
+};
+
+export const getTrainingCourseTranslations = (trainingCourse) => {
+  return trainingCourse?.Translations || [];
+};
+
+// Legacy functions for backward compatibility
+export const getTrainingCourseNameInLanguageLegacy = (
   trainingCourse,
   language = "en"
 ) => {
@@ -83,7 +130,7 @@ export const getTrainingCourseNameInLanguage = (
   return trainingCourse.EnglishName || trainingCourse.Name || "N/A";
 };
 
-export const getTrainingCourseDescriptionInLanguage = (
+export const getTrainingCourseDescriptionInLanguageLegacy = (
   trainingCourse,
   language = "en"
 ) => {
@@ -97,20 +144,4 @@ export const getTrainingCourseDescriptionInLanguage = (
   return (
     trainingCourse.EnglishDescription || trainingCourse.Description || "N/A"
   );
-};
-
-export const getTrainingCourseTranslations = (trainingCourse) => {
-  if (!trainingCourse) return [];
-
-  const translations = [];
-
-  if (trainingCourse.Name) translations.push("Name");
-  if (trainingCourse.ArabicName) translations.push("ArabicName");
-  if (trainingCourse.EnglishName) translations.push("EnglishName");
-  if (trainingCourse.Description) translations.push("Description");
-  if (trainingCourse.ArabicDescription) translations.push("ArabicDescription");
-  if (trainingCourse.EnglishDescription)
-    translations.push("EnglishDescription");
-
-  return translations;
 };

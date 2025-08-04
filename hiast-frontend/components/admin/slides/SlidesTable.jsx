@@ -16,9 +16,9 @@ const SlidesTable = ({ slides, onEdit, onDelete }) => {
             <div className="space-y-4">
               {slides.map((slide) => (
                 <div key={slide.Id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-3 mb-2">
+                  <div className={`flex justify-between items-start ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
+                    <div className={`flex-1 ${lang === "ar" ? "text-right" : "text-left"}`}>
+                      <div className={`flex items-center space-x-3 mb-2 ${lang === "ar" ? "space-x-reverse" : ""}`}>
                         <span className="text-sm font-medium text-gray-500">
                           ID: {slide.Id}
                         </span>
@@ -27,26 +27,26 @@ const SlidesTable = ({ slides, onEdit, onDelete }) => {
                         </span>
                       </div>
                       
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        {slide.Title || "N/A"}
+                      <h3 className={`text-lg font-semibold text-gray-900 mb-2 ${lang === "ar" ? "text-right" : "text-left"}`}>
+                        {slide.Translations?.find(t => t.LanguageCode === (lang === "ar" ? 1 : 2))?.Title || "N/A"}
                       </h3>
                       
-                      <div className="text-sm text-gray-600 mb-3">
-                        <p>{slide.Description || "N/A"}</p>
+                      <div className={`text-sm text-gray-600 mb-3 ${lang === "ar" ? "text-right" : "text-left"}`}>
+                        <p>{slide.LinkURL || "N/A"}</p>
                       </div>
                       
-                      {slide.ImageUrl && (
+                      {slide.Media?.FilePath && (
                         <div className="mb-3">
                           <img 
-                            src={slide.ImageUrl} 
-                            alt={slide.Title || "Slide"}
+                            src={slide.Media.FilePath} 
+                            alt={slide.Translations?.find(t => t.LanguageCode === (lang === "ar" ? 1 : 2))?.Title || "Slide"}
                             className="w-32 h-20 object-cover rounded border"
                           />
                         </div>
                       )}
                     </div>
                     
-                    <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
+                    <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse space-x-reverse" : "flex-row"}`}>
                       <button
                         onClick={() => onEdit(slide.Id)}
                         className="text-indigo-600 hover:text-indigo-800 text-sm font-medium"

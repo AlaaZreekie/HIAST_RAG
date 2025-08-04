@@ -16,8 +16,8 @@ const CurriculumsPage = () => {
       setLoading(true);
       setError(null);
       const data = await curriculumsAPI.getAllCurriculums();
-      if (Array.isArray(data)) {
-        setCurriculums(data);
+      if (Array.isArray(data.Data)) {
+        setCurriculums(data.Data);
       } else {
         setCurriculums([]);
       }

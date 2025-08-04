@@ -37,7 +37,7 @@ const FaqCategoriesPage = () => {
       setIsLoading(true);
       setError(null);
       const data = await getAllFaqCategories();
-      setCategories(Array.isArray(data) ? data : []);
+      setCategories(Array.isArray(data.Data) ? data.Data : []);
     } catch (err) {
       console.error("Error loading FAQ categories:", err);
       setError(err.message);
