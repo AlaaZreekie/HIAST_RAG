@@ -20,9 +20,9 @@ scraped_data.txt
 scraped_data.json
 scrapedData.txt
 
-# Generated database
+# Generated database and data files
 chroma_db/
-
+Data/
 # Virtual environment
 myenv/
 

@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from src.rag_chain import get_conversation_aware_response
 from src.token_manager import TokenManager
 from src.rag_abstractions import DefaultRAGPipeline, QueryTransformRAGPipeline, RAGFusionPipeline
@@ -28,6 +29,15 @@ app = FastAPI(
     title="Conversational RAG API",
     description="A RESTful API for asking questions to a document-aware AI.",
     version="1.0.0"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Initialize token manager
@@ -279,3 +289,12 @@ def clear_conversation():
     global conversation_history
     conversation_history = {}
     return ClearConversationResponse(message="Conversation cleared") 
+
+from chatbox_generator import ChatboxGenerator
+
+@app.get("/chatbox", response_class=HTMLResponse)
+async def get_chatbox():
+    """Serve the chatbox JavaScript code"""
+    generator = ChatboxGenerator()
+    chatbox_js = generator.generate_chatbox_js()
+    return HTMLResponse(content=chatbox_js, media_type="text/html")

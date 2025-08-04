@@ -1,5 +1,6 @@
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import AIChatbox from "@/components/AIChatbox";
 
 export const metadata = {
   title: "HIAST Admin Dashboard",
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning={true}>
       <body>
         <LanguageProvider>{children}</LanguageProvider>
+        <AIChatbox />
       </body>
     </html>
   );

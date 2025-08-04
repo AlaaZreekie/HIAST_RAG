@@ -137,9 +137,7 @@ ForthYear/
    ```bash
    python main.py
    or
-   uvicron main.py --reload
-
-   ```
+   python -m uvicorn main:app --reload   ```
 
 ## Running the Complete System
 

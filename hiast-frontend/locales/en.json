@@ -166,7 +166,6 @@
     "yes": "Yes",
     "no": "No",
     "confirm": "Confirm",
-    "cancel": "Cancel",
     "submit": "Submit",
     "update": "Update",
     "create": "Create",
@@ -217,37 +216,17 @@
     "continued": "Continued",
     "finished": "Finished",
     "completed": "Completed",
-    "approved": "Approved",
-    "rejected": "Rejected",
     "activated": "Activated",
     "deactivated": "Deactivated",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
     "madeVisible": "Made Visible",
     "madeHidden": "Made Hidden",
     "madePublic": "Made Public",
     "madePrivate": "Made Private",
     "savedAsDraft": "Saved as Draft",
-    "published": "Published",
-    "archived": "Archived",
-    "deleted": "Deleted",
-    "restored": "Restored",
-    "moved": "Moved",
-    "copied": "Copied",
-    "duplicated": "Duplicated",
-    "sorted": "Sorted",
-    "filtered": "Filtered",
-    "searched": "Searched",
-    "exported": "Exported",
-    "imported": "Imported",
-    "uploaded": "Uploaded",
-    "downloaded": "Downloaded",
-    "refreshed": "Refreshed",
-    "reloaded": "Reloaded",
-    "retried": "Retried",
-    "continued": "Continued",
-    "finished": "Finished",
-    "completed": "Completed"
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "backToDashboard": "Back to Dashboard",
+    "comingSoon": "Coming Soon"
   },
   "faqs.title": "FAQs Management",
   "faqs.subtitle": "Manage frequently asked questions",
@@ -707,6 +686,19 @@
   "books.form.submit": "Create Book",
   "books.form.update": "Update Book",
   "books.form.cancel": "Cancel",
+  "books.hasFile": "Has File",
+  "books.form.author": "Author",
+  "books.form.authorPlaceholder": "Enter author name",
+  "books.form.publicationYear": "Publication Year",
+  "books.form.isbn": "ISBN",
+  "books.form.isbnPlaceholder": "Enter ISBN",
+  "books.form.coverImage": "Cover Image",
+  "books.form.bookFile": "Book File",
+  "books.form.viewFile": "View File",
+  "books.form.titlePlaceholder": "Enter book title",
+  "books.form.descriptionPlaceholder": "Enter book description",
+  "books.arabic": "Arabic",
+  "books.english": "English",
   "slides.title": "Slides",
   "slides.subtitle": "Manage website slides and banners",
   "slides.create": "Create New Slide",
@@ -794,16 +786,7 @@
       "subtitle": "Stay informed with the latest news, announcements, and updates from HIAST",
       "anonymous": "Anonymous",
       "viewAll": "View All News"
-    },
-    "courses": {
-      "title": "Featured Courses",
-      "subtitle": "Explore our diverse range of courses designed to enhance your skills and knowledge",
-      "noDescription": "Course description not available",
-      "creditHoursNotSpecified": "Credit hours not specified",
-      "creditHours": "Credit Hours",
-      "instructorNotSpecified": "Instructor not specified",
-      "learnMore": "Learn More",
-      "viewAll": "View All Courses"
+    }
     },
     "stats": {
       "title": "HIAST by the Numbers",
@@ -825,12 +808,15 @@
       "course3": {
         "title": "Data Science",
         "description": "Explore big data analytics and machine learning"
+      },
+      "course4": {
+        "title": "Artificial Intelligence",
+        "description": "Study AI principles and applications"
       }
     }
-  },
+  ,
   "common": {
-    "loading": "Loading..."
-  },
+    "loading": "Loading...",  
   "languages.form.name": "Language Name",
   "languages.form.code": "Language Code",
   "languages.form.arabicName": "Arabic Name",
@@ -888,3 +874,4 @@
     "courseGroups.notFound": "Course group not found",
     "courseGroups.backToList": "Back to Course Groups"
 } 
+}
