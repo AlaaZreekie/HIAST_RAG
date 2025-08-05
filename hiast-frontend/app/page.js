@@ -1,11 +1,16 @@
-"use client";
-import { useLanguage } from "@/components/LanguageProvider";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { cookies } from "next/headers";
+
+// Server-side language detection
+function getLanguageFromCookies() {
+  const cookieStore = cookies();
+  const langCookie = cookieStore.get("lang");
+  return langCookie?.value || "en";
+}
 
 export default function Home() {
-  const { lang } = useLanguage();
-  const router = useRouter();
+  const lang = getLanguageFromCookies();
 
   return (
     <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen">
@@ -20,29 +25,38 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-4">
               <nav className="flex gap-4">
-                <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+                <a
+                  href="/"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
                   {lang === "ar" ? "الرئيسية" : "Home"}
-                </button>
-                <button
-                  onClick={() => router.push("/page/about")}
+                </a>
+                <a
+                  href="/page/about"
                   className="px-4 py-2 text-gray-600 hover:text-gray-900"
                 >
                   {lang === "ar" ? "عن المعهد" : "About Us"}
-                </button>
-                <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+                </a>
+                <a
+                  href="#"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
                   {lang === "ar" ? "البرامج" : "Programs"}
-                </button>
-                <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+                </a>
+                <a
+                  href="#"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
                   {lang === "ar" ? "الأخبار" : "News"}
-                </button>
-                <button
-                  onClick={() => router.push("/page/contact")}
+                </a>
+                <a
+                  href="/page/contact"
                   className="px-4 py-2 text-gray-600 hover:text-gray-900"
                 >
                   {lang === "ar" ? "اتصل بنا" : "Contact"}
-                </button>
+                </a>
               </nav>
-              <LanguageSwitcher />
+              <LanguageSwitcher currentLang={lang} />
             </div>
           </div>
         </div>
@@ -171,18 +185,18 @@ export default function Home() {
               </h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <a href="/" className="hover:text-white">
                     {lang === "ar" ? "الرئيسية" : "Home"}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    {lang === "ar" ? "البرامج" : "Programs"}
+                  <a href="/page/about" className="hover:text-white">
+                    {lang === "ar" ? "عن المعهد" : "About Us"}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    {lang === "ar" ? "الأخبار" : "News"}
+                  <a href="/page/contact" className="hover:text-white">
+                    {lang === "ar" ? "اتصل بنا" : "Contact"}
                   </a>
                 </li>
               </ul>

@@ -1,11 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
 
-const LanguageSwitcher = ({ currentLang = "en", className = "" }) => {
+const ServerLanguageSwitcher = ({ currentLang, className = "" }) => {
   const router = useRouter();
 
   const handleLanguageChange = (newLang) => {
-    // Set cookie and refresh page for SSR compatibility
+    // Set cookie and refresh page
     document.cookie = `lang=${newLang}; path=/; max-age=31536000`;
     router.refresh();
   };
@@ -36,4 +37,4 @@ const LanguageSwitcher = ({ currentLang = "en", className = "" }) => {
   );
 };
 
-export default LanguageSwitcher; 
+export default ServerLanguageSwitcher; 

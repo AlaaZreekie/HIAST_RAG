@@ -27,11 +27,11 @@ class Embedder:
             raise ValueError("GOOGLE_API_KEY not found in environment variables.")
         self.llm = get_llm()
         # Default settings
-        self.chunk_size = self.analyze_chunk_analytics()
+        self.chunk_size = 2000
         self.chunk_overlap = 200
         self.persist_directory = "Data/chroma_db"
     
-    def load_data(self, filepath="scraped_data.json"):
+    def load_data(self, filepath="scraped_homepage.json"):
         """Load data from a text file."""
         print(f"📄 Loading data from: {filepath}")
         loader = TextLoader(filepath, encoding="utf-8")
@@ -39,7 +39,7 @@ class Embedder:
         print(f"✅ Loaded {len(data)} documents")
         return data
     
-    def load_data_from_json(self, filepath="scraped_data.json"):
+    def load_data_from_json(self, filepath="scraped_homepage.json"):
         """Load data from a JSON file with scraped content."""
         print(f"📄 Loading data from JSON: {filepath}")
         try:
@@ -79,7 +79,8 @@ class Embedder:
             chunk_overlap=chunk_overlap
         )
         docs = text_splitter.split_documents(data)
-        print(f"✅ Created {len(docs)} chunks")
+        print(f"✅ Created {len(docs)} chunks===============================================")
+        print(docs)
         return docs
     
     def close_vectorstore(self, vectorstore=None):
@@ -200,6 +201,7 @@ class Embedder:
         """Load existing vector database."""
         if persist_directory is None:
             persist_directory = self.persist_directory
+            print(f"✅ Loading vector database from: {persist_directory}")
             
         print(f"📂 Loading vector database from: {persist_directory}")
         return Chroma(
@@ -217,24 +219,27 @@ class Embedder:
             search_type="similarity", 
             search_kwargs={"k": k}
         )
-        return retriever.get_relevant_documents(query)
+        relevant_documents = retriever.get_relevant_documents(query)
+        print(f"✅ Retrieved {len(relevant_documents)} relevant documents")
+        return relevant_documents
     
-    def retrain(self, filepath="scraped_data.json", chunk_size=1200, chunk_overlap=200):
+    def retrain(self, filepath="scraped_homepage.json", chunk_size=2000, chunk_overlap=200):
         """Retrain (rebuild) the entire vector database from scratch."""
         print("🔄 Starting database retrain...")
         
         # FIRST: Clear the existing database
-        self.clear_database()
+        #self.clear_database()
         
         # Check if file is JSON or text
         if filepath.endswith('.json'):
             data = self.load_data_from_json(filepath)
+            print(f"✅ Loaded {len(data)} documents from JSON===============================================")
         else:
             data = self.load_data(filepath)
         
         if(data):
-            chunk_size = self.analyze_chunk_analytics()
-            print(f"   📏 =================Chunk size: {chunk_size} characters")
+            chunk_size = self.chunk_size
+            print(f"   📏 =================Chunk size: {chunk_size} characters==================================")
         else:
             print("❌ No data to retrain")
             return None
@@ -269,7 +274,7 @@ class Embedder:
                 "error": str(e)
             }
     
-    def analyze_chunk_analytics(self, filepath="scraped_data.json"):
+    def analyze_chunk_analytics(self, filepath="scraped_homepage.json"):
         """
         Analyze content statistics from a JSON data file.
         
