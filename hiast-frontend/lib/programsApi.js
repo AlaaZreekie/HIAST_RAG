@@ -6,7 +6,7 @@ const programsApiRequest = async (endpoint, options = {}) => {
     throw new Error("No authentication token found");
   }
 
-  return apiRequest(`/admin/programs/${endpoint}`, {
+  return apiRequest(`/Admin/Programs/${endpoint}`, {
     ...options,
     headers: {
       ...options.headers,

@@ -8,19 +8,22 @@ const PagesTable = ({ pages, onEdit, onDelete }) => {
 
   const getPageTitleInLanguage = (page) => {
     if (!page.Translations || !Array.isArray(page.Translations)) return "N/A";
-    const translation = page.Translations.find(t => t.LanguageCode === lang) || page.Translations[0];
+    const currentLanguageCode = lang === "ar" ? 1 : 2;
+    const translation = page.Translations.find(t => t.LanguageCode === currentLanguageCode) || page.Translations[0];
     return translation?.Title || "N/A";
   };
 
   const getPageContentInLanguage = (page) => {
     if (!page.Translations || !Array.isArray(page.Translations)) return "N/A";
-    const translation = page.Translations.find(t => t.LanguageCode === lang) || page.Translations[0];
+    const currentLanguageCode = lang === "ar" ? 1 : 2;
+    const translation = page.Translations.find(t => t.LanguageCode === currentLanguageCode) || page.Translations[0];
     return translation?.Content || "N/A";
   };
 
   const getPageSlugInLanguage = (page) => {
     if (!page.Translations || !Array.isArray(page.Translations)) return "N/A";
-    const translation = page.Translations.find(t => t.LanguageCode === lang) || page.Translations[0];
+    const currentLanguageCode = lang === "ar" ? 1 : 2;
+    const translation = page.Translations.find(t => t.LanguageCode === currentLanguageCode) || page.Translations[0];
     return translation?.Slug || "N/A";
   };
 

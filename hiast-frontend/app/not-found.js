@@ -1,133 +1,150 @@
 "use client";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useRouter } from "next/navigation";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-const NotFound = () => {
-  const { t, lang } = useLanguage();
+export default function NotFound() {
+  const { lang } = useLanguage();
   const router = useRouter();
 
-  const handleGoHome = () => {
-    router.push("/admin/dashboard");
-  };
-
-  const handleGoBack = () => {
-    router.back();
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="max-w-md w-full mx-auto text-center">
-        {/* 404 Animation */}
-        <div className="mb-8">
-          <div className="relative">
-            {/* Animated 404 Background - Original Size and Shape */}
-            <div
-              className="mx-auto"
-              style={{
-                backgroundImage:
-                  "url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif)",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                height: "300px",
-                width: "100%",
-              }}
-            >
-              <h1 className="text-6xl font-bold text-indigo-600 drop-shadow-lg">
-                404
-              </h1>
+    <div
+      dir={lang === "ar" ? "rtl" : "ltr"}
+      className="min-h-screen bg-gray-50"
+    >
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <div className="text-2xl font-bold text-gray-900">
+              {lang === "ar"
+                ? "المعهد العالي للعلوم التطبيقية والتكنولوجيا"
+                : "HIAST"}
             </div>
+            <LanguageSwitcher />
           </div>
         </div>
+      </header>
 
-        {/* Content */}
-        <div className="bg-white rounded-lg shadow-lg p-4 pt-0">
-          <h2
-            className={`text-2xl font-bold text-gray-900 mb-4 ${
-              lang === "ar" ? "text-right" : "text-left"
-            }`}
-          >
-            {t("404.title")}
+      {/* 404 Content */}
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="mb-8">
+            <h1 className="text-9xl font-bold text-gray-300">404</h1>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            {lang === "ar" ? "الصفحة غير موجودة" : "Page Not Found"}
           </h2>
-
-          <p
-            className={`text-gray-600 mb-8 ${
-              lang === "ar" ? "text-right" : "text-left"
-            }`}
-          >
-            {t("404.message")}
+          <p className="text-xl text-gray-600 mb-8 max-w-md mx-auto">
+            {lang === "ar"
+              ? "عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها."
+              : "Sorry, the page you're looking for doesn't exist or has been moved."}
           </p>
-
-          {/* Action Buttons */}
-          <div
-            className={`flex gap-4 ${lang === "ar" ? "flex-row-reverse" : ""}`}
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={handleGoHome}
-              className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+              onClick={() => router.push("/")}
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
-              <svg
-                className={`w-5 h-5 ${lang === "ar" ? "ml-2" : "mr-2"}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                />
-              </svg>
-              {t("404.goToDashboard")}
+              {lang === "ar" ? "العودة للصفحة الرئيسية" : "Back to Homepage"}
             </button>
-
             <button
-              onClick={handleGoBack}
-              className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+              onClick={() => router.back()}
+              className="bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium"
             >
-              <svg
-                className={`w-5 h-5 ${lang === "ar" ? "ml-2" : "mr-2"}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-              {t("404.goBack")}
+              {lang === "ar" ? "العودة للصفحة السابقة" : "Go Back"}
             </button>
           </div>
+        </div>
+      </div>
 
-          {/* Additional Help */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p
-              className={`text-sm text-gray-500 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}
-            >
-              {t("404.help")}
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">
+                {lang === "ar" ? "المعهد العالي" : "HIAST"}
+              </h3>
+              <p className="text-gray-300">
+                {lang === "ar"
+                  ? "معهد رائد في التعليم العالي"
+                  : "A leading institute in higher education"}
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">
+                {lang === "ar" ? "روابط سريعة" : "Quick Links"}
+              </h4>
+              <ul className="space-y-2 text-gray-300">
+                <li>
+                  <button
+                    onClick={() => router.push("/")}
+                    className="hover:text-white"
+                  >
+                    {lang === "ar" ? "الرئيسية" : "Home"}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => router.push("/page/about")}
+                    className="hover:text-white"
+                  >
+                    {lang === "ar" ? "عن المعهد" : "About Us"}
+                  </button>
+                </li>
+                <li>
+                  <button className="hover:text-white">
+                    {lang === "ar" ? "البرامج" : "Programs"}
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">
+                {lang === "ar" ? "اتصل بنا" : "Contact Us"}
+              </h4>
+              <ul className="space-y-2 text-gray-300">
+                <li>
+                  {lang === "ar" ? "الهاتف: 123-456-789" : "Phone: 123-456-789"}
+                </li>
+                <li>
+                  {lang === "ar"
+                    ? "البريد الإلكتروني: info@hiast.edu"
+                    : "Email: info@hiast.edu"}
+                </li>
+                <li>
+                  {lang === "ar"
+                    ? "العنوان: دمشق، سوريا"
+                    : "Address: Damascus, Syria"}
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">
+                {lang === "ar" ? "تابعنا" : "Follow Us"}
+              </h4>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-300 hover:text-white">
+                  Facebook
+                </a>
+                <a href="#" className="text-gray-300 hover:text-white">
+                  Twitter
+                </a>
+                <a href="#" className="text-gray-300 hover:text-white">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+            <p>
+              {lang === "ar"
+                ? "© 2024 المعهد العالي للعلوم التطبيقية والتكنولوجيا. جميع الحقوق محفوظة."
+                : "© 2024 HIAST. All rights reserved."}
             </p>
           </div>
         </div>
-
-        {/* Footer */}
-        <div className="mt-8">
-          <p
-            className={`text-xs text-gray-400 ${
-              lang === "ar" ? "text-right" : "text-left"
-            }`}
-          >
-            {t("404.institute")}
-          </p>
-        </div>
-      </div>
+      </footer>
     </div>
   );
-};
-
-export default NotFound;
+}

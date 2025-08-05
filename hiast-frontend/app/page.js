@@ -1,8 +1,11 @@
 "use client";
 import { useLanguage } from "@/components/LanguageProvider";
+import { useRouter } from "next/navigation";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Home() {
   const { lang } = useLanguage();
+  const router = useRouter();
 
   return (
     <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen">
@@ -15,19 +18,31 @@ export default function Home() {
                 ? "المعهد العالي للعلوم التطبيقية والتكنولوجيا"
                 : "HIAST"}
             </div>
-            <div className="flex gap-4">
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "الرئيسية" : "Home"}
-              </button>
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "البرامج" : "Programs"}
-              </button>
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "الأخبار" : "News"}
-              </button>
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "اتصل بنا" : "Contact"}
-              </button>
+            <div className="flex items-center gap-4">
+              <nav className="flex gap-4">
+                <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+                  {lang === "ar" ? "الرئيسية" : "Home"}
+                </button>
+                <button
+                  onClick={() => router.push("/page/about")}
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "عن المعهد" : "About Us"}
+                </button>
+                <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+                  {lang === "ar" ? "البرامج" : "Programs"}
+                </button>
+                <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+                  {lang === "ar" ? "الأخبار" : "News"}
+                </button>
+                <button
+                  onClick={() => router.push("/page/contact")}
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "اتصل بنا" : "Contact"}
+                </button>
+              </nav>
+              <LanguageSwitcher />
             </div>
           </div>
         </div>

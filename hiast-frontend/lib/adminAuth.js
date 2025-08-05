@@ -20,7 +20,7 @@ export const requireAdminAuth = (router) => {
   }
 
   if (!isAdmin()) {
-    router.push("/admin/login");
+    router.push("/unauthorized");
     return false;
   }
 
