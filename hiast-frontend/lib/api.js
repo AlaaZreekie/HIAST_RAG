@@ -1,5 +1,5 @@
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://localhost:7187/api";
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5007/api";
 
 // API Response wrapper
 class ApiResponse {

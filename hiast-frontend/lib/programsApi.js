@@ -6,7 +6,7 @@ const programsApiRequest = async (endpoint, options = {}) => {
     throw new Error("No authentication token found");
   }
 
-  return apiRequest(`/admin/programs/${endpoint}`, {
+  return apiRequest(`/Admin/Programs/${endpoint}`, {
     ...options,
     headers: {
       ...options.headers,
@@ -17,7 +17,9 @@ const programsApiRequest = async (endpoint, options = {}) => {
 
 export const programsAPI = {
   getAllPrograms: async () => {
-    return programsApiRequest("GetAllPrograms");
+    const response = await programsApiRequest("GetAllPrograms");
+    // Handle ApiResponse structure
+    return response.Data || response;
   },
 
   createProgram: async (programData) => {
@@ -56,7 +58,11 @@ export const programsAPI = {
     if (filter.IsActive !== undefined)
       queryParams.append("IsActive", filter.IsActive);
 
-    return programsApiRequest(`GetByFilter?${queryParams.toString()}`);
+    const response = await programsApiRequest(
+      `GetByFilter?${queryParams.toString()}`
+    );
+    // Handle ApiResponse structure
+    return response.Data || response;
   },
 };
 
@@ -64,8 +70,7 @@ export const programsAPI = {
 export const getAllPrograms = async () => {
   try {
     const response = await programsAPI.getAllPrograms();
-    const data = response.Data || [];
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(response) ? response : [];
   } catch (error) {
     console.error("Error fetching programs:", error);
     throw error;

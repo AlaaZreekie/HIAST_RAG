@@ -52,9 +52,22 @@ export const trainingCourseCategoriesAPI = {
 // Helper functions
 export const getAllTrainingCourseCategories = async () => {
   try {
+    console.log("Fetching training course categories...");
     const response = await trainingCourseCategoriesAPI.getAllCategories();
-    const data = response.Data || [];
-    return Array.isArray(data) ? data : [];
+    console.log("Raw API response:", response);
+
+    // Handle the API response structure
+    if (response && response.Data) {
+      const data = response.Data;
+      console.log("Extracted data:", data);
+      return Array.isArray(data) ? data : [];
+    } else if (Array.isArray(response)) {
+      console.log("Response is already an array:", response);
+      return response;
+    } else {
+      console.warn("Unexpected response structure:", response);
+      return [];
+    }
   } catch (error) {
     console.error("Error fetching training course categories:", error);
     throw error;

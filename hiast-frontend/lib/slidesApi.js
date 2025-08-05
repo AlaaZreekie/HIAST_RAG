@@ -15,9 +15,47 @@ const slidesApiRequest = async (endpoint, options = {}) => {
   });
 };
 
+// Helper functions for parsing slide data
+export const getSlideTitleInLanguage = (slide, languageCode) => {
+  if (!slide?.Translations) return "N/A";
+  const translation = slide.Translations.find(
+    (t) => t.LanguageCode === languageCode
+  );
+  return translation?.Title || "N/A";
+};
+
+export const getSlideTranslations = (slide) => {
+  return slide?.Translations || [];
+};
+
+export const getSlideImageUrl = (slide) => {
+  return slide?.Media?.FilePath || null;
+};
+
+export const createSlideFormData = (slideData) => {
+  const formData = new FormData();
+
+  // Add form fields
+  formData.append("LinkURL", slideData.LinkURL);
+  formData.append("Translations", JSON.stringify(slideData.Translations));
+
+  // Add image file
+  if (slideData.CreateMedia?.File) {
+    formData.append("CreateMedia.File", slideData.CreateMedia.File);
+    formData.append(
+      "CreateMedia.MediaCategoryId",
+      slideData.CreateMedia.MediaCategoryId || "1"
+    );
+  }
+
+  return formData;
+};
+
 export const slidesAPI = {
   getAllSlides: async () => {
-    return slidesApiRequest("GetAllSliders");
+    const response = await slidesApiRequest("GetAllSliders");
+    // Handle ApiResponse structure
+    return response.Data || response;
   },
 
   createSlide: async (slideData) => {
@@ -50,6 +88,10 @@ export const slidesAPI = {
     if (filter.IsActive !== undefined)
       queryParams.append("IsActive", filter.IsActive);
 
-    return slidesApiRequest(`GetByFilter?${queryParams.toString()}`);
+    const response = await slidesApiRequest(
+      `GetByFilter?${queryParams.toString()}`
+    );
+    // Handle ApiResponse structure
+    return response.Data || response;
   },
 };

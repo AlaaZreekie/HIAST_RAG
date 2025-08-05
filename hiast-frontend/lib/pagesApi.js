@@ -6,7 +6,7 @@ const pagesApiRequest = async (endpoint, options = {}) => {
     throw new Error("No authentication token found");
   }
 
-  return apiRequest(`/admin/pages/${endpoint}`, {
+  return apiRequest(`/Admin/Pages/${endpoint}`, {
     ...options,
     headers: {
       ...options.headers,
@@ -17,10 +17,13 @@ const pagesApiRequest = async (endpoint, options = {}) => {
 
 export const pagesAPI = {
   getAllPages: async () => {
-    return pagesApiRequest("GetAllPages");
+    const response = await pagesApiRequest("GetAllPages");
+    // Handle ApiResponse structure
+    return response.Data || response;
   },
 
   createPage: async (pageData) => {
+    console.log("Creating page with data:", JSON.stringify(pageData, null, 2));
     return pagesApiRequest("CreatePage", {
       method: "POST",
       body: JSON.stringify(pageData),
@@ -28,6 +31,7 @@ export const pagesAPI = {
   },
 
   updatePage: async (pageData) => {
+    console.log("Updating page with data:", JSON.stringify(pageData, null, 2));
     return pagesApiRequest("UpdatePage", {
       method: "PUT",
       body: JSON.stringify(pageData),
@@ -63,8 +67,7 @@ export const pagesAPI = {
 export const getAllPages = async () => {
   try {
     const response = await pagesAPI.getAllPages();
-    const data = response.Data || [];
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(response) ? response : [];
   } catch (error) {
     console.error("Error fetching pages:", error);
     throw error;

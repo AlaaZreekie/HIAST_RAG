@@ -48,7 +48,7 @@ const EditPagePage = ({ params }) => {
     try {
       setIsSubmitting(true);
       setError(null);
-      await pagesAPI.updatePage(pageId, pageData);
+      await pagesAPI.updatePage(pageData);
       router.push("/admin/pages");
     } catch (err) {
       console.error("Error updating page:", err);

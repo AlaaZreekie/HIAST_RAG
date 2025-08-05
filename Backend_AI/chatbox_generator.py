@@ -31,16 +31,53 @@ class ChatboxGenerator:
         const token = localStorage.getItem('admin_token');
         const user = localStorage.getItem('admin_user');
         
+        console.log('Checking admin status:', { token: !!token, user: !!user });
+        
         if (!token || !user) {
+            console.log('No token or user data found');
             return false;
         }
         
         try {
             const userData = JSON.parse(user);
-            return userData?.Token?.UserRoles?.includes('Admin') || false;
+            console.log('User data:', userData);
+            
+            // Check multiple possible role structures
+            const hasAdminRole = 
+                (userData?.Token?.UserRoles?.includes('Admin')) ||
+                (userData?.UserRoles?.includes('Admin')) ||
+                (userData?.roles?.includes('Admin')) ||
+                (userData?.role === 'Admin') ||
+                (userData?.Token?.role === 'Admin');
+            
+            console.log('Has admin role:', hasAdminRole);
+            return hasAdminRole || false;
         } catch (e) {
+            console.error('Error parsing user data:', e);
             return false;
         }
+    }
+    
+    // Get current website language
+    function getCurrentLanguage() {
+        // Check html lang attribute
+        const htmlLang = document.documentElement.lang;
+        if (htmlLang === 'ar') return 'ar';
+        if (htmlLang === 'en') return 'en';
+        
+        // Check for language provider context
+        const langProvider = document.querySelector('[data-lang]');
+        if (langProvider) {
+            const lang = langProvider.getAttribute('data-lang');
+            if (lang === 'ar' || lang === 'en') return lang;
+        }
+        
+        // Check localStorage for language preference
+        const storedLang = localStorage.getItem('lang');
+        if (storedLang === 'ar' || storedLang === 'en') return storedLang;
+        
+        // Default to English
+        return 'en';
     }
     
     // Chatbox HTML Template
@@ -198,6 +235,7 @@ class ChatboxGenerator:
             this.messages = [];
             this.isTyping = false;
             this.isAdmin = isAdmin();
+            this.currentLanguage = getCurrentLanguage();
             this.init();
         }
         
@@ -215,11 +253,29 @@ class ChatboxGenerator:
             this.scrapeButton = document.getElementById('scrape-website');
             
             // Show admin controls if user is admin
+            console.log('Is admin:', this.isAdmin);
+            console.log('Current language:', this.currentLanguage);
+            
             if (this.isAdmin) {
+                console.log('Showing admin controls');
                 this.adminControls.style.display = 'block';
-                this.addMessage('assistant', 'Hello Admin! 👋 I\\'m your HIAST AI assistant. You have access to admin controls for model retraining and website scraping.');
+                
+                // Admin welcome message based on language
+                if (this.currentLanguage === 'ar') {
+                    this.addMessage('assistant', 'مرحباً أيها المدير! 👋 أنا مساعد الذكاء الاصطناعي الخاص بمعهد حلب العالي. لديك صلاحيات إدارية لإعادة تدريب النموذج وتحديث بيانات الموقع.');
+                } else {
+                    this.addMessage('assistant', 'Hello Admin! 👋 I\\'m your HIAST AI assistant. You have access to admin controls for model retraining and website scraping.');
+                }
             } else {
-                this.addMessage('assistant', 'Hello! I\\'m your HIAST AI assistant. Ask me anything about our programs, courses, admissions, or any other information about the Higher Institute for Applied Sciences and Technology.');
+                console.log('Hiding admin controls');
+                this.adminControls.style.display = 'none';
+                
+                // Regular user welcome message based on language
+                if (this.currentLanguage === 'ar') {
+                    this.addMessage('assistant', 'مرحباً! أنا مساعد الذكاء الاصطناعي الخاص بمعهد حلب العالي. اسألني أي شيء عن برامجنا، دوراتنا، القبول، أو أي معلومات أخرى عن المعهد العالي للعلوم التطبيقية والتكنولوجيا.');
+                } else {
+                    this.addMessage('assistant', 'Hello! I\\'m your HIAST AI assistant. Ask me anything about our programs, courses, admissions, or any other information about the Higher Institute for Applied Sciences and Technology.');
+                }
             }
             
             this.toggle.addEventListener('click', () => this.toggleChatbox());
@@ -352,6 +408,15 @@ class ChatboxGenerator:
         formatMessage(content) {
     // Convert markdown-like formatting to HTML
     let formatted = content;
+    
+    // Markdown headers: # Header -> <h1>Header</h1>
+    formatted = formatted.replace(new RegExp('^#\\\\s+(.*?)$', 'gm'), '<h1 style="margin: 16px 0 12px 0; font-weight: 800; color: #111827; font-size: 20px; border-bottom: 3px solid #3B82F6; padding-bottom: 6px;">$1</h1>');
+    
+    // Markdown headers: ## Header -> <h2>Header</h2>
+    formatted = formatted.replace(new RegExp('^##\\\\s+(.*?)$', 'gm'), '<h2 style="margin: 14px 0 10px 0; font-weight: 700; color: #111827; font-size: 18px; border-bottom: 2px solid #6B7280; padding-bottom: 4px;">$1</h2>');
+    
+    // Markdown headers: ### Header -> <h3>Header</h3>
+    formatted = formatted.replace(new RegExp('^###\\\\s+(.*?)$', 'gm'), '<h3 style="margin: 12px 0 8px 0; font-weight: 700; color: #111827; font-size: 16px; border-bottom: 2px solid #E5E7EB; padding-bottom: 4px;">$1</h3>');
     
     // Bold text: **text** -> <strong>text</strong>
     formatted = formatted.replace(new RegExp('\\\\*\\\\*(.*?)\\\\*\\\\*', 'g'), '<strong style="font-weight: 600; color: #1F2937;">$1</strong>');

@@ -26,8 +26,8 @@ const CreateSlideForm = ({ onSubmit, isLoading, error, initialData = null, isEdi
         englishTitle: englishTranslation?.Title || ""
       });
       
-      if (initialData.ImageUrl) {
-        setPreviewUrl(initialData.ImageUrl);
+      if (initialData.Media?.FilePath) {
+        setPreviewUrl(initialData.Media.FilePath);
       }
     }
   }, [initialData, isEditMode]);

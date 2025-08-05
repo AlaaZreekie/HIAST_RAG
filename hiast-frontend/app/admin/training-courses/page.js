@@ -9,7 +9,7 @@ import BackToDashboardButton from "@/components/admin/training-courses/BackToDas
 import { trainingCoursesAPI } from "@/lib/trainingCoursesApi";
 
 const TrainingCoursesPage = () => {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const [trainingCourses, setTrainingCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,15 +18,28 @@ const TrainingCoursesPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await trainingCoursesAPI.getAllTrainingCourses();
-      if (Array.isArray(data)) {
-        setTrainingCourses(data);
+      console.log("Loading training courses...");
+
+      const response = await trainingCoursesAPI.getAllTrainingCourses();
+      console.log("Training courses response:", response);
+
+      // Handle different response structures
+      let coursesData = [];
+      if (response && response.Data) {
+        coursesData = Array.isArray(response.Data) ? response.Data : [];
+      } else if (Array.isArray(response)) {
+        coursesData = response;
       } else {
-        setTrainingCourses([]);
+        console.warn("Unexpected response structure:", response);
+        coursesData = [];
       }
+
+      console.log("Processed training courses data:", coursesData);
+      setTrainingCourses(coursesData);
     } catch (err) {
       console.error("Error loading training courses:", err);
       setError(err.message || "Failed to load training courses");
+      setTrainingCourses([]);
     } finally {
       setLoading(false);
     }
@@ -50,15 +63,13 @@ const TrainingCoursesPage = () => {
   };
 
   const handleDeleteTrainingCourse = async (trainingCourseId) => {
-    if (
-      window.confirm("Are you sure you want to delete this training course?")
-    ) {
+    if (window.confirm(t("trainingCourses.deleteConfirm"))) {
       try {
         await trainingCoursesAPI.deleteTrainingCourse(trainingCourseId);
         await loadTrainingCourses();
       } catch (err) {
         console.error("Error deleting training course:", err);
-        alert("Failed to delete training course");
+        alert(t("trainingCourses.deleteError"));
       }
     }
   };
@@ -75,14 +86,11 @@ const TrainingCoursesPage = () => {
           </div>
           <div className={`flex-1 ${lang === "ar" ? "order-1" : "order-2"}`}>
             <div className="p-6">
-              <div className="animate-pulse">
-                <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
-                <div className="h-4 bg-gray-200 rounded w-1/2 mb-6"></div>
-                <div className="space-y-3">
-                  {[...Array(5)].map((_, i) => (
-                    <div key={i} className="h-20 bg-gray-200 rounded"></div>
-                  ))}
-                </div>
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto"></div>
+                <p className="mt-2 text-gray-600">
+                  {t("trainingCourses.loading")}
+                </p>
               </div>
             </div>
           </div>
@@ -101,6 +109,12 @@ const TrainingCoursesPage = () => {
         <div className={`flex-1 ${lang === "ar" ? "order-1" : "order-2"}`}>
           <div className="p-6">
             <TrainingCoursesPageHeader />
+
+            {/* Debug info */}
+            <div className="mb-4 p-2 bg-yellow-100 text-xs">
+              Training courses loaded: {trainingCourses.length} | Language:{" "}
+              {lang} | Layout: {lang === "ar" ? "RTL" : "LTR"}
+            </div>
 
             {error && (
               <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">

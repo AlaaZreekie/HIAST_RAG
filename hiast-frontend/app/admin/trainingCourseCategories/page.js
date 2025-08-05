@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 import { requireAdminAuth } from "@/lib/adminAuth";
-import { getAllTrainingCourseCategories, trainingCourseCategoriesAPI } from "@/lib/trainingCourseCategoriesApi";
+import {
+  getAllTrainingCourseCategories,
+  trainingCourseCategoriesAPI,
+} from "@/lib/trainingCourseCategoriesApi";
 import DashboardHeader from "@/components/admin/dashboard/DashboardHeader";
 import DashboardSidebar from "@/components/admin/dashboard/DashboardSidebar";
 import TrainingCourseCategoriesPageHeader from "@/components/admin/trainingCourseCategories/TrainingCourseCategoriesPageHeader";
@@ -36,11 +39,28 @@ const TrainingCourseCategoriesPage = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const data = await getAllTrainingCourseCategories();
-      setCategories(Array.isArray(data) ? data : []);
+      console.log("Loading training course categories...");
+
+      const response = await getAllTrainingCourseCategories();
+      console.log("Training course categories response:", response);
+
+      // Handle different response structures
+      let categoriesData = [];
+      if (response && response.Data) {
+        categoriesData = Array.isArray(response.Data) ? response.Data : [];
+      } else if (Array.isArray(response)) {
+        categoriesData = response;
+      } else {
+        console.warn("Unexpected response structure:", response);
+        categoriesData = [];
+      }
+
+      console.log("Processed categories data:", categoriesData);
+      setCategories(categoriesData);
     } catch (err) {
       console.error("Error loading training course categories:", err);
       setError(err.message);
+      setCategories([]);
     } finally {
       setIsLoading(false);
     }
@@ -53,7 +73,7 @@ const TrainingCourseCategoriesPage = () => {
   const handleDeleteCategory = async (categoryId) => {
     if (window.confirm(t("trainingCourseCategories.deleteConfirm"))) {
       try {
-        await trainingCourseCategoriesAPI.delete(categoryId);
+        await trainingCourseCategoriesAPI.deleteCategory(categoryId);
         await loadCategories(); // Reload the list
       } catch (error) {
         console.error("Failed to delete training course category:", error);
@@ -64,7 +84,9 @@ const TrainingCourseCategoriesPage = () => {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}
+      >
         <DashboardHeader />
         <div className="flex main-layout">
           <div className={lang === "ar" ? "order-2" : "order-1"}>
@@ -74,7 +96,9 @@ const TrainingCourseCategoriesPage = () => {
             <div className="p-6">
               <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto"></div>
-                <p className="mt-2 text-gray-600">{t("trainingCourseCategories.loading")}</p>
+                <p className="mt-2 text-gray-600">
+                  {t("trainingCourseCategories.loading")}
+                </p>
               </div>
             </div>
           </div>
@@ -93,11 +117,19 @@ const TrainingCourseCategoriesPage = () => {
         <div className={`flex-1 ${lang === "ar" ? "order-1" : "order-2"}`}>
           <div className="p-6">
             <TrainingCourseCategoriesPageHeader />
+
+            {/* Debug info */}
+            <div className="mb-4 p-2 bg-yellow-100 text-xs">
+              Categories loaded: {categories.length} | Language: {lang} |
+              Layout: {lang === "ar" ? "RTL" : "LTR"}
+            </div>
+
             {error && (
               <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
                 <p className="text-red-600">{error}</p>
               </div>
             )}
+
             <TrainingCourseCategoriesTable
               categories={categories}
               onEditCategory={handleEditCategory}
@@ -111,4 +143,4 @@ const TrainingCourseCategoriesPage = () => {
   );
 };
 
-export default TrainingCourseCategoriesPage; 
+export default TrainingCourseCategoriesPage;

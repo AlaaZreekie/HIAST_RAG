@@ -23,7 +23,9 @@ const ProgramsPage = () => {
     try {
       setLoading(true);
       setError(null);
+      console.log("Loading programs...");
       const data = await getAllPrograms();
+      console.log("Programs data received:", data);
       setPrograms(data);
     } catch (err) {
       console.error("Error loading programs:", err);
@@ -45,7 +47,9 @@ const ProgramsPage = () => {
 
   if (loading) {
     return (
-      <div className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}
+      >
         <DashboardHeader />
         <div className="flex main-layout">
           <div className={lang === "ar" ? "order-2" : "order-1"}>
@@ -66,7 +70,9 @@ const ProgramsPage = () => {
 
   if (error) {
     return (
-      <div className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}
+      >
         <DashboardHeader />
         <div className="flex main-layout">
           <div className={lang === "ar" ? "order-2" : "order-1"}>
@@ -75,7 +81,9 @@ const ProgramsPage = () => {
           <div className={`flex-1 ${lang === "ar" ? "order-1" : "order-2"}`}>
             <div className="p-6">
               <div className="text-center py-8">
-                <p className="text-red-600">{t("programs.error")}: {error}</p>
+                <p className="text-red-600">
+                  {t("programs.error")}: {error}
+                </p>
                 <button
                   onClick={loadPrograms}
                   className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
@@ -100,10 +108,7 @@ const ProgramsPage = () => {
         <div className={`flex-1 ${lang === "ar" ? "order-1" : "order-2"}`}>
           <div className="p-6">
             <ProgramsPageHeader />
-            <ProgramsTable 
-              programs={programs} 
-              onDelete={handleDelete}
-            />
+            <ProgramsTable programs={programs} onDelete={handleDelete} />
           </div>
         </div>
       </div>
@@ -111,4 +116,4 @@ const ProgramsPage = () => {
   );
 };
 
-export default ProgramsPage; 
+export default ProgramsPage;

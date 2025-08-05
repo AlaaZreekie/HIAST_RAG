@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
+import { Editor } from '@tinymce/tinymce-react';
 
 const CreatePageForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false }) => {
   const router = useRouter();
@@ -46,22 +47,40 @@ const CreatePageForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
     
     if (formData.arabicTitle.trim()) {
       const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
-      translations.push({
-        Id: arabicTranslation?.Id || null,
-        LanguageCode: 1,
-        Title: formData.arabicTitle.trim(),
-        Content: formData.arabicContent.trim()
-      });
+      if (isEditMode && arabicTranslation) {
+        // For update, use UpdatePageTranslationDto structure (with Id)
+        translations.push({
+          Id: arabicTranslation.Id,
+          Title: formData.arabicTitle.trim(),
+          Content: formData.arabicContent.trim()
+        });
+      } else {
+        // For create, use CreatePageTranslationDto structure (no Id)
+        translations.push({
+          LanguageCode: 1,
+          Title: formData.arabicTitle.trim(),
+          Content: formData.arabicContent.trim()
+        });
+      }
     }
     
     if (formData.englishTitle.trim()) {
       const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
-      translations.push({
-        Id: englishTranslation?.Id || null,
-        LanguageCode: 2,
-        Title: formData.englishTitle.trim(),
-        Content: formData.englishContent.trim()
-      });
+      if (isEditMode && englishTranslation) {
+        // For update, use UpdatePageTranslationDto structure (with Id)
+        translations.push({
+          Id: englishTranslation.Id,
+          Title: formData.englishTitle.trim(),
+          Content: formData.englishContent.trim()
+        });
+      } else {
+        // For create, use CreatePageTranslationDto structure (no Id)
+        translations.push({
+          LanguageCode: 2,
+          Title: formData.englishTitle.trim(),
+          Content: formData.englishContent.trim()
+        });
+      }
     }
 
     const pageData = {
@@ -73,6 +92,9 @@ const CreatePageForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
       pageData.Id = initialData.Id;
     }
 
+    console.log("Submitting page data:", JSON.stringify(pageData, null, 2));
+    console.log("Is edit mode:", isEditMode);
+    console.log("Initial data:", initialData);
     onSubmit(pageData);
   };
 
@@ -121,43 +143,61 @@ const CreatePageForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
               />
             </div>
 
-            {/* Arabic Content */}
+            {/* Arabic Content - Rich Text Editor */}
             <div>
-              <label htmlFor="arabicContent" className={`block text-sm font-medium text-gray-700 mb-2 ${
+              <label className={`block text-sm font-medium text-gray-700 mb-2 ${
                 lang === "ar" ? "text-right" : "text-left"
               }`}>
                 {t("pages.form.content")} ({t("pages.arabic")})
               </label>
-              <textarea
-                id="arabicContent"
+              <Editor
+                apiKey="jsq7xo6pxpwhuyknggeg3u05plwf9y6py5van8imy4ye30pc" // You can get a free API key from https://www.tiny.cloud/
                 value={formData.arabicContent}
-                onChange={(e) => handleInputChange("arabicContent", e.target.value)}
-                rows={8}
-                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
-                  lang === "ar" ? "text-right" : "text-left"
-                }`}
-                dir="rtl"
-                placeholder={t("pages.form.contentPlaceholder")}
+                onEditorChange={(content) => handleInputChange("arabicContent", content)}
+                init={{
+                  height: 300,
+                  menubar: false,
+                  directionality: 'rtl',
+                  plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                  ],
+                  toolbar: 'undo redo | blocks | ' +
+                    'bold italic forecolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help',
+                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                }}
               />
             </div>
 
-            {/* English Content */}
+            {/* English Content - Rich Text Editor */}
             <div>
-              <label htmlFor="englishContent" className={`block text-sm font-medium text-gray-700 mb-2 ${
+              <label className={`block text-sm font-medium text-gray-700 mb-2 ${
                 lang === "ar" ? "text-right" : "text-left"
               }`}>
                 {t("pages.form.content")} ({t("pages.english")})
               </label>
-              <textarea
-                id="englishContent"
+              <Editor
+                apiKey="jsq7xo6pxpwhuyknggeg3u05plwf9y6py5van8imy4ye30pc" // You can get a free API key from https://www.tiny.cloud/
                 value={formData.englishContent}
-                onChange={(e) => handleInputChange("englishContent", e.target.value)}
-                rows={8}
-                className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
-                  lang === "ar" ? "text-right" : "text-left"
-                }`}
-                dir="ltr"
-                placeholder={t("pages.form.contentPlaceholder")}
+                onEditorChange={(content) => handleInputChange("englishContent", content)}
+                init={{
+                  height: 300,
+                  menubar: false,
+                  directionality: 'ltr',
+                  plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+                  ],
+                  toolbar: 'undo redo | blocks | ' +
+                    'bold italic forecolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help',
+                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                }}
               />
             </div>
           </div>

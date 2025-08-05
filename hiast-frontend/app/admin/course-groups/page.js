@@ -16,8 +16,8 @@ const CourseGroupsPage = () => {
       setLoading(true);
       setError(null);
       const data = await courseGroupsAPI.getAllCourseGroups();
-      if (Array.isArray(data)) {
-        setCourseGroups(data);
+      if (Array.isArray(data.Data)) {
+        setCourseGroups(data.Data);
       } else {
         setCourseGroups([]);
       }

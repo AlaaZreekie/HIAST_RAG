@@ -18,7 +18,8 @@ const SlidesPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await slidesAPI.getAllSlides();
+      const response = await slidesAPI.getAllSlides();
+      const data = response.Data || response;
       if (Array.isArray(data)) {
         setSlides(data);
       } else {

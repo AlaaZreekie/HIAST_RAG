@@ -10,13 +10,14 @@ from langchain_core.prompts import ChatPromptTemplate
 from typing import List, Dict
 from langchain.memory import ConversationTokenBufferMemory
 
-def get_rag_chain(k=15):
+def get_rag_chain(k=5):
     # Read system prompt from JSON file
     prompt_path = os.path.join(os.path.dirname(__file__), 'system_prompt.json')
     try:
         with open(prompt_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         system_prompt = data["system"]
+        print(system_prompt)    
     except (FileNotFoundError, KeyError):
         raise FileNotFoundError(f"'system' prompt not found in {prompt_path}. Please add it to system_prompt.json.")
 
@@ -48,10 +49,12 @@ def get_conversation_aware_response(question: str, conversation_history: Dict = 
     
     # Get retriever separately from embedder
     embedder = Embedder()
-    retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 15})
+    retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 10})
     
     # Get relevant documents
     docs = retriever.get_relevant_documents(question)
+    print("--------------------------------========={len(docs)}=================================")
+    print(docs)
     context = "\n".join([doc.page_content for doc in docs])
     
     # Count context tokens
@@ -85,7 +88,7 @@ async def stream_conversation_aware_response(question: str, conversation_history
         conversation_history = {}
     rag_chain, token_manager = get_rag_chain()
     embedder = Embedder()
-    retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 15})
+    retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 5})
     docs = retriever.get_relevant_documents(question)
     context = "\n".join([doc.page_content for doc in docs])
     formatted_prompt = token_manager.format_conversation_for_model_hash(

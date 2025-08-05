@@ -35,17 +35,17 @@ const MediaCategoriesTable = ({ mediaCategories, onEditCategory, onDeleteCategor
             return (
               <div key={category.Id} className="p-6 hover:bg-gray-50 transition-colors">
                 <div className={`flex justify-between items-start ${
-                  lang === "ar" ? "flex-row-reverse" : ""
+                  lang === "ar" ? "flex-row-reverse" : "flex-row"
                 }`}>
                   {/* Category Info */}
                   <div className={`flex-1 ${lang === "ar" ? "text-right" : "text-left"}`}>
-                    <h4 className="text-lg font-medium text-gray-900 mb-2">
+                    <h4 className={`text-lg font-medium text-gray-900 mb-2 ${lang === "ar" ? "text-right" : "text-left"}`}>
                       {categoryName}
                     </h4>
                     
                     {/* Translations */}
                     <div className={`flex flex-wrap gap-2 mb-3 ${
-                      lang === "ar" ? "flex-row-reverse" : ""
+                      lang === "ar" ? "flex-row-reverse" : "flex-row"
                     }`}>
                       {category.Translations?.map((translation) => (
                         <span
@@ -59,7 +59,7 @@ const MediaCategoriesTable = ({ mediaCategories, onEditCategory, onDeleteCategor
                   </div>
 
                   {/* Actions */}
-                  <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse" : ""}`}>
+                  <div className={`flex space-x-2 ${lang === "ar" ? "flex-row-reverse space-x-reverse" : "flex-row"}`}>
                     <button
                       onClick={() => onEditCategory(category.Id)}
                       className={`text-indigo-600 hover:text-indigo-900 px-3 py-1 rounded-md text-sm font-medium transition-colors ${

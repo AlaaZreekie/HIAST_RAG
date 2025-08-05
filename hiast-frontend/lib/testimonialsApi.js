@@ -75,6 +75,14 @@ export const getTestimonialById = async (id) => {
   }
 };
 
+export const getTestimonialQuoteInLanguage = (testimonial, languageId) => {
+  if (!testimonial?.Translations) return "No Quote";
+  const translation = testimonial.Translations.find(
+    (t) => t.LanguageCode === languageId
+  );
+  return translation?.Quote || "No Quote";
+};
+
 export const getTestimonialNameInLanguage = (testimonial, languageId) => {
   if (!testimonial?.Translations) return "No Name";
   const translation = testimonial.Translations.find(

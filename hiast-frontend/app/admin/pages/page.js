@@ -19,11 +19,8 @@ const PagesPage = () => {
       setLoading(true);
       setError(null);
       const data = await pagesAPI.getAllPages();
-      if (Array.isArray(data)) {
-        setPages(data);
-      } else {
-        setPages([]);
-      }
+      console.log("Pages data received:", data);
+      setPages(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error("Error loading pages:", err);
       setError(err.message || "Failed to load pages");

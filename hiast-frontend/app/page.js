@@ -1,8 +1,16 @@
-"use client";
-import { useLanguage } from "@/components/LanguageProvider";
+import Link from "next/link";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { cookies } from "next/headers";
+
+// Server-side language detection
+function getLanguageFromCookies() {
+  const cookieStore = cookies();
+  const langCookie = cookieStore.get("lang");
+  return langCookie?.value || "en";
+}
 
 export default function Home() {
-  const { lang } = useLanguage();
+  const lang = getLanguageFromCookies();
 
   return (
     <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen">
@@ -15,19 +23,40 @@ export default function Home() {
                 ? "المعهد العالي للعلوم التطبيقية والتكنولوجيا"
                 : "HIAST"}
             </div>
-            <div className="flex gap-4">
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "الرئيسية" : "Home"}
-              </button>
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "البرامج" : "Programs"}
-              </button>
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "الأخبار" : "News"}
-              </button>
-              <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
-                {lang === "ar" ? "اتصل بنا" : "Contact"}
-              </button>
+            <div className="flex items-center gap-4">
+              <nav className="flex gap-4">
+                <a
+                  href="/"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "الرئيسية" : "Home"}
+                </a>
+                <a
+                  href="/page/about"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "عن المعهد" : "About Us"}
+                </a>
+                <a
+                  href="#"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "البرامج" : "Programs"}
+                </a>
+                <a
+                  href="#"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "الأخبار" : "News"}
+                </a>
+                <a
+                  href="/page/contact"
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  {lang === "ar" ? "اتصل بنا" : "Contact"}
+                </a>
+              </nav>
+              <LanguageSwitcher currentLang={lang} />
             </div>
           </div>
         </div>
@@ -156,18 +185,18 @@ export default function Home() {
               </h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <a href="/" className="hover:text-white">
                     {lang === "ar" ? "الرئيسية" : "Home"}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    {lang === "ar" ? "البرامج" : "Programs"}
+                  <a href="/page/about" className="hover:text-white">
+                    {lang === "ar" ? "عن المعهد" : "About Us"}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    {lang === "ar" ? "الأخبار" : "News"}
+                  <a href="/page/contact" className="hover:text-white">
+                    {lang === "ar" ? "اتصل بنا" : "Contact"}
                   </a>
                 </li>
               </ul>
