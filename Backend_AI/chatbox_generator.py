@@ -26,15 +26,15 @@ class ChatboxGenerator:
         }
     };
     
-    // Check if user is admin
+    // Real-time admin status check (no caching)
     function isAdmin() {
         const token = localStorage.getItem('admin_token');
         const user = localStorage.getItem('admin_user');
         
-        console.log('Checking admin status:', { token: !!token, user: !!user });
+        console.log('Checking admin status in real-time:', { token: !!token, user: !!user });
         
         if (!token || !user) {
-            console.log('No token or user data found');
+            console.log('No token or user data found - not admin');
             return false;
         }
         
@@ -234,7 +234,6 @@ class ChatboxGenerator:
             this.isOpen = false;
             this.messages = [];
             this.isTyping = false;
-            this.isAdmin = isAdmin();
             this.currentLanguage = getCurrentLanguage();
             this.init();
         }
@@ -252,11 +251,34 @@ class ChatboxGenerator:
             this.retrainButton = document.getElementById('retrain-model');
             this.scrapeButton = document.getElementById('scrape-website');
             
-            // Show admin controls if user is admin
-            console.log('Is admin:', this.isAdmin);
-            console.log('Current language:', this.currentLanguage);
+            // Check admin status in real-time and show appropriate welcome message
+            this.updateAdminStatus();
             
-            if (this.isAdmin) {
+            this.toggle.addEventListener('click', () => this.toggleChatbox());
+            this.closeButton.addEventListener('click', () => this.toggleChatbox());
+            this.sendButton.addEventListener('click', () => this.sendMessage());
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.sendMessage();
+            });
+            
+            // Add event listeners for admin buttons (will be enabled/disabled based on admin status)
+            this.retrainButton.addEventListener('click', () => this.retrainModel());
+            this.scrapeButton.addEventListener('click', () => this.scrapeWebsite());
+            
+            // Listen for storage changes (logout/login events)
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'admin_token' || e.key === 'admin_user') {
+                    console.log('Admin status changed, updating chatbox...');
+                    this.updateAdminStatus();
+                }
+            });
+        }
+        
+        updateAdminStatus() {
+            const isAdminUser = isAdmin();
+            console.log('Updating admin status:', isAdminUser);
+            
+            if (isAdminUser) {
                 console.log('Showing admin controls');
                 this.adminControls.style.display = 'block';
                 
@@ -277,22 +299,15 @@ class ChatboxGenerator:
                     this.addMessage('assistant', 'Hello! I\\'m your HIAST AI assistant. Ask me anything about our programs, courses, admissions, or any other information about the Higher Institute for Applied Sciences and Technology.');
                 }
             }
-            
-            this.toggle.addEventListener('click', () => this.toggleChatbox());
-            this.closeButton.addEventListener('click', () => this.toggleChatbox());
-            this.sendButton.addEventListener('click', () => this.sendMessage());
-            this.input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') this.sendMessage();
-            });
-            
-            // Admin button event listeners
-            if (this.isAdmin) {
-                this.retrainButton.addEventListener('click', () => this.retrainModel());
-                this.scrapeButton.addEventListener('click', () => this.scrapeWebsite());
-            }
         }
         
         async retrainModel() {
+            // Check admin status before allowing retrain
+            if (!isAdmin()) {
+                this.addMessage('assistant', '❌ Access denied. Admin privileges required.');
+                return;
+            }
+            
             this.retrainButton.disabled = true;
             this.retrainButton.textContent = '🔄 Retraining...';
             this.retrainButton.style.opacity = '0.6';
@@ -306,7 +321,7 @@ class ChatboxGenerator:
                 const data = await response.json();
                 
                 if (data.success) {
-                    this.addMessage('assistant', '✅ Model retraining completed successfully! The AI model has been updated with the latest data.');
+                    this.addMessage('assistant', 'Model retraining completed successfully! The AI model has been updated with the latest data.');
                 } else {
                     this.addMessage('assistant', '❌ Model retraining failed. Please check the server logs for more details.');
                 }
@@ -322,8 +337,14 @@ class ChatboxGenerator:
         }
         
         async scrapeWebsite() {
+            // Check admin status before allowing scrape
+            if (!isAdmin()) {
+                this.addMessage('assistant', '❌ Access denied. Admin privileges required.');
+                return;
+            }
+            
             this.scrapeButton.disabled = true;
-            this.scrapeButton.textContent = '🌐 Scraping...';
+            this.scrapeButton.textContent = 'Scraping...';
             this.scrapeButton.style.opacity = '0.6';
             
             try {
@@ -342,7 +363,7 @@ class ChatboxGenerator:
                 const data = await response.json();
                 
                 if (data.success) {
-                    this.addMessage('assistant', '✅ Homepage scraping completed! Scraped content from ' + currentUrl + '. Content length: ' + (data.total_content_length || 0) + ' characters.');
+                    this.addMessage('assistant', 'Homepage scraping completed! Scraped content from ' + currentUrl + '. Content length: ' + (data.total_content_length || 0) + ' characters.');
                 } else {
                     this.addMessage('assistant', '❌ Homepage scraping failed. Please check the server logs for more details.');
                 }
@@ -353,7 +374,7 @@ class ChatboxGenerator:
             }
             
             this.scrapeButton.disabled = false;
-            this.scrapeButton.textContent = '🌐 Scrape Homepage';
+            this.scrapeButton.textContent = '🌐 Scrape Website';
             this.scrapeButton.style.opacity = '1';
         }
         

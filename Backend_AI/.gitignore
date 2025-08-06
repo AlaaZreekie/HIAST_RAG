@@ -19,6 +19,7 @@ data_distinct.txt
 scraped_data.txt
 scraped_data.json
 scrapedData.txt
+scraped_homepage.json
 
 # Generated database and data files
 chroma_db/
