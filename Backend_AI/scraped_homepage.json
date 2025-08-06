@@ -5,18 +5,18 @@
     "total_urls_found": 4,
     "successful_scrapes": 4,
     "failed_scrapes": 0,
-    "scraped_at": "2025-08-05 15:38:29"
+    "scraped_at": "2025-08-06 07:33:31"
   },
   "scraped_content": [
-    {
-      "url": "http://localhost:3000",
-      "content": "Welcome to HIAST We provide high-quality education in applied sciences and technology Explore Programs Our Academic Programs Computer Science Comprehensive program in computer science and programming Learn More Information Technology Advanced study in information technology Learn More Engineering Specialized engineering programs Learn More 25+ Academic Programs 1000+ Students 50+ Courses 95% Employment Rate HIAST Admin Dashboard",
-      "content_length": 432
-    },
     {
       "url": "http://localhost:3000/",
       "content": "Welcome to HIAST We provide high-quality education in applied sciences and technology Explore Programs Our Academic Programs Computer Science Comprehensive program in computer science and programming Learn More Information Technology Advanced study in information technology Learn More Engineering Specialized engineering programs Learn More 25+ Academic Programs 1000+ Students 50+ Courses 95% Employment Rate HIAST Admin Dashboard",
       "content_length": 432
+    },
+    {
+      "url": "http://localhost:3000/page/contact",
+      "content": "HIAST Admin Dashboard Contact Us Higher Institute for Applied Sciences and Technology Higher Institute for Applied Sciences and Technology – HIAST Institut Supérieur des Sciences Appliquées et de Technologie – ISSAT Contact Information Addresses: Damascus: Barzeh Housing, behind Martyr Ahmed Hamish Hospital, first Qasioun Road, P.O. Box 31983 Aleppo: Saif al-Dawla - formerly Faculty of Science, P.O. Box 8814 Contact Details: Higher Institute in Damascus: Phone: +963-(0)11-5123819 Fax: +963-(0)11-5140761 Email: contact@hiast.edu.sy Higher Institute in Aleppo: Email for Higher Institute's Aleppo branch: aleppo@hiast.edu.sy Student Affairs Directorate: Phone +963-(0)11-5140520 Higher Studies Department: Phone +963-(0)11-5140030 Professional Work Coordination Directorate: Telefax +963-(0)11-5120005 Official Facebook Page: www.facebook.com/hiast.edu.sy Official Working Hours: From Sunday to Thursday, 9 AM to 4 PM Back to Homepage",
+      "content_length": 938
     },
     {
       "url": "http://localhost:3000/page/about",
@@ -24,9 +24,9 @@
       "content_length": 3773
     },
     {
-      "url": "http://localhost:3000/page/contact",
-      "content": "HIAST Admin Dashboard Contact Us Higher Institute for Applied Sciences and Technology Higher Institute for Applied Sciences and Technology – HIAST Institut Supérieur des Sciences Appliquées et de Technologie – ISSAT Contact Information Addresses: Damascus: Barzeh Housing, behind Martyr Ahmed Hamish Hospital, first Qasioun Road, P.O. Box 31983 Aleppo: Saif al-Dawla - formerly Faculty of Science, P.O. Box 8814 Contact Details: Higher Institute in Damascus: Phone: +963-(0)11-5123819 Fax: +963-(0)11-5140761 Email: contact@hiast.edu.sy Higher Institute in Aleppo: Email for Higher Institute's Aleppo branch: aleppo@hiast.edu.sy Student Affairs Directorate: Phone +963-(0)11-5140520 Higher Studies Department: Phone +963-(0)11-5140030 Professional Work Coordination Directorate: Telefax +963-(0)11-5120005 Official Facebook Page: www.facebook.com/hiast.edu.sy Official Working Hours: From Sunday to Thursday, 9 AM to 4 PM Back to Homepage",
-      "content_length": 938
+      "url": "http://localhost:3000",
+      "content": "Welcome to HIAST We provide high-quality education in applied sciences and technology Explore Programs Our Academic Programs Computer Science Comprehensive program in computer science and programming Learn More Information Technology Advanced study in information technology Learn More Engineering Specialized engineering programs Learn More 25+ Academic Programs 1000+ Students 50+ Courses 95% Employment Rate HIAST Admin Dashboard",
+      "content_length": 432
     }
   ]
 }

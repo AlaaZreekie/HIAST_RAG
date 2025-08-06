@@ -29,7 +29,67 @@ class Embedder:
         # Default settings
         self.chunk_size = 2000
         self.chunk_overlap = 200
-        self.persist_directory = "Data/chroma_db"
+        self.persist_directory = self.get_current_database_path()
+    
+    def get_current_database_path(self):
+        """Read the current database path from current_db.txt file."""
+        current_db_file = "Data/current_db.txt"
+        
+        try:
+            if os.path.exists(current_db_file):
+                with open(current_db_file, 'r', encoding='utf-8') as f:
+                    path = f.read().strip()
+                    if path and os.path.exists(path):
+                        print(f"📂 Using database from file: {path}")
+                        return path
+                    else:
+                        print(f"⚠️ Database path in file doesn't exist: {path}")
+            else:
+                print(f"ℹ️ No current_db.txt found, using default path")
+        except Exception as e:
+            print(f"⚠️ Error reading current_db.txt: {e}")
+        
+        # Default fallback
+        default_path = "Data/chroma_db"
+        print(f"📂 Using default database path: {default_path}")
+        return default_path
+    
+    def save_current_database_path(self, path):
+        """Save the current database path to current_db.txt file."""
+        current_db_file = "Data/current_db.txt"
+        
+        try:
+            # Ensure Data directory exists
+            os.makedirs("Data", exist_ok=True)
+            
+            with open(current_db_file, 'w', encoding='utf-8') as f:
+                f.write(path)
+            print(f"💾 Saved current database path: {path}")
+            return True
+        except Exception as e:
+            print(f"❌ Error saving database path: {e}")
+            return False
+    
+    def create_new_database_with_timestamp(self):
+        """Create a new database with timestamp and update the current_db.txt file."""
+        import time
+        
+        # Generate timestamp
+        timestamp = int(time.time())
+        new_db_path = f"Data/chroma_db_{timestamp}"
+        
+        # Ensure Data directory exists
+        os.makedirs("Data", exist_ok=True)
+        
+        print(f"🆕 Creating new database: {new_db_path}")
+        
+        # Update persist directory
+        self.persist_directory = new_db_path
+        
+        # Save to current_db.txt
+        self.save_current_database_path(new_db_path)
+        
+        return new_db_path
     
     def load_data(self, filepath="scraped_homepage.json"):
         """Load data from a text file."""
@@ -83,51 +143,6 @@ class Embedder:
         print(docs)
         return docs
     
-    def close_vectorstore(self, vectorstore=None):
-        """Close vectorstore connections to release file locks."""
-        try:
-            if vectorstore:
-                # Close the client if it exists
-                if hasattr(vectorstore, '_client') and vectorstore._client:
-                    try:
-                        vectorstore._client.close()
-                    except:
-                        pass
-                
-                # Try to close the collection's client
-                if hasattr(vectorstore, '_collection') and hasattr(vectorstore._collection, '_client'):
-                    try:
-                        vectorstore._collection._client.close()
-                    except:
-                        pass
-                
-                # Force garbage collection to release file handles
-                import gc
-                gc.collect()
-                
-                print("✅ Vectorstore connections closed")
-        except Exception as e:
-            print(f"⚠️ Warning: Could not close vectorstore: {e}")
-
-    def create_new_database(self, persist_directory=None):
-        """Create a new vector database with a unique name."""
-        if persist_directory is None:
-            persist_directory = self.persist_directory
-            
-        import time
-        import os
-        
-        # Create a unique database name with timestamp
-        timestamp = int(time.time())
-        new_db_name = f"{persist_directory}_new_{timestamp}"
-        
-        print(f"🆕 Creating new database: {new_db_name}")
-        
-        # Store the new database path for later use
-        self.current_database_path = new_db_name
-        
-        return new_db_name
-
     def switch_to_new_database(self):
         """Switch to the newly created database."""
         if hasattr(self, 'current_database_path'):
@@ -140,48 +155,6 @@ class Embedder:
         else:
             print("⚠️ No new database created yet")
             return False
-
-    def cleanup_old_database(self, old_persist_directory=None):
-        """Clean up the old database directory when safe."""
-        if old_persist_directory is None:
-            old_persist_directory = "Data/chroma_db"
-            
-        import os
-        import time
-        import shutil
-        
-        print(f"🧹 Cleaning up old database: {old_persist_directory}")
-        
-        if os.path.exists(old_persist_directory):
-            try:
-                # Try to rename first (safer than delete)
-                backup_name = f"Data/old_{os.path.basename(old_persist_directory)}_{int(time.time())}"
-                os.rename(old_persist_directory, backup_name)
-                print(f"✅ Old database moved to: {backup_name}")
-                print(f"💡 You can manually delete {backup_name} when convenient")
-                return True
-            except Exception as e:
-                print(f"⚠️ Could not move old database: {e}")
-                print(f"💡 Old database {old_persist_directory} still exists - delete manually when safe")
-                return False
-        else:
-            print(f"ℹ️ Old database {old_persist_directory} doesn't exist")
-            return True
-
-    def clear_database(self, persist_directory=None):
-        """Create a new database instead of clearing the old one."""
-        print("🔄 Creating new database instead of clearing old one...")
-        
-        # Create a new database with unique name
-        new_db_path = self.create_new_database(persist_directory)
-        
-        # Switch to the new database
-        self.switch_to_new_database()
-        
-        print(f"✅ New database ready: {new_db_path}")
-        print(f"ℹ️ Old database will be cleaned up later")
-        
-        return new_db_path
 
     def create_and_save_embeddings(self, docs, persist_directory=None):
         """Create embeddings and save to vector database."""
@@ -227,8 +200,8 @@ class Embedder:
         """Retrain (rebuild) the entire vector database from scratch."""
         print("🔄 Starting database retrain...")
         
-        # FIRST: Clear the existing database
-        #self.clear_database()
+        # Create new database with timestamp
+        new_db_path = self.create_new_database_with_timestamp()
         
         # Check if file is JSON or text
         if filepath.endswith('.json'):
@@ -243,13 +216,16 @@ class Embedder:
         else:
             print("❌ No data to retrain")
             return None
+            
         # Chunk data
         docs = self.chunk_data(data, chunk_size, chunk_overlap)
         print(f"✅ Created {len(docs)} chunks")
-        # Create and save embeddings (this will create a fresh database)
-        vectorstore = self.create_and_save_embeddings(docs)
+        
+        # Create and save embeddings to NEW database
+        vectorstore = self.create_and_save_embeddings(docs, new_db_path)
         
         print("✅ Database retrain completed!")
+        print(f"📂 New database created: {new_db_path}")
         return vectorstore
     
     def get_database_info(self):
@@ -274,112 +250,9 @@ class Embedder:
                 "error": str(e)
             }
     
-    def analyze_chunk_analytics(self, filepath="scraped_homepage.json"):
-        """
-        Analyze content statistics from a JSON data file.
-        
-        Args:
-            filepath: Path to the JSON file containing scraped data
-            
-        Returns:
-            Dictionary containing analytics including median content length
-        """
-        print(f"📊 Analyzing content analytics from: {filepath}")
-        
-        try:
-            import json
-            import statistics
-            from collections import defaultdict
-            
-            with open(filepath, 'r', encoding='utf-8') as f:
-                json_data = json.load(f)
-            
-            if 'scraped_content' not in json_data:
-                print("❌ No 'scraped_content' key found in JSON file")
-                return None
-            
-            content_lengths = []
-            successful_scrapes = 0
-            failed_scrapes = 0
-            total_content_length = 0
-            
-            for item in json_data['scraped_content']:
-                if 'content' in item and item['content_length']:
-                    content_length = item['content_length']
-                    content_lengths.append(content_length)
-                    total_content_length += content_length
-                    successful_scrapes += 1
-                else:
-                    failed_scrapes += 1
-            
-            if not content_lengths:
-                print("❌ No valid content found in the JSON file")
-                return None
-            
-            # Calculate statistics
-            analytics = {
-                "file_path": filepath,
-                "total_items": len(json_data['scraped_content']),
-                "successful_scrapes": successful_scrapes,
-                "failed_scrapes": failed_scrapes,
-                "success_rate": (successful_scrapes / len(json_data['scraped_content'])) * 100,
-                "content_length_stats": {
-                    "median": statistics.median(content_lengths),
-                    "mean": statistics.mean(content_lengths),
-                    "min": min(content_lengths),
-                    "max": max(content_lengths),
-                    "total_characters": total_content_length,
-                    "average_per_item": total_content_length / successful_scrapes if successful_scrapes > 0 else 0
-                },
-                "content_length_distribution": {
-                    "short_content": len([l for l in content_lengths if l < 1000]),
-                    "medium_content": len([l for l in content_lengths if 1000 <= l < 5000]),
-                    "long_content": len([l for l in content_lengths if l >= 5000])
-                }
-            }
-            
-            print(f"✅ Analytics calculated successfully!")
-            print(f"   📈 Median content length: {analytics['content_length_stats']['median']} characters")
-            print(f"   📊 Mean content length: {analytics['content_length_stats']['mean']:.2f} characters")
-            print(f"   📋 Success rate: {analytics['success_rate']:.1f}%")
-            
-            print(f"   📁 File: {analytics['file_path']}")
-            print(f"   📊 Total Items: {analytics['total_items']}")
-            print(f"   ✅ Successful Scrapes: {analytics['successful_scrapes']}")
-            print(f"   ❌ Failed Scrapes: {analytics['failed_scrapes']}")
-            print(f"   📈 Success Rate: {analytics['success_rate']:.1f}%")
-                    
-            stats = analytics['content_length_stats']
-            print(f"\n📏 Content Length Statistics:")
-            print(f"   📊 Median: {stats['median']:,} characters")
-            print(f"   📈 Mean: {stats['mean']:,.2f} characters")
-            print(f"   📉 Min: {stats['min']:,} characters")
-            print(f"   📈 Max: {stats['max']:,} characters")
-            print(f"   📊 Total Characters: {stats['total_characters']:,}")
-            print(f"   📊 Average per Item: {stats['average_per_item']:,.2f}")
-                    
-            dist = analytics['content_length_distribution']
-            print(f"\n📊 Content Distribution:")
-            print(f"   📝 Short (< 1K): {dist['short_content']} items")
-            print(f"   📄 Medium (1K-5K): {dist['medium_content']} items")
-            print(f"   📚 Long (≥ 5K): {dist['long_content']} items")
-            chunk_size = (2*analytics['content_length_stats']['median']*analytics['content_length_stats']['min'])/(analytics['content_length_stats']['median']+analytics['content_length_stats']['min'])
-            # Round chunk size to the nearest hundred
-            chunk_size = round(chunk_size / 100) * 100
-            # Validate chunk size bounds
-            if chunk_size < 1500:
-                chunk_size = 1500
-            elif chunk_size > 4000:
-                chunk_size = 4000
-            print(f"   📏 =================Chunk size: {chunk_size} characters")
-            return chunk_size
-            
-        except FileNotFoundError:
-            print(f"❌ File not found: {filepath}")
-            return None
-        except json.JSONDecodeError as e:
-            print(f"❌ Invalid JSON format: {e}")
-            return None
-        except Exception as e:
-            print(f"❌ Error analyzing content: {e}")
-            return None
+    def clear_collection(self):
+        """Clear all documents from the collection but keep the database structure."""
+        vectorstore = self.load_vectorstore()
+        collection = vectorstore._collection
+        collection.delete(where={"all": True})  # Delete all documents
+        print(f"🧹 Cleared all documents from collection")

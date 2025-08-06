@@ -16,15 +16,11 @@ const LanguageSwitcher = () => {
             <option value="ar">العربية</option>
             <option value="en">English</option>
           </select>
-          <span className="text-sm text-gray-600">
-            {`:${t("language.switch")}`}
-          </span>
+          
         </>
       ) : (
         <>
-          <span className="text-sm text-gray-600">
-            {`${t("language.switch")}:`}
-          </span>
+          
           <select
             value={lang}
             onChange={(e) => setLang(e.target.value)}
