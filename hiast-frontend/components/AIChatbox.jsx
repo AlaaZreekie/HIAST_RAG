@@ -28,9 +28,9 @@ const AIChatbox = () => {
         document.head.appendChild(script);
         scriptRef.current = script;
         
-        console.log('✅ HIAST AI Chatbox loaded successfully');
+        console.log(' HIAST AI Chatbox loaded successfully');
       } catch (error) {
-        console.error('❌ Failed to load AI chatbox:', error);
+        console.error(' Failed to load AI chatbox:', error);
       }
     };
 

@@ -62,7 +62,6 @@ class URLScraper:
         Returns:
             A set of all unique URLs found.
         """
-        print(f"🕷️ Starting crawl from '{start_url}' with max depth {max_depth}...")
         all_found_urls = set([start_url])
         urls_to_visit = {start_url}
         crawled_urls = set()
@@ -101,7 +100,6 @@ class URLScraper:
         Extracts and cleans the main text content from a single URL.
         """
         try:
-            print(f"  -> Scraping text from: {url}")
             response = self.session.get(url, timeout=10, verify=False)
             response.raise_for_status()
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -114,7 +112,6 @@ class URLScraper:
             text = re.sub(r'\s+', ' ', text) # Consolidate whitespace
             return text
         except Exception as e:
-            print(f"❌ Error scraping text from {url}: {e}")
             return None
 
     def scrape_recursive_and_save(self, start_url: str, max_depth: int = 3, output_file: str = "scraped_data.json") -> Dict[str, any]:
@@ -134,7 +131,6 @@ class URLScraper:
         all_urls = self.crawl_for_urls(start_url, max_depth)
         
         # 2. Scrape the text from each URL
-        print(f"\n📄 Starting to scrape text from {len(all_urls)} URLs...")
         scraped_results = []
         successful_scrapes = 0
         failed_scrapes = 0
@@ -147,8 +143,6 @@ class URLScraper:
             else:
                 failed_scrapes += 1
             time.sleep(0.01) # Be respectful
-
-        print(f"\n✅ Scraping complete. Success: {successful_scrapes}, Failed: {failed_scrapes}")
 
         # 3. Save the scraped content to a JSON file
         total_content_length = 0
@@ -172,9 +166,7 @@ class URLScraper:
             # Calculate total content length
             total_content_length = sum(len(result['content']) for result in scraped_results)
             
-            print(f"💾 Saved {len(scraped_results)} entries with {total_content_length} characters to '{output_file}'")
         except IOError as e:
-            print(f"❌ Error saving to file: {e}")
             return {"success": False, "error": str(e)}
 
         return {

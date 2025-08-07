@@ -52,14 +52,11 @@ def get_conversation_aware_response(question: str, conversation_history: Dict = 
     retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 10})
     
     # Get relevant documents
-    docs = retriever.get_relevant_documents(question)
-    print("--------------------------------========={len(docs)}=================================")
-    print(docs)
+    docs = retriever.get_relevant_documents(question)   
     context = "\n".join([doc.page_content for doc in docs])
     
     # Count context tokens
     context_tokens = token_manager.count_tokens(context)
-    print(f"\U0001F4DA Context tokens: {context_tokens}")
     
     # Format conversation with token management (using hash map format)
     formatted_prompt = token_manager.format_conversation_for_model_hash(
@@ -68,7 +65,6 @@ def get_conversation_aware_response(question: str, conversation_history: Dict = 
     
     # Count formatted prompt tokens
     prompt_tokens = token_manager.count_tokens(formatted_prompt)
-    print(f"\U0001F4DD Formatted prompt tokens: {prompt_tokens}")
     
     # Use the LLM directly with the formatted prompt
     response = embedder.llm.invoke(formatted_prompt)
@@ -76,7 +72,6 @@ def get_conversation_aware_response(question: str, conversation_history: Dict = 
     
     # Count response tokens
     response_tokens = token_manager.count_tokens(response_content)
-    print(f"\U0001F916 Response tokens: {response_tokens}")
     
     return response_content 
 
@@ -114,7 +109,6 @@ def invoke_llm_with_context(context, question, conversation_history=None):
 
     # Count context tokens
     context_tokens = token_manager.count_tokens(context)
-    print(f"\U0001F4DA Context tokens: {context_tokens}")
 
     # Format conversation with token management (using hash map format)
     formatted_prompt = token_manager.format_conversation_for_model_hash(
@@ -123,7 +117,6 @@ def invoke_llm_with_context(context, question, conversation_history=None):
 
     # Count formatted prompt tokens
     prompt_tokens = token_manager.count_tokens(formatted_prompt)
-    print(f"\U0001F4DD Formatted prompt tokens: {prompt_tokens}")
 
     # Use the LLM directly with the formatted prompt
     response = llm.invoke(formatted_prompt)
@@ -131,6 +124,5 @@ def invoke_llm_with_context(context, question, conversation_history=None):
 
     # Count response tokens
     response_tokens = token_manager.count_tokens(response_content)
-    print(f"\U0001F916 Response tokens: {response_tokens}")
 
     return response_content 

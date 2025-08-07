@@ -14,18 +14,12 @@ class BaseRAGPipeline(ABC):
     async def answer_question(self, question: str, conversation_history: Optional[Dict] = None) -> str:
         pass
 
-    @abstractmethod
-    async def answer_question_stream(self, question: str, conversation_history: Optional[Dict] = None) -> AsyncGenerator[str, None]:
-        pass
 
 class DefaultRAGPipeline(BaseRAGPipeline):
     async def answer_question(self, question: str, conversation_history: Optional[Dict] = None) -> str:
         loop = asyncio.get_event_loop()
         return await loop.run_in_executor(None, get_conversation_aware_response, question, conversation_history)
 
-    async def answer_question_stream(self, question: str, conversation_history: Optional[Dict] = None):
-        async for chunk in stream_conversation_aware_response(question, conversation_history):
-            yield chunk
 
 class QueryTransformRAGPipeline(BaseRAGPipeline):
     def get_multi_query_prompt(self) -> str:
@@ -62,8 +56,6 @@ class QueryTransformRAGPipeline(BaseRAGPipeline):
         if not sub_questions:
             sub_questions = [content.strip()]
         sub_questions.append(question)
-        for q in sub_questions:
-            print(q + "-----\n")
         return sub_questions
 
     async def answer_question(self, question: str, conversation_history: Optional[Dict] = None) -> str:
@@ -77,26 +69,8 @@ class QueryTransformRAGPipeline(BaseRAGPipeline):
         synth_prompt = synth_prompt_template.format(question=question, qa_pairs=qa_pairs)
         synth_response = llm.invoke(synth_prompt)
         synth_content = synth_response.content if hasattr(synth_response, 'content') else str(synth_response)
-        print(synth_content)
         return synth_content
 
-    async def answer_question_stream(self, question: str, conversation_history: Optional[Dict] = None):
-        sub_questions = self.transform_query(question)
-        loop = asyncio.get_event_loop()
-        tasks = [loop.run_in_executor(None, get_conversation_aware_response, q, conversation_history) for q in sub_questions]
-        answers = await asyncio.gather(*tasks)
-        llm = get_llm()
-        synth_prompt_template = self.get_synthesize_prompt()
-        qa_pairs = "\n".join(f"Q: {q}\nA: {a}" for q, a in zip(sub_questions, answers))
-        synth_prompt = synth_prompt_template.format(question=question, qa_pairs=qa_pairs)
-        # Stream the synthesis step if possible
-        if hasattr(llm, 'astream'):
-            async for chunk in llm.astream(synth_prompt):
-                yield getattr(chunk, 'text', str(chunk))
-        else:
-            synth_response = llm.invoke(synth_prompt)
-            synth_content = synth_response.content if hasattr(synth_response, 'content') else str(synth_response)
-            yield synth_content
 
 class RAGFusionPipeline(BaseRAGPipeline):
     def get_multi_query_prompt(self) -> str:
@@ -132,9 +106,7 @@ class RAGFusionPipeline(BaseRAGPipeline):
                 sub_questions.append(line[1:].strip())
         if not sub_questions:
             sub_questions = [content.strip()]
-        sub_questions.append(question)
-        for q in sub_questions:
-            print(q + "-----\n")
+        sub_questions.append(question)  
         return sub_questions
 
     async def answer_question(self, question: str, conversation_history: Optional[Dict] = None) -> str:
@@ -151,35 +123,11 @@ class RAGFusionPipeline(BaseRAGPipeline):
             for doc in docs:
                 content = doc.page_content
                 all_docs[content] = all_docs.get(content, 0) + 1
-        print(f"====docs len is : {len(all_docs)}====")
+        
         most_common_docs = sorted(all_docs.items(), key=lambda x: x[1], reverse=True)[:15]
         selected_content = "\n".join([doc for doc, _ in most_common_docs])
         final_content = invoke_llm_with_context(selected_content, question, conversation_history)
         return final_content
-
-    async def answer_question_stream(self, question: str, conversation_history: Optional[Dict] = None):
-        sub_questions = self.transform_query(question)
-        embedder = Embedder()
-        loop = asyncio.get_event_loop()
-        async def retrieve_docs(sub_q):
-            retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 1000})
-            return await loop.run_in_executor(None, retriever.get_relevant_documents, sub_q)
-        tasks = [retrieve_docs(sub_q) for sub_q in sub_questions]
-        docs_lists = await asyncio.gather(*tasks)
-        all_docs = {}
-        for docs in docs_lists:
-            for doc in docs:
-                content = doc.page_content
-                all_docs[content] = all_docs.get(content, 0) + 1
-        most_common_docs = sorted(all_docs.items(), key=lambda x: x[1], reverse=True)[:15]
-        selected_content = "\n".join([doc for doc, _ in most_common_docs])
-        llm = get_llm()
-        if hasattr(llm, 'astream'):
-            async for chunk in llm.astream(selected_content + f"\n\nQuestion: {question}\n\nAnswer:"):
-                yield getattr(chunk, 'text', str(chunk))
-        else:
-            final_content = invoke_llm_with_context(selected_content, question, conversation_history)
-            yield final_content
 
 class IncrementalRAGPipeline(BaseRAGPipeline):
     async def answer_question(self, question: str, conversation_history: Optional[Dict] = None) -> str:
