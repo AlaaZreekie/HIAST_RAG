@@ -23,9 +23,6 @@ async function fetchPageData(slug, languageCode) {
     // Use HTTP for server-side requests to avoid SSL issues
     const apiUrl = "http://localhost:5007";
 
-    console.log("🔍 Checking all pages first:");
-    console.log("  URL:", `${apiUrl}${allPagesUrl}`);
-
     const allPagesResponse = await fetch(`${apiUrl}${allPagesUrl}`, {
       method: "GET",
       headers: {
@@ -47,17 +44,7 @@ async function fetchPageData(slug, languageCode) {
       }
 
       const allPages = allPagesData?.Data || allPagesData || [];
-      console.log("  All pages in database:", allPages.length);
-      allPages.forEach((page, index) => {
-        console.log(`    Page ${index + 1}:`, {
-          Id: page.Id,
-          Translations: page.Translations?.map((t) => ({
-            LanguageCode: t.LanguageCode,
-            Title: t.Title,
-            Slug: t.Slug,
-          })),
-        });
-      });
+      
     }
 
     // Now try to fetch the specific page
@@ -67,10 +54,7 @@ async function fetchPageData(slug, languageCode) {
 
     const url = `/api/user/pages/getbyfilter?${queryParams.toString()}`;
 
-    console.log("🔍 Fetching page data:");
-    console.log("  Slug:", slug);
-    console.log("  LanguageCode:", languageCode);
-    console.log("  URL:", `${apiUrl}${url}`);
+
 
     const response = await fetch(`${apiUrl}${url}`, {
       method: "GET",
@@ -80,15 +64,13 @@ async function fetchPageData(slug, languageCode) {
       cache: "no-store", // Disable caching for dynamic content
     });
 
-    console.log("  Response status:", response.status);
-
     if (!response.ok) {
-      console.error("  HTTP error! status:", response.status);
+      
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const responseText = await response.text();
-    console.log("  Response text:", responseText.substring(0, 200) + "...");
+
 
     let data;
 
@@ -103,18 +85,18 @@ async function fetchPageData(slug, languageCode) {
       return null;
     }
 
-    console.log("  Parsed data:", JSON.stringify(data, null, 2));
+
 
     // Handle ApiResponse structure
     const pages = data?.Data || data || [];
-    console.log("  Pages array length:", pages.length);
+
 
     if (pages.length === 0) {
-      console.log("  No pages found");
+
       return null;
     }
 
-    console.log("  Found page:", JSON.stringify(pages[0], null, 2));
+
     return pages[0];
   } catch (error) {
     console.error("  Error fetching page data:", error);
@@ -127,18 +109,15 @@ export default async function DynamicPage({ params }) {
   const lang = getLanguageFromCookies();
   const languageCode = getLanguageCode(lang);
 
-  console.log("🚀 DynamicPage component:");
-  console.log("  Slug:", slug);
-  console.log("  Lang:", lang);
-  console.log("  LanguageCode:", languageCode);
+
 
   // Fetch page data server-side
   const page = await fetchPageData(slug, languageCode);
 
-  console.log("  Page result:", page ? "Found" : "Not found");
+
 
   if (!page) {
-    console.log("  ❌ Page not found, calling notFound()");
+
     notFound();
   }
 
@@ -154,14 +133,12 @@ export default async function DynamicPage({ params }) {
 
   const translation = getPageTranslation();
 
-  console.log("  Translation result:", translation ? "Found" : "Not found");
+
 
   if (!translation) {
-    console.log("  ❌ Translation not found, calling notFound()");
+
     notFound();
   }
-
-  console.log("  ✅ Rendering DynamicPageClient");
 
   return (
     <DynamicPageClient

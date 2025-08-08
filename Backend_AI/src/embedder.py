@@ -40,7 +40,6 @@ class Embedder:
                 with open(current_db_file, 'r', encoding='utf-8') as f:
                     path = f.read().strip()
                     if path and os.path.exists(path):
-                        print(f"📂 Using database from file: {path}")
                         return path
                     else:
                         print(f"⚠️ Database path in file doesn't exist: {path}")
@@ -51,7 +50,6 @@ class Embedder:
         
         # Default fallback
         default_path = "Data/chroma_db"
-        print(f"📂 Using default database path: {default_path}")
         return default_path
     
     def save_current_database_path(self, path):
@@ -133,14 +131,12 @@ class Embedder:
         if chunk_overlap is None:
             chunk_overlap = self.chunk_overlap
             
-        print(f"✂️ Chunking data with size={chunk_size}, overlap={chunk_overlap}")
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size, 
             chunk_overlap=chunk_overlap
         )
         docs = text_splitter.split_documents(data)
-        print(f"✅ Created {len(docs)} chunks===============================================")
-        print(docs)
+        print(f"✅ Created {len(docs)} chunks")
         return docs
     
     def switch_to_new_database(self):
@@ -161,7 +157,6 @@ class Embedder:
         if persist_directory is None:
             persist_directory = self.persist_directory
             
-        print(f"💾 Creating embeddings and saving to: {persist_directory}")
         vectorstore = Chroma.from_documents(
             docs, 
             self.embeddings, 
@@ -174,9 +169,7 @@ class Embedder:
         """Load existing vector database."""
         if persist_directory is None:
             persist_directory = self.persist_directory
-            print(f"✅ Loading vector database from: {persist_directory}")
             
-        print(f"📂 Loading vector database from: {persist_directory}")
         return Chroma(
             persist_directory=persist_directory, 
             embedding_function=self.embeddings
@@ -193,7 +186,6 @@ class Embedder:
             search_kwargs={"k": k}
         )
         relevant_documents = retriever.get_relevant_documents(query)
-        print(f"✅ Retrieved {len(relevant_documents)} relevant documents")
         return relevant_documents
     
     def retrain(self, filepath="scraped_homepage.json", chunk_size=2000, chunk_overlap=200):
@@ -206,26 +198,21 @@ class Embedder:
         # Check if file is JSON or text
         if filepath.endswith('.json'):
             data = self.load_data_from_json(filepath)
-            print(f"✅ Loaded {len(data)} documents from JSON===============================================")
         else:
             data = self.load_data(filepath)
         
         if(data):
             chunk_size = self.chunk_size
-            print(f"   📏 =================Chunk size: {chunk_size} characters==================================")
         else:
             print("❌ No data to retrain")
             return None
             
         # Chunk data
         docs = self.chunk_data(data, chunk_size, chunk_overlap)
-        print(f"✅ Created {len(docs)} chunks")
         
         # Create and save embeddings to NEW database
         vectorstore = self.create_and_save_embeddings(docs, new_db_path)
-        
-        print("✅ Database retrain completed!")
-        print(f"📂 New database created: {new_db_path}")
+                
         return vectorstore
     
     def get_database_info(self):

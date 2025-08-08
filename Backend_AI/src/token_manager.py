@@ -40,9 +40,6 @@ class TokenManager:
         total_tokens = self.count_conversation_tokens_hash(conversation_history)
         max_conversation_tokens = self.max_tokens - self.reserved_tokens
         
-        print(f"📊 Total conversation tokens: {total_tokens}")
-        print(f"📊 Max conversation tokens: {max_conversation_tokens}")
-        
         # Remove old entries if we exceed the limit
         while total_tokens > max_conversation_tokens and len(conversation_history) > 1:
             # Remove the oldest entry (first key in the dictionary)
@@ -53,8 +50,6 @@ class TokenManager:
                              self.count_tokens(f"assistant: {oldest_entry['assistant']}"))
             total_tokens -= removed_tokens
             
-            print(f"🗑️ Removed old conversation entry. New total: {total_tokens} tokens")
-        
         return conversation_history
     
     def format_conversation_for_model_hash(self, conversation_history: Dict, question: str, context: str) -> str:
@@ -95,9 +90,6 @@ class TokenManager:
         total_tokens = self.count_conversation_tokens(updated_history)
         max_conversation_tokens = self.max_tokens - self.reserved_tokens
         
-        print(f"📊 Total conversation tokens: {total_tokens}")
-        print(f"📊 Max conversation tokens: {max_conversation_tokens}")
-        
         # Remove old messages if we exceed the limit
         while total_tokens > max_conversation_tokens and len(updated_history) > 2:
             # Remove the oldest user-assistant pair (keep at least the current exchange)
@@ -108,8 +100,6 @@ class TokenManager:
                              self.count_tokens(f"assistant: {removed_assistant['content']}"))
             total_tokens -= removed_tokens
             
-            print(f"🗑️ Removed old messages. New total: {total_tokens} tokens")
-        
         return updated_history
     
     def truncate_conversation(self, messages: List[Dict], question: str, context: str) -> List[Dict]:

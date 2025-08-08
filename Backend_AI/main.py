@@ -81,23 +81,15 @@ async def ask_question(request: QuestionRequest):
     # Check if this question has already been asked (O(1) lookup)
     if question_hash in conversation_history:
         previous_answer = conversation_history[question_hash]["assistant"]
-        print(f"🔄 Question already asked before. Returning cached answer.")
-        print(f"❓ Question: {request.question[:100]}{'...' if len(request.question) > 100 else ''}")
-        print(f"✅ Cached Answer: {previous_answer[:100]}{'...' if len(previous_answer) > 100 else ''}")
-        print("-" * 80)
-        
+                
         return {
             "answer": previous_answer, 
             "tokens_used": 0,  # No new tokens used since we're returning cached answer
             "conversation_length": len(conversation_history)
         }
     
-    # If question not found in history, proceed with normal processing
-    print(f"🆕 New question detected. Generating answer...")
-    
     # Count input tokens
     input_tokens = token_manager.count_tokens(request.question)
-    print(f"🔍 Input tokens: {input_tokens}")
     
     # Use the selected RAG pipeline strategy
     strategy = current_strategy["strategy"]
@@ -119,37 +111,18 @@ async def ask_question(request: QuestionRequest):
         conversation_history, request.question, answer
     )
     
-    print(f"💬 Output tokens: {output_tokens}")
-    print(f"📊 Total tokens for this request: {total_tokens}")
-    print(f"❓ Question: {request.question[:100]}{'...' if len(request.question) > 100 else ''}")
-    print(f"✅ Answer: {answer[:100]}{'...' if len(answer) > 100 else ''}")
-    print(f"📝 Conversation length: {len(conversation_history)}")
-    print("-" * 80)
-    
     return {
         "answer": answer, 
         "tokens_used": total_tokens,
         "conversation_length": len(conversation_history)
     }
 
-@app.post("/conversation/stream")
-async def ask_question_stream(request: QuestionRequest):
-    strategy = current_strategy["strategy"]
-    pipeline = strategy_instances[strategy]
-    # This should be an async generator yielding text chunks
-    async def answer_stream():
-        async for chunk in pipeline.answer_question_stream(request.question, conversation_history):
-            yield chunk
-    return StreamingResponse(answer_stream(), media_type="text/plain")
-
 @app.post("/data/scrape-url", response_model=URLScrapeResponse)
 def scrape_url(request: URLScrapeRequest):
     """
     Scrape a URL and return the scraped content without updating the database.
     """
-    try:
-        print(f"🌐 Scraping URL: {request.url}")
-        
+    try:        
         scraper = scraper_instance
         result = scraper.scrape_recursive_and_save(request.url, max_depth=request.max_depth, output_file=request.output_file)
         
@@ -164,7 +137,6 @@ def scrape_url(request: URLScrapeRequest):
             output_file=request.output_file
         )
     except Exception as e:
-        print(f"❌ Error in scrape_url: {e}")
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 @app.post("/data/count-urls-recursive", response_model=RecursiveURLCountResponse)
@@ -172,9 +144,7 @@ def count_urls_recursive(request: RecursiveURLCountRequest):
     """
     Count the number of URLs that can be found through recursive crawling up to specified depth.
     """
-    try:
-        print(f"🕷️ Counting URLs recursively from: {request.url} (max depth: {request.max_depth})")
-        
+    try:        
         scraper = scraper_instance
         urls_found = scraper.crawl_for_urls(request.url, max_depth=request.max_depth)
         url_count = len(urls_found)
@@ -187,7 +157,6 @@ def count_urls_recursive(request: RecursiveURLCountRequest):
             message=f"Found {url_count} unique URLs through recursive crawling (depth: {request.max_depth})"
         )
     except Exception as e:
-        print(f"❌ Error counting URLs recursively: {e}")
         return RecursiveURLCountResponse(
             url=request.url,
             url_count=0,
@@ -202,8 +171,6 @@ def scrape_recursive_and_update_database(request: URLScrapeRequest):
     Recursively scrape a URL and all linked pages up to the specified max_depth, then update the database.
     """
     try:
-        print(f"🕷️ Starting recursive scraping and database update: {request.url}")
-        
         scraper = scraper_instance
         result = scraper.scrape_recursive_and_save(request.url, max_depth=request.max_depth, output_file=request.output_file)
         
@@ -221,7 +188,6 @@ def scrape_recursive_and_update_database(request: URLScrapeRequest):
             output_file=request.output_file
         )
     except Exception as e:
-        print(f"❌ Error in recursive scraping and update: {e}")
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 @app.get("/data/retrain", response_model=DatabaseResponse)
@@ -230,16 +196,11 @@ def retrain():
     Rebuild the vector database using the Embedder class with custom chunk parameters
     """
     try:
-        print(f"🔄 Rebuilding database using Embedder class...")
-        
         # Use the global embedder instance and retrain database with custom parameters
         embedder_instance.retrain()
         
         # Get database info
         info = embedder_instance.get_database_info()
-        
-        print("✅ Database rebuilt successfully!")
-        print(f"📊 Database info: {info}")
         
         return DatabaseResponse(
             message=f"Database rebuilt successfully. Total documents: {info.get('total_documents', 0)}",
@@ -247,7 +208,6 @@ def retrain():
         )
         
     except Exception as e:
-        print(f"❌ Error rebuilding database: {e}")
         return DatabaseResponse(
             message=f"Error rebuilding database: {str(e)}",
             success=False
