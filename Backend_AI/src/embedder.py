@@ -27,7 +27,7 @@ class Embedder:
             raise ValueError("GOOGLE_API_KEY not found in environment variables.")
         self.llm = get_llm()
         # Default settings
-        self.chunk_size = 2000
+        self.chunk_size = 1200
         self.chunk_overlap = 200
         self.persist_directory = self.get_current_database_path()
     
@@ -175,7 +175,7 @@ class Embedder:
             embedding_function=self.embeddings
         )
     
-    def retrieve_chunks(self, query, k=10, persist_directory=None):
+    def retrieve_chunks(self, query, k=5, persist_directory=None):
         """Retrieve relevant chunks for a query."""
         if persist_directory is None:
             persist_directory = self.persist_directory
@@ -188,7 +188,7 @@ class Embedder:
         relevant_documents = retriever.get_relevant_documents(query)
         return relevant_documents
     
-    def retrain(self, filepath="scraped_homepage.json", chunk_size=2000, chunk_overlap=200):
+    def retrain(self, filepath="scraped_homepage.json", chunk_size=1200, chunk_overlap=200):
         """Retrain (rebuild) the entire vector database from scratch."""
         print("🔄 Starting database retrain...")
         

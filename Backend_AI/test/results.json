@@ -1,0 +1,137 @@
+[
+  {
+    "question_index": 0,
+    "question": "To whom did the Virgin Mary allegedly appear in 1858 in Lourdes France?",
+    "original_answer": "Saint Bernadette Soubirous",
+    "strategy": "default",
+    "ai_answer": "Based on the text provided, the Virgin Mary reputedly appeared to **Saint Bernadette Soubirous** in 1858.",
+    "similarity_score": 0.815,
+    "time_taken_seconds": 4.95
+  },
+  {
+    "question_index": 0,
+    "question": "To whom did the Virgin Mary allegedly appear in 1858 in Lourdes France?",
+    "original_answer": "Saint Bernadette Soubirous",
+    "strategy": "fusion",
+    "ai_answer": "Based on the context provided, there is no information about the Virgin Mary's alleged appearance in Lourdes, France, in 1858. The text is primarily about the life and career of the composer Fryderyk Chopin.",
+    "similarity_score": 0.6667,
+    "time_taken_seconds": 23.55
+  },
+  {
+    "question_index": 0,
+    "question": "To whom did the Virgin Mary allegedly appear in 1858 in Lourdes France?",
+    "original_answer": "Saint Bernadette Soubirous",
+    "strategy": "query_transform",
+    "ai_answer": "Based on the information provided, the Virgin Mary allegedly appeared to Saint Bernadette Soubirous in 1858. These apparitions took place at a grotto in Lourdes, France.",
+    "similarity_score": 0.7952,
+    "time_taken_seconds": 46.51
+  },
+  {
+    "question_index": 1,
+    "question": "What is in front of the Notre Dame Main Building?",
+    "original_answer": "a copper statue of Christ",
+    "strategy": "default",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 5\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 1,
+    "question": "What is in front of the Notre Dame Main Building?",
+    "original_answer": "a copper statue of Christ",
+    "strategy": "fusion",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 51\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 1,
+    "question": "What is in front of the Notre Dame Main Building?",
+    "original_answer": "a copper statue of Christ",
+    "strategy": "query_transform",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 2,
+    "question": "The Basilica of the Sacred heart at Notre Dame is beside to which structure?",
+    "original_answer": "the Main Building",
+    "strategy": "default",
+    "ai_answer": "",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 4.19
+  },
+  {
+    "question_index": 2,
+    "question": "The Basilica of the Sacred heart at Notre Dame is beside to which structure?",
+    "original_answer": "the Main Building",
+    "strategy": "fusion",
+    "ai_answer": "Based on the text provided, the Basilica of the Sacred Heart is next to the **Main Building**.\n\nThe text also mentions that **the Grotto** is \"immediately behind the basilica.\"",
+    "similarity_score": 0.7572,
+    "time_taken_seconds": 34.5
+  },
+  {
+    "question_index": 2,
+    "question": "The Basilica of the Sacred heart at Notre Dame is beside to which structure?",
+    "original_answer": "the Main Building",
+    "strategy": "query_transform",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 5\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 3,
+    "question": "What is the Grotto at Notre Dame?",
+    "original_answer": "a Marian place of prayer and reflection",
+    "strategy": "default",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 49\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 3,
+    "question": "What is the Grotto at Notre Dame?",
+    "original_answer": "a Marian place of prayer and reflection",
+    "strategy": "fusion",
+    "ai_answer": "Based on the text provided, the Grotto at Notre Dame (also called the Grotto of Our Lady of Lourdes) is:\n\n*   A Marian place of prayer and reflection.\n*   A replica of the original grotto in Lourdes, France, where the Virgin Mary reputedly appeared to Saint Bernadette Soubirous in 1858.\n*   Located immediately behind the Basilica of the Sacred Heart.\n*   Was built in 1896.\n*   Considered one of the most beloved spots on campus, popular with students and alumni for prayer and meditation.",
+    "similarity_score": 0.7341,
+    "time_taken_seconds": 24.19
+  },
+  {
+    "question_index": 3,
+    "question": "What is the Grotto at Notre Dame?",
+    "original_answer": "a Marian place of prayer and reflection",
+    "strategy": "query_transform",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 30\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 4,
+    "question": "What sits on top of the Main Building at Notre Dame?",
+    "original_answer": "a golden statue of the Virgin Mary",
+    "strategy": "default",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 14\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 4,
+    "question": "What sits on top of the Main Building at Notre Dame?",
+    "original_answer": "a golden statue of the Virgin Mary",
+    "strategy": "fusion",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 5\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  },
+  {
+    "question_index": 4,
+    "question": "What sits on top of the Main Building at Notre Dame?",
+    "original_answer": "a golden statue of the Virgin Mary",
+    "strategy": "query_transform",
+    "ai_answer": "Error during generation: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.5-pro\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n  quota_value: 100\n}\n, links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, retry_delay {\n  seconds: 45\n}\n]",
+    "similarity_score": 0.0,
+    "time_taken_seconds": 0
+  }
+]
