@@ -1,6 +1,10 @@
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-export default function HomepageLayout({ children, currentPage = "home", lang = "en" }) {
+export default function HomepageLayout({
+  children,
+  currentPage = "home",
+  lang = "en",
+}) {
   return (
     <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen">
       {/* Header */}
@@ -33,6 +37,16 @@ export default function HomepageLayout({ children, currentPage = "home", lang = 
                   }`}
                 >
                   {lang === "ar" ? "عن المعهد" : "About Us"}
+                </a>
+                <a
+                  href="/library"
+                  className={`px-4 py-2 font-medium transition-colors duration-200 ${
+                    currentPage === "library"
+                      ? "text-blue-600"
+                      : "text-gray-700 hover:text-blue-600"
+                  }`}
+                >
+                  {lang === "ar" ? "مكتبة" : "Library"}
                 </a>
                 <a
                   href="/programs"
@@ -72,7 +86,14 @@ export default function HomepageLayout({ children, currentPage = "home", lang = 
                 </a>
               </nav>
               <LanguageSwitcher currentLang={lang} />
-
+              <a
+                href="/admin/login"
+                className={
+                  "px-4 py-2 font-medium transition-colors duration-200 text-gray-700 hover:text-blue-600"
+                }
+              >
+                {lang === "ar" ? "تسجيل الدخول" : "Login"}
+              </a>
               {/* Mobile Menu Button */}
               <button className="md:hidden p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
                 <svg
@@ -95,9 +116,7 @@ export default function HomepageLayout({ children, currentPage = "home", lang = 
       </header>
 
       {/* Main Content */}
-      <main className="pt-16">
-        {children}
-      </main>
+      <main className="pt-16">{children}</main>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-12">
@@ -193,4 +212,4 @@ export default function HomepageLayout({ children, currentPage = "home", lang = 
       </footer>
     </div>
   );
-} 
+}

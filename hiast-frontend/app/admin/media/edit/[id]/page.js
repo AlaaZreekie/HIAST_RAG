@@ -14,7 +14,7 @@ export default function EditMediaPage() {
   const params = useParams();
   const mediaId = params.id;
   const { t, lang } = useLanguage();
-  
+
   const [media, setMedia] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,12 +39,12 @@ export default function EditMediaPage() {
 
       // Load all media files and find the specific one
       const mediaFilesData = await getAllMedias();
-      const foundMedia = mediaFilesData.find(media => media.Id === mediaId);
-      
+      const foundMedia = mediaFilesData.find((media) => media.Id === mediaId);
+
       if (!foundMedia) {
         throw new Error("Media file not found");
       }
-      
+
       console.log("Media file loaded:", foundMedia);
       setMedia(foundMedia);
     } catch (error) {
@@ -75,7 +75,7 @@ export default function EditMediaPage() {
     try {
       const { authAPI } = await import("@/lib/api");
       await authAPI.logout();
-      router.push("/admin/login");
+      router.push("/");
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -83,13 +83,19 @@ export default function EditMediaPage() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}
+      >
         <DashboardHeader user={null} onLogout={handleLogout} />
         <div className="flex main-layout">
           <div className={lang === "ar" ? "order-2" : "order-1"}>
             <DashboardSidebar />
           </div>
-          <main className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${lang === "ar" ? "order-1" : "order-2"}`}>
+          <main
+            className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${
+              lang === "ar" ? "order-1" : "order-2"
+            }`}
+          >
             <div className="flex items-center justify-center h-64">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
@@ -104,13 +110,19 @@ export default function EditMediaPage() {
 
   if (error && !media) {
     return (
-      <div className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}>
+      <div
+        className={`min-h-screen bg-gray-50 ${lang === "ar" ? "rtl" : "ltr"}`}
+      >
         <DashboardHeader user={null} onLogout={handleLogout} />
         <div className="flex main-layout">
           <div className={lang === "ar" ? "order-2" : "order-1"}>
             <DashboardSidebar />
           </div>
-          <main className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${lang === "ar" ? "order-1" : "order-2"}`}>
+          <main
+            className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${
+              lang === "ar" ? "order-1" : "order-2"
+            }`}
+          >
             <div className="px-4 py-6 sm:px-0">
               <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded">
                 {error}
@@ -130,7 +142,11 @@ export default function EditMediaPage() {
         <div className={lang === "ar" ? "order-2" : "order-1"}>
           <DashboardSidebar />
         </div>
-        <main className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${lang === "ar" ? "order-1" : "order-2"}`}>
+        <main
+          className={`flex-1 py-6 px-4 sm:px-6 lg:px-8 ${
+            lang === "ar" ? "order-1" : "order-2"
+          }`}
+        >
           <div className="px-4 py-6 sm:px-0">
             {/* Header */}
             <CreateMediaHeader isEditMode={true} />
@@ -143,7 +159,7 @@ export default function EditMediaPage() {
             )}
 
             {/* Form */}
-            <CreateMediaForm 
+            <CreateMediaForm
               onSubmit={handleSubmit}
               isLoading={isSubmitting}
               error={error}
@@ -155,4 +171,4 @@ export default function EditMediaPage() {
       </div>
     </div>
   );
-} 
+}

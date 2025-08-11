@@ -153,9 +153,12 @@ export default async function ProgramsPage() {
                       </div>
                     </div>
 
-                    <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                      {lang === "ar" ? "اعرف المزيد" : "Learn More"}
-                    </button>
+                    <a
+                      href={`/programs/specs/${program.Id}`}
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                    >
+                      {lang === "ar" ? "الاختصاصات" : "Specialization"}
+                    </a>
                   </div>
                 </div>
               ))}

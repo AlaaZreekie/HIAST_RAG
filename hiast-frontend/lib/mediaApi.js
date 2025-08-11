@@ -1,6 +1,6 @@
 import { apiRequest } from "./api";
 
-const API_BASE_URL = "https://localhost:7187/api";
+const API_BASE_URL = "http://localhost:5007/api";
 
 // Generic API request function for media
 async function mediaApiRequest(endpoint, options = {}) {
