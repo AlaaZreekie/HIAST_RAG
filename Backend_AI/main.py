@@ -1,6 +1,12 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Query
+from pydantic import BaseModel
 from fastapi.responses import StreamingResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 from src.rag_chain import get_conversation_aware_response
 from src.token_manager import TokenManager
 from src.rag_abstractions import DefaultRAGPipeline, QueryTransformRAGPipeline, RAGFusionPipeline
@@ -64,8 +70,19 @@ strategy_instances = {
     RAGStrategy.FUSION: RAGFusionPipeline()
 }
 
+class StrategyRequest(BaseModel):
+    strategy: str
+
+
+
 @app.post("/set-strategy")
-def set_strategy(strategy: str):
+def set_strategy(strategy: str = Query(None), request: StrategyRequest = None):
+    # Accept either query parameter or JSON body
+    if strategy is None and request is not None:
+        strategy = request.strategy
+    elif strategy is None:
+        raise HTTPException(status_code=422, detail="Strategy parameter is required")
+    
     if strategy not in strategy_instances:
         raise HTTPException(status_code=400, detail=f"Invalid strategy. Choose from: {list(strategy_instances.keys())}")
     current_strategy["strategy"] = strategy
@@ -197,7 +214,7 @@ def retrain():
     """
     try:
         # Use the global embedder instance and retrain database with custom parameters
-        embedder_instance.retrain()
+        embedder_instance.retrain(filepath="scraped_homepage.json")
         
         # Get database info
         info = embedder_instance.get_database_info()

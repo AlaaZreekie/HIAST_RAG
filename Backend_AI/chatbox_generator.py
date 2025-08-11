@@ -120,7 +120,7 @@ class ChatboxGenerator:
                 display: none;
             ">
                 <div style="font-size: 12px; font-weight: bold; color: #92400E; margin-bottom: 8px;">🔧 Admin Controls</div>
-                <div style="display: flex; gap: 8px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
                     <button id="retrain-model" style="
                         background: #F59E0B;
                         color: white;
@@ -143,6 +143,44 @@ class ChatboxGenerator:
                         font-weight: 500;
                         transition: all 0.2s;
                     ">🌐 Scrape Website</button>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <div style="font-size: 11px; font-weight: 600; color: #92400E;">RAG Strategy:</div>
+                    <div style="display: flex; gap: 6px;">
+                        <button id="strategy-default" class="strategy-btn active" style="
+                            background: #10B981;
+                            color: white;
+                            border: none;
+                            padding: 4px 8px;
+                            border-radius: 3px;
+                            cursor: pointer;
+                            font-size: 10px;
+                            font-weight: 500;
+                            transition: all 0.2s;
+                        ">Default</button>
+                        <button id="strategy-query-transform" class="strategy-btn" style="
+                            background: #6B7280;
+                            color: white;
+                            border: none;
+                            padding: 4px 8px;
+                            border-radius: 3px;
+                            cursor: pointer;
+                            font-size: 10px;
+                            font-weight: 500;
+                            transition: all 0.2s;
+                        ">Query Transform</button>
+                        <button id="strategy-fusion" class="strategy-btn" style="
+                            background: #6B7280;
+                            color: white;
+                            border: none;
+                            padding: 4px 8px;
+                            border-radius: 3px;
+                            cursor: pointer;
+                            font-size: 10px;
+                            font-weight: 500;
+                            transition: all 0.2s;
+                        ">Fusion</button>
+                    </div>
                 </div>
             </div>
             
@@ -250,6 +288,11 @@ class ChatboxGenerator:
             this.adminControls = document.getElementById('admin-controls');
             this.retrainButton = document.getElementById('retrain-model');
             this.scrapeButton = document.getElementById('scrape-website');
+            this.strategyButtons = {
+                default: document.getElementById('strategy-default'),
+                queryTransform: document.getElementById('strategy-query-transform'),
+                fusion: document.getElementById('strategy-fusion')
+            };
             
             // Check admin status in real-time and show appropriate welcome message
             this.updateAdminStatus();
@@ -264,6 +307,11 @@ class ChatboxGenerator:
             // Add event listeners for admin buttons (will be enabled/disabled based on admin status)
             this.retrainButton.addEventListener('click', () => this.retrainModel());
             this.scrapeButton.addEventListener('click', () => this.scrapeWebsite());
+            
+            // Add event listeners for strategy buttons
+            this.strategyButtons.default.addEventListener('click', () => this.setStrategy('default'));
+            this.strategyButtons.queryTransform.addEventListener('click', () => this.setStrategy('query_transform'));
+            this.strategyButtons.fusion.addEventListener('click', () => this.setStrategy('fusion'));
             
             // Listen for storage changes (logout/login events)
             window.addEventListener('storage', (e) => {
@@ -376,6 +424,54 @@ class ChatboxGenerator:
             this.scrapeButton.disabled = false;
             this.scrapeButton.textContent = '🌐 Scrape Website';
             this.scrapeButton.style.opacity = '1';
+        }
+        
+        async setStrategy(strategy) {
+            // Check admin status before allowing strategy change
+            if (!isAdmin()) {
+                this.addMessage('assistant', '❌ Access denied. Admin privileges required.');
+                return;
+            }
+            
+            try {
+                console.log('CHATBOX_CONFIG.apiUrl:', CHATBOX_CONFIG.apiUrl);
+                console.log('Strategy parameter:', strategy);
+                const url = CHATBOX_CONFIG.apiUrl + '/set-strategy?strategy=' + encodeURIComponent(strategy);
+                console.log('Sending strategy request to:', url);
+                console.log('Full URL constructed:', url);
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ strategy: strategy })
+                });
+                
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (response.ok) {
+                    // Update button styles
+                    Object.values(this.strategyButtons).forEach(btn => {
+                        btn.style.background = '#6B7280';
+                    });
+                    
+                    // Highlight the selected strategy
+                    const selectedButton = this.strategyButtons[strategy === 'query_transform' ? 'queryTransform' : strategy];
+                    if (selectedButton) {
+                        selectedButton.style.background = '#10B981';
+                    }
+                    
+                    this.addMessage('assistant', '✅ RAG Strategy changed to: ' + strategy + '. The AI will now use this strategy for retrieving information.');
+                } else {
+                    const errorMessage = data.detail || data.message || JSON.stringify(data) || 'Unknown error';
+                    this.addMessage('assistant', '❌ Failed to change strategy: ' + errorMessage);
+                }
+                
+            } catch (error) {
+                console.error('Strategy change error:', error);
+                this.addMessage('assistant', '❌ Failed to change strategy. Please try again later.');
+            }
         }
         
         toggleChatbox() {

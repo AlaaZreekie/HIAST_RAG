@@ -6,25 +6,20 @@ const BooksTable = ({ books, onEdit, onDelete }) => {
 
   const getBookNameInLanguage = (book, languageCode = "en") => {
     if (!book || !book.Translations) return "N/A";
-
+    const langCode = languagePref === "ar" ? 1 : languagePref === "en" ? 2 : languagePref;
     const translation = book.Translations.find(
-      (t) =>
-        t.LanguageCode === languageCode ||
-        t.LanguageName?.toLowerCase().includes(languageCode.toLowerCase())
+      (t) => t.LanguageCode === langCode || t.LanguageName?.toLowerCase().includes(String(languagePref).toLowerCase())
     );
 
     return translation?.Name || "N/A";
   };
 
-  const getBookDescriptionInLanguage = (book, languageCode = "en") => {
+  const getBookDescriptionInLanguage = (book, languagePref = "en") => {
     if (!book || !book.Translations) return "N/A";
-
+    const langCode = languagePref === "ar" ? 1 : languagePref === "en" ? 2 : languagePref;
     const translation = book.Translations.find(
-      (t) =>
-        t.LanguageCode === languageCode ||
-        t.LanguageName?.toLowerCase().includes(languageCode.toLowerCase())
+      (t) => t.LanguageCode === langCode || t.LanguageName?.toLowerCase().includes(String(languagePref).toLowerCase())
     );
-
     return translation?.Description || "N/A";
   };
 
@@ -56,7 +51,7 @@ const BooksTable = ({ books, onEdit, onDelete }) => {
                       <span className="text-sm font-medium text-gray-500">
                         ID: {book.Id}
                       </span>
-                      {book.FileUrl && (
+                      {book?.BookFile?.FilePath && (
                         <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
                           {t("books.hasFile")}
                         </span>
@@ -78,7 +73,7 @@ const BooksTable = ({ books, onEdit, onDelete }) => {
                           <div className="space-y-1">
                             {book.Translations.map((translation, index) => (
                               <p key={index} className="text-xs">
-                                {translation.LanguageName}: {translation.Name}
+                                {translation.LanguageName}: {translation.Title}
                               </p>
                             ))}
                           </div>

@@ -18,12 +18,9 @@ const BooksPage = () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await booksAPI.getAllBooks();
-      if (Array.isArray(data)) {
-        setBooks(data);
-      } else {
-        setBooks([]);
-      }
+      const response = await booksAPI.getAllBooks();
+      const data = response?.Data || [];
+      setBooks(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error("Error loading books:", err);
       setError(err.message || "Failed to load books");
@@ -123,107 +120,185 @@ const BooksPage = () => {
                 </div>
               </div>
             ) : (
-              <div className="bg-white shadow rounded-lg">
-                <div className="px-4 py-5 sm:p-6">
-                  <div className="max-h-96 overflow-y-auto">
-                    {books.length === 0 ? (
+              <div>
+                {books.length === 0 ? (
+                  <div className="bg-white shadow rounded-lg">
+                    <div className="px-4 py-5 sm:p-6">
                       <div className="text-center py-8">
                         <p className="text-gray-500">{t("books.noBooks")}</p>
                       </div>
-                    ) : (
-                      <div className="space-y-4">
-                        {books.map((book) => (
-                          <div
-                            key={book.Id}
-                            className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
-                          >
+                    </div>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {books.map((book) => {
+                      const langCode = lang === "ar" ? 1 : 2;
+                      const tr =
+                        (book.Translations || []).find(
+                          (t) => t.LanguageCode === langCode
+                        ) || (book.Translations || [])[0];
+                      const title = tr?.Title || "N/A";
+                      const description = tr?.Description || "";
+                      const apiBase =
+                        process.env.NEXT_PUBLIC_API_URL ||
+                        "http://localhost:5007/api";
+                      const fileOrigin = apiBase.replace(/\/api$/, "");
+                      const rawCover = book?.CoverImage?.FilePath || "";
+                      const rawFile = book?.BookFile?.FilePath || "";
+                      const coverUrl = rawCover
+                        ? rawCover.startsWith("http")
+                          ? rawCover
+                          : `${fileOrigin}${rawCover}`
+                        : "";
+                      const fileUrl = rawFile
+                        ? rawFile.startsWith("http")
+                          ? rawFile
+                          : `${fileOrigin}${rawFile}`
+                        : "";
+                      return (
+                        <div
+                          key={book.Id}
+                          className="group relative bg-white rounded-xl overflow-hidden shadow-sm ring-1 ring-gray-100 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
+                        >
+                          <div className="relative">
+                            {coverUrl ? (
+                              <img
+                                src={coverUrl}
+                                alt={title}
+                                className="w-full h-56 object-cover transform transition-transform duration-300 group-hover:scale-[1.03]"
+                              />
+                            ) : (
+                              <div className="w-full h-56 bg-gray-100 flex items-center justify-center text-gray-400">
+                                {t("books.noCover") || "No Cover"}
+                              </div>
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
                             <div
-                              className={`flex justify-between items-start ${
-                                lang === "ar" ? "flex-row-reverse" : "flex-row"
+                              className={`absolute bottom-0 left-0 right-0 p-4 ${
+                                lang === "ar" ? "text-right" : "text-left"
                               }`}
                             >
-                              <div className="flex-1">
-                                <div
-                                  className={`flex items-center space-x-3 mb-2 ${
-                                    lang === "ar" ? "space-x-reverse" : ""
-                                  }`}
-                                >
-                                  <span className="text-sm font-medium text-gray-500">
-                                    ID: {book.Id}
-                                  </span>
-                                  {book.FileUrl && (
-                                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                                      {t("books.hasFile")}
-                                    </span>
-                                  )}
-                                </div>
-
-                                <h3
-                                  className={`text-lg font-semibold text-gray-900 mb-2 ${
-                                    lang === "ar" ? "text-right" : "text-left"
-                                  }`}
-                                >
-                                  {book.Name || "N/A"}
+                              <div className="flex items-center justify-between">
+                                <h3 className="text-white text-lg font-semibold drop-shadow">
+                                  {title}
                                 </h3>
-
-                                <div
-                                  className={`text-sm text-gray-600 mb-3 ${
-                                    lang === "ar" ? "text-right" : "text-left"
-                                  }`}
-                                >
-                                  <p className="mb-2">
-                                    {book.Description || "N/A"}
-                                  </p>
-
-                                  {book.Translations &&
-                                    book.Translations.length > 0 && (
-                                      <div className="mt-2">
-                                        <p className="font-medium mb-1">
-                                          {t("books.translations")}:
-                                        </p>
-                                        <div className="space-y-1">
-                                          {book.Translations.map(
-                                            (translation, index) => (
-                                              <p
-                                                key={index}
-                                                className="text-xs"
-                                              >
-                                                {translation.LanguageName}:{" "}
-                                                {translation.Name}
-                                              </p>
-                                            )
-                                          )}
-                                        </div>
-                                      </div>
-                                    )}
-                                </div>
-                              </div>
-
-                              <div
-                                className={`flex space-x-2 ${
-                                  lang === "ar" ? "space-x-reverse" : ""
-                                }`}
-                              >
-                                <button
-                                  onClick={() => handleEditBook(book.Id)}
-                                  className="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-                                >
-                                  {t("common.edit")}
-                                </button>
-                                <button
-                                  onClick={() => handleDeleteBook(book.Id)}
-                                  className="text-red-600 hover:text-red-800 text-sm font-medium"
-                                >
-                                  {t("common.delete")}
-                                </button>
+                                <span className="ml-2 inline-flex items-center rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-gray-700 shadow-sm">
+                                  {book.PublicationYear}
+                                </span>
                               </div>
                             </div>
+                            {fileUrl && (
+                              <a
+                                href={fileUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="absolute top-3 right-3 inline-flex items-center rounded-md bg-white/90 px-2 py-1 text-xs font-medium text-indigo-700 backdrop-blur hover:bg-white"
+                                title={t("books.viewFile") || "View File"}
+                              >
+                                <svg
+                                  className="h-4 w-4"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                  <path d="M14 2v6h6" />
+                                </svg>
+                                <span className="ml-1">PDF</span>
+                              </a>
+                            )}
                           </div>
-                        ))}
-                      </div>
-                    )}
+
+                          <div className="p-4">
+                            <p className="text-sm text-gray-600 mb-3 line-clamp-3">
+                              {description || t("books.noDescription") || ""}
+                            </p>
+                            <div className="flex flex-wrap gap-2 text-[11px]">
+                              <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-gray-700">
+                                <svg
+                                  className="h-3.5 w-3.5 mr-1 text-gray-500"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
+                                  <path d="M4 21v-2a4 4 0 0 1 3-3.87" />
+                                  <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                {book.Author}
+                              </span>
+                              <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-gray-700">
+                                <svg
+                                  className="h-3.5 w-3.5 mr-1 text-gray-500"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M3 4h18" />
+                                  <path d="M8 2v4" />
+                                  <path d="M16 2v4" />
+                                  <rect
+                                    x="3"
+                                    y="6"
+                                    width="18"
+                                    height="14"
+                                    rx="2"
+                                  />
+                                </svg>
+                                {book.PublicationYear}
+                              </span>
+                              <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-gray-700">
+                                <svg
+                                  className="h-3.5 w-3.5 mr-1 text-gray-500"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M4 4h16v16H4z" />
+                                  <path d="M4 9h16" />
+                                </svg>
+                                ISBN: {book.ISBN}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div
+                            className={`px-4 py-3 bg-gray-50 border-t flex ${
+                              lang === "ar"
+                                ? "justify-start space-x-reverse"
+                                : "justify-end"
+                            } space-x-2`}
+                          >
+                            <button
+                              onClick={() => handleEditBook(book.Id)}
+                              className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700"
+                            >
+                              {t("common.edit")}
+                            </button>
+                            <button
+                              onClick={() => handleDeleteBook(book.Id)}
+                              className="inline-flex items-center rounded-md bg-red-50 px-3 py-1.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-200 hover:bg-red-100"
+                            >
+                              {t("common.delete")}
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                </div>
+                )}
               </div>
             )}
           </div>
