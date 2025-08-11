@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
+import { getAllMediaCategories } from "@/lib/mediaCategoriesApi";
 
 const CreateBookForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false }) => {
   const router = useRouter();
@@ -19,6 +20,8 @@ const CreateBookForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
   const [bookFile, setBookFile] = useState(null);
   const [coverPreview, setCoverPreview] = useState(null);
   const [bookPreview, setBookPreview] = useState(null);
+  const [coverMediaCategoryId, setCoverMediaCategoryId] = useState("");
+  const [fileMediaCategoryId, setFileMediaCategoryId] = useState("");
 
   // Pre-fill form data when in edit mode
   useEffect(() => {
@@ -44,6 +47,43 @@ const CreateBookForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
       }
     }
   }, [initialData, isEditMode]);
+
+  // Fetch media categories and determine defaults for cover and file
+  useEffect(() => {
+    let isMounted = true;
+    (async () => {
+      try {
+        const categories = await getAllMediaCategories();
+        if (!isMounted || !Array.isArray(categories)) return;
+
+        const findCategoryIdByNames = (names) => {
+          const found = categories.find((cat) =>
+            (cat.Translations || []).some((tr) =>
+              names.some((n) =>
+                (tr.Name || "").toLowerCase().includes(n.toLowerCase())
+              )
+            )
+          );
+          return found?.Id || "";
+        };
+
+        const coverId = findCategoryIdByNames(["Book Covers", "أغلفة كتب", "covers"]);
+        const fileId = findCategoryIdByNames(["Scientific Publications", "نشرات علمية", "publications", "docs", "documents"]);
+
+        if (coverId) setCoverMediaCategoryId(coverId);
+        if (fileId) setFileMediaCategoryId(fileId);
+        // Fallback to any first category if not found
+        if (!coverId && categories[0]?.Id) setCoverMediaCategoryId(categories[0].Id);
+        if (!fileId && categories[0]?.Id) setFileMediaCategoryId(categories[0].Id);
+      } catch (err) {
+        // Leave ids empty; backend may validate and error usefully
+        console.error("Failed to load media categories:", err);
+      }
+    })();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -76,7 +116,7 @@ const CreateBookForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.arabicTitle.trim() && !formData.englishTitle.trim()) {
@@ -106,29 +146,43 @@ const CreateBookForm = ({ onSubmit, isLoading, error, initialData = null, isEdit
     }
 
     const bookData = new FormData();
-    
-    // Add form fields
+
+    // Scalars expected by backend DTO
     bookData.append("Author", formData.author.trim());
     bookData.append("PublicationYear", formData.publicationYear.toString());
     bookData.append("ISBN", formData.isbn.trim());
-    
-    // Add files
+
+    // Files and nested CreateMediaDto fields (MediaCategoryId required)
+    // We need media category ids; fallback to empty string if not provided by UI
     if (coverImageFile) {
-      bookData.append("CoverImageFile", coverImageFile);
+      bookData.append("CreateCover.File", coverImageFile);
+      if (initialData?.CoverMediaCategoryId) {
+        bookData.append("CreateCover.MediaCategoryId", String(initialData.CoverMediaCategoryId));
+      } else if (coverMediaCategoryId) {
+        bookData.append("CreateCover.MediaCategoryId", String(coverMediaCategoryId));
+      }
     }
+
     if (bookFile) {
-      bookData.append("BookFile", bookFile);
-    }
-    
-    // Add translations
-    bookData.append("Translations", JSON.stringify(translations));
-
-    // Add book ID for updates
-    if (isEditMode && initialData?.Id) {
-      bookData.append("Id", initialData.Id);
+      bookData.append("CreateFile.File", bookFile);
+      if (initialData?.BookFileMediaCategoryId) {
+        bookData.append("CreateFile.MediaCategoryId", String(initialData.BookFileMediaCategoryId));
+      } else if (fileMediaCategoryId) {
+        bookData.append("CreateFile.MediaCategoryId", String(fileMediaCategoryId));
+      }
     }
 
-    onSubmit(bookData);
+    // Add translations as an indexed collection: Translations[0].LanguageCode, etc.
+    translations.forEach((tr, index) => {
+      bookData.append(`Translations[${index}].LanguageCode`, String(tr.LanguageCode));
+      bookData.append(`Translations[${index}].Title`, tr.Title);
+      if (tr.Description) {
+        bookData.append(`Translations[${index}].Description`, tr.Description);
+      }
+    });
+
+    // In edit mode, backend expects JSON body not multipart for UpdateBook; this form is for create
+    await onSubmit(bookData);
   };
 
   return (

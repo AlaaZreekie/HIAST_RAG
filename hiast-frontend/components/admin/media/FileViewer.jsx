@@ -5,7 +5,7 @@ const FileViewer = ({ file, onClose }) => {
   const { t, lang } = useLanguage();
   
   // Backend base URL for static files (without /api)
-  const BACKEND_BASE_URL = "https://localhost:7187";
+  const BACKEND_BASE_URL ="http://localhost:5007";
 
   const getFileUrl = (filePath) => {
     if (!filePath) return null;

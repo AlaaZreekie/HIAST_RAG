@@ -71,5 +71,6 @@ Backend_Web/**/*.Backup.*
 Backend_Web/**/*.log
 Backend_Web/**/.DS_Store
 Backend_Web/**/Thumbs.db
+Backend_Web/wwwroot/
 
 .vs/ 

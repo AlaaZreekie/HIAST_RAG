@@ -89,7 +89,7 @@ class Embedder:
         
         return new_db_path
     
-    def load_data(self, filepath="scraped_homepage.json"):
+    def load_data(self, filepath="scraped_data.json"):
         """Load data from a text file."""
         print(f"📄 Loading data from: {filepath}")
         loader = TextLoader(filepath, encoding="utf-8")
@@ -97,7 +97,7 @@ class Embedder:
         print(f"✅ Loaded {len(data)} documents")
         return data
     
-    def load_data_from_json(self, filepath="scraped_homepage.json"):
+    def load_data_from_json(self, filepath="scraped_data.json"):
         """Load data from a JSON file with scraped content."""
         print(f"📄 Loading data from JSON: {filepath}")
         try:
@@ -188,7 +188,7 @@ class Embedder:
         relevant_documents = retriever.get_relevant_documents(query)
         return relevant_documents
     
-    def retrain(self, filepath="scraped_homepage.json", chunk_size=1200, chunk_overlap=200):
+    def retrain(self, filepath="scraped_data.json", chunk_size=1200, chunk_overlap=200):
         """Retrain (rebuild) the entire vector database from scratch."""
         print("🔄 Starting database retrain...")
         
@@ -210,6 +210,7 @@ class Embedder:
         # Chunk data
         docs = self.chunk_data(data, chunk_size, chunk_overlap)
         
+        print("Creating and saving embeddings to NEW database")
         # Create and save embeddings to NEW database
         vectorstore = self.create_and_save_embeddings(docs, new_db_path)
                 
