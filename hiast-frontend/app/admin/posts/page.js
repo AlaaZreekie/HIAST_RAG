@@ -89,7 +89,7 @@ export default function PostsPage() {
     try {
       const { authAPI } = await import("@/lib/api");
       await authAPI.logout();
-      router.push("/admin/login");
+      router.push("/");
     } catch (error) {
       console.error("Logout error:", error);
     }
