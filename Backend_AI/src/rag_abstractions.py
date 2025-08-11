@@ -114,7 +114,7 @@ class RAGFusionPipeline(BaseRAGPipeline):
         embedder = Embedder()
         loop = asyncio.get_event_loop()
         async def retrieve_docs(sub_q):
-            retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 1000})
+            retriever = embedder.load_vectorstore().as_retriever(search_type="similarity", search_kwargs={"k": 5})
             return await loop.run_in_executor(None, retriever.get_relevant_documents, sub_q)
         tasks = [retrieve_docs(sub_q) for sub_q in sub_questions]
         docs_lists = await asyncio.gather(*tasks)

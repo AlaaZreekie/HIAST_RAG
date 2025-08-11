@@ -19,3 +19,5 @@ unstructured
 fastapi
 uvicorn
 pydantic
+datasets
+pandas
