@@ -90,6 +90,8 @@ export async function apiRequest(endpoint, options = {}) {
     defaultOptions.headers["Authorization"] = `Bearer ${token}`;
   }
 
+  const isFormData = options && options.body instanceof FormData;
+
   const config = {
     ...defaultOptions,
     ...options,
@@ -98,6 +100,11 @@ export async function apiRequest(endpoint, options = {}) {
       ...options.headers,
     },
   };
+
+  // If sending FormData, let the browser set the Content-Type with boundary
+  if (isFormData && config.headers) {
+    delete config.headers["Content-Type"];
+  }
 
   try {
     console.log("Making API request to:", url);
