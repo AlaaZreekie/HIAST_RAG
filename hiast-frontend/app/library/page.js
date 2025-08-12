@@ -2,6 +2,7 @@ import HomepageLayout from "@/components/layout/HomepageLayout";
 import React from "react";
 import { cookies } from "next/headers";
 import { getAllBooks } from "@/lib/publicBooksApi";
+import ViewBooks from "./view";
 
 // Server-side language detection
 function getLanguageFromCookies() {
@@ -10,23 +11,6 @@ function getLanguageFromCookies() {
   return langCookie?.value || "en";
 }
 
-/*
-  public string Author { get; set; }
-  public int PublicationYear { get; set; }
-  public string ISBN { get; set; }
-  public MediaDto CoverImage { get; set; }
-  public MediaDto BookFile { get; set; }
-  public IList<BookTranslationDto>? Translations { get; set; }
-*/
-
-/*
-MediaDto
-  public string FileName { get; set; }
-  public string FilePath { get; set; }
-  public string FileType { get; set; }
-  public MediaCategoryDto MediaCategory { get; set; }
-*/
-
 const Library = async () => {
   const lang = getLanguageFromCookies();
 
@@ -34,8 +18,6 @@ const Library = async () => {
   const books = await getAllBooks();
   console.log(books);
 
-  // Language code mapping
-  const languageCode = lang === "ar" ? 1 : 2; // Assuming 1=English, 2=Arabic
   return (
     <HomepageLayout currentPage="library" lang={lang}>
       {/* Hero Section */}
@@ -59,9 +41,10 @@ const Library = async () => {
                 : "Discover a diverse range of academic books"}
             </p>
           </div>
-          <div>Hatem</div>
         </div>
       </section>
+
+      <ViewBooks books={books} lang={lang} />
     </HomepageLayout>
   );
 };
