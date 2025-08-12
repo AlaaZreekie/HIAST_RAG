@@ -15,7 +15,7 @@ export const checkAdminAuth = () => {
  */
 export const requireAdminAuth = (router) => {
   if (!isAuthenticated()) {
-    router.push("/admin/login");
+    router.push("/");
     return false;
   }
 

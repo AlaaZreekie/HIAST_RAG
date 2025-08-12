@@ -6,7 +6,7 @@ export function middleware(request) {
   // Check if the request is for admin routes
   if (pathname.startsWith("/admin")) {
     // Skip middleware for login page
-    if (pathname === "/admin/login") {
+    if (pathname === "/") {
       return NextResponse.next();
     }
 

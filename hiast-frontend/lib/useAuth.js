@@ -20,7 +20,7 @@ export const useAuth = (requireAdmin = true) => {
       if (!authenticated) {
         setIsAuthorized(false);
         setIsLoading(false);
-        router.push("/admin/login");
+        router.push("/");
         return;
       }
 
