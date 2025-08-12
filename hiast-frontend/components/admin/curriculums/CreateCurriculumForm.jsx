@@ -26,8 +26,8 @@ const CreateCurriculumForm = ({
         AcademicYear: initialData.AcademicYear?.toString() || "",
         Semester: initialData.Semester?.toString() || "",
         CourseType: initialData.CourseType?.toString() || "",
-        SpecializationId: initialData.SpecializationId?.toString() || "",
-        CourseId: initialData.CourseId?.toString() || "",
+        SpecializationId: initialData.Specialization.Id?.toString() || "",
+        CourseId: initialData.Course.Id?.toString() || "",
       });
     }
   }, [initialData]);
@@ -47,8 +47,8 @@ const CreateCurriculumForm = ({
       AcademicYear: parseInt(formData.AcademicYear) || 0,
       Semester: parseInt(formData.Semester) || 0,
       CourseType: parseInt(formData.CourseType) || 0,
-      SpecializationId: parseInt(formData.SpecializationId) || 0,
-      CourseId: parseInt(formData.CourseId) || 0,
+      SpecializationId: formData.SpecializationId || 0,
+      CourseId: formData.CourseId || 0,
     };
     onSubmit(submitData);
   };

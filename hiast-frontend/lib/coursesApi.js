@@ -39,7 +39,7 @@ export const coursesAPI = {
     });
   },
 
-  updateCourse: async (courseData) => {
+  updateCourse: async (courseId, courseData) => {
     return coursesApiRequest("UpdateCourse", {
       method: "PUT",
       body: JSON.stringify(courseData),
@@ -73,8 +73,8 @@ export const getAllCourses = async () => {
 
 export const getCourseById = async (courseId) => {
   try {
-    const courses = await getAllCourses();
-    return courses.find((course) => course.Id === courseId);
+    const courses = await coursesAPI.getCoursesByFilter({ Id: courseId });
+    return courses;
   } catch (error) {
     console.error("Error fetching course by ID:", error);
     throw error;

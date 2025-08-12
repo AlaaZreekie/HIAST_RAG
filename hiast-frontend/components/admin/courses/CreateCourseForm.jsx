@@ -3,7 +3,14 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false, courseGroups = [] }) => {
+const CreateCourseForm = ({
+  onSubmit,
+  isLoading,
+  error,
+  initialData = null,
+  isEditMode = false,
+  courseGroups = [],
+}) => {
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
@@ -15,39 +22,43 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
     arabicName: "",
     englishName: "",
     arabicDescription: "",
-    englishDescription: ""
+    englishDescription: "",
   });
 
   // Pre-fill form data when in edit mode
   useEffect(() => {
     if (isEditMode && initialData) {
-      const arabicTranslation = initialData.Translations?.find(t => t.LanguageCode === 1);
-      const englishTranslation = initialData.Translations?.find(t => t.LanguageCode === 2);
-      
+      const arabicTranslation = initialData.Translations?.find(
+        (t) => t.LanguageCode === 1
+      );
+      const englishTranslation = initialData.Translations?.find(
+        (t) => t.LanguageCode === 2
+      );
+
       setFormData({
         courseCode: initialData.CourseCode || "",
         credits: initialData.Credits || "",
         theoreticalHours: initialData.TheoreticalHours || "",
         practicalHours: initialData.PracticalHours || "",
-        courseGroupId: initialData.CourseGroupId || "",
+        courseGroupId: initialData.CourseGroup.Id || "",
         arabicName: arabicTranslation?.Name || "",
         englishName: englishTranslation?.Name || "",
         arabicDescription: arabicTranslation?.Description || "",
-        englishDescription: englishTranslation?.Description || ""
+        englishDescription: englishTranslation?.Description || "",
       });
     }
   }, [initialData, isEditMode]);
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!formData.arabicName.trim() && !formData.englishName.trim()) {
       return;
     }
@@ -57,24 +68,28 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
     }
 
     const translations = [];
-    
+
     if (formData.arabicName.trim()) {
-      const arabicTranslation = initialData?.Translations?.find(t => t.LanguageCode === 1);
+      const arabicTranslation = initialData?.Translations?.find(
+        (t) => t.LanguageCode === 1
+      );
       translations.push({
         Id: arabicTranslation?.Id || null,
-        LanguageCode: 1,
+        // LanguageCode: 1,
         Name: formData.arabicName.trim(),
-        Description: formData.arabicDescription.trim()
+        Description: formData.arabicDescription.trim(),
       });
     }
-    
+
     if (formData.englishName.trim()) {
-      const englishTranslation = initialData?.Translations?.find(t => t.LanguageCode === 2);
+      const englishTranslation = initialData?.Translations?.find(
+        (t) => t.LanguageCode === 2
+      );
       translations.push({
         Id: englishTranslation?.Id || null,
-        LanguageCode: 2,
+        // LanguageCode: 2,
         Name: formData.englishName.trim(),
-        Description: formData.englishDescription.trim()
+        Description: formData.englishDescription.trim(),
       });
     }
 
@@ -84,14 +99,19 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
       TheoreticalHours: parseInt(formData.theoreticalHours),
       PracticalHours: parseInt(formData.practicalHours),
       CourseGroupId: formData.courseGroupId,
-      Translations: translations
+      Translations: translations,
     };
+
+    
 
     // Add course ID for updates
     if (isEditMode && initialData?.Id) {
       courseData.Id = initialData.Id;
     }
 
+    console.log("*************************");
+    console.log(courseData);
+    console.log("*************************");
     onSubmit(courseData);
   };
 
@@ -102,16 +122,21 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
           <div className="grid grid-cols-1 gap-6">
             {/* Course Code */}
             <div>
-              <label htmlFor="courseCode" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="courseCode"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.courseCode")}
               </label>
               <input
                 type="text"
                 id="courseCode"
                 value={formData.courseCode}
-                onChange={(e) => handleInputChange("courseCode", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("courseCode", e.target.value)
+                }
                 required
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
                   lang === "ar" ? "text-right" : "text-left"
@@ -122,9 +147,12 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* Credits */}
             <div>
-              <label htmlFor="credits" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="credits"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.credits")}
               </label>
               <input
@@ -144,16 +172,21 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* Theoretical Hours */}
             <div>
-              <label htmlFor="theoreticalHours" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="theoreticalHours"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.theoreticalHours")}
               </label>
               <input
                 type="number"
                 id="theoreticalHours"
                 value={formData.theoreticalHours}
-                onChange={(e) => handleInputChange("theoreticalHours", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("theoreticalHours", e.target.value)
+                }
                 required
                 min="0"
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
@@ -165,16 +198,21 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* Practical Hours */}
             <div>
-              <label htmlFor="practicalHours" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="practicalHours"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.practicalHours")}
               </label>
               <input
                 type="number"
                 id="practicalHours"
                 value={formData.practicalHours}
-                onChange={(e) => handleInputChange("practicalHours", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("practicalHours", e.target.value)
+                }
                 required
                 min="0"
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
@@ -186,41 +224,44 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* Course Group */}
             <div>
-              <label htmlFor="courseGroupId" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="courseGroupId"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.courseGroup")}
               </label>
-              <select
+              <input
                 id="courseGroupId"
                 value={formData.courseGroupId}
-                onChange={(e) => handleInputChange("courseGroupId", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("courseGroupId", e.target.value)
+                }
                 required
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
                   lang === "ar" ? "text-right" : "text-left"
                 }`}
-              >
-                <option value="">{t("courses.form.selectCourseGroup")}</option>
-                {courseGroups.map((group) => (
-                  <option key={group.Id} value={group.Id}>
-                    {group.Name}
-                  </option>
-                ))}
-              </select>
+              ></input>
             </div>
 
             {/* Arabic Name */}
             <div>
-              <label htmlFor="arabicName" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="arabicName"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.name")} ({t("courses.arabic")})
               </label>
               <input
                 type="text"
                 id="arabicName"
                 value={formData.arabicName}
-                onChange={(e) => handleInputChange("arabicName", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("arabicName", e.target.value)
+                }
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
                   lang === "ar" ? "text-right" : "text-left"
                 }`}
@@ -231,16 +272,21 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* English Name */}
             <div>
-              <label htmlFor="englishName" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="englishName"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.name")} ({t("courses.english")})
               </label>
               <input
                 type="text"
                 id="englishName"
                 value={formData.englishName}
-                onChange={(e) => handleInputChange("englishName", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("englishName", e.target.value)
+                }
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
                   lang === "ar" ? "text-right" : "text-left"
                 }`}
@@ -251,15 +297,20 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* Arabic Description */}
             <div>
-              <label htmlFor="arabicDescription" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="arabicDescription"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.description")} ({t("courses.arabic")})
               </label>
               <textarea
                 id="arabicDescription"
                 value={formData.arabicDescription}
-                onChange={(e) => handleInputChange("arabicDescription", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("arabicDescription", e.target.value)
+                }
                 rows={4}
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
                   lang === "ar" ? "text-right" : "text-left"
@@ -271,15 +322,20 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
 
             {/* English Description */}
             <div>
-              <label htmlFor="englishDescription" className={`block text-sm font-medium text-gray-700 mb-2 ${
-                lang === "ar" ? "text-right" : "text-left"
-              }`}>
+              <label
+                htmlFor="englishDescription"
+                className={`block text-sm font-medium text-gray-700 mb-2 ${
+                  lang === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 {t("courses.form.description")} ({t("courses.english")})
               </label>
               <textarea
                 id="englishDescription"
                 value={formData.englishDescription}
-                onChange={(e) => handleInputChange("englishDescription", e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("englishDescription", e.target.value)
+                }
                 rows={4}
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 ${
                   lang === "ar" ? "text-right" : "text-left"
@@ -296,13 +352,21 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
             </div>
           )}
 
-          <div className={`mt-6 flex space-x-3 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
+          <div
+            className={`mt-6 flex space-x-3 ${
+              lang === "ar" ? "flex-row-reverse" : "flex-row"
+            }`}
+          >
             <button
               type="submit"
               disabled={isLoading}
               className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
             >
-              {isLoading ? t("common.loading") : (isEditMode ? t("courses.form.update") : t("courses.form.submit"))}
+              {isLoading
+                ? t("common.loading")
+                : isEditMode
+                ? t("courses.form.update")
+                : t("courses.form.submit")}
             </button>
             <button
               type="button"
@@ -318,4 +382,4 @@ const CreateCourseForm = ({ onSubmit, isLoading, error, initialData = null, isEd
   );
 };
 
-export default CreateCourseForm; 
+export default CreateCourseForm;
