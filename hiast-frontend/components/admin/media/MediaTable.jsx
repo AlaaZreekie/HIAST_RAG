@@ -7,8 +7,6 @@ const MediaTable = ({ mediaFiles, onEditMedia, onDeleteMedia }) => {
   const { t, lang } = useLanguage();
   const [selectedFile, setSelectedFile] = useState(null);
 
-  // Backend base URL for static files (without /api)
-
   const BACKEND_BASE_URL = "http://localhost:5007";
 
   if (mediaFiles.length === 0) {
