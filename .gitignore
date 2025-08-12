@@ -74,3 +74,4 @@ Backend_Web/**/Thumbs.db
 Backend_Web/Presentation/wwwroot/
 
 .vs/ 
+/Backend_Web/Presentation/appsettings.json
