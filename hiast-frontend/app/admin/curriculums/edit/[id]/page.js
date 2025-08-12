@@ -48,6 +48,7 @@ const EditCurriculumPage = ({ params }) => {
     try {
       setIsSubmitting(true);
       setError(null);
+
       await curriculumsAPI.updateCurriculum(curriculumId, curriculumData);
       router.push("/admin/curriculums");
     } catch (err) {

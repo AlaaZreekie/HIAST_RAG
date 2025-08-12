@@ -128,7 +128,7 @@ const EditCoursePage = ({ params }) => {
               onSubmit={handleSubmit}
               isLoading={isSubmitting}
               error={error}
-              initialData={course}
+              initialData={course["Data"][0]}
               isEditMode={true}
             />
           </div>

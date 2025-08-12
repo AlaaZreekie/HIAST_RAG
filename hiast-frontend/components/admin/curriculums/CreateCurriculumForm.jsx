@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, isEditMode = false }) => {
+const CreateCurriculumForm = ({
+  onSubmit,
+  isLoading,
+  error,
+  initialData = null,
+  isEditMode = false,
+}) => {
   const router = useRouter();
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
@@ -11,7 +17,7 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
     Semester: "",
     CourseType: "",
     SpecializationId: "",
-    CourseId: ""
+    CourseId: "",
   });
 
   useEffect(() => {
@@ -20,17 +26,17 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
         AcademicYear: initialData.AcademicYear?.toString() || "",
         Semester: initialData.Semester?.toString() || "",
         CourseType: initialData.CourseType?.toString() || "",
-        SpecializationId: initialData.SpecializationId?.toString() || "",
-        CourseId: initialData.CourseId?.toString() || ""
+        SpecializationId: initialData.Specialization.Id?.toString() || "",
+        CourseId: initialData.Course.Id?.toString() || "",
       });
     }
   }, [initialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -41,8 +47,8 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
       AcademicYear: parseInt(formData.AcademicYear) || 0,
       Semester: parseInt(formData.Semester) || 0,
       CourseType: parseInt(formData.CourseType) || 0,
-      SpecializationId: parseInt(formData.SpecializationId) || 0,
-      CourseId: parseInt(formData.CourseId) || 0
+      SpecializationId: formData.SpecializationId || 0,
+      CourseId: formData.CourseId || 0,
     };
     onSubmit(submitData);
   };
@@ -54,7 +60,10 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
           <div className="grid grid-cols-1 gap-6">
             {/* Academic Year */}
             <div>
-              <label htmlFor="AcademicYear" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="AcademicYear"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 {t("curriculums.form.academicYear")}
               </label>
               <input
@@ -73,7 +82,10 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
 
             {/* Semester */}
             <div>
-              <label htmlFor="Semester" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="Semester"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 {t("curriculums.form.semester")}
               </label>
               <select
@@ -93,7 +105,10 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
 
             {/* Course Type */}
             <div>
-              <label htmlFor="CourseType" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="CourseType"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 {t("curriculums.form.courseType")}
               </label>
               <select
@@ -105,7 +120,9 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 dir={lang === "ar" ? "rtl" : "ltr"}
               >
-                <option value="">{t("curriculums.form.selectCourseType")}</option>
+                <option value="">
+                  {t("curriculums.form.selectCourseType")}
+                </option>
                 <option value="0">{t("curriculums.form.core")}</option>
                 <option value="1">{t("curriculums.form.specialized")}</option>
                 <option value="2">{t("curriculums.form.elective")}</option>
@@ -114,11 +131,14 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
 
             {/* Specialization ID */}
             <div>
-              <label htmlFor="SpecializationId" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="SpecializationId"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 {t("curriculums.form.specializationId")}
               </label>
               <input
-                type="number"
+                type=""
                 id="SpecializationId"
                 name="SpecializationId"
                 value={formData.SpecializationId}
@@ -131,11 +151,14 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
 
             {/* Course ID */}
             <div>
-              <label htmlFor="CourseId" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="CourseId"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 {t("curriculums.form.courseId")}
               </label>
               <input
-                type="number"
+                type=""
                 id="CourseId"
                 name="CourseId"
                 value={formData.CourseId}
@@ -153,13 +176,21 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
             </div>
           )}
 
-          <div className={`mt-6 flex space-x-3 ${lang === "ar" ? "flex-row-reverse" : "flex-row"}`}>
+          <div
+            className={`mt-6 flex space-x-3 ${
+              lang === "ar" ? "flex-row-reverse" : "flex-row"
+            }`}
+          >
             <button
               type="submit"
               disabled={isLoading}
               className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
             >
-              {isLoading ? t("common.loading") : (isEditMode ? t("curriculums.form.update") : t("curriculums.form.submit"))}
+              {isLoading
+                ? t("common.loading")
+                : isEditMode
+                ? t("curriculums.form.update")
+                : t("curriculums.form.submit")}
             </button>
             <button
               type="button"
@@ -175,4 +206,4 @@ const CreateCurriculumForm = ({ onSubmit, isLoading, error, initialData = null, 
   );
 };
 
-export default CreateCurriculumForm; 
+export default CreateCurriculumForm;

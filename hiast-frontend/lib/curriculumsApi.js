@@ -27,10 +27,13 @@ export const curriculumsAPI = {
     });
   },
 
-  updateCurriculum: async (curriculumData) => {
+  updateCurriculum: async (curriculumId, curriculumData) => {
     return curriculumsApiRequest("UpdateCurriculum", {
       method: "PUT",
-      body: JSON.stringify(curriculumData),
+      body: JSON.stringify({
+        Id: curriculumId,
+        ...curriculumData,
+      }),
     });
   },
 

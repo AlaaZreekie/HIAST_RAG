@@ -54,12 +54,26 @@ const CurriculumsPage = () => {
         </div>
         <div className={`flex-1 ${lang === "ar" ? "order-1" : "order-2"}`}>
           <div className="p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              Curriculums
-            </h1>
-            <p className="text-sm text-gray-600 mb-4">
-              Manage curriculum entries and study plans
-            </p>
+            <div className="flex justify-between">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">
+                  Curriculums
+                </h1>
+                <p className="text-sm text-gray-600 mb-4">
+                  Manage curriculum entries and study plans
+                </p>
+              </div>
+              <button
+                onClick={() =>
+                  (window.location.href = "/admin/curriculums/create")
+                }
+                className={`h-1/2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
+                  lang === "ar" ? "flex-row-reverse" : "flex-row"
+                }`}
+              >
+                {"Create Curriculum"}
+              </button>
+            </div>
 
             {error && (
               <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
@@ -105,13 +119,16 @@ const CurriculumsPage = () => {
                                 </div>
 
                                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                                  {curriculum.Course?.Name || "N/A"}
+                                  {curriculum["Course"]["Translations"][0]
+                                    ?.Name || "N/A"}
                                 </h3>
 
                                 <div className="text-sm text-gray-600 mb-3">
                                   <p>
                                     Specialization:{" "}
-                                    {curriculum.Specialization?.Name || "N/A"}
+                                    {curriculum.Specialization[
+                                      "Translations"
+                                    ][0]?.Name || "N/A"}
                                   </p>
                                   <p>Course Type: {curriculum.CourseType}</p>
                                 </div>
